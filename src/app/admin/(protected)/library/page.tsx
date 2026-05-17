@@ -2,7 +2,7 @@
 import LibraryClient from './LibraryClient';
 
 export default async function LibraryPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: files } = await supabase
     .from('library_files')
     .select('*')

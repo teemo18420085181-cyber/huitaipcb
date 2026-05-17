@@ -11,7 +11,7 @@ const statusMap: Record<string, { label: string; color: string }> = {
 };
 
 export default async function AdminDashboard() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const [inquiries, customers, feedback, newInq, recent] = await Promise.all([
     supabase.from('inquiries').select('id', { count: 'exact', head: true }),
     supabase.from('customers').select('id', { count: 'exact', head: true }),

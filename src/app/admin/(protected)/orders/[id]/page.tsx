@@ -12,7 +12,7 @@ const statusMap: Record<string, { label: string; color: string }> = {
 
 async function updateOrder(formData: FormData) {
   'use server';
-  const supabase = createClient();
+  const supabase = await createClient();
   const id = formData.get('id') as string;
   await supabase.from('orders').update({
     status: formData.get('status'),
@@ -28,7 +28,7 @@ async function updateOrder(formData: FormData) {
 }
 
 export default async function OrderDetailPage({ params }: { params: { id: string } }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: o } = await supabase.from('orders').select('*').eq('id', params.id).single();
   if (!o) notFound();
   const images = [o.image_1, o.image_2, o.image_3].filter(Boolean);

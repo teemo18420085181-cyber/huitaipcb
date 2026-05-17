@@ -10,7 +10,7 @@ const statusMap: Record<string, { label: string; color: string }> = {
 };
 
 export default async function OrdersPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: orders } = await supabase
     .from('orders')
     .select('*')

@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 
 async function togglePublish(formData: FormData) {
   'use server';
-  const supabase = createClient();
+  const supabase = await createClient();
   const id = formData.get('id') as string;
   const is_published = formData.get('is_published') === 'true';
   const admin_response = formData.get('admin_response') as string;
@@ -16,7 +16,7 @@ async function togglePublish(formData: FormData) {
 }
 
 export default async function FeedbackPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: messages } = await supabase.from('feedback_messages').select('*').order('created_at', { ascending: false });
 
   return (

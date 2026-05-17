@@ -12,7 +12,7 @@ const statusMap: Record<string, { label: string; color: string }> = {
 };
 
 export default async function InquiriesPage({ searchParams }: { searchParams: { status?: string } }) {
-  const supabase = createClient();
+  const supabase = await createClient();
   const activeStatus = searchParams.status || 'all';
   let query = supabase.from('inquiries').select('*').order('created_at', { ascending: false });
   if (activeStatus !== 'all') query = query.eq('status', activeStatus);

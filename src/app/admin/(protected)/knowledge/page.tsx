@@ -8,7 +8,7 @@ const statusMap: Record<string, { label: string; color: string }> = {
 };
 
 export default async function KnowledgePage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: articles } = await supabase.from('knowledge_articles').select('*').order('created_at', { ascending: false });
 
   return (

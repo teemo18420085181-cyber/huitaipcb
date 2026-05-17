@@ -9,7 +9,7 @@ const tierMap: Record<string, { label: string; color: string }> = {
 };
 
 export default async function CustomersPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: customers } = await supabase.from('customers').select('*').order('created_at', { ascending: false });
 
   return (
