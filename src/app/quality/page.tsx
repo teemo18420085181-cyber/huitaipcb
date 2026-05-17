@@ -1,0 +1,136 @@
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export const metadata = {
+  title: 'Quality Control — 6-Layer Inspection | OneStopPCBA',
+  description: 'AOI, X-Ray BGA inspection, flying probe, ICT, functional testing and IQC on every board. Full test report with every shipment.',
+};
+
+const QC = [
+  {
+    n: '01', tag: 'INCOMING QUALITY CONTROL',
+    title: 'Every component verified before it touches your board.',
+    desc: 'All incoming components are inspected against the BOM before stock-in. We check authenticity, date codes, packaging integrity, and dimensions using digital calipers and optical loupes. Counterfeit components are rejected immediately — we only use parts from authorized distributors.',
+    specs: ['Authorized distributors only', 'Date-code verification', 'Physical dimension check', 'Package integrity inspection', 'Anti-static handling', 'Full traceability records'],
+    image: '/factory/qua-03.png',
+    badge: 'IQC', badgeColor: 'bg-brand-yellow text-brand-primary',
+  },
+  {
+    n: '02', tag: 'AOI — AUTOMATED OPTICAL INSPECTION',
+    title: '100% automated optical inspection after every SMT run.',
+    desc: 'Every board goes through AOI immediately after reflow soldering. The system scans for missing components, misalignment, solder bridges, polarity errors, and lifted pins. Boards with any AOI failure are quarantined and reviewed by a trained QC operator before rework or scrap.',
+    specs: ['100% board coverage', 'Missing component detection', 'Solder bridge detection', 'Polarity verification', 'Component misalignment', 'Automated rejection sorting'],
+    image: '/factory/flow-06.png',
+    badge: 'Automated', badgeColor: 'bg-brand-primary text-white',
+  },
+  {
+    n: '03', tag: 'X-RAY INSPECTION',
+    title: 'Hidden solder joints verified inside and out.',
+    desc: 'BGAs, QFNs, LGAs, and other bottom-terminated components cannot be inspected visually. Our X-Ray system images solder balls through the package, checking for voids, bridges, open joints, and misalignment. Mandatory for any board with area-array packages.',
+    specs: ['BGA ball array verification', 'Void rate measurement', 'Hidden joint inspection', 'QFN / LGA / CSP supported', 'Defect analysis software', 'Full image archive with report'],
+    image: '/factory/qua-01.png',
+    badge: 'X-Ray', badgeColor: 'bg-brand-green text-white',
+  },
+  {
+    n: '04', tag: 'FUNCTIONAL TESTING',
+    title: 'Every board powered on and verified against your spec.',
+    desc: 'We perform functional testing using your test specification, test fixture, or firmware. Boards are powered up and tested for signal integrity, peripheral communication, power consumption, and custom pass/fail criteria. A signed test report is included with every shipment.',
+    specs: ['Power-on verification', 'Signal integrity check', 'Oscilloscope measurement', 'Custom test fixtures', 'Firmware loading', 'Pass/fail logged per unit'],
+    image: '/factory/qua-02.png',
+    badge: '100% Tested', badgeColor: 'bg-brand-yellow text-brand-primary',
+  },
+];
+
+const STATS = [
+  { n: '<0.1%', label: 'Defect rate (DPMO)', sub: 'IPC Class III target' },
+  { n: '100%', label: 'AOI coverage', sub: 'Every SMT board' },
+  { n: '100%', label: 'X-Ray for BGA', sub: 'Area-array packages' },
+  { n: '100%', label: 'Test report', sub: 'Included with every order' },
+];
+
+export default function QualityPage() {
+  return (
+    <>
+      <Nav />
+      <main className="pt-[64px] min-h-screen bg-bg">
+        <section className="relative px-[5vw] py-16 md:py-24 bg-brand-primary text-white overflow-hidden">
+          <div className="absolute -top-[100px] right-[10%] w-[300px] h-[300px] rounded-full opacity-30" style={{ background: '#FCEA0B', filter: 'blur(100px)' }} />
+          <div className="absolute -bottom-[100px] left-[10%] w-[280px] h-[280px] rounded-full opacity-20" style={{ background: '#93C249', filter: 'blur(100px)' }} />
+          <div className="relative z-10 max-w-[1080px] mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-brand-yellow/10 border border-brand-yellow/40 text-brand-yellow text-[11px] tracking-[0.14em] py-1.5 px-3.5 rounded-full mb-6 font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" style={{ boxShadow: '0 0 12px #FCEA0B' }} />
+              QUALITY CONTROL
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-[52px] font-semibold leading-tight tracking-tight mb-5">
+              Every board tested.<br />
+              <em className="not-italic text-brand-yellow">Every shipment documented.</em>
+            </h1>
+            <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[680px] mx-auto">
+              Four layers of quality control from incoming components to final shipment. Trained QC operators, modern inspection equipment, and full traceability on every order.
+            </p>
+          </div>
+        </section>
+
+        {/* Stats bar */}
+        <section className="bg-brand-primary-dark px-[5vw] py-8">
+          <div className="max-w-[1280px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+            {STATS.map((s, i) => (
+              <div key={i} className="flex flex-col items-start pl-[18px] border-l-2 border-brand-yellow">
+                <div className="text-2xl font-semibold text-white leading-none">{s.n}</div>
+                <div className="text-xs text-white/70 mt-1 font-medium">{s.label}</div>
+                <div className="text-[10px] text-white/40 mt-0.5 tracking-wide">{s.sub}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="px-[5vw] py-20">
+          <div className="max-w-[1280px] mx-auto space-y-5">
+            {QC.map((q, i) => {
+              const isEven = i % 2 === 0;
+              return (
+                <div key={q.n} className={`group grid md:grid-cols-2 gap-0 rounded-2xl overflow-hidden border border-line bg-white hover:shadow-lg transition-all duration-300 ${isEven ? '' : 'md:[&>*:first-child]:order-last'}`}>
+                  <div className="relative h-64 md:h-auto min-h-[280px] overflow-hidden">
+                    <Image src={q.image} alt={q.title} fill className="object-cover group-hover:scale-[1.03] transition-transform duration-700" sizes="(max-width: 768px) 100vw, 50vw" />
+                    <div className="absolute inset-0 bg-brand-primary/20 group-hover:bg-brand-primary/10 transition-colors duration-300" />
+                    <div className="absolute top-5 left-5 flex flex-col gap-2">
+                      <div className="w-10 h-10 rounded-xl bg-brand-primary/80 backdrop-blur border border-white/20 flex items-center justify-center text-white text-[13px] font-bold">{q.n}</div>
+                      <div className={`text-[10px] font-semibold tracking-widest px-2.5 py-1 rounded-full inline-block ${q.badgeColor}`}>{q.badge}</div>
+                    </div>
+                    <div className="absolute bottom-5 left-5 text-[9px] text-white/60 tracking-[0.2em] font-medium">{q.tag}</div>
+                  </div>
+                  <div className="flex flex-col justify-center p-8 md:p-10">
+                    <div className="text-[10px] text-brand-primary/50 font-semibold tracking-[0.18em] mb-3">QC STAGE {q.n}</div>
+                    <h2 className="text-xl md:text-2xl font-semibold text-brand-primary leading-tight mb-4">{q.title}</h2>
+                    <p className="text-sm text-ink-muted leading-relaxed mb-5">{q.desc}</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {q.specs.map((s, si) => (
+                        <div key={si} className="flex items-center gap-2 text-xs text-ink-muted">
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-green flex-shrink-0" />{s}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="px-[5vw] pb-20">
+          <div className="max-w-[820px] mx-auto bg-brand-primary rounded-2xl p-10 text-center text-white relative overflow-hidden">
+            <div className="absolute -top-[80px] -right-[80px] w-[200px] h-[200px] rounded-full opacity-20" style={{ background: '#93C249', filter: 'blur(60px)' }} />
+            <h2 className="text-2xl md:text-3xl font-semibold mb-3">Want to discuss your quality requirements?</h2>
+            <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Tell us your IPC class, test spec, and any custom requirements. We&apos;ll confirm what&apos;s covered in our standard process and what needs a custom setup.</p>
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-brand-yellow text-brand-primary text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
+              Send us your requirements →
+            </Link>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}

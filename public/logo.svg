@@ -1,0 +1,25 @@
+<svg height="100%" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 600 442" xmlns:xlink="http://www.w3.org/1999/xlink"><desc>Created with Snap</desc><defs/><g id="root" contentwidth="196.828125" contentheight="147.33333333333334">
+          <rect class="background" height="2000%" width="2000%" y="-1000%" x="-1000%" style="" fill="#ffffff"/>
+          <rect class="watermarklayer" height="100%" width="100%" y="0" x="0" style="" fill="none"/>
+          <g class="content" id="content" transform="matrix(1.151,0,0,1.151,239.8005,250.4667)">
+            <g class="icon" style="mask: url(#mask);">
+            <svg height="128" version="1.1" width="171" xmlns="http://www.w3.org/2000/svg" x="-33.2" y="-89.6"><desc>Created with Snap</desc><defs/><svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 171 128"><defs/><g><path fill="#fcea0b" stroke="none" paint-order="stroke fill markers" d=" M 128.5 32.5 L 168.5 32.5 Q 118.5 -27.5 52.5 32.5 Q 118.5 -7.5 128.5 32.5" style=""/><path fill="#93c249" stroke="none" paint-order="stroke fill markers" d=" M 88.5 95.5 L 128.5 95.5 Q 78.5 155.5 72.5 95.5 Q 78.5 135.5 88.5 95.5" style=""/></g><desc>Created with Snap</desc></svg></svg></g>
+            <g id="icon_name_and_slogan_gap">
+            </g>
+            <g class="name_and_slogan" id="name_and_slogan_id">
+              <g class="name"><g id="nameDefaultGroup"><path d="M49.5 -52.1 L49.5 0.8 L36.2 0.8 L36.2 -21.2 L17.5 -21.2 L17.5 0.8 L4.4 0.8 L4.3 -52.1 L17.5 -52.1 L17.5 -32.2 L36.2 -32.2 L36.2 -52.1 L49.5 -52.1 Z M100.3 -41.8 L84.7 -41.8 L84.7 0.9 L71.9 0.9 L71.9 -41.8 L56.2 -41.8 L56.2 -52.1 L100.3 -52.1 L100.3 -41.8 Z" style="" fill="#27215b" id="namepathdata"/></g></g>
+              <g class="slogan"><g id="sloganDefaultGroup"/></g>
+            </g>
+            <g class="border">
+            </g>
+          </g>
+          <defs id="defs">
+            <mask xmlns="http://www.w3.org/2000/svg" id="mask">
+                <rect id="showAll" fill="white" x="-33.2" y="-89.6" width="171" height="128"/>
+                <rect id="hideNameBg" fill="black" x="0" y="0" width="0" height="0" stroke-width="2" stroke="black"/>
+                <rect id="hideSloganBg" fill="black" x="0" y="0" width="0" height="0" stroke-width="2" stroke="black"/>
+            <path d="M49.5 -52.1 L49.5 0.8 L36.2 0.8 L36.2 -21.2 L17.5 -21.2 L17.5 0.8 L4.4 0.8 L4.3 -52.1 L17.5 -52.1 L17.5 -32.2 L36.2 -32.2 L36.2 -52.1 L49.5 -52.1 Z M100.3 -41.8 L84.7 -41.8 L84.7 0.9 L71.9 0.9 L71.9 -41.8 L56.2 -41.8 L56.2 -52.1 L100.3 -52.1 L100.3 -41.8 Z" style="stroke-width: 0;" fill="#000000" id="masknamepathdata" stroke="#000000" paint-order="stroke" transform="matrix(1,0,0,1,0,0)"/></mask>
+          
+          </defs>
+        </g>
+        </svg>
