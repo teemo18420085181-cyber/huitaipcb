@@ -22,9 +22,9 @@ const FilesAnim = () => (
     </line>
     {/* Check items */}
     <g fontSize="8" fontFamily="monospace">
-      <text x="40" y="75" fill="#93C249">âœ?Clearance OK</text>
+      <text x="40" y="75" fill="#93C249">ï¿½?Clearance OK</text>
       <text x="40" y="85" fill="#93C249">
-        âœ?Via size OK
+        ï¿½?Via size OK
         <animate attributeName="opacity" values="0;1" dur="1.5s" begin="0.8s" fill="freeze"/>
       </text>
     </g>
@@ -110,7 +110,7 @@ const BOMSourceAnim = () => (
     </circle>
     {/* Authorized badge */}
     <rect x="50" y="112" width="80" height="14" rx="4" fill="#93C249" opacity="0.2" stroke="#93C249" strokeWidth="1"/>
-    <text x="90" y="122" fill="#93C249" fontSize="8" textAnchor="middle" fontFamily="monospace">âœ?AUTHORIZED ONLY</text>
+    <text x="90" y="122" fill="#93C249" fontSize="8" textAnchor="middle" fontFamily="monospace">ï¿½?AUTHORIZED ONLY</text>
     {/* Label */}
     <text x="90" y="143" fill="#FCEA0B" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">BOM SOURCING</text>
     <text x="90" y="155" fill="#ffffff88" fontSize="8" textAnchor="middle" fontFamily="sans-serif">No grey market parts</text>
@@ -157,7 +157,7 @@ const SMTAnim = () => (
     <circle cx="155" cy="50" r="6" fill="#27215B"/>
     {/* Label */}
     <text x="90" y="153" fill="#FCEA0B" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">SMT ASSEMBLY</text>
-    <text x="90" y="163" fill="#ffffff88" fontSize="7" textAnchor="middle" fontFamily="sans-serif">01005 â†?BGA</text>
+    <text x="90" y="163" fill="#ffffff88" fontSize="7" textAnchor="middle" fontFamily="sans-serif">01005 ï¿½?BGA</text>
   </svg>
 );
 
@@ -210,7 +210,7 @@ const QCAnim = () => (
         <rect x={x-8} y="95" width="14" height="8" rx="1" fill="#1A1640" stroke="#3A3270" strokeWidth="0.5"/>
         {/* Checkmarks appearing */}
         <text x={x} y="82" fill="#93C249" fontSize="10" textAnchor="middle" fontFamily="sans-serif">
-          âœ?          <animate attributeName="opacity" values="0;1" dur="0.3s" begin={`${0.5+i*0.4}s`} fill="freeze" repeatCount="indefinite"/>
+          ï¿½?          <animate attributeName="opacity" values="0;1" dur="0.3s" begin={`${0.5+i*0.4}s`} fill="freeze" repeatCount="indefinite"/>
         </text>
       </g>
     ))}
@@ -230,7 +230,7 @@ const QCAnim = () => (
     {/* Report */}
     <rect x="30" y="115" width="55" height="25" rx="2" fill="#27215B" stroke="#3A3270" strokeWidth="1"/>
     <text x="57" y="126" fill="#fff" fontSize="6" textAnchor="middle" fontFamily="monospace">TEST REPORT</text>
-    <text x="57" y="134" fill="#93C249" fontSize="6" textAnchor="middle" fontFamily="monospace">PASS âœ?/text>
+    <text x="57" y="134" fill="#93C249" fontSize="6" textAnchor="middle" fontFamily="monospace">PASS ï¿½?/text>
     {/* Label */}
     <text x="90" y="155" fill="#FCEA0B" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">QUALITY CONTROL</text>
     <text x="90" y="167" fill="#ffffff88" fontSize="7" textAnchor="middle" fontFamily="sans-serif">IPC Class III</text>
@@ -284,7 +284,7 @@ const STEPS = [
   },
   {
     n: '02', title: 'PCB Fabrication', short: 'Fabrication',
-    desc: '1â€?0 layers Â· FR4 / HDI / Rogers Â· HASL, ENIG Â· Electrically tested.',
+    desc: '1ï¿½?0 layers Â· FR4 / HDI / Rogers Â· HASL, ENIG Â· Electrically tested.',
     color: '#93C249', Anim: PCBFabAnim,
   },
   {
@@ -419,11 +419,11 @@ export default function FlowCards3D() {
             <em className="not-italic text-brand-yellow">inside the process.</em>
           </h2>
           <p className="text-sm text-white/50 max-w-[520px] mx-auto">
-            From file upload to worldwide delivery â€?every step coordinated by one team.
+            From file upload to worldwide delivery ï¿½?every step coordinated by one team.
           </p>
         </div>
 
-        {/* Cards row â€?scrollable on mobile */}
+        {/* Cards row ï¿½?scrollable on mobile */}
         <div className="relative">
           <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory md:overflow-visible md:justify-center"
             style={{ scrollbarWidth: 'none' }}>
@@ -442,7 +442,7 @@ export default function FlowCards3D() {
 
         {/* Mobile hint */}
         <div className="text-center mt-6 text-xs text-white/30 md:hidden">
-          â†?Scroll to see all steps â†?        </div>
+          ï¿½?Scroll to see all steps ï¿½?        </div>
       </div>
     </section>
   );
