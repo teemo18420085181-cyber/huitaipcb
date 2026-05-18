@@ -7,20 +7,70 @@ export const metadata: Metadata = {
     default: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing - Shenzhen',
     template: '%s | HuiTai PCB',
   },
-  description: 'HuiTai Electronics provides turnkey PCB assembly, SMT, DIP, BOM sourcing and PCB manufacturing from Shenzhen, China. Fast turnaround, competitive pricing, ISO quality.',
-  keywords: ['PCB assembly', 'PCBA', 'turnkey PCB', 'SMT assembly', 'PCB manufacturing', 'Shenzhen PCB', 'BOM sourcing', 'HuiTai Electronics', 'huitaipcb'],
+  description:
+    'HuiTai Electronics provides turnkey PCB assembly, SMT, DIP, BOM sourcing and PCB manufacturing from Shenzhen, China. Fast turnaround, competitive pricing, ISO quality.',
+  keywords: [
+    'PCB assembly',
+    'PCBA',
+    'turnkey PCB',
+    'SMT assembly',
+    'PCB manufacturing',
+    'Shenzhen PCB',
+    'BOM sourcing',
+    'HuiTai Electronics',
+    'huitaipcb',
+  ],
   authors: [{ name: 'HuiTai Electronics', url: 'https://www.huitaipcb.com' }],
   creator: 'HuiTai Electronics',
+  publisher: 'HuiTai Electronics',
+  icons: {
+    icon: '/logo.svg',
+    shortcut: '/logo.svg',
+    apple: '/logo.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.huitaipcb.com',
     siteName: 'HuiTai PCB',
     title: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing',
-    description: 'Professional turnkey PCB assembly services from Shenzhen, China. SMT, DIP, BOM sourcing and full PCB manufacturing with fast turnaround.',
+    description:
+      'Professional turnkey PCB assembly services from Shenzhen, China. SMT, DIP, BOM sourcing and full PCB manufacturing with fast turnaround.',
+    images: [
+      {
+        url: '/logo.svg',
+        width: 800,
+        height: 800,
+        alt: 'HuiTai Electronics - PCB & PCBA Manufacturing',
+      },
+    ],
   },
-  robots: { index: true, follow: true },
-  alternates: { canonical: 'https://www.huitaipcb.com' },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing',
+    description:
+      'Professional turnkey PCB assembly services from Shenzhen, China.',
+    images: ['/logo.svg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://www.huitaipcb.com',
+  },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
+  },
 };
 
 export default function RootLayout({
