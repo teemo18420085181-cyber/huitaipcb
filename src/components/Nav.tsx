@@ -27,9 +27,9 @@ export default function Nav() {
         <Image
           src="/logo.svg"
           alt="OneStopPCBA Logo"
-          width={64}
-          height={64}
-          className="w-[64px] h-[64px] transition-transform group-hover:rotate-[-5deg]"
+          width={80}
+          height={80}
+          className="w-[80px] h-[80px] transition-transform group-hover:rotate-[-5deg]"
         />
         <div className="flex flex-col leading-none">
           <strong className="text-sm font-semibold text-brand-primary tracking-wide">
