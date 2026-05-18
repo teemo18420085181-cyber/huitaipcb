@@ -23,28 +23,28 @@
 
 | Custom address | Action | Destination |
 |----------------|--------|-------------|
-| `sales@onestoppcba.com` | Send to | 你的 Gmail |
+| `teemo18420085181@gmail.com` | Send to | 你的 Gmail |
 | `info@onestoppcba.com` | Send to | 你的 Gmail |
 | `support@onestoppcba.com` | Send to | 你的 Gmail |
 
 也可以一行搞定（捕获所有邮件）：
 - **Catch-all address** → Send to your Gmail
 
-完成后，发到 `sales@onestoppcba.com` 的邮件会自动转到你的 Gmail。
+完成后，发到 `teemo18420085181@gmail.com` 的邮件会自动转到你的 Gmail。
 
 ### 3. 让 Gmail 以公司邮箱身份发送
 
 Gmail → 右上角设置 ⚙ → **查看所有设置 → 帐号和导入 → 用这地址发送邮件 → 添加另一个邮箱地址**：
 
 - 名称：OneStopPCBA Sales
-- 电子邮件地址：`sales@onestoppcba.com`
+- 电子邮件地址：`teemo18420085181@gmail.com`
 - ❌ 取消勾选 "将其视为别名"
 - 下一步 → SMTP 服务器：`smtp.gmail.com` (Port 587)
 - 用户名：你的 Gmail
 - 密码：使用 Gmail **应用专用密码**（不是 Gmail 登录密码）
   - 应用密码在 Google 帐号 → 安全性 → 两步验证 → 应用专用密码 中创建
 
-完成后，从 Gmail 写邮件时左上角可选发件人为 `sales@onestoppcba.com`。
+完成后，从 Gmail 写邮件时左上角可选发件人为 `teemo18420085181@gmail.com`。
 
 ---
 

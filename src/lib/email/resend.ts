@@ -14,7 +14,7 @@ interface InquiryNotificationData {
 }
 
 export async function sendInquiryNotification(data: InquiryNotificationData) {
-  const to = process.env.INQUIRY_NOTIFICATION_EMAIL || 'sales@onestoppcba.com';
+  const to = process.env.INQUIRY_NOTIFICATION_EMAIL || 'teemo18420085181@gmail.com';
   const from = process.env.INQUIRY_FROM_EMAIL || 'noreply@onestoppcba.com';
 
   const html = `

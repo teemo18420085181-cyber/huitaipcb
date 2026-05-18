@@ -85,10 +85,10 @@ export default function Footer() {
               CONTACT
             </h5>
             <a
-              href="mailto:sales@onestoppcba.com"
+              href="mailto:teemo18420085181@gmail.com"
               className="block text-xs text-white/55 leading-loose hover:text-white transition-colors"
             >
-              sales@onestoppcba.com
+              teemo18420085181@gmail.com
             </a>
             <span className="block text-xs text-white/55 leading-loose">
               Mon–Sat, 09:00–18:00 CST
