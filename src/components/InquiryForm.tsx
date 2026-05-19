@@ -55,7 +55,7 @@ export default function InquiryForm() {
 
   if (submitted) {
     return (
-      <div className="bg-white border border-line rounded-2xl p-12 text-center">
+      <div className="bg-white border border-line rounded-2xl p-12 text-center" translate="no">
         <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-brand-green/20 flex items-center justify-center">
           <CheckCircle size={32} className="text-brand-green" strokeWidth={2.5} />
         </div>
@@ -72,7 +72,7 @@ export default function InquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border border-line rounded-2xl p-6 md:p-10 space-y-5">
+    <form onSubmit={handleSubmit} className="bg-white border border-line rounded-2xl p-6 md:p-10 space-y-5" translate="no">
       <div className="grid md:grid-cols-2 gap-5">
         <FormField label="Your Name *" name="name" required />
         <FormField label="Email *" name="email" type="email" required />
