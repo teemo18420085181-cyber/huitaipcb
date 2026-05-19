@@ -15,7 +15,7 @@ interface InquiryNotificationData {
 
 export async function sendInquiryNotification(data: InquiryNotificationData) {
   const to = process.env.INQUIRY_NOTIFICATION_EMAIL || 'teemo18420085181@gmail.com';
-  const from = process.env.INQUIRY_FROM_EMAIL || 'noreply@onestoppcba.com';
+  const from = process.env.INQUIRY_FROM_EMAIL || 'noreply@huitaipcb.com';
 
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; color: #1A1640;">
@@ -67,7 +67,7 @@ export async function sendInquiryConfirmation(
   customerName: string,
   inquiryId: string
 ) {
-  const from = process.env.INQUIRY_FROM_EMAIL || 'noreply@onestoppcba.com';
+  const from = process.env.INQUIRY_FROM_EMAIL || 'noreply@huitaipcb.com';
 
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; color: #1A1640;">
