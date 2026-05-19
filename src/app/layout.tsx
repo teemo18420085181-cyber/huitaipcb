@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from 'next';
 import './globals.css';
+import JsonLd from '../components/JsonLd';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.huitaipcb.com'),
@@ -80,7 +81,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+    <body>
+  <JsonLd />
+  {children}
+</body>
     </html>
   );
 }
