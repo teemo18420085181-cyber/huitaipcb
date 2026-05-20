@@ -81,9 +81,9 @@ export default function CapabilitiesPage() {
             <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[680px] mx-auto">
               From standard FR4 to Rogers high-frequency, HDI micro-vias, rigid-flex, and aluminum MCPCB — we cover the full spectrum of PCB fabrication technologies.
             </p>
-            <p className="text-sm md:text-base text-white/60 leading-relaxed max-w-[680px] mx-auto mt-4">
+            <div className="mx-auto mt-5 max-w-[720px] rounded-xl border border-sky-100/25 bg-white/10 px-4 py-3 text-sm leading-relaxed text-white/75 md:text-[15px]">
               Our PCB fabrication capabilities are provided as part of turnkey PCB assembly projects. We focus on assembled PCBA delivery, not standalone bare PCB orders.
-            </p>
+            </div>
           </div>
         </section>
 

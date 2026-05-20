@@ -239,7 +239,7 @@ function SubmitForm() {
 // ── Main export ─────────────────────────────────────────────
 export default function FeedbackBoard() {
   return (
-    <section className="py-[90px] px-[5vw] bg-bg-muted border-t border-line">
+    <section id="customer-qa" className="py-[90px] px-[5vw] bg-bg-muted border-t border-line">
       <div className="max-w-[1280px] mx-auto">
         {/* Header */}
         <div className="mb-10">
