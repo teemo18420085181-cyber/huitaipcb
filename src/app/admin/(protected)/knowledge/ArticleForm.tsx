@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { slugifyTitle, type CmsArticle } from '@/lib/content/article-utils';
-import ImageUploadField from './ImageUploadField';
+import ImageUploadField, { type SectionActionResult } from './ImageUploadField';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
@@ -13,6 +13,55 @@ type ArticleFormProps = {
   action: (formData: FormData) => void | Promise<void>;
   submitLabel: string;
 };
+
+type SectionLocation = {
+  title: string;
+  headingIndex: number;
+  headingEndIndex: number;
+  insertIndex: number;
+};
+
+function normalizeSectionTitle(value: string) {
+  return value
+    .replace(/^#{1,6}\s+/, '')
+    .replace(/\s+#+$/, '')
+    .replace(/^\d+[\).\s-]+/, '')
+    .trim()
+    .replace(/\s+/g, ' ')
+    .toLowerCase();
+}
+
+function findSectionInMarkdown(markdown: string, title: string): SectionLocation | null {
+  const target = normalizeSectionTitle(title);
+  if (!target) return null;
+
+  const lines = markdown.split('\n');
+  let offset = 0;
+
+  for (const line of lines) {
+    const plainTitle = line.replace(/^#{1,6}\s+/, '').replace(/\s+#+$/, '').trim();
+    const normalizedLine = normalizeSectionTitle(line);
+    const normalizedPlain = normalizeSectionTitle(plainTitle);
+
+    if (
+      normalizedLine === target ||
+      normalizedPlain === target ||
+      normalizedLine.endsWith(target) ||
+      normalizedPlain.endsWith(target)
+    ) {
+      return {
+        title: plainTitle || title.trim(),
+        headingIndex: offset,
+        headingEndIndex: offset + line.length,
+        insertIndex: offset + line.length,
+      };
+    }
+
+    offset += line.length + 1;
+  }
+
+  return null;
+}
 
 export default function ArticleForm({ article, action, submitLabel }: ArticleFormProps) {
   const editorRootRef = useRef<HTMLDivElement | null>(null);
@@ -34,8 +83,50 @@ export default function ArticleForm({ article, action, submitLabel }: ArticleFor
     return '';
   }, [article?.published_at, article?.status]);
 
+  function getEditorTextarea() {
+    return editorRootRef.current?.querySelector('textarea') || null;
+  }
+
+  function focusEditorAt(index: number) {
+    window.requestAnimationFrame(() => {
+      const textarea = getEditorTextarea();
+      if (!textarea) return;
+
+      const value = textarea.value;
+      const safeIndex = Math.min(index, value.length);
+      const lineNumber = value.slice(0, safeIndex).split('\n').length - 1;
+      const totalLines = Math.max(value.split('\n').length, 1);
+      const estimatedLineHeight = textarea.scrollHeight / totalLines;
+
+      textarea.focus();
+      textarea.setSelectionRange(safeIndex, safeIndex);
+      textarea.scrollTop = Math.max(0, lineNumber * estimatedLineHeight - textarea.clientHeight / 3);
+    });
+  }
+
+  function highlightAndFocusSection(location: SectionLocation) {
+    window.requestAnimationFrame(() => {
+      const textarea = getEditorTextarea();
+      if (!textarea) return;
+
+      const value = textarea.value;
+      const lineNumber = value.slice(0, location.headingIndex).split('\n').length - 1;
+      const totalLines = Math.max(value.split('\n').length, 1);
+      const estimatedLineHeight = textarea.scrollHeight / totalLines;
+
+      textarea.focus();
+      textarea.scrollTop = Math.max(0, lineNumber * estimatedLineHeight - textarea.clientHeight / 3);
+      textarea.setSelectionRange(location.headingIndex, location.headingEndIndex);
+
+      window.setTimeout(() => {
+        textarea.focus();
+        textarea.setSelectionRange(location.insertIndex, location.insertIndex);
+      }, 900);
+    });
+  }
+
   function insertMarkdownAtCursor(markdown: string) {
-    const textarea = editorRootRef.current?.querySelector('textarea');
+    const textarea = getEditorTextarea();
 
     if (!textarea) {
       setContent((current) => `${current}${markdown}`);
@@ -51,11 +142,50 @@ export default function ArticleForm({ article, action, submitLabel }: ArticleFor
       return `${current.slice(0, safeStart)}${markdown}${current.slice(safeEnd)}`;
     });
 
-    window.requestAnimationFrame(() => {
-      textarea.focus();
-      const nextPosition = start + markdown.length;
-      textarea.setSelectionRange(nextPosition, nextPosition);
+    focusEditorAt(start + markdown.length);
+  }
+
+  function findSection(titleToFind: string): SectionActionResult {
+    const location = findSectionInMarkdown(content, titleToFind);
+
+    if (!location) {
+      return {
+        ok: false,
+        message: '未找到该章节，请检查标题文字，或使用“插入到当前光标位置”。',
+      };
+    }
+
+    highlightAndFocusSection(location);
+    return {
+      ok: true,
+      sectionTitle: location.title,
+      message: `已找到 ${location.title}，光标已移动到标题下方。`,
+    };
+  }
+
+  function insertMarkdownAtSection(titleToFind: string, markdown: string): SectionActionResult {
+    const location = findSectionInMarkdown(content, titleToFind);
+
+    if (!location) {
+      return {
+        ok: false,
+        message: '未找到该章节，请检查标题文字，或使用“插入到当前光标位置”。',
+      };
+    }
+
+    const insertion = `\n\n${markdown}\n\n`;
+    setContent((current) => {
+      const freshLocation = findSectionInMarkdown(current, titleToFind);
+      if (!freshLocation) return current;
+      return `${current.slice(0, freshLocation.insertIndex)}${insertion}${current.slice(freshLocation.insertIndex)}`;
     });
+
+    focusEditorAt(location.insertIndex + insertion.length);
+    return {
+      ok: true,
+      sectionTitle: location.title,
+      message: `图片已插入到 ${location.title} 章节下方。`,
+    };
   }
 
   return (
@@ -147,15 +277,18 @@ export default function ArticleForm({ article, action, submitLabel }: ArticleFor
 
       <ImageUploadField
         slug={slug}
+        content={content}
         currentCoverImage={coverImage}
         onSetCover={setCoverImage}
         onInsertMarkdown={insertMarkdownAtCursor}
+        onFindSection={findSection}
+        onInsertMarkdownAtSection={insertMarkdownAtSection}
       />
 
       <div ref={editorRootRef} data-color-mode="light">
         <label className="mb-1 block text-xs text-gray-500">Markdown 正文</label>
         <p className="mb-2 text-xs text-gray-400">
-          插图提示：先把光标放到左侧 Markdown 正文的目标位置，再点击图片的插入按钮。
+          插图提示：先把光标放到左侧 Markdown 正文的目标位置，再点击图片的插入按钮；也可以用图片卡片里的“查找章节”自动定位。
         </p>
         <MDEditor
           value={content}
