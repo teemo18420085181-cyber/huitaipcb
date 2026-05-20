@@ -4,15 +4,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Services — Turnkey PCBA | OneStopPCBA',
-  description: 'Full turnkey PCBA services: DFM review, BOM sourcing, PCB fabrication, SMT assembly, through-hole soldering, inspection, box build, and worldwide shipping.',
+  title: 'Turnkey PCB Assembly Services in China | SMT, BOM Sourcing & Testing',
+  description: 'Explore turnkey PCB assembly services in China, including PCB fabrication, BOM review, component sourcing, SMT assembly, DIP assembly, functional testing, final assembly, and delivery.',
+  alternates: { canonical: 'https://huitaipcb.com/services' },
 };
 
 const SERVICES = [
   {
     n: '01', tag: 'FILES & DFM REVIEW',
     title: 'Your design reviewed before a single component is ordered.',
-    desc: 'Upload your Gerber, BOM, and assembly files. Our engineers review every submission for manufacturability issues — spacing violations, missing reference designators, footprint mismatches, paste mask problems — and respond within 24 hours with a detailed DFM report.',
+    desc: 'Upload your Gerber, BOM, and assembly files. Our engineers review submissions for manufacturability issues such as spacing violations, missing reference designators, footprint mismatches, and paste mask problems before quotation.',
     detail: 'Gerber · BOM · Pick-and-place · Assembly notes · Sample boards accepted',
     image: '/factory/flow-01.png',
     badge: 'Day 1', badgeColor: 'bg-brand-yellow text-brand-primary',
@@ -21,8 +22,8 @@ const SERVICES = [
   {
     n: '02', tag: 'BOM SOURCING & IQC',
     title: 'Every component sourced, verified, and inspected.',
-    desc: 'Our procurement team sources all components from authorized distributors. We handle shortages, suggest pin-compatible alternatives when needed, and inspect every incoming reel for authenticity and date code. No grey market, no compromises.',
-    detail: 'Mouser · Digi-Key · Arrow · LCSC · Authorized distributors only',
+    desc: 'Our procurement team reviews component availability, sourcing channels, shortages, and possible alternatives when needed before assembly planning.',
+    detail: 'BOM review · sourcing options · alternatives check · purchasing coordination',
     image: '/factory/flow-02.png',
     badge: 'Day 1–2', badgeColor: 'bg-brand-green text-white',
     link: '/capabilities',
@@ -39,7 +40,7 @@ const SERVICES = [
   {
     n: '04', tag: 'SMT ASSEMBLY',
     title: 'Automated pick-and-place on multiple production lines.',
-    desc: 'Components are placed using high-precision pick-and-place machines. We handle the full range — 01005 passives through large BGAs, QFNs, and LGAs. Lead-free reflow is standard. AOI inspection runs immediately after reflow on every board.',
+    desc: 'Components are placed using pick-and-place equipment selected for the project. We can support small passives, BGAs, QFNs, LGAs, lead-free reflow, and AOI process planning based on requirements.',
     detail: 'Min component: 01005 · BGA · QFN · LGA · CSP · Lead-free reflow',
     image: '/factory/flow-04.png',
     badge: 'Day 3–5', badgeColor: 'bg-brand-yellow text-brand-primary',
@@ -56,7 +57,7 @@ const SERVICES = [
   },
   {
     n: '06', tag: 'INSPECTION & TESTING',
-    title: 'Four layers of quality control on every board.',
+    title: 'Inspection and testing planned around your board.',
     desc: 'AOI catches missing or misaligned components. X-Ray verifies BGA solder joints. Flying probe or ICT confirms electrical continuity. Functional testing validates board operation against your test specification. A signed test report accompanies every shipment.',
     detail: 'AOI · X-Ray · Flying probe · ICT · Functional test · IPC Class II/III',
     image: '/factory/flow-06.png',
@@ -76,7 +77,7 @@ const SERVICES = [
     n: '08', tag: 'PACKAGING & SHIPPING',
     title: 'Shipped to your door with full documentation.',
     desc: 'Every order is anti-static packaged, foam-separated, and boxed with a signed test report and packing list. We ship worldwide via DHL and FedEx with full tracking. Lead times vary by board complexity — most prototype runs ship within 7–10 business days.',
-    detail: 'Anti-static bags · Foam protection · Test report · DHL / FedEx · 42+ countries',
+    detail: 'Anti-static bags · Foam protection · documentation · DHL / FedEx · global delivery',
     image: '/factory/flow-08.png',
     badge: 'Day 6–10', badgeColor: 'bg-brand-green text-white',
     link: '/contact',
@@ -97,11 +98,10 @@ export default function ServicesPage() {
               TURNKEY SERVICES
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-[52px] font-semibold leading-tight tracking-tight mb-5">
-              Eight services.<br />
-              <em className="not-italic text-brand-yellow">One team. Zero handoffs.</em>
+              Turnkey PCB Assembly Services
             </h1>
             <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[680px] mx-auto">
-              From the moment you upload your files to the day finished boards arrive at your dock — every stage coordinated by one dedicated engineering contact.
+              PCB fabrication coordination, BOM review, component sourcing, SMT assembly, DIP assembly, functional testing, final assembly, packaging, and global delivery through one managed workflow.
             </p>
           </div>
         </section>
@@ -129,7 +129,7 @@ export default function ServicesPage() {
                       <span className="font-medium text-brand-primary">Covers: </span>{s.detail}
                     </div>
                     <Link href={s.link} className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-primary hover:text-brand-primary-light transition-colors">
-                      Learn more →
+                      Request a PCBA Quote →
                     </Link>
                   </div>
                 </div>
@@ -142,9 +142,9 @@ export default function ServicesPage() {
           <div className="max-w-[820px] mx-auto bg-brand-primary rounded-2xl p-10 text-center text-white relative overflow-hidden">
             <div className="absolute -top-[80px] -right-[80px] w-[200px] h-[200px] rounded-full opacity-20" style={{ background: '#FCEA0B', filter: 'blur(60px)' }} />
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">Ready to send us your project?</h2>
-            <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Upload your Gerber files and BOM. We&apos;ll review them and respond with a full turnkey quote and lead time within 24 hours.</p>
+            <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Upload your Gerber files and BOM. We&apos;ll review them and respond with the next questions, scope, and lead time for a turnkey quote.</p>
             <Link href="/contact" className="inline-flex items-center gap-2 bg-brand-yellow text-brand-primary text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
-              Upload Files & Get Quote →
+              Upload Gerber & BOM →
             </Link>
           </div>
         </section>

@@ -70,14 +70,14 @@ export default function Nav() {
           href="/contact"
           className="text-xs text-brand-primary font-medium py-2 px-4 rounded-lg border border-line hover:border-brand-primary transition-all hidden sm:inline-block"
         >
-          Get a Quote
+          Get PCB Assembly Quote
         </Link>
         <Link
           href="/contact"
           className="text-xs text-white font-medium py-2 px-4 rounded-lg bg-brand-primary hover:bg-brand-primary-light hover:-translate-y-0.5 transition-all inline-flex items-center gap-1.5"
         >
           <Upload size={13} strokeWidth={2.5} />
-          Upload Files
+          Upload Gerber &amp; BOM
         </Link>
       </div>
     </nav>

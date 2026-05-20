@@ -2,13 +2,13 @@ export default function JsonLd() {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    '@id': 'https://www.huitaipcb.com/#organization',
+    '@id': 'https://huitaipcb.com/#organization',
     name: 'HuiTai Electronics',
     alternateName: 'OneStopPCBA',
-    url: 'https://www.huitaipcb.com',
+    url: 'https://huitaipcb.com',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://www.huitaipcb.com/logo.svg',
+      url: 'https://huitaipcb.com/logo.svg',
       width: 800,
       height: 800,
     },
@@ -24,19 +24,19 @@ export default function JsonLd() {
       addressCountry: 'CN',
     },
     sameAs: [
-      'https://www.huitaipcb.com',
+      'https://huitaipcb.com',
     ],
   };
 
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': 'https://www.huitaipcb.com/#website',
-    url: 'https://www.huitaipcb.com',
+    '@id': 'https://huitaipcb.com/#website',
+    url: 'https://huitaipcb.com',
     name: 'HuiTai PCB',
     description: 'Turnkey PCB Assembly & Manufacturing from Shenzhen, China',
     publisher: {
-      '@id': 'https://www.huitaipcb.com/#organization',
+      '@id': 'https://huitaipcb.com/#organization',
     },
     inLanguage: 'en-US',
   };
@@ -44,10 +44,10 @@ export default function JsonLd() {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': 'https://www.huitaipcb.com/#localbusiness',
+    '@id': 'https://huitaipcb.com/#localbusiness',
     name: 'HuiTai Electronics',
-    image: 'https://www.huitaipcb.com/logo.svg',
-    url: 'https://www.huitaipcb.com',
+    image: 'https://huitaipcb.com/logo.svg',
+    url: 'https://huitaipcb.com',
     email: 'teemo18420085181@gmail.com',
     priceRange: '$$',
     address: {
@@ -80,7 +80,7 @@ export default function JsonLd() {
     '@type': 'Service',
     name: 'Turnkey PCB Assembly',
     provider: {
-      '@id': 'https://www.huitaipcb.com/#organization',
+      '@id': 'https://huitaipcb.com/#organization',
     },
     areaServed: 'Worldwide',
     serviceType: 'PCB Manufacturing',
@@ -111,7 +111,7 @@ export default function JsonLd() {
           itemOffered: {
             '@type': 'Service',
             name: 'BOM Sourcing',
-            description: 'Authorized component sourcing with full traceability and IQC inspection',
+            description: 'Component sourcing review with alternatives checks and incoming component inspection options',
           },
         },
         {

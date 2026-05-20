@@ -6,6 +6,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Industries We Serve | OneStopPCBA',
   description: 'Turnkey PCBA for industrial control, IoT, power electronics, LED, consumer electronics, automotive aftermarket, medical wearable, and test equipment.',
+  alternates: { canonical: 'https://huitaipcb.com/industries' },
 };
 
 const INDUSTRIES = [
@@ -54,14 +55,14 @@ const INDUSTRIES = [
   {
     n: '07', tag: 'MEDICAL & WEARABLE',
     title: 'Precision miniaturized boards for health monitoring.',
-    desc: 'Patient monitoring devices, wearable health sensors, portable medical instruments, and lab equipment sub-boards (non-implantable, non-life-critical). We follow IPC Class III workmanship standards and can support cleanroom assembly on request.',
+    desc: 'Patient monitoring devices, wearable health sensors, portable medical instruments, and lab equipment sub-boards (non-implantable, non-life-critical). IPC workmanship requirements can be discussed based on project needs.',
     examples: ['Wearable ECG / SpO2 sensors', 'Patient monitoring sub-boards', 'Portable glucometer boards', 'Rehabilitation device controllers', 'Lab instrument modules', 'Biometric authentication boards'],
     image: '/factory/ind-07.png',
   },
   {
     n: '08', tag: 'TEST & MEASUREMENT EQUIPMENT',
     title: 'High-complexity boards inside precision instruments.',
-    desc: 'Spectrum analyzers, oscilloscopes, data acquisition systems, signal generators, and lab instrumentation main boards. These boards demand tight impedance control, shielded RF sections, precision analog routing, and IPC Class III workmanship.',
+    desc: 'Spectrum analyzers, oscilloscopes, data acquisition systems, signal generators, and lab instrumentation main boards. These boards often demand tight impedance control, shielded RF sections, precision analog routing, and clearly agreed workmanship requirements.',
     examples: ['Spectrum analyzer boards', 'Oscilloscope acquisition boards', 'Data acquisition modules', 'Signal generator boards', 'LCR meter main boards', 'Calibration instrument sub-boards'],
     image: '/factory/ind-08.png',
   },
@@ -83,7 +84,7 @@ export default function IndustriesPage() {
             <h1 className="text-4xl md:text-5xl lg:text-[52px] font-semibold leading-tight tracking-tight mb-5">
               From startups to scale-ups.
               <br />
-              <em className="not-italic text-brand-yellow">Across 42+ countries.</em>
+              <em className="not-italic text-brand-yellow">Across practical B2B use cases.</em>
             </h1>
             <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[680px] mx-auto">
               We&apos;ve shipped boards for hardware teams across industrial, IoT, consumer, automotive aftermarket, medical, and test equipment sectors. Whatever your industry — we&apos;ve likely built a board like yours.

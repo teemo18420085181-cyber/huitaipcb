@@ -37,21 +37,19 @@ export default function Hero() {
               className="w-1.5 h-1.5 rounded-full bg-brand-yellow"
               style={{ boxShadow: '0 0 12px #FCEA0B' }}
             />
-            TURNKEY PCBA · ONE CONTACT · FULL DELIVERY
+            PCB ASSEMBLY SERVICES · TURNKEY PCBA MANUFACTURING
           </div>
 
           <h1 className="text-4xl md:text-5xl lg:text-[58px] font-semibold leading-[1.1] tracking-tight mb-5">
-            Focus on Your Product.
+            PCB Assembly Services
             <br />
-            <em className="not-italic text-brand-yellow">We Manage</em> the
+            <em className="not-italic text-brand-yellow">from Gerber</em> to
             <br />
-            <span className="text-brand-green">PCBA Supply Chain.</span>
+            <span className="text-brand-green">Finished PCBA.</span>
           </h1>
 
           <p className="text-base text-white/75 leading-relaxed max-w-[540px] mb-9">
-            From Gerber files to finished boards — BOM sourcing, PCB
-            fabrication, SMT assembly, functional testing, and worldwide
-            shipping handled by one team in Shenzhen.
+            Turn your Gerber files, BOM lists, samples, or product requirements into assembled and tested PCBA boards through our China PCB assembly and turnkey PCBA manufacturing workflow.
           </p>
 
           <div className="flex flex-wrap gap-3 mb-12">
@@ -61,22 +59,22 @@ export default function Hero() {
               style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}
             >
               <Upload size={16} strokeWidth={2.5} />
-              Upload Files &amp; Get Quote
+              Get PCB Assembly Quote
             </Link>
             <Link
-              href="/services"
+              href="/contact"
               className="bg-transparent text-white text-xs py-3 px-5 rounded-lg border border-white/20 inline-flex items-center gap-2 hover:border-white/40 transition-all"
             >
               <Play size={13} strokeWidth={2.5} />
-              See How It Works
+              Upload Gerber &amp; BOM
             </Link>
           </div>
 
           <div className="flex items-center gap-3.5 flex-wrap">
             {[
-              'IPC Class III standard',
-              'NDA on every project',
-              '24h quote turnaround',
+              'Engineering review before quotation',
+              'NDA available on request',
+              'Functional Testing by project needs',
             ].map((item) => (
               <div key={item} className="flex items-center gap-1.5 text-[11px] text-white/60 tracking-wide">
                 <Check size={14} strokeWidth={2.5} className="text-brand-green flex-shrink-0" />

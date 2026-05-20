@@ -5,7 +5,8 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Quality Control — 6-Layer Inspection | OneStopPCBA',
-  description: 'AOI, X-Ray BGA inspection, flying probe, ICT, functional testing and IQC on every board. Full test report with every shipment.',
+  description: 'AOI, X-Ray BGA inspection, flying probe, ICT, functional testing and IQC options for PCB assembly projects that need documented quality control.',
+  alternates: { canonical: 'https://huitaipcb.com/quality' },
 };
 
 const QC = [
@@ -13,15 +14,15 @@ const QC = [
     n: '01', tag: 'INCOMING QUALITY CONTROL',
     title: 'Every component verified before it touches your board.',
     desc: 'All incoming components are inspected against the BOM before stock-in. We check authenticity, date codes, packaging integrity, and dimensions using digital calipers and optical loupes. Counterfeit components are rejected immediately — we only use parts from authorized distributors.',
-    specs: ['Authorized distributors only', 'Date-code verification', 'Physical dimension check', 'Package integrity inspection', 'Anti-static handling', 'Full traceability records'],
+    specs: ['Approved sourcing options', 'Date-code verification', 'Physical dimension check', 'Package integrity inspection', 'Anti-static handling', 'Traceability records when required'],
     image: '/factory/qua-03.png',
     badge: 'IQC', badgeColor: 'bg-brand-yellow text-brand-primary',
   },
   {
     n: '02', tag: 'AOI — AUTOMATED OPTICAL INSPECTION',
-    title: '100% automated optical inspection after every SMT run.',
-    desc: 'Every board goes through AOI immediately after reflow soldering. The system scans for missing components, misalignment, solder bridges, polarity errors, and lifted pins. Boards with any AOI failure are quarantined and reviewed by a trained QC operator before rework or scrap.',
-    specs: ['100% board coverage', 'Missing component detection', 'Solder bridge detection', 'Polarity verification', 'Component misalignment', 'Automated rejection sorting'],
+    title: 'Automated optical inspection after SMT assembly.',
+    desc: 'AOI can be used after reflow soldering to scan for missing components, misalignment, solder bridges, polarity errors, and lifted pins. Boards with AOI issues are reviewed by a QC operator before rework or release.',
+    specs: ['AOI process available', 'Missing component detection', 'Solder bridge detection', 'Polarity verification', 'Component misalignment', 'Operator review'],
     image: '/factory/flow-06.png',
     badge: 'Automated', badgeColor: 'bg-brand-primary text-white',
   },
@@ -35,19 +36,19 @@ const QC = [
   },
   {
     n: '04', tag: 'FUNCTIONAL TESTING',
-    title: 'Every board powered on and verified against your spec.',
+    title: 'Boards can be powered on and verified against your spec.',
     desc: 'We perform functional testing using your test specification, test fixture, or firmware. Boards are powered up and tested for signal integrity, peripheral communication, power consumption, and custom pass/fail criteria. A signed test report is included with every shipment.',
     specs: ['Power-on verification', 'Signal integrity check', 'Oscilloscope measurement', 'Custom test fixtures', 'Firmware loading', 'Pass/fail logged per unit'],
     image: '/factory/qua-02.png',
-    badge: '100% Tested', badgeColor: 'bg-brand-yellow text-brand-primary',
+    badge: 'Test Plan', badgeColor: 'bg-brand-yellow text-brand-primary',
   },
 ];
 
 const STATS = [
-  { n: '<0.1%', label: 'Defect rate (DPMO)', sub: 'IPC Class III target' },
-  { n: '100%', label: 'AOI coverage', sub: 'Every SMT board' },
-  { n: '100%', label: 'X-Ray for BGA', sub: 'Area-array packages' },
-  { n: '100%', label: 'Test report', sub: 'Included with every order' },
+  { n: 'DFM', label: 'Engineering review', sub: 'Before quotation' },
+  { n: 'AOI', label: 'Inspection option', sub: 'For SMT builds' },
+  { n: 'X-Ray', label: 'BGA inspection', sub: 'When required' },
+  { n: 'Test', label: 'Report options', sub: 'Based on project needs' },
 ];
 
 export default function QualityPage() {
@@ -64,7 +65,7 @@ export default function QualityPage() {
               QUALITY CONTROL
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-[52px] font-semibold leading-tight tracking-tight mb-5">
-              Every board tested.<br />
+              Quality steps documented.<br />
               <em className="not-italic text-brand-yellow">Every shipment documented.</em>
             </h1>
             <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[680px] mx-auto">

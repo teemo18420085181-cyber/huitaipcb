@@ -6,7 +6,7 @@ const FLOW = [
     n: '01',
     tag: 'FILES RECEIVED',
     title: 'Send us your files — we handle the rest.',
-    desc: 'Upload your Gerber files, BOM, and any reference photos. Our engineering team reviews every submission and confirms feasibility within 24 hours.',
+    desc: 'Upload your Gerber files, BOM, and any reference photos. Our engineering team reviews the available files before quotation.',
     detail: 'Accepted: Gerber, BOM (.xlsx/.csv), sample boards, schematics, assembly notes',
     image: '/factory/flow-01.png',
     badge: 'Start here',
@@ -17,9 +17,9 @@ const FLOW = [
     tag: 'BOM SOURCING & IQC',
     title: 'We source every component. You approve the BOM.',
     desc: 'Our procurement team sources all components from authorized distributors. Every incoming reel goes through IQC inspection with barcode verification.',
-    detail: 'Authorized distributors only · Date-code verified · Full traceability',
+    detail: 'BOM review · sourcing options · alternatives check',
     image: '/factory/flow-02.png',
-    badge: 'No grey market',
+    badge: 'Source review',
     badgeColor: 'bg-brand-green text-white',
   },
   {
@@ -46,7 +46,7 @@ const FLOW = [
     n: '05',
     tag: 'THROUGH-HOLE & POST-SOLDERING',
     title: 'DIP, connectors, and hand soldering.',
-    desc: 'Through-hole components are inserted and hand-soldered or wave-soldered after SMT. Our operators follow IPC-J-STD-001 workmanship standards on every board.',
+    desc: 'Through-hole components are inserted and hand-soldered or wave-soldered after SMT. Workmanship requirements can be discussed based on project needs.',
     detail: 'Wave solder · Selective solder · Hand solder · IPC-J-STD-001',
     image: '/factory/flow-05.png',
     badge: 'Expert operators',
@@ -55,11 +55,11 @@ const FLOW = [
   {
     n: '06',
     tag: 'INSPECTION & TESTING',
-    title: 'Every board tested before it leaves.',
+    title: 'Testing planned around your project.',
     desc: 'AOI catches missing or misaligned components. X-Ray verifies hidden solder joints on BGAs. Flying probe or ICT confirms electrical continuity. Functional testing validates board operation.',
     detail: 'AOI · X-Ray · Flying probe · ICT · Functional test · Visual QC',
     image: '/factory/flow-06.png',
-    badge: '100% tested',
+    badge: 'Test plan',
     badgeColor: 'bg-brand-primary text-white',
   },
   {
@@ -76,10 +76,10 @@ const FLOW = [
     n: '08',
     tag: 'PACKAGING & SHIPPING',
     title: 'Shipped to your door with full documentation.',
-    desc: 'Boards are anti-static packaged, foam-separated, and boxed with a signed test report. DHL and FedEx tracked shipping to 42+ countries. You receive boards ready to use.',
+    desc: 'Boards are anti-static packaged, foam-separated, and prepared with project documentation for DHL, FedEx, or customer-specified delivery.',
     detail: 'Anti-static bags · Foam protection · Test report included · DHL / FedEx tracked',
     image: '/factory/flow-08.png',
-    badge: '42+ countries',
+    badge: 'Global delivery',
     badgeColor: 'bg-brand-green text-white',
   },
 ];
@@ -166,7 +166,7 @@ export default function FlowShowcase() {
             className="inline-flex items-center gap-2 bg-brand-primary text-white text-sm font-semibold py-3.5 px-8 rounded-xl hover:bg-brand-primary-light hover:-translate-y-0.5 transition-all"
             style={{ boxShadow: '0 4px 24px rgba(39,33,91,.25)' }}
           >
-            Upload Files &amp; Get Quote →
+            Upload Gerber &amp; BOM →
           </Link>
         </div>
       </div>

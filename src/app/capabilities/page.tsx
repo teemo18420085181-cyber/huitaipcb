@@ -6,6 +6,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Capabilities — PCB & PCBA Technical Specs | OneStopPCBA',
   description: 'PCB fabrication: 1-30 layers, HDI, Rogers, rigid-flex, aluminum MCPCB, impedance control. Full SMT assembly specs from Shenzhen.',
+  alternates: { canonical: 'https://huitaipcb.com/capabilities' },
 };
 
 const CAPS = [
@@ -119,9 +120,9 @@ export default function CapabilitiesPage() {
           <div className="max-w-[820px] mx-auto bg-brand-primary rounded-2xl p-10 text-center text-white relative overflow-hidden">
             <div className="absolute -top-[80px] -right-[80px] w-[200px] h-[200px] rounded-full opacity-20" style={{ background: '#FCEA0B', filter: 'blur(60px)' }} />
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">Not sure which spec fits your design?</h2>
-            <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Upload your Gerber files and our engineering team will review your design and recommend the right process within 24 hours.</p>
+            <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Upload your Gerber files and our engineering team will review your design and recommend the right process before quotation.</p>
             <Link href="/contact" className="inline-flex items-center gap-2 bg-brand-yellow text-brand-primary text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
-              Upload Files & Get DFM Review →
+              Upload Gerber & BOM →
             </Link>
           </div>
         </section>

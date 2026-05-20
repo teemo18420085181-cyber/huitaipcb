@@ -20,7 +20,7 @@ export default function FinalCTA() {
         </h2>
         <p className="text-[15px] text-white/65 leading-relaxed max-w-[560px] mx-auto mb-8">
           Upload your Gerber files and BOM. Our engineering team will review them
-          and respond within 24 hours with a full turnkey quote and lead time.
+          and respond with the next questions, scope, and lead time for a full turnkey quote.
         </p>
         <div className="flex gap-3 justify-center flex-wrap">
           <Link
@@ -29,11 +29,11 @@ export default function FinalCTA() {
             style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}
           >
             <Upload size={16} strokeWidth={2.5} />
-            Upload Files Now
+            Upload Gerber &amp; BOM
           </Link>
-          <button className="bg-transparent text-white text-[13px] py-3 px-5 rounded-[10px] border border-white/20 cursor-pointer hover:border-white/40 transition-all">
+          <Link href="/contact" className="bg-transparent text-white text-[13px] py-3 px-5 rounded-[10px] border border-white/20 cursor-pointer hover:border-white/40 transition-all">
             Talk to Engineering
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -13,6 +13,9 @@ const InquirySchema = z.object({
   company: z.string().max(200).optional().nullable(),
   country: z.string().max(100).optional().nullable(),
   phone: z.string().max(50).optional().nullable(),
+  project_type: z.string().max(120).optional().nullable(),
+  quantity: z.string().max(80).optional().nullable(),
+  testing_requirements: z.string().max(1500).optional().nullable(),
   message: z.string().min(1).max(5000),
   consent: z.literal('true'),
 });
@@ -38,6 +41,9 @@ export async function POST(req: NextRequest) {
       company: formData.get('company') || null,
       country: formData.get('country') || null,
       phone: formData.get('phone') || null,
+      project_type: formData.get('project_type') || null,
+      quantity: formData.get('quantity') || null,
+      testing_requirements: formData.get('testing_requirements') || null,
       message: formData.get('message'),
       consent: formData.get('consent'),
     };
@@ -50,6 +56,12 @@ export async function POST(req: NextRequest) {
       );
     }
     const data = parsed.data;
+    const message = [
+      data.project_type ? `Project type: ${data.project_type}` : null,
+      data.quantity ? `Quantity: ${data.quantity}` : null,
+      data.testing_requirements ? `Testing requirements: ${data.testing_requirements}` : null,
+      data.message,
+    ].filter(Boolean).join('\n\n');
 
     // Process files
     const files = formData.getAll('files') as File[];
@@ -67,7 +79,7 @@ export async function POST(req: NextRequest) {
         company: data.company,
         country: data.country,
         phone: data.phone,
-        message: data.message,
+        message,
         status: 'new',
         source: 'website',
       })
@@ -136,7 +148,7 @@ export async function POST(req: NextRequest) {
         company: data.company || undefined,
         country: data.country || undefined,
         phone: data.phone || undefined,
-        message: data.message,
+        message,
         fileNames,
         inquiryId,
       });

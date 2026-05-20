@@ -1,8 +1,8 @@
 const STATS = [
-  { n: '42', suffix: '+', label: 'Countries served' },
-  { n: '500', suffix: '+', label: 'Projects delivered' },
-  { n: '300', suffix: '+', label: 'Active clients' },
-  { n: '24', suffix: 'h', label: 'Quote turnaround' },
+  { n: 'Gerber', suffix: '', label: 'DFM review before quote' },
+  { n: 'BOM', suffix: '', label: 'Component sourcing support' },
+  { n: 'SMT', suffix: '', label: 'Assembly process coordination' },
+  { n: 'Test', suffix: '', label: 'Functional testing planning' },
 ];
 
 export default function TrustStrip() {

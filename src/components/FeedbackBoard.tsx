@@ -252,7 +252,7 @@ export default function FeedbackBoard() {
           </h2>
           <p className="text-[15px] text-ink-muted leading-relaxed max-w-[600px]">
             Real questions, real answers. We update this board based on what we hear most
-            from hardware teams across 42+ countries. Have something on your mind? Ask below.
+            from overseas hardware teams. Have something on your mind? Ask below.
           </p>
         </div>
 

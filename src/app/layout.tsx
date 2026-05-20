@@ -1,15 +1,16 @@
 ﻿import type { Metadata } from 'next';
 import './globals.css';
 import JsonLd from '../components/JsonLd';
+import Analytics from '@/components/Analytics';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.huitaipcb.com'),
+  metadataBase: new URL('https://huitaipcb.com'),
   title: {
-    default: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing - Shenzhen',
+    default: 'PCB Assembly Services & Turnkey PCBA Manufacturing in China | Huitai Electronics',
     template: '%s | HuiTai PCB',
   },
   description:
-    'HuiTai Electronics provides turnkey PCB assembly, SMT, DIP, BOM sourcing and PCB manufacturing from Shenzhen, China. Fast turnaround, competitive pricing, ISO quality.',
+    'Huitai Electronics provides PCB assembly services and turnkey PCBA manufacturing in China, including PCB fabrication, component sourcing, SMT assembly, DIP assembly, functional testing, final assembly, and global delivery.',
   keywords: [
     'PCB assembly',
     'PCBA',
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     'HuiTai Electronics',
     'huitaipcb',
   ],
-  authors: [{ name: 'HuiTai Electronics', url: 'https://www.huitaipcb.com' }],
+  authors: [{ name: 'HuiTai Electronics', url: 'https://huitaipcb.com' }],
   creator: 'HuiTai Electronics',
   publisher: 'HuiTai Electronics',
   icons: {
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.huitaipcb.com',
+    url: 'https://huitaipcb.com',
     siteName: 'HuiTai PCB',
     title: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing',
     description:
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.huitaipcb.com',
+    canonical: 'https://huitaipcb.com/',
   },
   formatDetection: {
     telephone: false,
@@ -82,6 +83,7 @@ export default function RootLayout({
   return (
     <html lang="en">
     <body>
+  <Analytics />
   <JsonLd />
   {children}
 </body>

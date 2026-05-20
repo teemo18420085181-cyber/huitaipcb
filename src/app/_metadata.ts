@@ -1,19 +1,19 @@
 ﻿import type { Metadata } from 'next';
 
 export const siteMetadata: Metadata = {
-  metadataBase: new URL('https://www.huitaipcb.com'),
+  metadataBase: new URL('https://huitaipcb.com'),
   title: {
     default: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing - Shenzhen',
     template: '%s | HuiTai PCB',
   },
   description: 'HuiTai Electronics provides turnkey PCB assembly, SMT, DIP, BOM sourcing and PCB manufacturing from Shenzhen, China. Fast turnaround, competitive pricing, ISO quality.',
   keywords: ['PCB assembly', 'PCBA', 'turnkey PCB', 'SMT assembly', 'PCB manufacturing', 'Shenzhen PCB', 'BOM sourcing', 'HuiTai Electronics'],
-  authors: [{ name: 'HuiTai Electronics', url: 'https://www.huitaipcb.com' }],
+  authors: [{ name: 'HuiTai Electronics', url: 'https://huitaipcb.com' }],
   creator: 'HuiTai Electronics',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.huitaipcb.com',
+    url: 'https://huitaipcb.com',
     siteName: 'HuiTai PCB',
     title: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing',
     description: 'Professional turnkey PCB assembly services from Shenzhen, China.',
@@ -26,5 +26,5 @@ export const siteMetadata: Metadata = {
     images: ['/og-image.jpg'],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://www.huitaipcb.com' },
+  alternates: { canonical: 'https://huitaipcb.com/' },
 };
