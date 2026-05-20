@@ -10,10 +10,10 @@ const BAD_POINTS = [
 
 const GOOD_POINTS = [
   'One English-speaking project engineer handles everything',
-  'We source, substitute, and stock components for you',
-  'Full DFM review & test report with every shipment',
+  'We review sourcing options, alternatives, and purchasing plans for your approval',
+  'DFM review and test reporting based on project requirements',
   'Your team focuses on the product, not supply chain',
-  'Direct Shenzhen pricing — no middleman markup',
+  'Shenzhen-based supply chain coordination',
 ];
 
 export default function Comparison() {

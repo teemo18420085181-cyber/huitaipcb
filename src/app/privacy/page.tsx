@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Privacy Policy',
   description: 'Privacy Policy for Huitai Electronics PCB assembly inquiry and RFQ handling.',
   alternates: { canonical: 'https://huitaipcb.com/privacy' },
+  openGraph: { url: 'https://huitaipcb.com/privacy' },
 };
 
 export default function PrivacyPage() {

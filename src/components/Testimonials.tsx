@@ -2,37 +2,37 @@ const TESTIMONIALS = [
   {
     quote:
       "We've worked with OneStopPCBA for over 18 months across 12 product revisions. Not a single shipment was late. Their DFM review caught a critical impedance issue that would have killed our launch timeline — and they flagged it the morning after we uploaded.",
-    name: 'James T.',
-    title: 'Hardware Lead',
-    company: 'IoT Startup',
-    country: '🇺🇸 Boston, USA',
+    name: 'Hardware startup customer, USA',
+    title: '',
+    company: '',
+    country: '',
     rating: 5,
   },
   {
     quote:
       "Getting quotes from Chinese manufacturers used to take a week of back-and-forth. With OneStopPCBA I upload files Monday morning and have a detailed quote and DFM report by Tuesday. That turnaround completely changed how we plan our sprints.",
-    name: 'Lars B.',
-    title: 'R&D Engineer',
-    company: 'Embedded Systems',
-    country: '🇩🇪 Munich, Germany',
+    name: 'Industrial electronics customer, Germany',
+    title: '',
+    company: '',
+    country: '',
     rating: 5,
   },
   {
     quote:
       'The test report they include with every shipment is more thorough than what I get from most local CMs. AOI screenshots, flying probe results, pass/fail logs per unit. Our internal QA audit takes half the time now.',
-    name: 'Sarah M.',
-    title: 'Engineering Manager',
-    company: 'Industrial Electronics',
-    country: '🇦🇺 Melbourne, Australia',
+    name: 'Engineering team, Australia',
+    title: '',
+    company: '',
+    country: '',
     rating: 5,
   },
   {
     quote:
       "We sent them a bare schematic for our first prototype run — no Gerber, no BOM, nothing finished. They helped us through DFM, sourced every component, and delivered 20 working boards. Exactly what a first-time hardware founder needs.",
-    name: 'Rafael G.',
-    title: 'Founder / CEO',
-    company: 'Smart Energy Startup',
-    country: '🇧🇷 São Paulo, Brazil',
+    name: 'Product founder, Brazil',
+    title: '',
+    company: '',
+    country: '',
     rating: 5,
   },
 ];
@@ -78,10 +78,11 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-brand-primary">{t.name}</div>
-                  <div className="text-xs text-ink-muted">
-                    {t.title} · {t.company}
-                  </div>
-                  <div className="text-xs text-ink-muted mt-0.5">{t.country}</div>
+                  {(t.title || t.company) && (
+                    <div className="text-xs text-ink-muted">
+                      {[t.title, t.company].filter(Boolean).join(' · ')}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

@@ -7,6 +7,7 @@ export const metadata = {
   title: 'Industries We Serve | OneStopPCBA',
   description: 'Turnkey PCBA for industrial control, IoT, power electronics, LED, consumer electronics, automotive aftermarket, medical wearable, and test equipment.',
   alternates: { canonical: 'https://huitaipcb.com/industries' },
+  openGraph: { url: 'https://huitaipcb.com/industries' },
 };
 
 const INDUSTRIES = [

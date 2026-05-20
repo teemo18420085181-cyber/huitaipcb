@@ -7,6 +7,7 @@ export const metadata = {
   title: 'Turnkey PCB Assembly Services in China | SMT, BOM Sourcing & Testing',
   description: 'Explore turnkey PCB assembly services in China, including PCB fabrication, BOM review, component sourcing, SMT assembly, DIP assembly, functional testing, final assembly, and delivery.',
   alternates: { canonical: 'https://huitaipcb.com/services' },
+  openGraph: { url: 'https://huitaipcb.com/services' },
 };
 
 const SERVICES = [
@@ -31,7 +32,7 @@ const SERVICES = [
   {
     n: '03', tag: 'PCB FABRICATION',
     title: 'Your bare board fabricated from your Gerber files.',
-    desc: 'We fabricate 1–30 layer PCBs in FR4, Rogers, HDI, rigid-flex, and aluminum MCPCB. Standard 4–6 layer boards are ready in 5 business days. Every bare board is electrically tested before it goes to assembly.',
+    desc: 'We fabricate 1–30 layer PCBs in FR4, Rogers, HDI, rigid-flex, and aluminum MCPCB. Standard 4–6 layer boards can usually be prepared within about 5 business days depending on specifications. Every bare board is electrically tested before it goes to assembly.',
     detail: 'FR4 · HDI · Rogers · Rigid-flex · MCPCB · HASL · ENIG · OSP',
     image: '/factory/flow-03.png',
     badge: 'Day 2–4', badgeColor: 'bg-brand-primary text-white',
@@ -58,7 +59,7 @@ const SERVICES = [
   {
     n: '06', tag: 'INSPECTION & TESTING',
     title: 'Inspection and testing planned around your board.',
-    desc: 'AOI catches missing or misaligned components. X-Ray verifies BGA solder joints. Flying probe or ICT confirms electrical continuity. Functional testing validates board operation against your test specification. A signed test report accompanies every shipment.',
+    desc: 'AOI catches missing or misaligned components. X-Ray verifies BGA solder joints. Flying probe or ICT confirms electrical continuity. Functional testing validates board operation against your test specification. A test report can be provided based on project requirements.',
     detail: 'AOI · X-Ray · Flying probe · ICT · Functional test · IPC Class II/III',
     image: '/factory/flow-06.png',
     badge: 'Day 5–7', badgeColor: 'bg-brand-primary text-white',
@@ -76,7 +77,7 @@ const SERVICES = [
   {
     n: '08', tag: 'PACKAGING & SHIPPING',
     title: 'Shipped to your door with full documentation.',
-    desc: 'Every order is anti-static packaged, foam-separated, and boxed with a signed test report and packing list. We ship worldwide via DHL and FedEx with full tracking. Lead times vary by board complexity — most prototype runs ship within 7–10 business days.',
+    desc: 'Every order is anti-static packaged, foam-separated, and boxed with project documentation and packing list. We ship worldwide via DHL and FedEx with full tracking. Many prototype runs can be shipped within 7–10 business days depending on board complexity, component availability, and testing scope.',
     detail: 'Anti-static bags · Foam protection · documentation · DHL / FedEx · global delivery',
     image: '/factory/flow-08.png',
     badge: 'Day 6–10', badgeColor: 'bg-brand-green text-white',

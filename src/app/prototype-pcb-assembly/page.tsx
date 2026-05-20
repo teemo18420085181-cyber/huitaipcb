@@ -7,6 +7,7 @@ export const metadata = {
   title: page.seoTitle,
   description: page.metaDescription,
   alternates: { canonical: 'https://huitaipcb.com/prototype-pcb-assembly' },
+  openGraph: { url: 'https://huitaipcb.com/prototype-pcb-assembly' },
 };
 
 export default function PrototypePcbAssemblyPage() {

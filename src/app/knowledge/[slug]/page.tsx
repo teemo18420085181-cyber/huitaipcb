@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: article.title,
     description: article.metaDescription,
     alternates: { canonical: `https://huitaipcb.com/knowledge/${article.slug}` },
+    openGraph: { url: `https://huitaipcb.com/knowledge/${article.slug}` },
   };
 }
 

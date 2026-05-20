@@ -72,7 +72,7 @@ const PCBFabAnim = () => (
     <text x="37" y="39" fill="#fff" fontSize="7" textAnchor="middle" fontFamily="monospace">6L FR4</text>
     {/* Label */}
     <text x="90" y="145" fill="#FCEA0B" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">PCB FABRICATION</text>
-    <text x="90" y="157" fill="#ffffff88" fontSize="8" textAnchor="middle" fontFamily="sans-serif">In-house manufacturing</text>
+    <text x="90" y="157" fill="#ffffff88" fontSize="8" textAnchor="middle" fontFamily="sans-serif">Managed manufacturing process</text>
   </svg>
 );
 

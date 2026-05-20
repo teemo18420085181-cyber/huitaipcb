@@ -9,6 +9,7 @@ export const metadata = {
   description:
     'Practical PCB assembly guides covering PCBA quote files, turnkey PCBA manufacturing, BOM best practices, Gerber preparation, prototype assembly, and sourcing review.',
   alternates: { canonical: 'https://huitaipcb.com/knowledge' },
+  openGraph: { url: 'https://huitaipcb.com/knowledge' },
 };
 
 const ARTICLES = [

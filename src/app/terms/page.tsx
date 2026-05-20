@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Terms of Use',
   description: 'Terms of Use for Huitai Electronics PCB assembly services, RFQ review, and project communication.',
   alternates: { canonical: 'https://huitaipcb.com/terms' },
+  openGraph: { url: 'https://huitaipcb.com/terms' },
 };
 
 export default function TermsPage() {

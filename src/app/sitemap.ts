@@ -1,6 +1,4 @@
 ﻿import { MetadataRoute } from 'next';
-import { knowledgeArticles } from '@/lib/content/knowledge';
-
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://huitaipcb.com';
   const pages = [
@@ -19,7 +17,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/prototype-pcb-assembly',
     '/turnkey-pcb-assembly',
   ];
-  const knowledgePaths = knowledgeArticles.map((article) => `/knowledge/${article.slug}`);
+  const knowledgePaths = [
+    '/knowledge/what-files-required-pcba-quote',
+    '/knowledge/what-is-turnkey-pcba',
+    '/knowledge/bom-best-practices',
+    '/knowledge/prepare-gerber-bom-files-pcb-assembly',
+    '/knowledge/prototype-vs-batch-pcb-assembly',
+  ];
   return [...pages, ...knowledgePaths].map(path => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),

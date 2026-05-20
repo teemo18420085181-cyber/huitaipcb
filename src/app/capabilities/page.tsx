@@ -7,6 +7,7 @@ export const metadata = {
   title: 'Capabilities — PCB & PCBA Technical Specs | OneStopPCBA',
   description: 'PCB fabrication: 1-30 layers, HDI, Rogers, rigid-flex, aluminum MCPCB, impedance control. Full SMT assembly specs from Shenzhen.',
   alternates: { canonical: 'https://huitaipcb.com/capabilities' },
+  openGraph: { url: 'https://huitaipcb.com/capabilities' },
 };
 
 const CAPS = [
@@ -79,6 +80,9 @@ export default function CapabilitiesPage() {
             </h1>
             <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[680px] mx-auto">
               From standard FR4 to Rogers high-frequency, HDI micro-vias, rigid-flex, and aluminum MCPCB — we cover the full spectrum of PCB fabrication technologies.
+            </p>
+            <p className="text-sm md:text-base text-white/60 leading-relaxed max-w-[680px] mx-auto mt-4">
+              Our PCB fabrication capabilities are provided as part of turnkey PCB assembly projects. We focus on assembled PCBA delivery, not standalone bare PCB orders.
             </p>
           </div>
         </section>

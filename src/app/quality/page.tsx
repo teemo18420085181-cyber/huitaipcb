@@ -7,6 +7,7 @@ export const metadata = {
   title: 'Quality Control — 6-Layer Inspection | OneStopPCBA',
   description: 'AOI, X-Ray BGA inspection, flying probe, ICT, functional testing and IQC options for PCB assembly projects that need documented quality control.',
   alternates: { canonical: 'https://huitaipcb.com/quality' },
+  openGraph: { url: 'https://huitaipcb.com/quality' },
 };
 
 const QC = [
@@ -37,7 +38,7 @@ const QC = [
   {
     n: '04', tag: 'FUNCTIONAL TESTING',
     title: 'Boards can be powered on and verified against your spec.',
-    desc: 'We perform functional testing using your test specification, test fixture, or firmware. Boards are powered up and tested for signal integrity, peripheral communication, power consumption, and custom pass/fail criteria. A signed test report is included with every shipment.',
+    desc: 'We perform functional testing using your test specification, test fixture, or firmware. Boards are powered up and tested for signal integrity, peripheral communication, power consumption, and custom pass/fail criteria. A test report can be provided based on project requirements.',
     specs: ['Power-on verification', 'Signal integrity check', 'Oscilloscope measurement', 'Custom test fixtures', 'Firmware loading', 'Pass/fail logged per unit'],
     image: '/factory/qua-02.png',
     badge: 'Test Plan', badgeColor: 'bg-brand-yellow text-brand-primary',
