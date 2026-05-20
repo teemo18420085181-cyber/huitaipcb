@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
 import { slugifyTitle, type CmsArticle } from '@/lib/content/article-utils';
+import ImageUploadField from './ImageUploadField';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
@@ -18,6 +19,7 @@ export default function ArticleForm({ article, action, submitLabel }: ArticleFor
   const [slug, setSlug] = useState(article?.slug || '');
   const [slugEdited, setSlugEdited] = useState(Boolean(article?.slug));
   const [content, setContent] = useState(article?.content || '');
+  const [coverImage, setCoverImage] = useState(article?.cover_image || '');
 
   useEffect(() => {
     if (!slugEdited) {
@@ -80,7 +82,8 @@ export default function ArticleForm({ article, action, submitLabel }: ArticleFor
           <label className="mb-1 block text-xs text-gray-500">封面图 URL（可选）</label>
           <input
             name="cover_image"
-            defaultValue={article?.cover_image || ''}
+            value={coverImage}
+            onChange={(event) => setCoverImage(event.target.value)}
             placeholder="/factory/flow-01.png 或 https://..."
             className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -116,6 +119,13 @@ export default function ArticleForm({ article, action, submitLabel }: ArticleFor
           className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
+
+      <ImageUploadField
+        slug={slug}
+        currentCoverImage={coverImage}
+        onSetCover={setCoverImage}
+        onInsertMarkdown={(markdown) => setContent((current) => `${current}${markdown}`)}
+      />
 
       <div data-color-mode="light">
         <label className="mb-1 block text-xs text-gray-500">Markdown 正文</label>
