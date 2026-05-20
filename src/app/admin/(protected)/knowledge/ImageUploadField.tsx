@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
 const BUCKET = 'article-images';
@@ -47,9 +47,23 @@ export default function ImageUploadField({
   onInsertMarkdown,
 }: ImageUploadFieldProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const noticeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [uploading, setUploading] = useState(false);
   const [uploadedImages, setUploadedImages] = useState<UploadedImage[]>([]);
   const [errors, setErrors] = useState<string[]>([]);
+  const [notice, setNotice] = useState('');
+
+  useEffect(() => {
+    return () => {
+      if (noticeTimer.current) clearTimeout(noticeTimer.current);
+    };
+  }, []);
+
+  function showNotice(message: string) {
+    setNotice(message);
+    if (noticeTimer.current) clearTimeout(noticeTimer.current);
+    noticeTimer.current = setTimeout(() => setNotice(''), 3500);
+  }
 
   async function uploadOne(file: File, index: number): Promise<UploadedImage | null> {
     if (!file.type.startsWith('image/')) {
@@ -105,6 +119,9 @@ export default function ImageUploadField({
 
     if (!currentCoverImage) {
       onSetCover(uploaded[0].url);
+      showNotice(`已上传 ${uploaded.length} 张图片，第一张已自动设为封面图。`);
+    } else {
+      showNotice(`已上传 ${uploaded.length} 张图片。`);
     }
   }
 
@@ -112,6 +129,17 @@ export default function ImageUploadField({
     if (uploadedImages.length === 0) return;
     const markdown = uploadedImages.map(markdownFor).join('\n\n');
     onInsertMarkdown(`\n\n${markdown}\n\n`);
+    showNotice(`已插入 ${uploadedImages.length} 张图片到正文。`);
+  }
+
+  function setAsCover(image: UploadedImage) {
+    onSetCover(image.url);
+    showNotice(`已将「${image.name}」设为封面图。`);
+  }
+
+  function insertImage(image: UploadedImage) {
+    onInsertMarkdown(`\n\n${markdownFor(image)}\n\n`);
+    showNotice(`已插入「${image.name}」到正文。`);
   }
 
   return (
@@ -164,11 +192,38 @@ export default function ImageUploadField({
         </div>
       )}
 
+      {notice && (
+        <div className="mt-3 rounded-lg border border-green-100 bg-green-50 px-3 py-2 text-xs font-medium text-green-700">
+          {notice}
+        </div>
+      )}
+
+      {currentCoverImage && (
+        <div className="mt-3 rounded-lg border border-green-100 bg-white px-3 py-2 text-xs text-green-700">
+          当前封面图已设置，保存文章后生效。
+        </div>
+      )}
+
       {uploadedImages.length > 0 && (
         <div className="mt-4 space-y-3">
-          {uploadedImages.map((image) => (
-            <div key={image.url} className="rounded-lg border border-blue-100 bg-white p-3">
-              <div className="mb-2 text-xs font-medium text-gray-700">{image.name}</div>
+          {uploadedImages.map((image) => {
+            const isCover = currentCoverImage === image.url;
+
+            return (
+            <div
+              key={image.url}
+              className={`rounded-lg border p-3 ${
+                isCover ? 'border-green-200 bg-green-50/70' : 'border-blue-100 bg-white'
+              }`}
+            >
+              <div className="mb-2 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-medium text-gray-700">{image.name}</span>
+                {isCover && (
+                  <span className="rounded-full bg-green-600 px-2 py-0.5 text-[10px] font-medium text-white">
+                    当前封面
+                  </span>
+                )}
+              </div>
               <input
                 value={image.url}
                 readOnly
@@ -177,21 +232,27 @@ export default function ImageUploadField({
               <div className="mt-2 flex flex-wrap gap-2">
                 <button
                   type="button"
-                  onClick={() => onSetCover(image.url)}
-                  className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-medium text-blue-700 transition hover:bg-blue-50"
+                  disabled={isCover}
+                  onClick={() => setAsCover(image)}
+                  className={`rounded-lg border px-3 py-2 text-xs font-medium transition ${
+                    isCover
+                      ? 'cursor-default border-green-200 bg-green-100 text-green-700'
+                      : 'border-blue-200 bg-white text-blue-700 hover:bg-blue-50'
+                  }`}
                 >
-                  设为封面图
+                  {isCover ? '已设为封面' : '设为封面图'}
                 </button>
                 <button
                   type="button"
-                  onClick={() => onInsertMarkdown(`\n\n${markdownFor(image)}\n\n`)}
+                  onClick={() => insertImage(image)}
                   className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-medium text-blue-700 transition hover:bg-blue-50"
                 >
                   插入到正文
                 </button>
               </div>
             </div>
-          ))}
+          );
+          })}
         </div>
       )}
     </div>
