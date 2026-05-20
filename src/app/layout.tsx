@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import './globals.css';
 import JsonLd from '../components/JsonLd';
 import Analytics from '@/components/Analytics';
