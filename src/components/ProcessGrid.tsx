@@ -54,7 +54,7 @@ const PROCESS = [
   {
     n: '08',
     name: 'Packaging & Shipping',
-    desc: 'Anti-static packaging, full test reports, DHL/FedEx tracked shipping to 42+ countries.',
+    desc: 'Anti-static packaging, project documentation, and DHL/FedEx or customer-specified delivery.',
     image: '/factory/flow-08.png',
     href: '/contact',
   },
@@ -76,7 +76,7 @@ export default function ProcessGrid() {
           </h2>
           <p className="text-[15px] text-ink-muted leading-relaxed">
             From the moment you upload files to the day boards arrive — every
-            stage handled in-house or by vendors we directly manage.
+            stage coordinated through our Shenzhen engineering and manufacturing partners.
           </p>
         </div>
 

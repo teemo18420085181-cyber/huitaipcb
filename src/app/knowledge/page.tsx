@@ -2,11 +2,13 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
+import { knowledgeArticles as KB_ARTICLES } from '@/lib/content/knowledge';
 
 export const metadata = {
-  title: 'Knowledge Base — PCBA Guides for Hardware Teams | OneStopPCBA',
+  title: 'PCB Assembly Knowledge Base | PCBA Guides for Hardware Teams',
   description:
-    'Practical guides covering Gerber files, BOM best practices, DFM checklists, turnkey vs partial assembly, and international shipping — written by PCBA engineers.',
+    'Practical PCB assembly guides covering PCBA quote files, turnkey PCBA manufacturing, BOM best practices, Gerber preparation, prototype assembly, and sourcing review.',
+  alternates: { canonical: 'https://huitaipcb.com/knowledge' },
 };
 
 const ARTICLES = [
@@ -127,7 +129,7 @@ export default function KnowledgePage() {
         <section className="px-[5vw] py-20">
           <div className="max-w-[1280px] mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {ARTICLES.map((a) => (
+              {KB_ARTICLES.map((a) => (
                 <Link
                   key={a.slug}
                   href={`/knowledge/${a.slug}`}

@@ -1,29 +1,28 @@
 ﻿import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import {
+  getInquiryStatusColor,
+  getInquiryStatusLabel,
+  getStatusFilterValues,
+  INQUIRY_STATUSES,
+  normalizeInquiryStatus,
+} from '@/lib/admin/inquiries';
 
-const statusMap: Record<string, { label: string; color: string }> = {
-  new: { label: '新询盘', color: 'bg-blue-100 text-blue-700' },
-  reviewing: { label: '跟进中', color: 'bg-yellow-100 text-yellow-700' },
-  quoted: { label: '已报价', color: 'bg-purple-100 text-purple-700' },
-  in_progress: { label: '进行中', color: 'bg-orange-100 text-orange-700' },
-  completed: { label: '已完成', color: 'bg-green-100 text-green-700' },
-  closed: { label: '已关闭', color: 'bg-gray-100 text-gray-600' },
-  spam: { label: '垃圾', color: 'bg-red-100 text-red-600' },
-};
-
-export default async function InquiriesPage({ searchParams }: { searchParams: { status?: string } }) {
+export default async function InquiriesPage({ searchParams }: { searchParams: Promise<{ status?: string }> }) {
   const supabase = await createClient();
-  const activeStatus = searchParams.status || 'all';
+  const resolvedSearchParams = await searchParams;
+  const activeStatus = resolvedSearchParams.status ? normalizeInquiryStatus(resolvedSearchParams.status) : 'all';
   let query = supabase.from('inquiries').select('*').order('created_at', { ascending: false });
-  if (activeStatus !== 'all') query = query.eq('status', activeStatus);
+  if (activeStatus === 'all') {
+    query = query.not('status', 'in', '("closed","spam","已关闭","垃圾")');
+  } else {
+    query = query.in('status', getStatusFilterValues(activeStatus));
+  }
   const { data: inquiries } = await query;
 
   const tabs = [
     { value: 'all', label: '全部' },
-    { value: 'new', label: '新询盘' },
-    { value: 'reviewing', label: '跟进中' },
-    { value: 'quoted', label: '已报价' },
-    { value: 'completed', label: '已完成' },
+    ...INQUIRY_STATUSES,
   ];
 
   return (
@@ -66,8 +65,8 @@ export default async function InquiriesPage({ searchParams }: { searchParams: { 
                   <div className="truncate">{inq.message}</div>
                 </td>
                 <td className="px-6 py-3">
-                  <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusMap[inq.status]?.color}`}>
-                    {statusMap[inq.status]?.label}
+                  <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getInquiryStatusColor(inq.status)}`}>
+                    {getInquiryStatusLabel(inq.status)}
                   </span>
                 </td>
                 <td className="px-6 py-3 text-gray-400 text-xs">{new Date(inq.created_at).toLocaleDateString('zh-CN')}</td>

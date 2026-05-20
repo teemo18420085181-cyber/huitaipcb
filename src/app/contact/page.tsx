@@ -1,8 +1,12 @@
 ﻿export const metadata = {
-  title: 'Contact HuiTai Electronics | Free PCB Quote',
-  description: 'Get a free PCB assembly quote from HuiTai Electronics. 24hr response. Shenzhen China. inquiry form, email and phone available.',
-  alternates: { canonical: 'https://www.huitaipcb.com/contact' },
-  openGraph: { title: 'Contact HuiTai Electronics | Free PCB Quote', description: 'Get a free PCB assembly quote from HuiTai Electronics. 24hr response. Shenzhen China. inquiry form, email and phone available.', url: 'https://www.huitaipcb.com/contact' },
+  title: 'Request a PCB Assembly Quote | Upload Gerber & BOM',
+  description: 'Request a PCB assembly quote from Huitai Electronics. Upload Gerber files, BOM lists, drawings, sample photos, and testing requirements for engineering review.',
+  alternates: { canonical: 'https://huitaipcb.com/contact' },
+  openGraph: {
+    title: 'Request a PCB Assembly Quote | Upload Gerber & BOM',
+    description: 'Request a PCB assembly quote from Huitai Electronics. Upload Gerber files, BOM lists, drawings, sample photos, and testing requirements for engineering review.',
+    url: 'https://huitaipcb.com/contact',
+  },
 };
 
 import Nav from '@/components/Nav';
@@ -22,13 +26,13 @@ export default function ContactPage() {
                 GET A QUOTE
               </div>
               <h1 className="text-3xl md:text-[40px] font-semibold text-brand-primary tracking-tight leading-tight mb-3">
-                Upload your files. We&apos;ll respond within{' '}
-                <em className="not-italic text-brand-green-dark">24 hours.</em>
+                Get a PCB Assembly Quote
               </h1>
               <p className="text-[15px] text-ink-muted leading-relaxed max-w-[640px] mx-auto">
-                Send us your Gerber, BOM, and any reference photos. Our engineering
-                team reviews every file before quoting 鈥?no automated black-box
-                pricing.
+                Upload your Gerber files, BOM lists, PCB drawings, sample photos, or project requirements. Our engineering team reviews your files before quotation — no automated black-box pricing.
+              </p>
+              <p className="text-[13px] text-ink-muted leading-relaxed max-w-[620px] mx-auto mt-3">
+                Not sure if your files are complete? Send what you have. Our team can review the available information and let you know what is missing.
               </p>
             </div>
 

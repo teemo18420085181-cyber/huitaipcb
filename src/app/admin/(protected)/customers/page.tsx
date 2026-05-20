@@ -1,4 +1,16 @@
 ﻿import { createClient } from '@/lib/supabase/server';
+import { revalidatePath } from 'next/cache';
+import ConfirmSubmitButton from '../../components/ConfirmSubmitButton';
+
+async function deleteCustomer(formData: FormData) {
+  'use server';
+  const supabase = await createClient();
+  const id = String(formData.get('id') || '');
+  if (id) {
+    await supabase.from('customers').delete().eq('id', id);
+    revalidatePath('/admin/customers');
+  }
+}
 
 const tierMap: Record<string, { label: string; color: string }> = {
   prospect: { label: '潜在客户', color: 'bg-gray-100 text-gray-600' },
@@ -25,11 +37,12 @@ export default async function CustomersPage() {
               <th className="px-6 py-3 text-left font-medium">行业</th>
               <th className="px-6 py-3 text-left font-medium">级别</th>
               <th className="px-6 py-3 text-left font-medium">创建时间</th>
+              <th className="px-6 py-3 text-left font-medium">操作</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {(!customers || customers.length === 0) ? (
-              <tr><td colSpan={6} className="px-6 py-12 text-center text-gray-400">暂无客户数据</td></tr>
+              <tr><td colSpan={7} className="px-6 py-12 text-center text-gray-400">暂无客户数据</td></tr>
             ) : customers.map((c: any) => (
               <tr key={c.id} className="hover:bg-gray-50 transition">
                 <td className="px-6 py-3">
@@ -43,6 +56,16 @@ export default async function CustomersPage() {
                   <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${tierMap[c.tier]?.color}`}>{tierMap[c.tier]?.label}</span>
                 </td>
                 <td className="px-6 py-3 text-gray-400 text-xs">{new Date(c.created_at).toLocaleDateString('zh-CN')}</td>
+                <td className="px-6 py-3">
+                  <form action={deleteCustomer}>
+                    <input type="hidden" name="id" value={c.id} />
+                    <ConfirmSubmitButton
+                      label="删除"
+                      confirmMessage={`确定删除客户「${c.name}」？此操作不可恢复。`}
+                      className="text-red-500 hover:underline text-xs disabled:opacity-50"
+                    />
+                  </form>
+                </td>
               </tr>
             ))}
           </tbody>

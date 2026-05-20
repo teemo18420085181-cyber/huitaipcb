@@ -40,7 +40,7 @@ const FilesAnim = () => (
     </line>
     {/* Label */}
     <text x="90" y="138" fill="#FCEA0B" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">DFM REVIEW</text>
-    <text x="90" y="150" fill="#ffffff88" fontSize="8" textAnchor="middle" fontFamily="sans-serif">24h turnaround</text>
+    <text x="90" y="150" fill="#ffffff88" fontSize="8" textAnchor="middle" fontFamily="sans-serif">Engineer review</text>
   </svg>
 );
 
@@ -108,12 +108,12 @@ const BOMSourceAnim = () => (
       <animate attributeName="cx" values="25;145;25" dur="3s" repeatCount="indefinite"/>
       <animate attributeName="cy" values="40;55;40" dur="3s" repeatCount="indefinite"/>
     </circle>
-    {/* Authorized badge */}
+    {/* Sourcing review badge */}
     <rect x="50" y="112" width="80" height="14" rx="4" fill="#93C249" opacity="0.2" stroke="#93C249" strokeWidth="1"/>
     <text x="90" y="122" fill="#93C249" fontSize="8" textAnchor="middle" fontFamily="monospace">✓ AUTHORIZED ONLY</text>
     {/* Label */}
     <text x="90" y="143" fill="#FCEA0B" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">BOM SOURCING</text>
-    <text x="90" y="155" fill="#ffffff88" fontSize="8" textAnchor="middle" fontFamily="sans-serif">No grey market parts</text>
+    <text x="90" y="155" fill="#ffffff88" fontSize="8" textAnchor="middle" fontFamily="sans-serif">Sourcing options</text>
   </svg>
 );
 
@@ -234,7 +234,7 @@ const QCAnim = () => (
     <text x="57" y="134" fill="#93C249" fontSize="6" textAnchor="middle" fontFamily="monospace">PASS ✓</text>
     {/* Label */}
     <text x="90" y="155" fill="#FCEA0B" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">QUALITY CONTROL</text>
-    <text x="90" y="167" fill="#ffffff88" fontSize="7" textAnchor="middle" fontFamily="sans-serif">IPC Class III</text>
+    <text x="90" y="167" fill="#ffffff88" fontSize="7" textAnchor="middle" fontFamily="sans-serif">IPC options</text>
   </svg>
 );
 
@@ -266,9 +266,9 @@ const ShippingAnim = () => (
       <line x1="145" y1="40" x2="130" y2="35" stroke="#FCEA0B" strokeWidth="2"/>
       <line x1="145" y1="40" x2="130" y2="45" stroke="#FCEA0B" strokeWidth="2"/>
     </g>
-    {/* 42+ badge */}
+    {/* Global delivery badge */}
     <circle cx="155" cy="100" r="18" fill="#27215B" stroke="#FCEA0B" strokeWidth="1.5"/>
-    <text x="155" y="97" fill="#FCEA0B" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">42+</text>
+    <text x="155" y="97" fill="#FCEA0B" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">Global</text>
     <text x="155" y="107" fill="#fff" fontSize="6" textAnchor="middle" fontFamily="sans-serif">countries</text>
     {/* Label */}
     <text x="90" y="158" fill="#FCEA0B" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">SHIPPING</text>
@@ -280,7 +280,7 @@ const ShippingAnim = () => (
 const STEPS = [
   {
     n: '01', title: 'Files & DFM Review', short: 'Review',
-    desc: 'Upload Gerber + BOM. Engineers review and reply with DFM report within 24h.',
+    desc: 'Upload Gerber + BOM. Engineers review manufacturability before quotation.',
     color: '#FCEA0B', Anim: FilesAnim,
   },
   {
@@ -290,7 +290,7 @@ const STEPS = [
   },
   {
     n: '03', title: 'BOM Sourcing', short: 'Sourcing',
-    desc: 'Authorized distributors only. Date-code verified. IQC on every reel.',
+    desc: 'BOM availability review, sourcing options, and incoming component checks.',
     color: '#FCEA0B', Anim: BOMSourceAnim,
   },
   {
@@ -310,7 +310,7 @@ const STEPS = [
   },
   {
     n: '07', title: 'Packaging & Shipping', short: 'Shipping',
-    desc: 'Anti-static packed. DHL / FedEx tracked to 42+ countries worldwide.',
+    desc: 'Anti-static packed and prepared for DHL / FedEx or customer-specified delivery.',
     color: '#FCEA0B', Anim: ShippingAnim,
   },
 ];

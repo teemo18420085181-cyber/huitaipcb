@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-const DURATION_MS = 4000;
+const DURATION_MS = 1800;
 
 export default function Splash() {
   const bgCanvasRef = useRef<HTMLCanvasElement>(null);
@@ -303,7 +303,7 @@ export default function Splash() {
     initStars();
     rafId = requestAnimationFrame(animate);
 
-    const skipTimer = setTimeout(() => setSkipOpacity(1), 800);
+    const skipTimer = setTimeout(() => setSkipOpacity(1), 300);
     window.addEventListener('resize', resize);
 
     return () => {
@@ -375,7 +375,7 @@ export default function Splash() {
             <em className="not-italic text-brand-yellow">ONE</em>STOPPCBA
           </div>
           <div className="text-[11px] text-white/50 tracking-[0.32em] font-medium">
-            TURNKEY PCBA · ONE CONTACT · FULL DELIVERY
+            GERBER / BOM → SMT ASSEMBLY → TESTED PCBA
           </div>
         </div>
       </div>

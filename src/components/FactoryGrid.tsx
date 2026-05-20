@@ -19,7 +19,7 @@ const IMAGES = [
     src: '/factory/real-reels.jpg',
     alt: 'Component reel warehouse',
     tag: 'COMPONENT STOCK',
-    title: 'In-house component warehouse',
+    title: 'Managed component storage and kitting',
     span: 'lg:col-span-5',
   },
   {
@@ -52,17 +52,15 @@ export default function FactoryGrid() {
         <div className="mb-12 max-w-[680px]">
           <div className="inline-flex items-center gap-2 text-[11px] text-brand-primary font-semibold tracking-[0.16em] mb-3.5">
             <span className="w-[18px] h-0.5 bg-brand-yellow rounded-sm" />
-            INSIDE OUR FACTORY
+            INSIDE OUR MANUFACTURING NETWORK
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold text-brand-primary tracking-tight leading-tight mb-3.5">
-            Real equipment.{' '}
+            Real process.{' '}
             <em className="not-italic text-brand-green-dark">Trained operators.</em>{' '}
             Real boards shipping every day.
           </h2>
           <p className="text-[15px] text-ink-muted leading-relaxed">
-            Our Shenzhen facility runs multiple SMT lines, in-house component storage,
-            AOI/X-Ray inspection, and full functional testing — all under one roof in
-            Bao&apos;an District.
+            Our team coordinates SMT assembly, component kitting, AOI/X-Ray inspection, and functional testing through our Shenzhen engineering and manufacturing partners.
           </p>
         </div>
 

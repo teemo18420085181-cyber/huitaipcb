@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const SERVICES_LINKS = [
-  { label: 'Turnkey PCBA', href: '/services' },
+  { label: 'Turnkey PCB Assembly', href: '/turnkey-pcb-assembly' },
   { label: 'PCB Fabrication', href: '/capabilities' },
   { label: 'Component Sourcing', href: '/services' },
   { label: 'SMT Assembly', href: '/services' },
@@ -97,7 +97,7 @@ export default function Footer() {
               href="/contact"
               className="block text-xs text-brand-yellow/80 leading-loose hover:text-brand-yellow transition-colors mt-1"
             >
-              Get a quote →
+              Get PCB Assembly Quote →
             </Link>
           </div>
         </div>

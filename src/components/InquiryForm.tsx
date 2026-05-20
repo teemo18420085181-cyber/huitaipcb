@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { Upload, X, FileText, CheckCircle, Loader2 } from 'lucide-react';
+import { trackEvent } from '@/components/Analytics';
 
 export default function InquiryForm() {
   const [files, setFiles] = useState<File[]>([]);
@@ -15,6 +16,7 @@ export default function InquiryForm() {
     if (!newFiles) return;
     const arr = Array.from(newFiles).slice(0, 10 - files.length);
     setFiles((prev) => [...prev, ...arr]);
+    if (arr.length > 0) trackEvent('upload_file', { file_count: arr.length });
   };
 
   const removeFile = (idx: number) => {
@@ -34,6 +36,7 @@ export default function InquiryForm() {
 
     const formData = new FormData(e.currentTarget);
     files.forEach((f) => formData.append('files', f));
+    trackEvent('submit_rfq', { file_count: files.length });
 
     try {
       const res = await fetch('/api/inquiry', {
@@ -47,6 +50,7 @@ export default function InquiryForm() {
         return;
       }
       setSubmitted(true);
+      trackEvent('generate_lead', { file_count: files.length });
     } catch (err) {
       setError('Network error. Please try again.');
       setSubmitting(false);
@@ -78,8 +82,9 @@ export default function InquiryForm() {
         <FormField label="Email *" name="email" type="email" required />
         <FormField label="Company" name="company" />
         <FormField label="Country" name="country" />
-        <FormField label="Phone (optional)" name="phone" type="tel" />
-        <div />
+        <FormField label="Phone / WhatsApp" name="phone" type="tel" />
+        <FormField label="Project Type" name="project_type" placeholder="Prototype, low-volume, turnkey PCBA..." />
+        <FormField label="Quantity" name="quantity" placeholder="50 pcs, 500 pcs, pilot run..." />
       </div>
 
       <div>
@@ -95,10 +100,22 @@ export default function InquiryForm() {
         />
       </div>
 
+      <div>
+        <label className="block text-xs font-medium text-brand-primary tracking-wide mb-2">
+          Testing Requirements
+        </label>
+        <textarea
+          name="testing_requirements"
+          rows={3}
+          placeholder="Functional test, ICT, firmware flashing, inspection report, sample approval requirements..."
+          className="w-full px-4 py-3 text-sm border border-line rounded-lg focus:outline-none focus:border-brand-primary transition-colors"
+        />
+      </div>
+
       {/* File upload area */}
       <div>
         <label className="block text-xs font-medium text-brand-primary tracking-wide mb-2">
-          Project Files (Gerber, BOM, etc.)
+          Project Files (Gerber, BOM, drawings, photos)
         </label>
         <div
           onClick={() => fileInputRef.current?.click()}
@@ -123,7 +140,7 @@ export default function InquiryForm() {
             Drop files here or click to browse
           </div>
           <div className="text-xs text-ink-muted mt-1">
-            Up to 10 files · 25MB each · .zip .rar .pdf .xlsx .gbr .png .jpg
+            Up to 10 files, 25MB each. Gerber, BOM, PDF, Excel, images, drawings accepted.
           </div>
           <input
             ref={fileInputRef}
@@ -201,7 +218,7 @@ export default function InquiryForm() {
         ) : (
           <>
             <Upload size={16} strokeWidth={2.5} />
-            Send Inquiry &amp; Get Quote
+            Send RFQ
           </>
         )}
       </button>
@@ -214,11 +231,13 @@ function FormField({
   name,
   type = 'text',
   required = false,
+  placeholder,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
+  placeholder?: string;
 }) {
   return (
     <div>
@@ -229,6 +248,7 @@ function FormField({
         type={type}
         name={name}
         required={required}
+        placeholder={placeholder}
         className="w-full px-4 py-2.5 text-sm border border-line rounded-lg focus:outline-none focus:border-brand-primary transition-colors"
       />
     </div>

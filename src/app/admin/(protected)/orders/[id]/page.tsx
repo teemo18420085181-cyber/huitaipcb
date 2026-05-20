@@ -27,9 +27,10 @@ async function updateOrder(formData: FormData) {
   redirect(`/admin/orders/${id}`);
 }
 
-export default async function OrderDetailPage({ params }: { params: { id: string } }) {
+export default async function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const supabase = await createClient();
-  const { data: o } = await supabase.from('orders').select('*').eq('id', params.id).single();
+  const { data: o } = await supabase.from('orders').select('*').eq('id', id).single();
   if (!o) notFound();
   const images = [o.image_1, o.image_2, o.image_3].filter(Boolean);
 

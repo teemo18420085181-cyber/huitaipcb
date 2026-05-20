@@ -12,6 +12,12 @@ import FeedbackBoard from '@/components/FeedbackBoard';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
 
+export const metadata = {
+  title: 'PCB Assembly Services & Turnkey PCBA Manufacturing in China | Huitai Electronics',
+  description: 'Huitai Electronics provides PCB assembly services and turnkey PCBA manufacturing in China, including PCB fabrication, component sourcing, SMT assembly, DIP assembly, functional testing, final assembly, and global delivery.',
+  alternates: { canonical: 'https://huitaipcb.com/' },
+};
+
 export default function HomePage() {
   return (
     <>

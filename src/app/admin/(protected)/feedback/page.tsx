@@ -1,5 +1,7 @@
 ﻿import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
+import ConfirmSubmitButton from '../../components/ConfirmSubmitButton';
 
 async function togglePublish(formData: FormData) {
   'use server';
@@ -13,6 +15,16 @@ async function togglePublish(formData: FormData) {
     published_at: !is_published ? new Date().toISOString() : null,
   }).eq('id', id);
   redirect('/admin/feedback');
+}
+
+async function deleteFeedback(formData: FormData) {
+  'use server';
+  const supabase = await createClient();
+  const id = String(formData.get('id') || '');
+  if (id) {
+    await supabase.from('feedback_messages').delete().eq('id', id);
+    revalidatePath('/admin/feedback');
+  }
 }
 
 export default async function FeedbackPage() {
@@ -37,16 +49,26 @@ export default async function FeedbackPage() {
               <span className="text-xs text-gray-400 ml-auto">{new Date(msg.created_at).toLocaleDateString('zh-CN')}</span>
             </div>
             <p className="text-gray-700 text-sm mb-3">{msg.message}</p>
-            <form action={togglePublish} className="flex items-center gap-3">
-              <input type="hidden" name="id" value={msg.id} />
-              <input type="hidden" name="is_published" value={String(msg.is_published)} />
-              <input type="text" name="admin_response" defaultValue={msg.admin_response || ''} placeholder="回复内容（可选）"
-                className="flex-1 border border-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
-              <button type="submit"
-                className={`px-4 py-1.5 rounded-lg text-sm font-medium transition ${msg.is_published ? 'bg-gray-100 text-gray-600 hover:bg-gray-200' : 'bg-green-600 text-white hover:bg-green-700'}`}>
-                {msg.is_published ? '取消发布' : '发布'}
-              </button>
-            </form>
+            <div className="flex items-center gap-3">
+              <form action={togglePublish} className="flex flex-1 items-center gap-3">
+                <input type="hidden" name="id" value={msg.id} />
+                <input type="hidden" name="is_published" value={String(msg.is_published)} />
+                <input type="text" name="admin_response" defaultValue={msg.admin_response || ''} placeholder="回复内容（可选）"
+                  className="flex-1 border border-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <button type="submit"
+                  className={`px-4 py-1.5 rounded-lg text-sm font-medium transition ${msg.is_published ? 'bg-gray-100 text-gray-600 hover:bg-gray-200' : 'bg-green-600 text-white hover:bg-green-700'}`}>
+                  {msg.is_published ? '取消发布' : '发布'}
+                </button>
+              </form>
+              <form action={deleteFeedback}>
+                <input type="hidden" name="id" value={msg.id} />
+                <ConfirmSubmitButton
+                  label="删除"
+                  confirmMessage="确定删除这条留言？此操作不可恢复。"
+                  className="px-3 py-1.5 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50 transition disabled:opacity-50"
+                />
+              </form>
+            </div>
           </div>
         ))}
       </div>
