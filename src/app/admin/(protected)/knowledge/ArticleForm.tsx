@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { slugifyTitle, type CmsArticle } from '@/lib/content/article-utils';
 import ImageUploadField from './ImageUploadField';
 
@@ -15,6 +15,7 @@ type ArticleFormProps = {
 };
 
 export default function ArticleForm({ article, action, submitLabel }: ArticleFormProps) {
+  const editorRootRef = useRef<HTMLDivElement | null>(null);
   const [title, setTitle] = useState(article?.title || '');
   const [slug, setSlug] = useState(article?.slug || '');
   const [slugEdited, setSlugEdited] = useState(Boolean(article?.slug));
@@ -32,6 +33,30 @@ export default function ArticleForm({ article, action, submitLabel }: ArticleFor
     if (article?.status === 'published') return new Date().toISOString();
     return '';
   }, [article?.published_at, article?.status]);
+
+  function insertMarkdownAtCursor(markdown: string) {
+    const textarea = editorRootRef.current?.querySelector('textarea');
+
+    if (!textarea) {
+      setContent((current) => `${current}${markdown}`);
+      return;
+    }
+
+    const start = textarea.selectionStart ?? content.length;
+    const end = textarea.selectionEnd ?? start;
+
+    setContent((current) => {
+      const safeStart = Math.min(start, current.length);
+      const safeEnd = Math.min(end, current.length);
+      return `${current.slice(0, safeStart)}${markdown}${current.slice(safeEnd)}`;
+    });
+
+    window.requestAnimationFrame(() => {
+      textarea.focus();
+      const nextPosition = start + markdown.length;
+      textarea.setSelectionRange(nextPosition, nextPosition);
+    });
+  }
 
   return (
     <form action={action} className="space-y-5">
@@ -124,11 +149,14 @@ export default function ArticleForm({ article, action, submitLabel }: ArticleFor
         slug={slug}
         currentCoverImage={coverImage}
         onSetCover={setCoverImage}
-        onInsertMarkdown={(markdown) => setContent((current) => `${current}${markdown}`)}
+        onInsertMarkdown={insertMarkdownAtCursor}
       />
 
-      <div data-color-mode="light">
+      <div ref={editorRootRef} data-color-mode="light">
         <label className="mb-1 block text-xs text-gray-500">Markdown 正文</label>
+        <p className="mb-2 text-xs text-gray-400">
+          插图提示：先把光标放到左侧 Markdown 正文的目标位置，再点击图片的插入按钮。
+        </p>
         <MDEditor
           value={content}
           onChange={(value) => setContent(value || '')}

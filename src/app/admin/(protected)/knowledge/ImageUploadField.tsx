@@ -129,7 +129,7 @@ export default function ImageUploadField({
     if (uploadedImages.length === 0) return;
     const markdown = uploadedImages.map(markdownFor).join('\n\n');
     onInsertMarkdown(`\n\n${markdown}\n\n`);
-    showNotice(`已插入 ${uploadedImages.length} 张图片到正文。`);
+    showNotice(`已插入 ${uploadedImages.length} 张图片到当前光标位置。`);
   }
 
   function setAsCover(image: UploadedImage) {
@@ -139,7 +139,7 @@ export default function ImageUploadField({
 
   function insertImage(image: UploadedImage) {
     onInsertMarkdown(`\n\n${markdownFor(image)}\n\n`);
-    showNotice(`已插入「${image.name}」到正文。`);
+    showNotice(`已插入「${image.name}」到当前光标位置。`);
   }
 
   return (
@@ -148,7 +148,7 @@ export default function ImageUploadField({
         <div>
           <div className="text-sm font-medium text-gray-900">文章图片批量上传</div>
           <p className="mt-1 text-xs leading-5 text-gray-500">
-            上传到 Supabase Storage：article-images。可一次选择多张，支持 JPG、PNG、WebP、AVIF、GIF，单张不超过 5MB。
+            上传到 Supabase Storage：article-images。先把光标放到正文目标位置，再插入图片。可一次选择多张，单张不超过 5MB。
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -170,7 +170,7 @@ export default function ImageUploadField({
               onClick={insertAllUploaded}
               className="rounded-lg border border-blue-200 bg-white px-4 py-2 text-sm font-medium text-blue-700 transition hover:bg-blue-50"
             >
-              全部插入正文
+              全部插入到光标位置
             </button>
           )}
           <button
@@ -210,48 +210,48 @@ export default function ImageUploadField({
             const isCover = currentCoverImage === image.url;
 
             return (
-            <div
-              key={image.url}
-              className={`rounded-lg border p-3 ${
-                isCover ? 'border-green-200 bg-green-50/70' : 'border-blue-100 bg-white'
-              }`}
-            >
-              <div className="mb-2 flex flex-wrap items-center gap-2">
-                <span className="text-xs font-medium text-gray-700">{image.name}</span>
-                {isCover && (
-                  <span className="rounded-full bg-green-600 px-2 py-0.5 text-[10px] font-medium text-white">
-                    当前封面
-                  </span>
-                )}
+              <div
+                key={image.url}
+                className={`rounded-lg border p-3 ${
+                  isCover ? 'border-green-200 bg-green-50/70' : 'border-blue-100 bg-white'
+                }`}
+              >
+                <div className="mb-2 flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-medium text-gray-700">{image.name}</span>
+                  {isCover && (
+                    <span className="rounded-full bg-green-600 px-2 py-0.5 text-[10px] font-medium text-white">
+                      当前封面
+                    </span>
+                  )}
+                </div>
+                <input
+                  value={image.url}
+                  readOnly
+                  className="w-full rounded-lg border border-blue-100 bg-white px-3 py-2 text-xs text-gray-600"
+                />
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    disabled={isCover}
+                    onClick={() => setAsCover(image)}
+                    className={`rounded-lg border px-3 py-2 text-xs font-medium transition ${
+                      isCover
+                        ? 'cursor-default border-green-200 bg-green-100 text-green-700'
+                        : 'border-blue-200 bg-white text-blue-700 hover:bg-blue-50'
+                    }`}
+                  >
+                    {isCover ? '已设为封面' : '设为封面图'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => insertImage(image)}
+                    className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-medium text-blue-700 transition hover:bg-blue-50"
+                  >
+                    插入到光标位置
+                  </button>
+                </div>
               </div>
-              <input
-                value={image.url}
-                readOnly
-                className="w-full rounded-lg border border-blue-100 bg-white px-3 py-2 text-xs text-gray-600"
-              />
-              <div className="mt-2 flex flex-wrap gap-2">
-                <button
-                  type="button"
-                  disabled={isCover}
-                  onClick={() => setAsCover(image)}
-                  className={`rounded-lg border px-3 py-2 text-xs font-medium transition ${
-                    isCover
-                      ? 'cursor-default border-green-200 bg-green-100 text-green-700'
-                      : 'border-blue-200 bg-white text-blue-700 hover:bg-blue-50'
-                  }`}
-                >
-                  {isCover ? '已设为封面' : '设为封面图'}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => insertImage(image)}
-                  className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-medium text-blue-700 transition hover:bg-blue-50"
-                >
-                  插入到正文
-                </button>
-              </div>
-            </div>
-          );
+            );
           })}
         </div>
       )}
