@@ -90,32 +90,6 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     ],
   },
   {
-    slug: 'prepare-gerber-bom-files-pcb-assembly',
-    category: 'Engineering',
-    categoryColor: 'bg-brand-yellow/15 text-brand-primary border-brand-yellow/30',
-    title: 'How to prepare Gerber and BOM files for PCB assembly',
-    excerpt: 'A simple preparation guide for clean Gerber packages, BOM lists, centroid data, and assembly notes.',
-    image: '/factory/qua-03.png',
-    readTime: '7 min read',
-    metaDescription: 'Prepare Gerber and BOM files for PCB assembly with clean layer exports, drill files, centroid data, assembly drawings, and notes.',
-    sections: [
-      {
-        heading: 'Prepare the Gerber package',
-        body: [
-          'Export copper layers, solder mask, paste mask, silkscreen, board outline, and drill files from the same CAD revision.',
-          'Compress the Gerber package into one ZIP file and include a short readme if there are controlled impedance, panelization, surface finish, or special process requirements.',
-        ],
-      },
-      {
-        heading: 'Prepare the assembly package',
-        body: [
-          'Include the BOM list, pick-and-place or centroid file, assembly drawing, polarity notes, and any keep-out or orientation instructions.',
-          'If you need functional testing, include the test procedure, expected results, firmware files, or test fixture information if available.',
-        ],
-      },
-    ],
-  },
-  {
     slug: 'prototype-vs-batch-pcb-assembly',
     category: 'Decision Guide',
     categoryColor: 'bg-brand-green/10 text-brand-green-dark border-brand-green/20',
