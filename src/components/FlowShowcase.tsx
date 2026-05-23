@@ -29,7 +29,7 @@ const FLOW = [
     desc: 'We fabricate 1–30 layer PCBs across a full range of substrate types. Whether your design calls for standard FR4, high-frequency Rogers, HDI micro-vias, rigid-flex, or aluminum MCPCB — we cover it. Every bare board is electrically tested before assembly.',
     detail: 'FR4 (TG130/170/180) · HDI · Rogers / PTFE · Rigid-flex · Aluminum MCPCB · Heavy copper · Impedance control',
     image: '/factory/flow-03.png',
-    badge: 'In-house fab',
+    badge: 'Managed fab',
     badgeColor: 'bg-brand-primary text-white',
   },
   {

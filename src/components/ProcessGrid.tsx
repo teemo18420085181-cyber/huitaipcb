@@ -40,7 +40,7 @@ const PROCESS = [
   {
     n: '06',
     name: 'Inspection & Testing',
-    desc: 'AOI · X-Ray for BGAs · flying probe · ICT · functional testing. Reports issued with every order.',
+    desc: 'AOI · X-Ray for BGAs · flying probe · ICT · functional testing. Test reports can be provided based on project requirements.',
     image: '/factory/flow-06.png',
     href: '/quality',
   },

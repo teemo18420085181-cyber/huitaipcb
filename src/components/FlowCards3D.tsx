@@ -305,7 +305,7 @@ const STEPS = [
   },
   {
     n: '06', title: 'Quality Control', short: 'QC',
-    desc: 'AOI · X-Ray · Final QC. Signed test report included with every shipment.',
+    desc: 'AOI · X-Ray · Final QC. Test documentation can be provided based on project scope.',
     color: '#93C249', Anim: QCAnim,
   },
   {
