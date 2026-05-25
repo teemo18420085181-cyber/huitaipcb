@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://huitaipcb.com'),
   title: {
     default: 'PCB Assembly Services & Turnkey PCBA Manufacturing in China | Huitai Electronics',
-    template: '%s | HuiTai PCB',
+    template: '%s',
   },
   description:
     'Huitai Electronics provides PCB assembly services and turnkey PCBA manufacturing in China, including PCB fabrication, component sourcing, SMT assembly, DIP assembly, functional testing, final assembly, and global delivery.',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     siteName: 'HuiTai PCB',
     title: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing',
     description:
-      'Professional turnkey PCB assembly services from Shenzhen, China. SMT, DIP, BOM sourcing and full PCB manufacturing with fast turnaround.',
+      'Turnkey PCBA manufacturing support from Shenzhen, China, including PCB fabrication coordination, BOM sourcing, SMT assembly, DIP assembly, inspection, testing, and delivery.',
     images: [
       {
         url: '/logo.svg',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing',
     description:
-      'Professional turnkey PCB assembly services from Shenzhen, China.',
+      'Turnkey PCBA manufacturing support from Shenzhen, China.',
     images: ['/logo.svg'],
   },
   robots: {

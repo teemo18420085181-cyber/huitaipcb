@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { getKnowledgeDisplayArticle } from '@/lib/content/articles';
+import { extractFaqItemsFromMarkdown } from '@/lib/content/faq';
 
 export const dynamic = 'force-dynamic';
 
@@ -82,6 +83,7 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
   }
 
   const articleUrl = `https://huitaipcb.com/knowledge/${article.slug}`;
+  const faqItems = extractFaqItemsFromMarkdown(article.content);
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -105,6 +107,18 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
     datePublished: article.publishedAt || undefined,
     dateModified: article.publishedAt || undefined,
   };
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
 
   return (
     <>
@@ -115,10 +129,16 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
+          {faqItems.length > 0 && (
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+          )}
           <section className="relative overflow-hidden bg-brand-primary px-[5vw] py-16 text-white md:py-20">
             <div className="relative z-10 mx-auto max-w-[980px]">
               <Link href="/knowledge" className="text-xs text-white/60 transition-colors hover:text-white">
-                ← Knowledge Base
+                Back to Knowledge Base
               </Link>
               <div className="mb-5 mt-6 inline-flex items-center gap-2 rounded-full border border-brand-yellow/40 bg-brand-yellow/10 px-3.5 py-1.5 text-[11px] font-medium tracking-[0.14em] text-brand-yellow">
                 {article.category}
@@ -131,7 +151,7 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-3 text-xs text-white/55">
                 <span>{article.author}</span>
-                <span>•</span>
+                <span>/</span>
                 <span>{article.readTime}</span>
               </div>
             </div>

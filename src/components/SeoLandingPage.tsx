@@ -3,27 +3,83 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import type { SeoLandingPage as SeoLandingPageData } from '@/lib/content/seoPages';
 
+function buildServiceSchema(page: SeoLandingPageData) {
+  const url = `https://huitaipcb.com/${page.slug}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: page.serviceName,
+    serviceType: page.serviceType,
+    description: page.metaDescription,
+    url,
+    provider: {
+      '@type': 'Organization',
+      name: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
+      alternateName: 'Huitai Electronics',
+      url: 'https://huitaipcb.com',
+    },
+    areaServed: {
+      '@type': 'Place',
+      name: 'Global overseas B2B customers',
+    },
+    audience: {
+      '@type': 'BusinessAudience',
+      audienceType: 'Overseas engineers, hardware teams, startups, industrial product companies, and purchasing managers',
+    },
+  };
+}
+
+function buildFaqSchema(page: SeoLandingPageData) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: page.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+}
+
 export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
+  const ctaHeading = page.ctaHeading || 'Send Your Files for Engineering Review';
+  const ctaBody = page.ctaBody || 'Send your Gerber files, BOM list, quantity, and testing requirements. Huitai will review the available information before quotation.';
+
   return (
     <>
       <Nav />
-      <main className="pt-[64px] min-h-screen bg-bg">
-        <section className="relative px-[5vw] py-16 md:py-24 bg-brand-primary text-white overflow-hidden">
-          <div className="relative z-10 max-w-[1080px] mx-auto">
-            <div className="inline-flex items-center gap-2 bg-brand-yellow/10 border border-brand-yellow/40 text-brand-yellow text-[11px] tracking-[0.14em] py-1.5 px-3.5 rounded-full mb-6 font-medium">
+      <main className="min-h-screen bg-bg pt-[64px]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildServiceSchema(page)) }}
+        />
+        {page.faq.length > 0 && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(buildFaqSchema(page)) }}
+          />
+        )}
+
+        <section className="relative overflow-hidden bg-brand-primary px-[5vw] py-16 text-white md:py-24">
+          <div className="relative z-10 mx-auto max-w-[1080px]">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-yellow/40 bg-brand-yellow/10 px-3.5 py-1.5 text-[11px] font-medium tracking-[0.14em] text-brand-yellow">
               {page.eyebrow}
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-[52px] font-semibold leading-tight tracking-tight mb-5 max-w-[760px]">
+            <h1 className="mb-5 max-w-[800px] text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-[52px]">
               {page.title}
             </h1>
-            <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[720px]">
+            <p className="max-w-[760px] text-base leading-relaxed text-white/70 md:text-lg">
               {page.intro}
             </p>
-            <div className="flex flex-wrap gap-3 mt-8">
-              <Link href="/contact" className="bg-brand-yellow text-brand-primary text-sm font-semibold py-3 px-6 rounded-lg hover:-translate-y-0.5 transition-all">
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/contact" className="rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5">
                 Get PCB Assembly Quote
               </Link>
-              <Link href="/contact" className="border border-white/25 text-white text-sm font-semibold py-3 px-6 rounded-lg hover:border-white/50 transition-all">
+              <Link href="/contact" className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/50">
                 Upload Gerber &amp; BOM
               </Link>
             </div>
@@ -31,57 +87,107 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
         </section>
 
         <section className="px-[5vw] py-16">
-          <div className="max-w-[1080px] mx-auto grid lg:grid-cols-[minmax(0,1fr)_320px] gap-8">
+          <div className="mx-auto grid max-w-[1080px] gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
             <div className="space-y-5">
+              <section className="rounded-2xl border border-brand-primary/10 bg-white p-7 shadow-sm">
+                <div className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-brand-primary">
+                  QUICK ANSWER
+                </div>
+                <p className="text-sm leading-7 text-ink-muted">{page.quickAnswer}</p>
+              </section>
+
               {page.sections.map((section) => (
-                <section key={section.heading} className="bg-white border border-line rounded-2xl p-7">
-                  <h2 className="text-2xl font-semibold text-brand-primary mb-3">{section.heading}</h2>
-                  <p className="text-sm text-ink-muted leading-7">{section.body}</p>
+                <section key={section.heading} className="rounded-2xl border border-line bg-white p-7">
+                  <h2 className="mb-3 text-2xl font-semibold text-brand-primary">{section.heading}</h2>
+                  <p className="text-sm leading-7 text-ink-muted">{section.body}</p>
                 </section>
               ))}
 
-              <section className="bg-white border border-line rounded-2xl p-7">
-                <h2 className="text-2xl font-semibold text-brand-primary mb-5">What We Can Coordinate</h2>
-                <div className="grid sm:grid-cols-2 gap-3">
+              <section className="rounded-2xl border border-line bg-white p-7">
+                <h2 className="mb-5 text-2xl font-semibold text-brand-primary">What We Can Coordinate</h2>
+                <div className="grid gap-3 sm:grid-cols-2">
                   {page.bullets.map((item) => (
-                    <div key={item} className="flex items-start gap-2 text-sm text-ink-muted">
-                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-brand-yellow flex-shrink-0" />
+                    <div key={item} className="flex items-start gap-2 text-sm leading-6 text-ink-muted">
+                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-yellow" />
                       {item}
                     </div>
                   ))}
                 </div>
               </section>
 
-              <section className="bg-white border border-line rounded-2xl p-7">
-                <h2 className="text-2xl font-semibold text-brand-primary mb-5">FAQ</h2>
+              {page.workflow && (
+                <section className="rounded-2xl border border-line bg-white p-7">
+                  <h2 className="mb-5 text-2xl font-semibold text-brand-primary">Workflow</h2>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {page.workflow.map((step, index) => (
+                      <div key={step} className="rounded-xl border border-line bg-bg-muted p-4">
+                        <div className="mb-2 text-[11px] font-semibold tracking-[0.14em] text-brand-primary">
+                          STEP {String(index + 1).padStart(2, '0')}
+                        </div>
+                        <p className="text-sm leading-6 text-ink-muted">{step}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {page.filesNeeded && (
+                <section className="rounded-2xl border border-line bg-white p-7">
+                  <h2 className="mb-5 text-2xl font-semibold text-brand-primary">Files Needed</h2>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {page.filesNeeded.map((item) => (
+                      <div key={item} className="flex items-start gap-2 text-sm leading-6 text-ink-muted">
+                        <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-green" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              <section className="rounded-2xl border border-line bg-white p-7">
+                <h2 className="mb-5 text-2xl font-semibold text-brand-primary">FAQ</h2>
                 <div className="space-y-4">
                   {page.faq.map((item) => (
                     <div key={item.question} className="border-b border-line pb-4 last:border-b-0 last:pb-0">
-                      <h3 className="text-base font-semibold text-brand-primary mb-2">{item.question}</h3>
-                      <p className="text-sm text-ink-muted leading-7">{item.answer}</p>
+                      <h3 className="mb-2 text-base font-semibold text-brand-primary">{item.question}</h3>
+                      <p className="text-sm leading-7 text-ink-muted">{item.answer}</p>
                     </div>
                   ))}
                 </div>
               </section>
+
+              <section className="rounded-2xl border border-brand-primary/10 bg-brand-primary p-7 text-white">
+                <h2 className="mb-3 text-2xl font-semibold">{ctaHeading}</h2>
+                <p className="mb-5 max-w-[720px] text-sm leading-7 text-white/70">{ctaBody}</p>
+                <Link href="/contact" className="inline-flex rounded-lg bg-brand-yellow px-5 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5">
+                  Upload Gerber &amp; BOM
+                </Link>
+              </section>
             </div>
 
-            <aside className="lg:sticky lg:top-24 h-fit bg-white border border-line rounded-2xl p-6">
-              <div className="text-[11px] text-brand-primary font-semibold tracking-[0.16em] mb-3">
+            <aside className="h-fit rounded-2xl border border-line bg-white p-6 lg:sticky lg:top-24">
+              <div className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-brand-primary">
                 SEND RFQ
               </div>
-              <h2 className="text-xl font-semibold text-brand-primary mb-3">
+              <h2 className="mb-3 text-xl font-semibold text-brand-primary">
                 Start with your available files.
               </h2>
-              <p className="text-sm text-ink-muted leading-6 mb-5">
+              <p className="mb-5 text-sm leading-6 text-ink-muted">
                 Send Gerber files, BOM lists, PCB drawings, sample photos, schematic if available, assembly requirements, and testing requirements.
               </p>
-              <Link href="/contact" className="inline-flex w-full justify-center bg-brand-primary text-white text-sm font-semibold py-3 px-5 rounded-lg hover:bg-brand-primary-light transition-colors">
+              <Link href="/contact" className="inline-flex w-full justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-light">
                 Request a PCBA Quote
               </Link>
-              <div className="mt-5 pt-5 border-t border-line text-xs text-ink-muted leading-6">
-                Related: <Link href="/services" className="text-brand-primary underline">turnkey services</Link>,{' '}
-                <Link href="/capabilities" className="text-brand-primary underline">capabilities</Link>,{' '}
-                <Link href="/knowledge" className="text-brand-primary underline">knowledge base</Link>.
+              <div className="mt-5 border-t border-line pt-5 text-xs leading-6 text-ink-muted">
+                <div className="mb-2 font-semibold text-brand-primary">Related pages</div>
+                <div className="space-y-1.5">
+                  {page.relatedLinks.map((link) => (
+                    <Link key={link.href} href={link.href} className="block text-brand-primary underline underline-offset-4">
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </aside>
           </div>

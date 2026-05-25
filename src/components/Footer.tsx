@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 const SERVICES_LINKS = [
-  { label: 'Turnkey PCB Assembly', href: '/turnkey-pcb-assembly' },
-  { label: 'PCB Fabrication', href: '/capabilities' },
-  { label: 'Component Sourcing', href: '/services' },
-  { label: 'SMT Assembly', href: '/services' },
-  { label: 'Box Build', href: '/services' },
+  { label: 'Turnkey PCBA Manufacturing', href: '/turnkey-pcb-assembly' },
+  { label: 'PCB Fabrication and Assembly', href: '/pcb-fabrication-and-assembly' },
+  { label: 'Low-Volume PCBA Assembly', href: '/low-volume-pcba-assembly' },
+  { label: 'BOM Sourcing and Assembly', href: '/bom-sourcing-pcb-assembly' },
+  { label: 'PCBA Testing and Quality Control', href: '/pcba-testing-quality-control' },
 ];
 
 const RESOURCE_LINKS = [
@@ -18,98 +18,92 @@ const RESOURCE_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-primary-dark text-white py-12 pb-8 px-[5vw]">
-      <div className="max-w-[1280px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 pb-8 border-b border-white/[0.08]">
-
-          {/* Brand col */}
-          <div className="flex flex-col gap-2 col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="w-9 h-9 bg-brand-yellow rounded-lg flex items-center justify-center font-bold text-brand-primary text-xs">
+    <footer className="bg-brand-primary-dark px-[5vw] py-12 pb-8 text-white">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="grid grid-cols-2 gap-8 border-b border-white/[0.08] pb-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
+          <div className="col-span-2 flex flex-col gap-2 md:col-span-1">
+            <div className="mb-3 flex items-center gap-2.5">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-yellow text-xs font-bold text-brand-primary">
                 HT
               </div>
               <div>
-                <strong className="block text-sm font-semibold text-white tracking-wide">
+                <strong className="block text-sm font-semibold tracking-wide text-white">
                   ONESTOPPCBA
                 </strong>
-                <span className="text-[9px] text-white/40 tracking-widest">
+                <span className="text-[9px] font-medium tracking-[0.14em] text-white/40">
                   HUITAI ELECTRONICS
                 </span>
               </div>
             </div>
-            <p className="text-xs text-white/55 leading-loose">
+            <p className="text-xs leading-loose text-white/55">
               Shenzhen Huitai Electronics Technology Co., Ltd.
             </p>
-            <p className="text-xs text-white/55 leading-loose">
+            <p className="text-xs leading-loose text-white/55">
               Building D, 4F, Zhaochang Industrial Park,<br />
               Gonghe Industrial Road, Shajing,<br />
               Bao&apos;an District, Shenzhen, China
             </p>
           </div>
 
-          {/* Services col */}
           <div>
-            <h5 className="text-[11px] font-semibold tracking-[0.14em] text-brand-yellow mb-3.5">
+            <h5 className="mb-3.5 text-[11px] font-semibold tracking-[0.14em] text-brand-yellow">
               SERVICES
             </h5>
-            {SERVICES_LINKS.map((l) => (
+            {SERVICES_LINKS.map((link) => (
               <Link
-                key={l.label}
-                href={l.href}
-                className="block text-xs text-white/55 leading-loose hover:text-white transition-colors"
+                key={link.label}
+                href={link.href}
+                className="block text-xs leading-loose text-white/55 transition-colors hover:text-white"
               >
-                {l.label}
+                {link.label}
               </Link>
             ))}
           </div>
 
-          {/* Resources col */}
           <div>
-            <h5 className="text-[11px] font-semibold tracking-[0.14em] text-brand-yellow mb-3.5">
+            <h5 className="mb-3.5 text-[11px] font-semibold tracking-[0.14em] text-brand-yellow">
               RESOURCES
             </h5>
-            {RESOURCE_LINKS.map((l) => (
+            {RESOURCE_LINKS.map((link) => (
               <Link
-                key={l.label}
-                href={l.href}
-                className="block text-xs text-white/55 leading-loose hover:text-white transition-colors"
+                key={link.label}
+                href={link.href}
+                className="block text-xs leading-loose text-white/55 transition-colors hover:text-white"
               >
-                {l.label}
+                {link.label}
               </Link>
             ))}
           </div>
 
-          {/* Contact col */}
           <div>
-            <h5 className="text-[11px] font-semibold tracking-[0.14em] text-brand-yellow mb-3.5">
+            <h5 className="mb-3.5 text-[11px] font-semibold tracking-[0.14em] text-brand-yellow">
               CONTACT
             </h5>
             <a
               href="mailto:teemo18420085181@gmail.com"
-              className="block text-xs text-white/55 leading-loose hover:text-white transition-colors"
+              className="block text-xs leading-loose text-white/55 transition-colors hover:text-white"
             >
               teemo18420085181@gmail.com
             </a>
-            <span className="block text-xs text-white/55 leading-loose">
-              Mon–Sat, 09:00–18:00 CST
+            <span className="block text-xs leading-loose text-white/55">
+              Mon-Sat, 09:00-18:00 CST
             </span>
             <Link
               href="/contact"
-              className="block text-xs text-brand-yellow/80 leading-loose hover:text-brand-yellow transition-colors mt-1"
+              className="mt-1 block text-xs leading-loose text-brand-yellow/80 transition-colors hover:text-brand-yellow"
             >
-              Get PCB Assembly Quote →
+              Get PCB Assembly Quote
             </Link>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="flex justify-between items-center pt-6 text-[11px] text-white/40 flex-wrap gap-2">
-          <span>© 2026 Huitai Electronics Technology Co., Ltd. All rights reserved.</span>
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-6 text-[11px] text-white/40">
+          <span>Copyright 2026 Huitai Electronics Technology Co., Ltd. All rights reserved.</span>
           <span className="flex gap-3">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-            <span>·</span>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
-            <span>·</span>
+            <Link href="/privacy" className="transition-colors hover:text-white">Privacy</Link>
+            <span>/</span>
+            <Link href="/terms" className="transition-colors hover:text-white">Terms</Link>
+            <span>/</span>
             <span>NDA Available</span>
           </span>
         </div>

@@ -7,7 +7,11 @@ export const metadata = {
   title: page.seoTitle,
   description: page.metaDescription,
   alternates: { canonical: 'https://huitaipcb.com/pcb-assembly-services' },
-  openGraph: { url: 'https://huitaipcb.com/pcb-assembly-services' },
+  openGraph: {
+    title: page.seoTitle,
+    description: page.metaDescription,
+    url: 'https://huitaipcb.com/pcb-assembly-services',
+  },
 };
 
 export default function PcbAssemblyServicesPage() {

@@ -7,7 +7,11 @@ export const metadata = {
   title: page.seoTitle,
   description: page.metaDescription,
   alternates: { canonical: 'https://huitaipcb.com/turnkey-pcb-assembly' },
-  openGraph: { url: 'https://huitaipcb.com/turnkey-pcb-assembly' },
+  openGraph: {
+    title: page.seoTitle,
+    description: page.metaDescription,
+    url: 'https://huitaipcb.com/turnkey-pcb-assembly',
+  },
 };
 
 export default function TurnkeyPcbAssemblyPage() {
