@@ -1,7 +1,7 @@
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 import Image from 'next/image';
 import Link from 'next/link';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
 import { getKnowledgeIndexArticles, type KnowledgeDisplayArticle } from '@/lib/content/articles';
 
 export const dynamic = 'force-dynamic';
@@ -11,15 +11,20 @@ export const metadata = {
   description:
     'Practical PCB assembly guides covering PCBA quote files, turnkey PCBA manufacturing, BOM best practices, Gerber preparation, prototype assembly, and sourcing review.',
   alternates: { canonical: 'https://huitaipcb.com/knowledge' },
-  openGraph: { url: 'https://huitaipcb.com/knowledge' },
+  openGraph: {
+    title: 'PCB Assembly Knowledge Base | PCBA Guides for Hardware Teams',
+    description:
+      'Practical PCB assembly guides for overseas buyers preparing Gerber files, BOM lists, sourcing requirements, testing plans, and PCBA quotations.',
+    url: 'https://huitaipcb.com/knowledge',
+  },
 };
 
 const COMING_SOON = [
   'How to write a functional test specification for your CM',
-  'Understanding IPC Class II vs Class III — when does it matter?',
+  'Understanding IPC Class II vs Class III: when does it matter?',
   'Surface finish comparison: HASL vs ENIG vs OSP',
   'How to manage component obsolescence in a long-run product',
-  'First article inspection (FAI) — what to check and when to require it',
+  'First article inspection (FAI): what to check and when to require it',
   'Rigid-flex design rules your CM actually wants you to follow',
 ];
 
@@ -76,8 +81,8 @@ export default async function KnowledgePage() {
             </h1>
             <p className="mx-auto max-w-[620px] text-base leading-relaxed text-white/70 md:text-lg">
               Practical articles covering everything from your first Gerber file
-              submission to managing volume production. New guides added regularly
-              based on what customers ask us most.
+              submission to managing volume production. New guides are based on
+              the questions overseas PCBA buyers ask before quotation.
             </p>
           </div>
         </section>
@@ -113,7 +118,7 @@ export default async function KnowledgePage() {
                     <div className="mt-4 flex items-center justify-between border-t border-line pt-4">
                       <span className="text-[11px] text-ink-muted">{article.readTime}</span>
                       <span className="text-xs font-medium text-brand-primary transition-colors group-hover:text-brand-green-dark">
-                        Read guide →
+                        Read guide &rarr;
                       </span>
                     </div>
                   </div>
@@ -137,7 +142,7 @@ export default async function KnowledgePage() {
                   <div className="grid gap-2.5 sm:grid-cols-2">
                     {COMING_SOON.map((title) => (
                       <div key={title} className="flex items-start gap-2 text-sm text-white/60">
-                        <span className="mt-0.5 flex-shrink-0 text-brand-yellow">•</span>
+                        <span className="mt-0.5 flex-shrink-0 text-brand-yellow">-</span>
                         {title}
                       </div>
                     ))}
@@ -155,7 +160,7 @@ export default async function KnowledgePage() {
                       href="/#customer-qa"
                       className="inline-block rounded-lg bg-brand-yellow px-5 py-2.5 text-xs font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
                     >
-                      Suggest a topic →
+                      Suggest a topic &rarr;
                     </Link>
                   </div>
                 </div>
