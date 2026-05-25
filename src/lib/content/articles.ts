@@ -27,65 +27,64 @@ const DEFAULT_CATEGORY_COLOR = 'bg-brand-primary/8 text-brand-primary border-bra
 
 const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
   'how-much-does-pcba-assembly-cost': {
-    image: '/factory/flow-01.png',
-    alt: 'Engineer reviewing BOM files, PCBA samples, and quotation documents for cost estimation',
+    image: '/factory/knowledge-covers/pcba-assembly-cost-cover.webp',
+    alt: 'PCBA assembly cost review with BOM, components, testing tools, and assembled boards',
   },
   'what-determines-pcb-assembly-quote-china': {
-    image: '/factory/engineer.png',
-    alt: 'PCBA engineer inspecting assembled circuit boards during China PCB assembly quotation review',
+    image: '/factory/knowledge-covers/pcb-assembly-quote-factors-china-cover.webp',
+    alt: 'PCBA quotation review with BOM, components, sample boards, and testing requirements',
   },
   'how-we-review-pcba-project-before-quotation': {
-    image: '/factory/board-1.png',
-    alt: 'Close-up PCBA board inspection used during engineering review before quotation',
+    image: '/factory/knowledge-covers/pcba-project-review-before-quote-cover.webp',
+    alt: 'Engineer reviewing PCBA samples and project files before quotation',
   },
   'bom-best-practices': {
-    image: '/factory/flow-02.png',
-    alt: 'Component reels and BOM sourcing review for PCB assembly quotation',
+    image: '/factory/knowledge-covers/bom-best-practices-pcba-cover.webp',
+    alt: 'Component reels and BOM documents prepared for PCBA sourcing review',
   },
   'bom-alternatives-pcba-sourcing': {
-    image: '/factory/real-reels.jpg',
-    alt: 'Electronic component reels used for PCBA sourcing and approved BOM alternatives',
+    image: '/factory/knowledge-covers/bom-alternatives-pcba-sourcing-cover.webp',
+    alt: 'Component reels and PCBA board used for BOM alternatives and sourcing review',
   },
   'pcba-testing-before-shipment': {
-    image: '/factory/testing.png',
+    image: '/factory/knowledge-covers/pcba-testing-before-shipment-cover.webp',
     alt: 'Functional testing probes checking an assembled PCBA board before shipment',
   },
   'how-to-choose-pcba-manufacturer-china': {
-    image: '/factory/real-smt-1.jpg',
-    alt: 'China SMT assembly workshop for evaluating a PCBA manufacturing supplier',
+    image: '/factory/knowledge-covers/choose-pcba-manufacturer-china-cover.webp',
+    alt: 'Engineer inspecting PCBA boards in a China SMT assembly workshop',
   },
   'what-files-required-pcba-quote': {
-    image: '/factory/flow-01.png',
-    alt: 'Gerber files, BOM list, and PCBA samples prepared for PCB assembly quotation',
+    image: '/factory/knowledge-covers/pcba-quote-required-files-cover.webp',
+    alt: 'Engineer reviewing Gerber files, BOM list, and PCBA samples for quotation',
   },
   'pcb-assembly-file-preparation-guide': {
-    image: '/factory/flow-03.png',
-    alt: 'PCB fabrication panel representing Gerber file preparation for PCBA manufacturing',
+    image: '/factory/knowledge-covers/pcb-assembly-file-preparation-cover.webp',
+    alt: 'Gerber files, BOM list, pick and place data, and PCBA sample prepared for assembly',
   },
   'pcba-quotation-checklist': {
-    image: '/factory/flow-08.png',
-    alt: 'Finished PCBA boards, test report, and packing documents for quotation checklist review',
+    image: '/factory/knowledge-covers/pcba-quotation-checklist-cover.webp',
+    alt: 'PCBA quotation checklist with Gerber files, BOM, sample board, and testing requirements',
   },
   'what-is-turnkey-pcba': {
-    image: '/factory/flow-04.png',
-    alt: 'SMT assembly process showing turnkey PCBA manufacturing workflow',
+    image: '/factory/knowledge-covers/turnkey-pcba-workflow-cover.webp',
+    alt: 'Turnkey PCBA workflow from assembly to testing and finished board delivery',
   },
   'prototype-vs-batch-pcb-assembly': {
-    image: '/factory/flow-07.png',
-    alt: 'Prototype PCBA board being assembled before low-volume or batch production',
+    image: '/factory/knowledge-covers/prototype-vs-batch-pcba-cover.webp',
+    alt: 'Prototype PCBA samples compared with low-volume batch assembly trays',
   },
 };
 
 function getArticleVisual(slug: string, customCover?: string | null) {
-  const mapped = ARTICLE_VISUALS[slug] || {
-    image: DEFAULT_IMAGE,
-    alt: DEFAULT_IMAGE_ALT,
-  };
+  const mapped = ARTICLE_VISUALS[slug];
+  if (mapped) return mapped;
+
   const cover = customCover?.trim();
 
   return {
-    image: cover && cover !== DEFAULT_IMAGE ? cover : mapped.image,
-    alt: mapped.alt,
+    image: cover && cover !== DEFAULT_IMAGE ? cover : DEFAULT_IMAGE,
+    alt: DEFAULT_IMAGE_ALT,
   };
 }
 
