@@ -33,7 +33,7 @@ function ArticleImage({ article }: { article: KnowledgeDisplayArticle }) {
     return (
       <img
         src={article.image}
-        alt={article.title}
+        alt={article.imageAlt}
         className="h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.04]"
       />
     );
@@ -42,7 +42,7 @@ function ArticleImage({ article }: { article: KnowledgeDisplayArticle }) {
   return (
     <Image
       src={article.image}
-      alt={article.title}
+      alt={article.imageAlt}
       fill
       className="object-cover opacity-90 transition-transform duration-500 group-hover:scale-[1.04]"
       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

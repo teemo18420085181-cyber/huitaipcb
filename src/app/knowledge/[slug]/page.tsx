@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: article.title,
       description: article.metaDescription,
       url: `https://huitaipcb.com/knowledge/${article.slug}`,
-      images: [article.image],
+      images: [{ url: imageUrl(article.image), alt: article.imageAlt }],
       type: 'article',
     },
   };
@@ -39,15 +39,15 @@ function imageUrl(src: string) {
   return src.startsWith('http') ? src : `https://huitaipcb.com${src}`;
 }
 
-function ArticleImage({ src, title }: { src: string; title: string }) {
+function ArticleImage({ src, alt }: { src: string; alt: string }) {
   if (src.startsWith('http')) {
-    return <img src={src} alt={title} className="h-full w-full object-cover" />;
+    return <img src={src} alt={alt} className="h-full w-full object-cover" />;
   }
 
   return (
     <Image
       src={src}
-      alt={title}
+      alt={alt}
       fill
       className="object-cover"
       sizes="(max-width: 1024px) 100vw, 700px"
@@ -161,7 +161,7 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
             <div className="mx-auto grid max-w-[980px] gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
               <div className="overflow-hidden rounded-2xl border border-line bg-white">
                 <div className="relative h-64 bg-brand-primary-dark">
-                  <ArticleImage src={article.image} title={article.title} />
+                  <ArticleImage src={article.image} alt={article.imageAlt} />
                 </div>
                 <div className="p-7 md:p-9">
                   <div className="space-y-5 text-sm leading-7 text-ink-muted">
