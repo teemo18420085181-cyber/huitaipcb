@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { ArrowRight, Construction } from 'lucide-react';
+import TrackedLink from '@/components/TrackedLink';
 
 interface PageShellProps {
   eyebrow: string;
@@ -89,13 +89,15 @@ export default function PageShell({
           <p className="text-sm text-ink-muted leading-relaxed max-w-[520px] mx-auto mb-6">
             {comingSoonText}
           </p>
-          <Link
+          <TrackedLink
             href="/contact"
+            eventName="click_contact_button"
+            eventParams={{ location: 'page_shell_placeholder', destination: '/contact', cta_text: 'Send us your inquiry' }}
             className="inline-flex items-center gap-2 bg-brand-primary text-white text-sm font-medium py-3 px-6 rounded-lg hover:bg-brand-primary-light transition-colors"
           >
             Send us your inquiry
             <ArrowRight size={15} strokeWidth={2.5} />
-          </Link>
+          </TrackedLink>
         </div>
       </section>
     </main>

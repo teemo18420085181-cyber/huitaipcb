@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import TrackedLink from '@/components/TrackedLink';
+import TrackedAnchor from '@/components/TrackedAnchor';
 
 const SERVICES_LINKS = [
   { label: 'Turnkey PCBA Manufacturing', href: '/turnkey-pcb-assembly' },
@@ -79,21 +81,25 @@ export default function Footer() {
             <h5 className="mb-3.5 text-[11px] font-semibold tracking-[0.14em] text-brand-yellow">
               CONTACT
             </h5>
-            <a
+            <TrackedAnchor
               href="mailto:teemo18420085181@gmail.com"
+              eventName="click_email"
+              eventParams={{ location: 'footer', contact_method: 'email' }}
               className="block text-xs leading-loose text-white/55 transition-colors hover:text-white"
             >
               teemo18420085181@gmail.com
-            </a>
+            </TrackedAnchor>
             <span className="block text-xs leading-loose text-white/55">
               Mon-Sat, 09:00-18:00 CST
             </span>
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName="click_quote_button"
+              eventParams={{ location: 'footer', destination: '/contact' }}
               className="mt-1 block text-xs leading-loose text-brand-yellow/80 transition-colors hover:text-brand-yellow"
             >
               Get PCB Assembly Quote
-            </Link>
+            </TrackedLink>
           </div>
         </div>
 

@@ -13,7 +13,7 @@ declare global {
 
 export function trackEvent(name: string, params?: Record<string, string | number | boolean>) {
   if (typeof window === 'undefined' || !window.gtag) return;
-  if (process.env.NEXT_PUBLIC_GA_ENABLE_EVENTS !== 'true') return;
+  if (process.env.NEXT_PUBLIC_GA_ENABLE_EVENTS === 'false') return;
   window.gtag('event', name, params || {});
 }
 

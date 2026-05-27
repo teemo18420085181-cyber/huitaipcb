@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import TrackedLink from '@/components/TrackedLink';
 
 const FLOW = [
   {
@@ -161,13 +161,15 @@ export default function FlowShowcase() {
           <p className="text-sm text-ink-muted mb-5">
             Ready to see how this works for your project?
           </p>
-          <Link
+          <TrackedLink
             href="/contact"
+            eventName="click_upload_gerber_bom"
+            eventParams={{ location: 'home_flow_showcase', destination: '/contact' }}
             className="inline-flex items-center gap-2 bg-brand-primary text-white text-sm font-semibold py-3.5 px-8 rounded-xl hover:bg-brand-primary-light hover:-translate-y-0.5 transition-all"
             style={{ boxShadow: '0 4px 24px rgba(39,33,91,.25)' }}
           >
             Upload Gerber &amp; BOM →
-          </Link>
+          </TrackedLink>
         </div>
       </div>
     </section>

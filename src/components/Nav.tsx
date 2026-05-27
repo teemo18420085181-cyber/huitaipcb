@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Upload } from 'lucide-react';
+import TrackedLink from '@/components/TrackedLink';
 
 const NAV_ITEMS = [
   { name: 'Services', href: '/services' },
@@ -66,19 +67,23 @@ export default function Nav() {
       </div>
 
       <div className="flex items-center gap-2.5">
-        <Link
+        <TrackedLink
           href="/contact"
+          eventName="click_quote_button"
+          eventParams={{ location: 'nav', destination: '/contact' }}
           className="text-xs text-brand-primary font-medium py-2 px-4 rounded-lg border border-line hover:border-brand-primary transition-all hidden sm:inline-block"
         >
           Get PCB Assembly Quote
-        </Link>
-        <Link
+        </TrackedLink>
+        <TrackedLink
           href="/contact"
+          eventName="click_upload_gerber_bom"
+          eventParams={{ location: 'nav', destination: '/contact' }}
           className="text-xs text-white font-medium py-2 px-4 rounded-lg bg-brand-primary hover:bg-brand-primary-light hover:-translate-y-0.5 transition-all inline-flex items-center gap-1.5"
         >
           <Upload size={13} strokeWidth={2.5} />
           Upload Gerber &amp; BOM
-        </Link>
+        </TrackedLink>
       </div>
     </nav>
   );

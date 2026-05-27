@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import TrackedLink from '@/components/TrackedLink';
 
 export const metadata = {
   title: 'PCBA Services Overview | Huitai Electronics',
@@ -106,12 +107,22 @@ export default function ServicesPage() {
               DIP assembly, inspection, testing, packaging, and finished board shipment.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/contact" className="rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5">
+              <TrackedLink
+                href="/contact"
+                eventName="click_quote_button"
+                eventParams={{ location: 'services_hero', destination: '/contact' }}
+                className="rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
+              >
                 Get PCB Assembly Quote
-              </Link>
-              <Link href="/contact" className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/50">
+              </TrackedLink>
+              <TrackedLink
+                href="/contact"
+                eventName="click_upload_gerber_bom"
+                eventParams={{ location: 'services_hero', destination: '/contact' }}
+                className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/50"
+              >
                 Upload Gerber &amp; BOM
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </section>
@@ -163,9 +174,14 @@ export default function ServicesPage() {
             <p className="mx-auto mb-6 max-w-[560px] text-sm leading-7 text-white/70">
               Upload your Gerber files, BOM list, quantity, and testing requirements. We will review the available information before quotation.
             </p>
-            <Link href="/contact" className="inline-flex rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5">
+            <TrackedLink
+              href="/contact"
+              eventName="click_upload_gerber_bom"
+              eventParams={{ location: 'services_bottom_cta', destination: '/contact' }}
+              className="inline-flex rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
+            >
               Upload Gerber &amp; BOM
-            </Link>
+            </TrackedLink>
           </div>
         </section>
       </main>

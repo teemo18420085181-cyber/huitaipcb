@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import TrackedLink from '@/components/TrackedLink';
 import type { SeoLandingPage as SeoLandingPageData } from '@/lib/content/seoPages';
 
 function buildServiceSchema(page: SeoLandingPageData) {
@@ -76,12 +77,22 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
               {page.intro}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/contact" className="rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5">
+              <TrackedLink
+                href="/contact"
+                eventName="click_quote_button"
+                eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact' }}
+                className="rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
+              >
                 Get PCB Assembly Quote
-              </Link>
-              <Link href="/contact" className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/50">
+              </TrackedLink>
+              <TrackedLink
+                href="/contact"
+                eventName="click_upload_gerber_bom"
+                eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact' }}
+                className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/50"
+              >
                 Upload Gerber &amp; BOM
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </section>
@@ -160,9 +171,14 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
               <section className="rounded-2xl border border-brand-primary/10 bg-brand-primary p-7 text-white">
                 <h2 className="mb-3 text-2xl font-semibold">{ctaHeading}</h2>
                 <p className="mb-5 max-w-[720px] text-sm leading-7 text-white/70">{ctaBody}</p>
-                <Link href="/contact" className="inline-flex rounded-lg bg-brand-yellow px-5 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5">
+                <TrackedLink
+                  href="/contact"
+                  eventName="click_upload_gerber_bom"
+                  eventParams={{ location: 'service_bottom_cta', page_slug: page.slug, destination: '/contact' }}
+                  className="inline-flex rounded-lg bg-brand-yellow px-5 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
+                >
                   Upload Gerber &amp; BOM
-                </Link>
+                </TrackedLink>
               </section>
             </div>
 
@@ -176,9 +192,14 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
               <p className="mb-5 text-sm leading-6 text-ink-muted">
                 Send Gerber files, BOM lists, PCB drawings, sample photos, schematic if available, assembly requirements, and testing requirements.
               </p>
-              <Link href="/contact" className="inline-flex w-full justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-light">
+              <TrackedLink
+                href="/contact"
+                eventName="click_quote_button"
+                eventParams={{ location: 'service_sidebar', page_slug: page.slug, destination: '/contact' }}
+                className="inline-flex w-full justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-light"
+              >
                 Request a PCBA Quote
-              </Link>
+              </TrackedLink>
               <div className="mt-5 border-t border-line pt-5 text-xs leading-6 text-ink-muted">
                 <div className="mb-2 font-semibold text-brand-primary">Related pages</div>
                 <div className="space-y-1.5">

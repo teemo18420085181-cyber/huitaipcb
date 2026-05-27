@@ -1,5 +1,5 @@
 import { Upload } from 'lucide-react';
-import Link from 'next/link';
+import TrackedLink from '@/components/TrackedLink';
 
 export default function FinalCTA() {
   return (
@@ -23,17 +23,24 @@ export default function FinalCTA() {
           and respond with the next questions, scope, and lead time for a full turnkey quote.
         </p>
         <div className="flex gap-3 justify-center flex-wrap">
-          <Link
+          <TrackedLink
             href="/contact"
+            eventName="click_upload_gerber_bom"
+            eventParams={{ location: 'final_cta', destination: '/contact' }}
             className="bg-brand-yellow text-brand-primary text-[13px] font-semibold py-3 px-6 rounded-[9px] cursor-pointer border-0 inline-flex items-center gap-2 hover:-translate-y-0.5 transition-all"
             style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}
           >
             <Upload size={16} strokeWidth={2.5} />
             Upload Gerber &amp; BOM
-          </Link>
-          <Link href="/contact" className="bg-transparent text-white text-[13px] py-3 px-5 rounded-[10px] border border-white/20 cursor-pointer hover:border-white/40 transition-all">
+          </TrackedLink>
+          <TrackedLink
+            href="/contact"
+            eventName="click_contact_button"
+            eventParams={{ location: 'final_cta', destination: '/contact', cta_text: 'Talk to Engineering' }}
+            className="bg-transparent text-white text-[13px] py-3 px-5 rounded-[10px] border border-white/20 cursor-pointer hover:border-white/40 transition-all"
+          >
             Talk to Engineering
-          </Link>
+          </TrackedLink>
         </div>
       </div>
     </section>

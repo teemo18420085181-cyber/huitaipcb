@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import TrackedLink from '@/components/TrackedLink';
 import { getKnowledgeDisplayArticle } from '@/lib/content/articles';
 import { extractFaqItemsFromMarkdown } from '@/lib/content/faq';
 
@@ -213,12 +214,14 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
                 <p className="mb-5 text-sm leading-6 text-ink-muted">
                   Upload Gerber, BOM, drawings, sample photos, or testing requirements for engineering review.
                 </p>
-                <Link
+                <TrackedLink
                   href="/contact"
+                  eventName="click_upload_gerber_bom"
+                  eventParams={{ location: 'knowledge_article_sidebar', article_slug: article.slug, destination: '/contact' }}
                   className="inline-flex w-full justify-center rounded-lg bg-brand-yellow px-5 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
                 >
                   Upload Gerber & BOM
-                </Link>
+                </TrackedLink>
               </aside>
             </div>
           </section>

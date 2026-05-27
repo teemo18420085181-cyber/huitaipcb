@@ -1,7 +1,7 @@
 'use client';
 
 import { Upload, Play, Check } from 'lucide-react';
-import Link from 'next/link';
+import TrackedLink from '@/components/TrackedLink';
 
 const PROCESS_STEPS = [
   { step: '01', name: 'Files & DFM Review', meta: 'Completed', status: 'done' },
@@ -49,21 +49,25 @@ export default function Hero() {
           </p>
 
           <div className="mb-12 flex flex-wrap gap-3">
-            <Link
+            <TrackedLink
               href="/contact"
+              eventName="click_quote_button"
+              eventParams={{ location: 'home_hero', destination: '/contact' }}
               className="inline-flex items-center gap-2 rounded-[9px] bg-brand-yellow px-5 py-3 text-[13px] font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
               style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}
             >
               <Upload size={16} strokeWidth={2.5} />
               Get PCB Assembly Quote
-            </Link>
-            <Link
+            </TrackedLink>
+            <TrackedLink
               href="/contact"
+              eventName="click_upload_gerber_bom"
+              eventParams={{ location: 'home_hero', destination: '/contact' }}
               className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-transparent px-5 py-3 text-xs text-white transition-all hover:border-white/40"
             >
               <Play size={13} strokeWidth={2.5} />
               Upload Gerber &amp; BOM
-            </Link>
+            </TrackedLink>
           </div>
 
           <div className="flex flex-wrap items-center gap-3.5">
