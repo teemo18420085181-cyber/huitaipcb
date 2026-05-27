@@ -21,6 +21,7 @@ export default function Analytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || process.env.NEXT_PUBLIC_GA_ID;
   const pathname = usePathname();
   const initialPathRef = useRef<string | null>(null);
+  const contactPageTrackedRef = useRef<string | null>(null);
 
   useEffect(() => {
     if (!gaId) return;
@@ -33,6 +34,39 @@ export default function Analytics() {
     }
 
     window.gtag?.('config', gaId, { page_path: pagePath });
+  }, [gaId, pathname]);
+
+  useEffect(() => {
+    if (!gaId) return;
+
+    if (pathname !== '/contact') {
+      contactPageTrackedRef.current = null;
+      return;
+    }
+
+    if (contactPageTrackedRef.current === pathname) return;
+    contactPageTrackedRef.current = pathname;
+
+    let attempts = 0;
+    let timer: number | null = null;
+
+    const sendContactPageView = () => {
+      if (window.gtag) {
+        trackEvent('contact_page_view', { page_path: '/contact' });
+        return;
+      }
+
+      attempts += 1;
+      if (attempts <= 10) {
+        timer = window.setTimeout(sendContactPageView, 250);
+      }
+    };
+
+    sendContactPageView();
+
+    return () => {
+      if (timer) window.clearTimeout(timer);
+    };
   }, [gaId, pathname]);
 
   if (!gaId) return null;

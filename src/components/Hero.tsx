@@ -51,7 +51,7 @@ export default function Hero() {
           <div className="mb-12 flex flex-wrap gap-3">
             <TrackedLink
               href="/contact"
-              eventName="click_quote_button"
+              eventName="quote_click"
               eventParams={{ location: 'home_hero', destination: '/contact' }}
               className="inline-flex items-center gap-2 rounded-[9px] bg-brand-yellow px-5 py-3 text-[13px] font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
               style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}
@@ -61,7 +61,7 @@ export default function Hero() {
             </TrackedLink>
             <TrackedLink
               href="/contact"
-              eventName="click_upload_gerber_bom"
+              eventName="upload_gerber_bom_click"
               eventParams={{ location: 'home_hero', destination: '/contact' }}
               className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-transparent px-5 py-3 text-xs text-white transition-all hover:border-white/40"
             >

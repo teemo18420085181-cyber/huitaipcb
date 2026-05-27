@@ -216,7 +216,7 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
                 </p>
                 <TrackedLink
                   href="/contact"
-                  eventName="click_upload_gerber_bom"
+                  eventName="upload_gerber_bom_click"
                   eventParams={{ location: 'knowledge_article_sidebar', article_slug: article.slug, destination: '/contact' }}
                   className="inline-flex w-full justify-center rounded-lg bg-brand-yellow px-5 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
                 >

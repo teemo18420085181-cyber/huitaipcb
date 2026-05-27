@@ -69,7 +69,7 @@ export default function Nav() {
       <div className="flex items-center gap-2.5">
         <TrackedLink
           href="/contact"
-          eventName="click_quote_button"
+          eventName="quote_click"
           eventParams={{ location: 'nav', destination: '/contact' }}
           className="text-xs text-brand-primary font-medium py-2 px-4 rounded-lg border border-line hover:border-brand-primary transition-all hidden sm:inline-block"
         >
@@ -77,7 +77,7 @@ export default function Nav() {
         </TrackedLink>
         <TrackedLink
           href="/contact"
-          eventName="click_upload_gerber_bom"
+          eventName="upload_gerber_bom_click"
           eventParams={{ location: 'nav', destination: '/contact' }}
           className="text-xs text-white font-medium py-2 px-4 rounded-lg bg-brand-primary hover:bg-brand-primary-light hover:-translate-y-0.5 transition-all inline-flex items-center gap-1.5"
         >

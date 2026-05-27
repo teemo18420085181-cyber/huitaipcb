@@ -125,7 +125,7 @@ export default function CapabilitiesPage() {
             <div className="absolute -top-[80px] -right-[80px] w-[200px] h-[200px] rounded-full opacity-20" style={{ background: '#FCEA0B', filter: 'blur(60px)' }} />
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">Not sure which spec fits your design?</h2>
             <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Upload your Gerber files and our engineering team will review your design and recommend the right process before quotation.</p>
-            <TrackedLink href="/contact" eventName="click_upload_gerber_bom" eventParams={{ location: 'capabilities_bottom_cta', destination: '/contact' }} className="inline-flex items-center gap-2 bg-brand-yellow text-brand-primary text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
+            <TrackedLink href="/contact" eventName="upload_gerber_bom_click" eventParams={{ location: 'capabilities_bottom_cta', destination: '/contact' }} className="inline-flex items-center gap-2 bg-brand-yellow text-brand-primary text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
               Upload Gerber & BOM →
             </TrackedLink>
           </div>

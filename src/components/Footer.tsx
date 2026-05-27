@@ -83,7 +83,7 @@ export default function Footer() {
             </h5>
             <TrackedAnchor
               href="mailto:teemo18420085181@gmail.com"
-              eventName="click_email"
+              eventName="email_click"
               eventParams={{ location: 'footer', contact_method: 'email' }}
               className="block text-xs leading-loose text-white/55 transition-colors hover:text-white"
             >
@@ -94,7 +94,7 @@ export default function Footer() {
             </span>
             <TrackedLink
               href="/contact"
-              eventName="click_quote_button"
+              eventName="quote_click"
               eventParams={{ location: 'footer', destination: '/contact' }}
               className="mt-1 block text-xs leading-loose text-brand-yellow/80 transition-colors hover:text-brand-yellow"
             >

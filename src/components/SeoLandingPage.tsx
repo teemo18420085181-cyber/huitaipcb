@@ -79,7 +79,7 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
             <div className="mt-8 flex flex-wrap gap-3">
               <TrackedLink
                 href="/contact"
-                eventName="click_quote_button"
+                eventName="quote_click"
                 eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact' }}
                 className="rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
               >
@@ -87,7 +87,7 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
               </TrackedLink>
               <TrackedLink
                 href="/contact"
-                eventName="click_upload_gerber_bom"
+                eventName="upload_gerber_bom_click"
                 eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact' }}
                 className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/50"
               >
@@ -173,7 +173,7 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
                 <p className="mb-5 max-w-[720px] text-sm leading-7 text-white/70">{ctaBody}</p>
                 <TrackedLink
                   href="/contact"
-                  eventName="click_upload_gerber_bom"
+                  eventName="upload_gerber_bom_click"
                   eventParams={{ location: 'service_bottom_cta', page_slug: page.slug, destination: '/contact' }}
                   className="inline-flex rounded-lg bg-brand-yellow px-5 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
                 >
@@ -194,7 +194,7 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
               </p>
               <TrackedLink
                 href="/contact"
-                eventName="click_quote_button"
+                eventName="quote_click"
                 eventParams={{ location: 'service_sidebar', page_slug: page.slug, destination: '/contact' }}
                 className="inline-flex w-full justify-center rounded-lg bg-brand-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-primary-light"
               >

@@ -132,7 +132,7 @@ export default function IndustriesPage() {
             <div className="absolute -top-[80px] -right-[80px] w-[200px] h-[200px] rounded-full opacity-20" style={{ background: '#FCEA0B', filter: 'blur(60px)' }} />
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">Don&apos;t see your industry listed?</h2>
             <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Send us your Gerber files and we&apos;ll confirm if we can manufacture your board. If we&apos;ve never made a board like it, we&apos;ll tell you upfront.</p>
-            <TrackedLink href="/contact" eventName="click_contact_button" eventParams={{ location: 'industries_bottom_cta', destination: '/contact', cta_text: 'Send us your project' }} className="inline-flex items-center gap-2 bg-brand-yellow text-brand-primary text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
+            <TrackedLink href="/contact" eventName="quote_click" eventParams={{ location: 'industries_bottom_cta', destination: '/contact', button_text: 'Send us your project' }} className="inline-flex items-center gap-2 bg-brand-yellow text-brand-primary text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
               Send us your project →
             </TrackedLink>
           </div>

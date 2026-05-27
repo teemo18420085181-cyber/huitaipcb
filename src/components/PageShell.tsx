@@ -91,8 +91,8 @@ export default function PageShell({
           </p>
           <TrackedLink
             href="/contact"
-            eventName="click_contact_button"
-            eventParams={{ location: 'page_shell_placeholder', destination: '/contact', cta_text: 'Send us your inquiry' }}
+            eventName="quote_click"
+            eventParams={{ location: 'page_shell_placeholder', destination: '/contact', button_text: 'Send us your inquiry' }}
             className="inline-flex items-center gap-2 bg-brand-primary text-white text-sm font-medium py-3 px-6 rounded-lg hover:bg-brand-primary-light transition-colors"
           >
             Send us your inquiry

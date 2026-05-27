@@ -42,8 +42,6 @@ export default function InquiryForm() {
 
     const formData = new FormData(e.currentTarget);
     files.forEach((f) => formData.append('files', f));
-    trackEvent('submit_rfq_attempt', { file_count: files.length, location: 'contact_form' });
-
     try {
       const res = await fetch('/api/inquiry', {
         method: 'POST',
@@ -56,7 +54,7 @@ export default function InquiryForm() {
         return;
       }
       setSubmitted(true);
-      trackEvent('submit_rfq', { file_count: files.length, location: 'contact_form' });
+      trackEvent('contact_form_submit', { form_name: 'rfq_contact_form', page_path: '/contact' });
       trackEvent('generate_lead', { file_count: files.length, method: 'contact_form' });
     } catch (err) {
       setError('Network error. Please try again.');
@@ -218,7 +216,6 @@ export default function InquiryForm() {
       <button
         type="submit"
         disabled={submitting}
-        onClick={() => trackEvent('click_submit_rfq_button', { file_count: files.length, location: 'contact_form' })}
         className="w-full bg-brand-primary text-white font-semibold py-3.5 rounded-lg hover:bg-brand-primary-light transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
       >
         {submitting ? (

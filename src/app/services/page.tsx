@@ -109,7 +109,7 @@ export default function ServicesPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <TrackedLink
                 href="/contact"
-                eventName="click_quote_button"
+                eventName="quote_click"
                 eventParams={{ location: 'services_hero', destination: '/contact' }}
                 className="rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
               >
@@ -117,7 +117,7 @@ export default function ServicesPage() {
               </TrackedLink>
               <TrackedLink
                 href="/contact"
-                eventName="click_upload_gerber_bom"
+                eventName="upload_gerber_bom_click"
                 eventParams={{ location: 'services_hero', destination: '/contact' }}
                 className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/50"
               >
@@ -176,7 +176,7 @@ export default function ServicesPage() {
             </p>
             <TrackedLink
               href="/contact"
-              eventName="click_upload_gerber_bom"
+              eventName="upload_gerber_bom_click"
               eventParams={{ location: 'services_bottom_cta', destination: '/contact' }}
               className="inline-flex rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
             >

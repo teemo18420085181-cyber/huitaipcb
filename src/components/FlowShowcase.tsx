@@ -163,7 +163,7 @@ export default function FlowShowcase() {
           </p>
           <TrackedLink
             href="/contact"
-            eventName="click_upload_gerber_bom"
+            eventName="upload_gerber_bom_click"
             eventParams={{ location: 'home_flow_showcase', destination: '/contact' }}
             className="inline-flex items-center gap-2 bg-brand-primary text-white text-sm font-semibold py-3.5 px-8 rounded-xl hover:bg-brand-primary-light hover:-translate-y-0.5 transition-all"
             style={{ boxShadow: '0 4px 24px rgba(39,33,91,.25)' }}
