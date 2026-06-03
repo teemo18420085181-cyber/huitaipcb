@@ -4,6 +4,20 @@ import { useState, useRef } from 'react';
 import { Upload, X, FileText, CheckCircle, Loader2 } from 'lucide-react';
 import { trackEvent } from '@/components/Analytics';
 
+function getQuantityRange(quantity: FormDataEntryValue | null) {
+  const value = typeof quantity === 'string' ? quantity : '';
+  const firstNumber = value.match(/\d+/)?.[0];
+  if (!firstNumber) return 'unspecified';
+
+  const amount = Number(firstNumber);
+  if (amount <= 10) return '1-10';
+  if (amount <= 50) return '11-50';
+  if (amount <= 100) return '51-100';
+  if (amount <= 500) return '101-500';
+  if (amount <= 1000) return '501-1000';
+  return '1000+';
+}
+
 export default function InquiryForm() {
   const [files, setFiles] = useState<File[]>([]);
   const [submitting, setSubmitting] = useState(false);
@@ -54,8 +68,20 @@ export default function InquiryForm() {
         return;
       }
       setSubmitted(true);
-      trackEvent('contact_form_submit', { form_name: 'rfq_contact_form', page_path: '/contact' });
-      trackEvent('generate_lead', { file_count: files.length, method: 'contact_form' });
+      const projectType = formData.get('project_type');
+      const quantity = formData.get('quantity');
+      void trackEvent('contact_form_submit', {
+        page_path: '/contact',
+        form_name: 'rfq_contact_form',
+        project_type: typeof projectType === 'string' && projectType.trim() ? projectType.trim().slice(0, 80) : 'unspecified',
+        quantity_range: getQuantityRange(quantity),
+        has_attachment: files.length > 0,
+      });
+      void trackEvent('generate_lead', {
+        page_path: '/contact',
+        form_name: 'rfq_contact_form',
+        lead_type: 'pcba_quote',
+      });
     } catch (err) {
       setError('Network error. Please try again.');
       setSubmitting(false);
