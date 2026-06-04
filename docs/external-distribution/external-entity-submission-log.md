@@ -78,35 +78,50 @@ This log records read-only platform checks and local draft preparation for exter
 
 - Platform: Circuit Insight Supplier / Directory Listing Submit
 - URL: https://www.circuitinsight.com/web/submit.html
-- Status: Public directory listing submission form found. The form says new listing requests are reviewed before being added.
+- Status: Submitted / pending review. Public directory listing submission form was found and prepared as a browser draft on 2026-06-04. The user manually completed reCAPTCHA and clicked Submit. The confirmation page displayed: "Thank Your For Submitting Your Business. We review each new business listing or business listing update. If we accept your listing, or update, we'll send you a confirmation email with details."
 - Free or paid: No payment flow was seen on the submission page. Pricing was not explicitly confirmed during the read-only check.
 - Login required: No login was visible before the form. The form includes reCAPTCHA and a final Submit button.
 - Website link supported: Yes. The form includes Business Website and Website Links fields.
-- Draft prepared: Yes, local draft only. The external form was not submitted.
-- Submitted or not: Not submitted.
-- Current stopping point: Stopped before reCAPTCHA and final Submit.
-- Required user confirmation: Confirm contact person name, submission email, exact business address, logo file under the stated size limit, optional social links, and approval to submit the listing request.
-- Risk: The form submits to the directory operator for review; reCAPTCHA and email confirmation may be required. The business description has a 250-word limit.
-- Suggested next action: Use Circuit Insight first if the user can provide the contact name, company email, exact address, and logo; then manually confirm before clicking Submit.
+- Draft prepared: Yes. Local draft was prepared, safe text fields were filled in the browser form, and final submission was completed manually by the user.
+- Submitted or not: Submitted on 2026-06-04; pending review.
+- Current stopping point: Submission confirmation page reached. Awaiting Circuit Insight review and possible confirmation email.
+- Required user confirmation: Monitor the submission email for any acceptance, update link, correction request, or rejection notice.
+- Risk: Listing is not public yet. Circuit Insight may accept, reject, or request updates before publishing the directory listing.
+- Suggested next action: Wait for the Circuit Insight confirmation email. If accepted, record the public listing URL once provided or discoverable.
 
 ### Circuit Insight Local Draft
 
 - Business Name: Huitai Electronics
 - Business Description: Huitai Electronics is a Shenzhen-based PCBA manufacturing service provider offering turnkey PCBA manufacturing in China. Service scope includes PCB fabrication, BOM sourcing, SMT assembly, DIP assembly, inspection, testing, and finished PCBA delivery. The company works with overseas B2B customers that need engineering review, quotation support, component sourcing coordination, and assembled circuit board delivery.
-- Business Address: Shenzhen, China. Exact company address requires user confirmation.
+- Business Address: Building D, 4F, Zhaochang Industrial Park, Gonghe Industrial Road, Shajing, Bao'an District, Shenzhen, China
 - Business Website: https://huitaipcb.com
-- Business Logo: User confirmation needed. Recommended: public logo image under 1 MB in PNG or JPG format.
-- Keywords and Phrases: Turnkey PCBA manufacturing; PCB fabrication; PCB assembly; SMT assembly; DIP assembly; BOM sourcing; Component sourcing; Functional testing; PCBA testing; Finished PCBA delivery; Gerber review; BOM review; Prototype PCBA; Low-volume PCBA; China PCBA manufacturer; Shenzhen electronics manufacturing.
+- Business Logo: Not uploaded. User confirmation needed before selecting a public logo image under 1 MB in PNG, JPG, or GIF format.
+- Keywords and Phrases: Turnkey PCBA manufacturing, PCB fabrication, PCB assembly, SMT assembly, DIP assembly, BOM sourcing, component sourcing, functional testing, PCBA testing, Gerber review, BOM review, prototype PCBA, low-volume PCBA, China PCBA manufacturer, Shenzhen electronics manufacturing
 - Website Links:
   - Huitai Electronics: https://huitaipcb.com
   - PCBA Quote File Checklist: https://huitaipcb.com/pcba-quote-file-checklist
   - BOM Sourcing for PCB Assembly: https://huitaipcb.com/bom-sourcing-pcb-assembly
   - Turnkey PCB Assembly: https://huitaipcb.com/turnkey-pcb-assembly
   - Contact Huitai Electronics: https://huitaipcb.com/contact
-- Social Media Links: User confirmation needed.
-- Your Name: User confirmation needed.
-- Your Email: User confirmation needed.
-- Comments: Please review this listing request for Huitai Electronics, operated by Shenzhen Huitai Electronics Technology Co., Ltd. The company provides turnkey PCBA manufacturing in China for overseas B2B customers.
+- Social Media Links: Left blank in the browser draft.
+- Your Name: Teemo
+- Your Email: teemo18420085181@gmail.com
+- Comments: Listing draft for Huitai Electronics, operated by Shenzhen Huitai Electronics Technology Co., Ltd. Please review the company profile for inclusion in the Circuit Insight Directory.
+
+### Circuit Insight Browser Draft Progress
+
+- Date: 2026-06-04
+- Form opened: Yes, https://www.circuitinsight.com/web/submit.html
+- Fields identified: business_name; business_description; business_address; business_website; business_logo; keywords; website_hyperlinks; social_hyperlinks; your_name; your_email; comments; g-recaptcha-response; submit.
+- Text fields filled: business_name; business_description; business_address; business_website; keywords; website_hyperlinks; your_name; your_email; comments.
+- Fields intentionally left blank: business_logo; social_hyperlinks; g-recaptcha-response.
+- Stopping point: User manually completed reCAPTCHA and clicked Submit after reviewing the browser draft.
+- Submission result page: "Thank Your For Submitting Your Business. We review each new business listing or business listing update. If we accept your listing, or update, we'll send you a confirmation email with details."
+- Submitted: Yes; pending review.
+- Public URL received: No.
+- Confirmation email promised: Yes, if Circuit Insight accepts the listing or update.
+- Registration performed: No.
+- Payment performed: No.
 
 ## Suggested Priority
 
