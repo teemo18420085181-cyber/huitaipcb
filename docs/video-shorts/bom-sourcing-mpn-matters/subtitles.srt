@@ -1,0 +1,27 @@
+1
+00:00:00,000 --> 00:00:03,000
+Why does MPN matter in PCBA BOM sourcing?
+
+2
+00:00:03,000 --> 00:00:08,000
+MPN means manufacturer part number. It identifies the exact component.
+
+3
+00:00:08,000 --> 00:00:14,000
+Without clear MPNs, suppliers may quote different brands, packages, or specifications.
+
+4
+00:00:14,000 --> 00:00:20,000
+Clear BOM data reduces sourcing risk, replacement confusion, and quotation delays.
+
+5
+00:00:20,000 --> 00:00:28,000
+A useful BOM includes MPN, quantity, package, reference designator, and acceptable alternatives.
+
+6
+00:00:28,000 --> 00:00:35,000
+For turnkey PCBA, send Gerber, BOM, quantity, and testing requirements for review.
+
+7
+00:00:35,000 --> 00:00:38,000
+Learn more at huitaipcb.com/bom-sourcing-pcb-assembly

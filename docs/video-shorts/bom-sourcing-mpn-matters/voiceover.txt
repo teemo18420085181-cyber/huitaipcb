@@ -1,0 +1,13 @@
+Why does MPN matter in PCBA BOM sourcing?
+
+MPN means manufacturer part number. It helps identify the exact component, not just a general part description.
+
+Without clear MPNs, suppliers may quote different brands, packages, tolerances, or electrical specifications.
+
+Clear BOM data helps reduce sourcing risk, replacement confusion, and quotation delays.
+
+A useful BOM should include MPN, quantity, package, reference designator, and acceptable alternatives.
+
+For turnkey PCBA, send Gerber, BOM, quantity, and testing requirements for review.
+
+Learn more at huitaipcb.com/bom-sourcing-pcb-assembly

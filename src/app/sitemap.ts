@@ -24,6 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/bom-sourcing-pcb-assembly',
     '/pcba-testing-quality-control',
     '/turnkey-pcb-assembly',
+    '/pcba-quote-file-checklist',
   ];
 
   const staticPages = pages.map((path) => ({
