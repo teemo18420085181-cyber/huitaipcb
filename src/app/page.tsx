@@ -22,8 +22,8 @@ const HOME_SERVICE_LINKS = [
 ];
 
 export const metadata = {
-  title: 'PCB Assembly Services & Turnkey PCBA Manufacturing in China | Huitai Electronics',
-  description: 'Huitai Electronics provides PCB assembly services and turnkey PCBA manufacturing in China, including PCB fabrication, component sourcing, SMT assembly, DIP assembly, functional testing, final assembly, and global delivery.',
+  title: 'PCB Assembly & Turnkey PCBA in China | Huitai Electronics',
+  description: 'Turnkey PCB assembly in China for overseas hardware teams. Gerber & BOM reviewed by engineers before quoting — no black-box pricing. Reply within 24h.',
   alternates: { canonical: 'https://huitaipcb.com/' },
   openGraph: { url: 'https://huitaipcb.com/' },
 };
