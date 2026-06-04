@@ -4,7 +4,7 @@ import Image from 'next/image';
 import TrackedLink from '@/components/TrackedLink';
 
 export const metadata = {
-  title: 'Capabilities — PCB & PCBA Technical Specs | OneStopPCBA',
+  title: 'Capabilities — PCB & PCBA Technical Specs | Huitai Electronics',
   description: 'PCB fabrication: 1-30 layers, HDI, Rogers, rigid-flex, aluminum MCPCB, impedance control. Full SMT assembly specs from Shenzhen.',
   alternates: { canonical: 'https://huitaipcb.com/capabilities' },
   openGraph: { url: 'https://huitaipcb.com/capabilities' },

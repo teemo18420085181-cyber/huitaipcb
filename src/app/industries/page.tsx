@@ -4,7 +4,7 @@ import Image from 'next/image';
 import TrackedLink from '@/components/TrackedLink';
 
 export const metadata = {
-  title: 'Industries We Serve | OneStopPCBA',
+  title: 'Industries We Serve | Huitai Electronics',
   description: 'Turnkey PCBA for industrial control, IoT, power electronics, LED, consumer electronics, automotive aftermarket, medical wearable, and test equipment.',
   alternates: { canonical: 'https://huitaipcb.com/industries' },
   openGraph: { url: 'https://huitaipcb.com/industries' },

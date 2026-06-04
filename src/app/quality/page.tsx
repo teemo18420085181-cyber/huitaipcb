@@ -4,7 +4,7 @@ import Image from 'next/image';
 import TrackedLink from '@/components/TrackedLink';
 
 export const metadata = {
-  title: 'Quality Control — 6-Layer Inspection | OneStopPCBA',
+  title: 'Quality Control — 6-Layer Inspection | Huitai Electronics',
   description: 'AOI, X-Ray BGA inspection, flying probe, ICT, functional testing and IQC options for PCB assembly projects that need documented quality control.',
   alternates: { canonical: 'https://huitaipcb.com/quality' },
   openGraph: { url: 'https://huitaipcb.com/quality' },

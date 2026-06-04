@@ -16,8 +16,8 @@ function buildServiceSchema(page: SeoLandingPageData) {
     url,
     provider: {
       '@type': 'Organization',
-      name: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
-      alternateName: 'Huitai Electronics',
+      name: 'Huitai Electronics',
+      legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
       url: 'https://huitaipcb.com',
     },
     areaServed: {

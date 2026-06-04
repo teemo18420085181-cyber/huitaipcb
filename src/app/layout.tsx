@@ -21,12 +21,12 @@ export const metadata: Metadata = {
     'PCB manufacturing',
     'Shenzhen PCB',
     'BOM sourcing',
-    'HuiTai Electronics',
+    'Huitai Electronics',
     'huitaipcb',
   ],
-  authors: [{ name: 'HuiTai Electronics', url: 'https://huitaipcb.com' }],
-  creator: 'HuiTai Electronics',
-  publisher: 'HuiTai Electronics',
+  authors: [{ name: 'Huitai Electronics', url: 'https://huitaipcb.com' }],
+  creator: 'Huitai Electronics',
+  publisher: 'Huitai Electronics',
   icons: {
     icon: '/logo.svg',
     shortcut: '/logo.svg',
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://huitaipcb.com',
-    siteName: 'HuiTai PCB',
-    title: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing',
+    siteName: 'Huitai Electronics',
+    title: 'Huitai Electronics | Turnkey PCB Assembly & Manufacturing',
     description:
       'Turnkey PCBA manufacturing support from Shenzhen, China, including PCB fabrication coordination, BOM sourcing, SMT assembly, DIP assembly, inspection, testing, and delivery.',
     images: [
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
         url: '/logo.svg',
         width: 800,
         height: 800,
-        alt: 'HuiTai Electronics - PCB & PCBA Manufacturing',
+        alt: 'Huitai Electronics - PCB & PCBA Manufacturing',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'HuiTai Electronics | Turnkey PCB Assembly & Manufacturing',
+    title: 'Huitai Electronics | Turnkey PCB Assembly & Manufacturing',
     description:
       'Turnkey PCBA manufacturing support from Shenzhen, China.',
     images: ['/logo.svg'],

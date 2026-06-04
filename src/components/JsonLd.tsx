@@ -3,7 +3,8 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': 'https://huitaipcb.com/#organization',
-    name: 'HuiTai Electronics',
+    name: 'Huitai Electronics',
+    legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
     alternateName: 'OneStopPCBA',
     url: 'https://huitaipcb.com',
     logo: {
@@ -13,7 +14,7 @@ export default function JsonLd() {
       height: 800,
     },
     description:
-      'HuiTai Electronics is a turnkey PCB and PCBA manufacturer in Shenzhen, China, providing PCB fabrication, SMT assembly, BOM sourcing, and box build services with fast turnaround and ISO quality.',
+      'Huitai Electronics is a turnkey PCB and PCBA manufacturer in Shenzhen, China, providing PCB fabrication, SMT assembly, BOM sourcing, and box build services with fast turnaround and ISO quality.',
     foundingDate: '2010',
     email: 'teemo18420085181@gmail.com',
     address: {
@@ -33,7 +34,7 @@ export default function JsonLd() {
     '@type': 'WebSite',
     '@id': 'https://huitaipcb.com/#website',
     url: 'https://huitaipcb.com',
-    name: 'HuiTai PCB',
+    name: 'Huitai Electronics',
     description: 'Turnkey PCB Assembly & Manufacturing from Shenzhen, China',
     publisher: {
       '@id': 'https://huitaipcb.com/#organization',
@@ -45,7 +46,9 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     '@id': 'https://huitaipcb.com/#localbusiness',
-    name: 'HuiTai Electronics',
+    name: 'Huitai Electronics',
+    legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
+    alternateName: 'OneStopPCBA',
     image: 'https://huitaipcb.com/logo.svg',
     url: 'https://huitaipcb.com',
     email: 'teemo18420085181@gmail.com',
