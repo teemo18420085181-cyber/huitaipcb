@@ -15,8 +15,6 @@ declare global {
 }
 
 const DEFAULT_EVENT_TIMEOUT_MS = 900;
-const DEFAULT_GTAG_WAIT_MS = 2500;
-const GTAG_RETRY_INTERVAL_MS = 150;
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || process.env.NEXT_PUBLIC_GA_ID;
 
 function getPagePath() {
@@ -50,67 +48,43 @@ function getEventParams(params?: EventParams): EventParams {
   return eventParams;
 }
 
-function ensureGtagQueue() {
-  window.dataLayer = window.dataLayer || [];
-
-  if (typeof window.gtag !== 'function') {
-    window.gtag = (...args: unknown[]) => {
-      window.dataLayer?.push(args);
-    };
-  }
-}
-
 export function trackEvent(
   name: string,
   params?: EventParams,
-  options?: { timeoutMs?: number; waitForGtagMs?: number },
-): Promise<boolean> {
-  if (typeof window === 'undefined') return Promise.resolve(false);
-  if (!GA_ID) return Promise.resolve(false);
-  if (process.env.NEXT_PUBLIC_GA_ENABLE_EVENTS === 'false') return Promise.resolve(false);
+  options?: { timeoutMs?: number },
+): boolean {
+  if (typeof window === 'undefined') return false;
 
-  ensureGtagQueue();
-
-  const startedAt = Date.now();
   const timeoutMs = options?.timeoutMs ?? DEFAULT_EVENT_TIMEOUT_MS;
-  const waitForGtagMs = options?.waitForGtagMs ?? DEFAULT_GTAG_WAIT_MS;
+  const eventParams = getEventParams(params);
 
-  return new Promise((resolve) => {
-    const trySend = () => {
-      if (typeof window.gtag !== 'function') {
-        if (Date.now() - startedAt >= waitForGtagMs) {
-          resolve(false);
-          return;
-        }
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', name, {
+      ...eventParams,
+      event_timeout: timeoutMs,
+    });
+    return true;
+  }
 
-        window.setTimeout(trySend, GTAG_RETRY_INTERVAL_MS);
-        return;
-      }
+  if (Array.isArray(window.dataLayer)) {
+    window.dataLayer.push({
+      event: name,
+      ...eventParams,
+    });
+    return true;
+  }
 
-      let resolved = false;
-      const finish = () => {
-        if (resolved) return;
-        resolved = true;
-        resolve(true);
-      };
+  if (process.env.NODE_ENV !== 'production') {
+    console.warn(`[GA4] skipped event "${name}" because gtag/dataLayer is not ready`);
+  }
 
-      window.setTimeout(finish, timeoutMs);
-      window.gtag('event', name, {
-        ...getEventParams(params),
-        event_callback: finish,
-        event_timeout: timeoutMs,
-      });
-    };
-
-    trySend();
-  });
+  return false;
 }
 
 export default function Analytics() {
   const gaId = GA_ID;
   const pathname = usePathname();
   const initialPathRef = useRef<string | null>(null);
-  const contactPageTrackedRef = useRef<string | null>(null);
 
   useEffect(() => {
     if (!gaId) return;
@@ -131,13 +105,8 @@ export default function Analytics() {
   useEffect(() => {
     if (!gaId) return;
 
-    if (pathname !== '/contact') {
-      contactPageTrackedRef.current = null;
-      return;
-    }
+    if (pathname !== '/contact') return;
 
-    if (contactPageTrackedRef.current === pathname) return;
-    contactPageTrackedRef.current = pathname;
     void trackEvent('contact_page_view', {
       page_path: '/contact',
       page_title: getPageTitle(),
@@ -152,10 +121,10 @@ export default function Analytics() {
       <Script id="ga4-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
+          window.gtag = function gtag(){window.dataLayer.push(arguments);}
           var gaDebug = new URLSearchParams(window.location.search).get('ga_debug') === '1' || window.localStorage.getItem('ga_debug') === 'true';
-          gtag('js', new Date());
-          gtag('config', '${gaId}', {
+          window.gtag('js', new Date());
+          window.gtag('config', '${gaId}', {
             page_path: window.location.pathname + window.location.search,
             ...(gaDebug ? { debug_mode: true } : {})
           });

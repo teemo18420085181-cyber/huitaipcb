@@ -7,9 +7,11 @@ import { trackEvent } from '@/components/Analytics';
 
 type TrackedLinkProps = LinkProps &
   AnchorHTMLAttributes<HTMLAnchorElement> & {
-    eventName: string;
+    eventName?: string;
     eventParams?: Record<string, string | number | boolean>;
   };
+
+const TRACKED_NAVIGATION_DELAY_MS = 200;
 
 function isModifiedClick(event: MouseEvent<HTMLAnchorElement>) {
   return event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
@@ -46,40 +48,44 @@ export default function TrackedLink({
 }: TrackedLinkProps) {
   const router = useRouter();
 
-  const handleClick = async (event: MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event);
     if (event.defaultPrevented) return;
+    if (!eventName) return;
 
     const link = event.currentTarget;
     const buttonText = link.textContent?.replace(/\s+/g, ' ').trim();
-    const trackingPromise = trackEvent(
-      eventName,
-      {
-        ...(eventParams || {}),
-        ...(buttonText ? { button_text: buttonText } : {}),
-      },
-      { timeoutMs: 700, waitForGtagMs: 700 },
-    );
+    const hrefString = hrefToString(href);
 
     if (isModifiedClick(event) || target === '_blank' || link.hasAttribute('download')) {
-      void trackingPromise;
+      trackEvent(eventName, {
+        ...(eventParams || {}),
+        ...(buttonText ? { button_text: buttonText } : {}),
+      });
       return;
     }
 
-    const hrefString = hrefToString(href);
     if (!hrefString || hrefString.startsWith('http') || hrefString.startsWith('mailto:') || hrefString.startsWith('tel:')) {
-      void trackingPromise;
+      trackEvent(eventName, {
+        ...(eventParams || {}),
+        ...(buttonText ? { button_text: buttonText } : {}),
+      });
       return;
     }
 
     event.preventDefault();
-    await trackingPromise;
+    trackEvent(eventName, {
+      ...(eventParams || {}),
+      ...(buttonText ? { button_text: buttonText } : {}),
+    });
 
-    if (replace) {
-      router.replace(hrefString, { scroll });
-    } else {
-      router.push(hrefString, { scroll });
-    }
+    window.setTimeout(() => {
+      if (replace) {
+        router.replace(hrefString, { scroll });
+      } else {
+        router.push(hrefString, { scroll });
+      }
+    }, TRACKED_NAVIGATION_DELAY_MS);
   };
 
   return <Link {...props} href={href} replace={replace} scroll={scroll} target={target} onClick={handleClick} />;

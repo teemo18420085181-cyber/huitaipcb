@@ -4,9 +4,11 @@ import type { AnchorHTMLAttributes, MouseEvent } from 'react';
 import { trackEvent } from '@/components/Analytics';
 
 type TrackedAnchorProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
-  eventName: string;
+  eventName?: string;
   eventParams?: Record<string, string | number | boolean>;
 };
+
+const TRACKED_ANCHOR_DELAY_MS = 180;
 
 export default function TrackedAnchor({
   eventName,
@@ -14,23 +16,20 @@ export default function TrackedAnchor({
   onClick,
   ...props
 }: TrackedAnchorProps) {
-  const handleClick = async (event: MouseEvent<HTMLAnchorElement>) => {
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event);
     if (event.defaultPrevented) return;
+    if (!eventName) return;
 
     const anchor = event.currentTarget;
     const href = anchor.getAttribute('href') || '';
     const buttonText = anchor.textContent?.replace(/\s+/g, ' ').trim();
     const email = href.startsWith('mailto:') ? href.replace(/^mailto:/, '').split('?')[0] : undefined;
-    const trackingPromise = trackEvent(
-      eventName,
-      {
-        ...(eventParams || {}),
-        ...(buttonText ? { button_text: buttonText } : {}),
-        ...(email ? { email } : {}),
-      },
-      { timeoutMs: 700, waitForGtagMs: 700 },
-    );
+    const params = {
+      ...(eventParams || {}),
+      ...(buttonText ? { button_text: buttonText } : {}),
+      ...(email ? { email } : {}),
+    };
 
     const shouldDelayDefault =
       !event.metaKey &&
@@ -43,13 +42,15 @@ export default function TrackedAnchor({
       (href.startsWith('mailto:') || href.startsWith('tel:'));
 
     if (!shouldDelayDefault) {
-      void trackingPromise;
+      trackEvent(eventName, params);
       return;
     }
 
     event.preventDefault();
-    await trackingPromise;
-    window.location.href = href;
+    trackEvent(eventName, params);
+    window.setTimeout(() => {
+      window.location.href = href;
+    }, TRACKED_ANCHOR_DELAY_MS);
   };
 
   return <a {...props} onClick={handleClick} />;
