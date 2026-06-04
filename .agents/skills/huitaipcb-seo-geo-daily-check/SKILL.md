@@ -48,16 +48,31 @@ Huitai Electronics, operated by Shenzhen Huitai Electronics Technology Co., Ltd.
 - Do not write to Supabase or any other database.
 - Do not create, update, or delete real automations unless the user explicitly asks in a separate request.
 
+# Automation Worktree Freshness
+
+Before comparing live production URLs with local routes, local sitemap code, or local content files, confirm that the current automation worktree is synchronized with latest `origin/main`.
+
+Required preflight:
+
+1. Run `git status --short --untracked-files=all`.
+2. Run `git branch --show-current`, `git rev-parse HEAD`, `git rev-parse origin/main`, and `git rev-list --left-right --count HEAD...origin/main`.
+3. If the worktree is behind `origin/main`, preserve any existing daily report first. For an untracked report such as `docs/reports/seo-geo-daily/YYYY-MM-DD.md`, copy it to a temporary backup before syncing.
+4. Sync the automation worktree to latest `origin/main` before making local-vs-production judgments. In a detached automation worktree, prefer `git switch --detach origin/main` after confirming there are no tracked local edits to preserve.
+5. After syncing, confirm `HEAD` equals `origin/main` and re-check any local files used as evidence.
+6. If fetch/sync requires login, authorization, network approval, or could overwrite local work, stop and record it under `Needs User Confirmation`.
+7. If the worktree cannot be synchronized, do not report a local-vs-production mismatch as a production risk. Mark it as `Unknown / worktree freshness not confirmed`.
+
 # Workflow
 
-1. Confirm the current workspace is `G:\onestoppcba\onestoppcba`.
-2. Check `git status --short` and verify `video/` remains untracked and untouched.
-3. Gather public, read-only signals for `https://huitaipcb.com`.
-4. Use optional platform data only if it is already available in read-only form or the user explicitly provides it.
-5. Mark unavailable private data as `Unknown`, not as healthy or unhealthy.
-6. Write one daily report to `docs/reports/seo-geo-daily/YYYY-MM-DD.md`.
-7. After writing the report, run `git status --short` and inspect the report diff.
-8. Report what was checked, what was unknown, and what actions require separate user confirmation.
+1. Confirm the current workspace. Prefer `G:\onestoppcba\onestoppcba` when available; if running inside a Codex automation worktree such as `C:\Users\Administrator\.codex\worktrees\...\onestoppcba`, record that path explicitly.
+2. Run the Automation Worktree Freshness preflight above before relying on local files.
+3. Check `git status --short --untracked-files=all` and verify `video/` remains untracked and untouched.
+4. Gather public, read-only signals for `https://huitaipcb.com`.
+5. Use optional platform data only if it is already available in read-only form or the user explicitly provides it.
+6. Mark unavailable private data as `Unknown`, not as healthy or unhealthy.
+7. Write one daily report to `docs/reports/seo-geo-daily/YYYY-MM-DD.md`.
+8. After writing the report, run `git status --short --untracked-files=all` and inspect the report diff.
+9. Report what was checked, what was unknown, and what actions require separate user confirmation.
 
 # Check Areas
 
