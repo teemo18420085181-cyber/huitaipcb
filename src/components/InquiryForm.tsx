@@ -90,14 +90,14 @@ export default function InquiryForm() {
 
   if (submitted) {
     return (
-      <div className="bg-white border border-line rounded-2xl p-12 text-center" translate="no">
-        <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-brand-green/20 flex items-center justify-center">
-          <CheckCircle size={32} className="text-brand-green" strokeWidth={2.5} />
+      <div className="bg-cc-carbon-2 border border-cc-line rounded-2xl p-12 text-center" translate="no">
+        <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-cc-signal/20 flex items-center justify-center">
+          <CheckCircle size={32} className="text-cc-signal" strokeWidth={2.5} />
         </div>
-        <h2 className="text-2xl font-semibold text-brand-primary mb-2">
+        <h2 className="text-2xl font-semibold text-cc-ink mb-2">
           Thank you!
         </h2>
-        <p className="text-ink-muted leading-relaxed max-w-[480px] mx-auto">
+        <p className="text-cc-ink-mute leading-relaxed max-w-[480px] mx-auto">
           We&apos;ve received your inquiry and a confirmation email is on its way.
           Our engineering team will review your files and respond within{' '}
           <strong>24 hours</strong>.
@@ -107,7 +107,7 @@ export default function InquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border border-line rounded-2xl p-6 md:p-10 space-y-5" translate="no">
+    <form onSubmit={handleSubmit} className="bg-cc-carbon-2 border border-cc-line rounded-2xl p-6 md:p-10 space-y-5" translate="no">
       <div className="grid md:grid-cols-2 gap-5">
         <FormField label="Your Name *" name="name" required />
         <FormField label="Email *" name="email" type="email" required />
@@ -119,7 +119,7 @@ export default function InquiryForm() {
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-brand-primary tracking-wide mb-2">
+        <label className="block text-xs font-medium text-cc-ink tracking-wide mb-2">
           Project Details *
         </label>
         <textarea
@@ -127,25 +127,25 @@ export default function InquiryForm() {
           required
           rows={5}
           placeholder="Briefly describe your project: quantity, target lead time, any specifications. Example: '50pcs prototype, 4-layer board with BGA, needs functional test, target delivery in 2 weeks.'"
-          className="w-full px-4 py-3 text-sm border border-line rounded-lg focus:outline-none focus:border-brand-primary transition-colors"
+          className="w-full px-4 py-3 text-sm border border-cc-line bg-cc-carbon-3 text-cc-ink placeholder:text-cc-ink-mute/60 rounded-lg focus:outline-none focus:border-cc-copper/60 transition-colors"
         />
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-brand-primary tracking-wide mb-2">
+        <label className="block text-xs font-medium text-cc-ink tracking-wide mb-2">
           Testing Requirements
         </label>
         <textarea
           name="testing_requirements"
           rows={3}
           placeholder="Functional test, ICT, firmware flashing, inspection report, sample approval requirements..."
-          className="w-full px-4 py-3 text-sm border border-line rounded-lg focus:outline-none focus:border-brand-primary transition-colors"
+          className="w-full px-4 py-3 text-sm border border-cc-line bg-cc-carbon-3 text-cc-ink placeholder:text-cc-ink-mute/60 rounded-lg focus:outline-none focus:border-cc-copper/60 transition-colors"
         />
       </div>
 
       {/* File upload area */}
       <div>
-        <label className="block text-xs font-medium text-brand-primary tracking-wide mb-2">
+        <label className="block text-xs font-medium text-cc-ink tracking-wide mb-2">
           Project Files (Gerber, BOM, drawings, photos)
         </label>
         <div
@@ -165,15 +165,15 @@ export default function InquiryForm() {
           onDragLeave={() => setDragOver(false)}
           className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
             dragOver
-              ? 'border-brand-yellow bg-brand-yellow/5'
-              : 'border-line hover:border-brand-primary/40'
+              ? 'border-cc-copper bg-cc-copper/5'
+              : 'border-cc-line hover:border-cc-copper/40'
           }`}
         >
-          <Upload size={28} className="mx-auto text-brand-primary mb-2" strokeWidth={2} />
-          <div className="text-sm font-medium text-brand-primary">
+          <Upload size={28} className="mx-auto text-cc-ink mb-2" strokeWidth={2} />
+          <div className="text-sm font-medium text-cc-ink">
             Drop files here or click to browse
           </div>
-          <div className="text-xs text-ink-muted mt-1">
+          <div className="text-xs text-cc-ink-mute mt-1">
             Up to 10 files, 25MB each. Gerber, BOM, PDF, Excel, images, drawings accepted.
           </div>
           <input
@@ -191,19 +191,19 @@ export default function InquiryForm() {
             {files.map((f, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 px-3 py-2 bg-bg-muted rounded-lg"
+                className="flex items-center gap-3 px-3 py-2 bg-cc-carbon rounded-lg"
               >
-                <FileText size={16} className="text-brand-primary flex-shrink-0" />
+                <FileText size={16} className="text-cc-ink flex-shrink-0" />
                 <div className="flex-1 min-w-0">
                   <div className="text-sm truncate">{f.name}</div>
-                  <div className="text-[11px] text-ink-muted">
+                  <div className="text-[11px] text-cc-ink-mute">
                     {formatSize(f.size)}
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => removeFile(i)}
-                  className="text-ink-muted hover:text-red-500 transition-colors"
+                  className="text-cc-ink-mute hover:text-red-500 transition-colors"
                 >
                   <X size={16} />
                 </button>
@@ -214,19 +214,19 @@ export default function InquiryForm() {
       </div>
 
       {/* Consent */}
-      <label className="flex items-start gap-2.5 text-xs text-ink-muted cursor-pointer pt-2">
+      <label className="flex items-start gap-2.5 text-xs text-cc-ink-mute cursor-pointer pt-2">
         <input
           type="checkbox"
           name="consent"
           value="true"
           required
-          className="mt-0.5 accent-brand-primary"
+          className="mt-0.5 accent-cc-copper"
         />
         <span>
           I agree to be contacted regarding this inquiry. My information will be
           used solely to provide a quote and project communication, never shared
           with third parties. See our{' '}
-          <a href="/privacy" className="text-brand-primary underline">
+          <a href="/privacy" className="text-cc-ink underline">
             Privacy Policy
           </a>
           .
@@ -234,7 +234,7 @@ export default function InquiryForm() {
       </label>
 
       {error && (
-        <div className="text-sm text-red-600 bg-red-50 border border-red-200 px-4 py-3 rounded-lg">
+        <div className="text-sm text-red-300 bg-red-500/10 border border-red-500/30 px-4 py-3 rounded-lg">
           {error}
         </div>
       )}
@@ -242,7 +242,7 @@ export default function InquiryForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full bg-brand-primary text-white font-semibold py-3.5 rounded-lg hover:bg-brand-primary-light transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
+        className="w-full cc-copper-fill font-semibold py-3.5 rounded-lg transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-60"
       >
         {submitting ? (
           <>
@@ -275,7 +275,7 @@ function FormField({
 }) {
   return (
     <div>
-      <label className="block text-xs font-medium text-brand-primary tracking-wide mb-2">
+      <label className="block text-xs font-medium text-cc-ink tracking-wide mb-2">
         {label}
       </label>
       <input
@@ -283,7 +283,7 @@ function FormField({
         name={name}
         required={required}
         placeholder={placeholder}
-        className="w-full px-4 py-2.5 text-sm border border-line rounded-lg focus:outline-none focus:border-brand-primary transition-colors"
+        className="w-full px-4 py-2.5 text-sm border border-cc-line bg-cc-carbon-3 text-cc-ink placeholder:text-cc-ink-mute/60 rounded-lg focus:outline-none focus:border-cc-copper/60 transition-colors"
       />
     </div>
   );

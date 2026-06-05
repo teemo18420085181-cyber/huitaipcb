@@ -39,47 +39,45 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="py-[90px] px-[5vw] bg-white border-t border-line">
-      <div className="max-w-[1280px] mx-auto">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 text-[11px] text-brand-primary font-semibold tracking-[0.16em] mb-4">
-            <span className="w-[18px] h-0.5 bg-brand-yellow rounded-sm" />
+    <section className="font-body-cc border-t border-cc-line bg-cc-carbon-2 px-[5vw] py-[90px]">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="mb-12 text-center">
+          <div className="font-mono-cc mb-4 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] text-cc-copper-soft">
+            <span className="h-px w-[18px] bg-cc-copper" />
             WHAT CUSTOMERS SAY
-            <span className="w-[18px] h-0.5 bg-brand-yellow rounded-sm" />
+            <span className="h-px w-[18px] bg-cc-copper" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-brand-primary tracking-tight">
-            Hardware teams trust us with{' '}
-            <em className="not-italic text-brand-green-dark">real projects.</em>
+          <h2 className="font-display text-3xl font-bold tracking-tight text-cc-ink md:text-4xl">
+            Hardware teams trust us with <span className="cc-copper-text">real projects.</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid gap-5 md:grid-cols-2">
           {TESTIMONIALS.map((t, i) => (
             <div
               key={i}
-              className="bg-bg-muted border border-line rounded-2xl p-7 flex flex-col gap-4 hover:border-brand-primary/20 hover:shadow-sm transition-all duration-200"
+              className="flex flex-col gap-4 rounded-2xl border border-cc-line bg-cc-carbon p-7 transition-all duration-200 hover:border-cc-copper/30"
             >
-              {/* Stars */}
               <div className="flex gap-1">
                 {[...Array(t.rating)].map((_, si) => (
-                  <span key={si} className="text-brand-yellow text-sm">★</span>
+                  <span key={si} className="text-sm text-cc-copper-bright">
+                    ★
+                  </span>
                 ))}
               </div>
 
-              {/* Quote */}
-              <blockquote className="text-sm text-ink leading-relaxed flex-1">
+              <blockquote className="flex-1 text-sm leading-relaxed text-cc-ink">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
 
-              {/* Author */}
-              <div className="flex items-center gap-3 pt-2 border-t border-line">
-                <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
+              <div className="flex items-center gap-3 border-t border-cc-line pt-2">
+                <div className="cc-copper-fill flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-sm font-semibold">
                   {t.name[0]}
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-brand-primary">{t.name}</div>
+                  <div className="text-sm font-semibold text-cc-ink">{t.name}</div>
                   {(t.title || t.company) && (
-                    <div className="text-xs text-ink-muted">
+                    <div className="text-xs text-cc-ink-mute">
                       {[t.title, t.company].filter(Boolean).join(' · ')}
                     </div>
                   )}
@@ -89,9 +87,9 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Trust note */}
-        <div className="text-center mt-8 text-xs text-ink-muted">
-          Reviews from hardware teams we&apos;ve worked with. Ask us for more references when you get in touch.
+        <div className="font-mono-cc mt-8 text-center text-xs text-cc-ink-mute">
+          Reviews from hardware teams we&apos;ve worked with. Ask us for more references when you get
+          in touch.
         </div>
       </div>
     </section>

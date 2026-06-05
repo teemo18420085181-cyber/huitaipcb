@@ -23,7 +23,7 @@ export type KnowledgeDisplayArticle = {
 
 const DEFAULT_IMAGE = '/factory/flow-01.png';
 const DEFAULT_IMAGE_ALT = 'PCBA engineer reviewing BOM files and assembled circuit boards';
-const DEFAULT_CATEGORY_COLOR = 'bg-brand-primary/8 text-brand-primary border-brand-primary/15';
+const DEFAULT_CATEGORY_COLOR = 'bg-cc-copper/10 text-cc-ink border-cc-copper/30';
 
 const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
   'how-much-does-pcba-assembly-cost': {

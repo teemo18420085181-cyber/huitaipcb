@@ -14,7 +14,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'what-files-required-pcba-quote',
     category: 'Getting Started',
-    categoryColor: 'bg-brand-yellow/15 text-brand-primary border-brand-yellow/30',
+    categoryColor: 'bg-cc-copper/15 text-cc-ink border-cc-copper/30',
     title: 'What files are required for a PCBA quote?',
     excerpt: 'A practical checklist for Gerber files, BOM lists, assembly drawings, sample photos, and testing requirements.',
     image: '/factory/flow-01.png',
@@ -40,7 +40,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'what-is-turnkey-pcba',
     category: 'Fundamentals',
-    categoryColor: 'bg-brand-primary/8 text-brand-primary border-brand-primary/15',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
     title: 'What is turnkey PCBA manufacturing?',
     excerpt: 'How turnkey PCBA manufacturing coordinates PCB fabrication, component sourcing, SMT assembly, testing, and delivery.',
     image: '/factory/real-smt-1.jpg',
@@ -66,7 +66,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'bom-best-practices',
     category: 'Sourcing',
-    categoryColor: 'bg-brand-primary/8 text-brand-primary border-brand-primary/15',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
     title: 'BOM best practices for fast sourcing and quoting',
     excerpt: 'How to prepare a BOM list that helps component sourcing, alternatives review, and faster PCB assembly quotation.',
     image: '/factory/flow-02.png',
@@ -92,7 +92,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'prototype-vs-batch-pcb-assembly',
     category: 'Decision Guide',
-    categoryColor: 'bg-brand-green/10 text-brand-green-dark border-brand-green/20',
+    categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
     title: 'Prototype PCB assembly vs batch PCB assembly',
     excerpt: 'Understand how prototype and batch PCBA projects differ in review depth, tooling, sourcing, testing, and delivery planning.',
     image: '/factory/real-aoi-op.jpg',
@@ -118,7 +118,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'pcb-assembly-lead-time-china',
     category: 'Planning',
-    categoryColor: 'bg-brand-green/10 text-brand-green-dark border-brand-green/20',
+    categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
     title: 'How long does PCB assembly take? China PCBA lead times explained',
     excerpt: 'A realistic breakdown of China PCBA lead times — from file and BOM review to SMT assembly, testing, and shipping — and how to shorten them.',
     image: '/factory/real-smt-1.jpg',
@@ -165,7 +165,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'pcb-assembly-minimum-order-quantity',
     category: 'Planning',
-    categoryColor: 'bg-brand-green/10 text-brand-green-dark border-brand-green/20',
+    categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
     title: 'Is there a minimum order quantity for PCB assembly?',
     excerpt: 'How MOQ really works for PCBA — why small and prototype runs are usually possible, what drives small-batch cost, and how to quote them.',
     image: '/factory/flow-02.png',
@@ -212,7 +212,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'iot-device-pcb-assembly-china',
     category: 'Applications',
-    categoryColor: 'bg-brand-primary/8 text-brand-primary border-brand-primary/15',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
     title: 'IoT device PCB assembly in China: what to plan for',
     excerpt: 'Key considerations for IoT PCBA — wireless modules, antennas, power, testing, and a path from small batch to volume production.',
     image: '/factory/real-smt-1.jpg',
@@ -259,7 +259,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
   {
     slug: 'keyboard-pcb-assembly-china',
     category: 'Applications',
-    categoryColor: 'bg-brand-primary/8 text-brand-primary border-brand-primary/15',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
     title: 'Custom keyboard PCB assembly in China: what to know',
     excerpt: 'A practical guide to custom mechanical keyboard PCBA — hotswap sockets, switches, LEDs, sourcing, and prototyping before a group buy or batch.',
     image: '/factory/real-aoi-op.jpg',

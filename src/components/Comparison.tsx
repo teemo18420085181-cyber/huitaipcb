@@ -18,72 +18,45 @@ const GOOD_POINTS = [
 
 export default function Comparison() {
   return (
-    <section className="py-[90px] px-[5vw] bg-white border-y border-line">
-      <div className="max-w-[1280px] mx-auto">
+    <section className="font-body-cc border-y border-cc-line px-[5vw] py-[90px]">
+      <div className="mx-auto max-w-[1280px]">
         <div className="mb-12 max-w-[680px]">
-          <div className="inline-flex items-center gap-2 text-[11px] text-brand-primary font-semibold tracking-[0.16em] mb-3.5">
-            <span className="w-[18px] h-0.5 bg-brand-yellow rounded-sm" />
+          <div className="font-mono-cc mb-3.5 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] text-cc-copper-soft">
+            <span className="h-px w-[18px] bg-cc-copper" />
             WHY TURNKEY?
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold text-brand-primary tracking-tight leading-tight">
+          <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-cc-ink md:text-4xl lg:text-[44px]">
             What changes when you stop{' '}
-            <em className="not-italic text-brand-green-dark">
-              managing suppliers separately.
-            </em>
+            <span className="cc-copper-text">managing suppliers separately.</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          <div
-            className="p-8 rounded-[14px] border"
-            style={{ borderColor: '#F0C0BD', background: '#FCF1EE' }}
-          >
-            <div className="flex items-center gap-2.5 mb-5 pb-3.5 border-b border-black/[0.08]">
-              <div className="w-8 h-8 rounded-lg bg-red-500 text-white flex items-center justify-center flex-shrink-0">
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-[14px] border border-rose-500/25 bg-rose-500/[0.05] p-8">
+            <div className="mb-5 flex items-center gap-2.5 border-b border-white/[0.06] pb-3.5">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-rose-500/90 text-white">
                 <X size={14} strokeWidth={3} />
               </div>
-              <div
-                className="text-sm font-semibold"
-                style={{ color: '#A32D2D' }}
-              >
-                Managing suppliers yourself
-              </div>
+              <div className="text-sm font-semibold text-rose-300">Managing suppliers yourself</div>
             </div>
             {BAD_POINTS.map((p, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-2.5 py-2 text-[13px] leading-relaxed"
-                style={{ color: '#7A2C2C' }}
-              >
-                <span className="flex-shrink-0 mt-0.5 text-sm">•</span>
+              <div key={i} className="flex items-start gap-2.5 py-2 text-[13px] leading-relaxed text-rose-200/70">
+                <span className="mt-0.5 flex-shrink-0 text-sm">•</span>
                 {p}
               </div>
             ))}
           </div>
 
-          <div
-            className="p-8 rounded-[14px] border"
-            style={{
-              borderColor: 'rgba(147,194,73,.4)',
-              background: 'rgba(147,194,73,.06)',
-            }}
-          >
-            <div className="flex items-center gap-2.5 mb-5 pb-3.5 border-b border-black/[0.08]">
-              <div className="w-8 h-8 rounded-lg bg-brand-green text-white flex items-center justify-center flex-shrink-0">
+          <div className="rounded-[14px] border border-cc-signal/30 bg-cc-signal/[0.05] p-8">
+            <div className="mb-5 flex items-center gap-2.5 border-b border-white/[0.06] pb-3.5">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-cc-signal/90 text-cc-carbon">
                 <Check size={14} strokeWidth={3} />
               </div>
-              <div className="text-sm font-semibold text-brand-green-dark">
-                With OneStopPCBA turnkey
-              </div>
+              <div className="text-sm font-semibold text-cc-signal">With OneStopPCBA turnkey</div>
             </div>
             {GOOD_POINTS.map((p, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-2.5 py-2 text-[13px] text-brand-primary leading-relaxed"
-              >
-                <span className="flex-shrink-0 mt-0.5 text-sm text-brand-green">
-                  ●
-                </span>
+              <div key={i} className="flex items-start gap-2.5 py-2 text-[13px] leading-relaxed text-cc-ink">
+                <span className="mt-0.5 flex-shrink-0 text-sm text-cc-signal">●</span>
                 {p}
               </div>
             ))}

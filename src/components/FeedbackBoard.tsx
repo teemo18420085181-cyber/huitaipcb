@@ -62,7 +62,7 @@ function QACard({ qa }: { qa: typeof PINNED_QA[0] }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border border-line rounded-xl overflow-hidden bg-white hover:border-brand-primary/20 transition-colors">
+    <div className="border border-cc-line rounded-xl overflow-hidden bg-cc-carbon-2 hover:border-cc-copper/25 transition-colors">
       <button
         onClick={() => setOpen(!open)}
         className="w-full text-left p-4 flex items-start gap-3"
@@ -70,16 +70,16 @@ function QACard({ qa }: { qa: typeof PINNED_QA[0] }) {
         <span className="text-xl flex-shrink-0 mt-0.5">{qa.flag}</span>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-            <span className="text-[10px] font-semibold tracking-wide bg-brand-primary/8 text-brand-primary px-2 py-0.5 rounded-full border border-brand-primary/10">
+            <span className="text-[10px] font-semibold tracking-wide bg-cc-copper/10 text-cc-ink px-2 py-0.5 rounded-full border border-cc-copper/15">
               {qa.category}
             </span>
-            <span className="text-[10px] text-ink-muted">{qa.country}</span>
+            <span className="text-[10px] text-cc-ink-mute">{qa.country}</span>
           </div>
-          <div className="text-sm font-medium text-brand-primary leading-snug pr-2">
+          <div className="text-sm font-medium text-cc-ink leading-snug pr-2">
             {qa.question}
           </div>
         </div>
-        <div className="flex-shrink-0 mt-0.5 text-ink-muted">
+        <div className="flex-shrink-0 mt-0.5 text-cc-ink-mute">
           {open ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </div>
       </button>
@@ -87,10 +87,10 @@ function QACard({ qa }: { qa: typeof PINNED_QA[0] }) {
       {open && (
         <div className="px-4 pb-4 ml-9">
           <div className="flex gap-2.5 items-start">
-            <div className="w-6 h-6 rounded-full bg-brand-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-              <span className="text-brand-yellow text-[10px] font-bold">HT</span>
+            <div className="w-6 h-6 rounded-full cc-copper-fill flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span className="text-cc-carbon text-[10px] font-bold">HT</span>
             </div>
-            <div className="text-sm text-ink-muted leading-relaxed bg-bg-muted rounded-lg px-3 py-2.5 border border-line flex-1">
+            <div className="text-sm text-cc-ink-mute leading-relaxed bg-cc-carbon rounded-lg px-3 py-2.5 border border-cc-line flex-1">
               {qa.answer}
             </div>
           </div>
@@ -133,19 +133,19 @@ function SubmitForm() {
   if (submitted) {
     return (
       <div className="flex flex-col items-center justify-center h-full min-h-[280px] text-center p-8">
-        <div className="w-14 h-14 rounded-full bg-brand-green/15 flex items-center justify-center mb-4">
-          <MessageCircle size={24} className="text-brand-green" />
+        <div className="w-14 h-14 rounded-full bg-cc-signal/15 flex items-center justify-center mb-4">
+          <MessageCircle size={24} className="text-cc-signal" />
         </div>
-        <h3 className="text-base font-semibold text-brand-primary mb-2">
+        <h3 className="text-base font-semibold text-cc-ink mb-2">
           Thanks — received!
         </h3>
-        <p className="text-sm text-ink-muted leading-relaxed max-w-[280px]">
+        <p className="text-sm text-cc-ink-mute leading-relaxed max-w-[280px]">
           We review all submissions and publish selected questions with answers. 
           If your question is common enough, it&apos;ll appear here soon.
         </p>
         <button
           onClick={() => setSubmitted(false)}
-          className="mt-5 text-xs text-brand-primary underline"
+          className="mt-5 text-xs text-cc-ink underline"
         >
           Submit another
         </button>
@@ -157,31 +157,31 @@ function SubmitForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-3.5 h-full">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-[11px] font-medium text-brand-primary tracking-wide mb-1.5">
-            Your name <span className="text-ink-muted font-normal">(optional)</span>
+          <label className="block text-[11px] font-medium text-cc-ink tracking-wide mb-1.5">
+            Your name <span className="text-cc-ink-mute font-normal">(optional)</span>
           </label>
           <input
             name="name"
             type="text"
             placeholder="e.g. James"
-            className="w-full px-3 py-2 text-sm border border-line rounded-lg focus:outline-none focus:border-brand-primary transition-colors"
+            className="w-full px-3 py-2 text-sm border border-cc-line bg-cc-carbon text-cc-ink placeholder:text-cc-ink-mute/60 rounded-lg focus:outline-none focus:border-cc-copper transition-colors"
           />
         </div>
         <div>
-          <label className="block text-[11px] font-medium text-brand-primary tracking-wide mb-1.5">
-            Country <span className="text-ink-muted font-normal">(optional)</span>
+          <label className="block text-[11px] font-medium text-cc-ink tracking-wide mb-1.5">
+            Country <span className="text-cc-ink-mute font-normal">(optional)</span>
           </label>
           <input
             name="country"
             type="text"
             placeholder="e.g. Germany"
-            className="w-full px-3 py-2 text-sm border border-line rounded-lg focus:outline-none focus:border-brand-primary transition-colors"
+            className="w-full px-3 py-2 text-sm border border-cc-line bg-cc-carbon text-cc-ink placeholder:text-cc-ink-mute/60 rounded-lg focus:outline-none focus:border-cc-copper transition-colors"
           />
         </div>
       </div>
 
       <div>
-        <label className="block text-[11px] font-medium text-brand-primary tracking-wide mb-1.5">
+        <label className="block text-[11px] font-medium text-cc-ink tracking-wide mb-1.5">
           Type
         </label>
         <div className="flex flex-wrap gap-2">
@@ -192,8 +192,8 @@ function SubmitForm() {
               onClick={() => setCategory(c)}
               className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
                 category === c
-                  ? 'bg-brand-primary text-white border-brand-primary'
-                  : 'bg-transparent text-ink-muted border-line hover:border-brand-primary/40'
+                  ? 'cc-copper-fill border-cc-copper'
+                  : 'bg-transparent text-cc-ink-mute border-cc-line hover:border-cc-copper/40'
               }`}
             >
               {c}
@@ -204,7 +204,7 @@ function SubmitForm() {
       </div>
 
       <div className="flex-1">
-        <label className="block text-[11px] font-medium text-brand-primary tracking-wide mb-1.5">
+        <label className="block text-[11px] font-medium text-cc-ink tracking-wide mb-1.5">
           Your question or suggestion *
         </label>
         <textarea
@@ -212,14 +212,14 @@ function SubmitForm() {
           required
           rows={5}
           placeholder="Ask anything — about our process, pricing, capabilities, lead times, file formats… No question is too basic."
-          className="w-full px-3 py-2.5 text-sm border border-line rounded-lg focus:outline-none focus:border-brand-primary transition-colors resize-none leading-relaxed"
+          className="w-full px-3 py-2.5 text-sm border border-cc-line bg-cc-carbon text-cc-ink placeholder:text-cc-ink-mute/60 rounded-lg focus:outline-none focus:border-cc-copper transition-colors resize-none leading-relaxed"
         />
       </div>
 
       <button
         type="submit"
         disabled={submitting}
-        className="w-full bg-brand-primary text-white text-sm font-medium py-3 rounded-lg hover:bg-brand-primary-light transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
+        className="w-full cc-copper-fill text-sm font-semibold py-3 rounded-lg transition-all flex items-center justify-center gap-2 disabled:opacity-60"
       >
         {submitting ? (
           <><Loader2 size={15} className="animate-spin" /> Sending…</>
@@ -228,7 +228,7 @@ function SubmitForm() {
         )}
       </button>
 
-      <p className="text-[10px] text-ink-muted text-center leading-relaxed">
+      <p className="text-[10px] text-cc-ink-mute text-center leading-relaxed">
         We review all submissions and publish selected Q&As here. Your name is optional
         and will only appear as &ldquo;{category} from [Country]&rdquo; if published.
       </p>
@@ -239,18 +239,18 @@ function SubmitForm() {
 // ── Main export ─────────────────────────────────────────────
 export default function FeedbackBoard() {
   return (
-    <section id="customer-qa" className="py-[90px] px-[5vw] bg-bg-muted border-t border-line">
+    <section id="customer-qa" className="py-[90px] px-[5vw] bg-cc-carbon border-t border-cc-line">
       <div className="max-w-[1280px] mx-auto">
         {/* Header */}
         <div className="mb-10">
-          <div className="inline-flex items-center gap-2 text-[11px] text-brand-primary font-semibold tracking-[0.16em] mb-3.5">
-            <span className="w-[18px] h-0.5 bg-brand-yellow rounded-sm" />
+          <div className="inline-flex items-center gap-2 text-[11px] text-cc-ink font-semibold tracking-[0.16em] mb-3.5">
+            <span className="w-[18px] h-0.5 bg-cc-copper rounded-sm" />
             CUSTOMER Q&A
           </div>
-          <h2 className="text-3xl md:text-[38px] font-semibold text-brand-primary tracking-tight leading-tight mb-3">
+          <h2 className="text-3xl md:text-[38px] font-semibold text-cc-ink tracking-tight leading-tight mb-3">
             Questions from customers around the world.
           </h2>
-          <p className="text-[15px] text-ink-muted leading-relaxed max-w-[600px]">
+          <p className="text-[15px] text-cc-ink-mute leading-relaxed max-w-[600px]">
             Real questions, real answers. We update this board based on what we hear most
             from overseas hardware teams. Have something on your mind? Ask below.
           </p>
@@ -262,23 +262,23 @@ export default function FeedbackBoard() {
             {PINNED_QA.map((qa, i) => (
               <QACard key={i} qa={qa} />
             ))}
-            <p className="text-[11px] text-ink-muted pt-1">
+            <p className="text-[11px] text-cc-ink-mute pt-1">
               Showing {PINNED_QA.length} selected questions ·{' '}
-              <span className="text-brand-primary">More added regularly</span>
+              <span className="text-cc-ink">More added regularly</span>
             </p>
           </div>
 
           {/* Right: Submit form */}
-          <div className="bg-white border border-line rounded-2xl p-6 lg:sticky lg:top-24">
+          <div className="bg-cc-carbon-2 border border-cc-line rounded-2xl p-6 lg:sticky lg:top-24">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-brand-primary/8 flex items-center justify-center">
-                <MessageCircle size={16} className="text-brand-primary" />
+              <div className="w-8 h-8 rounded-lg bg-cc-copper/10 flex items-center justify-center">
+                <MessageCircle size={16} className="text-cc-ink" />
               </div>
               <div>
-                <div className="text-sm font-semibold text-brand-primary">
+                <div className="text-sm font-semibold text-cc-ink">
                   Ask or suggest anything
                 </div>
-                <div className="text-[11px] text-ink-muted">
+                <div className="text-[11px] text-cc-ink-mute">
                   We read every submission
                 </div>
               </div>

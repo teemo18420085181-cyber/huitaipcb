@@ -64,15 +64,15 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
     return (
       <>
         <Nav />
-        <main className="min-h-screen bg-bg px-[5vw] pt-[120px]">
-          <div className="mx-auto max-w-[720px] rounded-2xl border border-line bg-white p-10 text-center">
-            <h1 className="text-2xl font-semibold text-brand-primary">Article not found</h1>
-            <p className="mt-3 text-sm leading-6 text-ink-muted">
+        <main className="min-h-screen bg-cc-carbon px-[5vw] pt-[120px]">
+          <div className="mx-auto max-w-[720px] rounded-2xl border border-cc-line bg-cc-carbon-2 p-10 text-center">
+            <h1 className="text-2xl font-semibold text-cc-ink">Article not found</h1>
+            <p className="mt-3 text-sm leading-6 text-cc-ink-mute">
               This guide may have been moved, unpublished, or is still being prepared by our engineering team.
             </p>
             <Link
               href="/knowledge"
-              className="mt-6 inline-flex rounded-lg bg-brand-yellow px-5 py-3 text-sm font-semibold text-brand-primary transition hover:-translate-y-0.5"
+              className="mt-6 inline-flex rounded-lg bg-cc-copper px-5 py-3 text-sm font-semibold text-cc-ink transition hover:-translate-y-0.5"
             >
               Back to Knowledge Base
             </Link>
@@ -124,7 +124,7 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
   return (
     <>
       <Nav />
-      <main className="min-h-screen bg-bg pt-[64px]">
+      <main className="min-h-screen bg-cc-carbon pt-[64px]">
         <article>
           <script
             type="application/ld+json"
@@ -136,12 +136,12 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
               dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
             />
           )}
-          <section className="relative overflow-hidden bg-brand-primary px-[5vw] py-16 text-white md:py-20">
+          <section className="relative overflow-hidden bg-cc-carbon-2 px-[5vw] py-16 text-white md:py-20">
             <div className="relative z-10 mx-auto max-w-[980px]">
               <Link href="/knowledge" className="text-xs text-white/60 transition-colors hover:text-white">
                 Back to Knowledge Base
               </Link>
-              <div className="mb-5 mt-6 inline-flex items-center gap-2 rounded-full border border-brand-yellow/40 bg-brand-yellow/10 px-3.5 py-1.5 text-[11px] font-medium tracking-[0.14em] text-brand-yellow">
+              <div className="mb-5 mt-6 inline-flex items-center gap-2 rounded-full border border-cc-copper/40 bg-cc-copper/10 px-3.5 py-1.5 text-[11px] font-medium tracking-[0.14em] text-cc-copper-soft">
                 {article.category}
               </div>
               <h1 className="max-w-[760px] text-4xl font-semibold leading-tight tracking-tight md:text-5xl">
@@ -160,35 +160,35 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
 
           <section className="px-[5vw] py-12">
             <div className="mx-auto grid max-w-[980px] gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
-              <div className="overflow-hidden rounded-2xl border border-line bg-white">
-                <div className="relative h-64 bg-brand-primary-dark">
+              <div className="overflow-hidden rounded-2xl border border-cc-line bg-cc-carbon-2">
+                <div className="relative h-64 bg-cc-carbon">
                   <ArticleImage src={article.image} alt={article.imageAlt} />
                 </div>
                 <div className="p-7 md:p-9">
-                  <div className="space-y-5 text-sm leading-7 text-ink-muted">
+                  <div className="space-y-5 text-sm leading-7 text-cc-ink-mute">
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={{
                         h2: ({ children }) => (
-                          <h2 className="pt-4 text-2xl font-semibold leading-tight text-brand-primary">{children}</h2>
+                          <h2 className="pt-4 text-2xl font-semibold leading-tight text-cc-ink">{children}</h2>
                         ),
                         h3: ({ children }) => (
-                          <h3 className="pt-3 text-lg font-semibold leading-tight text-brand-primary">{children}</h3>
+                          <h3 className="pt-3 text-lg font-semibold leading-tight text-cc-ink">{children}</h3>
                         ),
                         p: ({ children }) => <p>{children}</p>,
                         ul: ({ children }) => <ul className="list-disc space-y-2 pl-5">{children}</ul>,
                         ol: ({ children }) => <ol className="list-decimal space-y-2 pl-5">{children}</ol>,
                         li: ({ children }) => <li>{children}</li>,
                         a: ({ children, href }) => (
-                          <a href={href} className="font-medium text-brand-primary underline underline-offset-4">
+                          <a href={href} className="font-medium text-cc-ink underline underline-offset-4">
                             {children}
                           </a>
                         ),
                         code: ({ children }) => (
-                          <code className="rounded bg-bg-muted px-1.5 py-0.5 text-xs text-brand-primary">{children}</code>
+                          <code className="rounded bg-cc-carbon px-1.5 py-0.5 text-xs text-cc-ink">{children}</code>
                         ),
                         pre: ({ children }) => (
-                          <pre className="overflow-x-auto rounded-xl bg-brand-primary p-4 text-xs leading-6 text-white">
+                          <pre className="overflow-x-auto rounded-xl bg-cc-carbon-2 p-4 text-xs leading-6 text-white">
                             {children}
                           </pre>
                         ),
@@ -198,9 +198,9 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
                           </div>
                         ),
                         th: ({ children }) => (
-                          <th className="border border-line bg-bg-muted px-3 py-2 font-semibold text-brand-primary">{children}</th>
+                          <th className="border border-cc-line bg-cc-carbon px-3 py-2 font-semibold text-cc-ink">{children}</th>
                         ),
-                        td: ({ children }) => <td className="border border-line px-3 py-2">{children}</td>,
+                        td: ({ children }) => <td className="border border-cc-line px-3 py-2">{children}</td>,
                       }}
                     >
                       {article.content}
@@ -209,16 +209,16 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
                 </div>
               </div>
 
-              <aside className="h-fit rounded-2xl border border-line bg-white p-6 lg:sticky lg:top-24">
-                <h2 className="mb-3 text-lg font-semibold text-brand-primary">Need a PCB assembly quote?</h2>
-                <p className="mb-5 text-sm leading-6 text-ink-muted">
+              <aside className="h-fit rounded-2xl border border-cc-line bg-cc-carbon-2 p-6 lg:sticky lg:top-24">
+                <h2 className="mb-3 text-lg font-semibold text-cc-ink">Need a PCB assembly quote?</h2>
+                <p className="mb-5 text-sm leading-6 text-cc-ink-mute">
                   Upload Gerber, BOM, drawings, sample photos, or testing requirements for engineering review.
                 </p>
                 <TrackedLink
                   href="/contact"
                   eventName="upload_gerber_bom_click"
                   eventParams={{ location: 'knowledge_article_sidebar', article_slug: article.slug, destination: '/contact' }}
-                  className="inline-flex w-full justify-center rounded-lg bg-brand-yellow px-5 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
+                  className="inline-flex w-full justify-center rounded-lg bg-cc-copper px-5 py-3 text-sm font-semibold text-cc-ink transition-all hover:-translate-y-0.5"
                 >
                   Upload Gerber & BOM
                 </TrackedLink>

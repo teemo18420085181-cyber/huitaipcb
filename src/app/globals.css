@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -27,9 +28,9 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: var(--c-bg);
-  color: var(--c-text);
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  background: var(--cc-carbon);
+  color: var(--cc-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -64,4 +65,129 @@ body {
   background-image: linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* ============================================================
+   COPPER & CARBON — redesign design system
+   Carbon (black solder-mask) base + ENIG copper/gold accent.
+   ============================================================ */
+:root {
+  --cc-carbon: #0a0b0d;
+  --cc-carbon-2: #101216;
+  --cc-carbon-3: #181b21;
+  --cc-line: rgba(199, 138, 70, 0.14);
+  --cc-copper: #c98b3a;
+  --cc-copper-bright: #e6a85a;
+  --cc-copper-soft: #f0c98a;
+  --cc-signal: #9ee34f; /* "powered / live" trace */
+  --cc-ink: #f4efe6;
+  --cc-ink-mute: #9b958a;
+}
+
+.font-display {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+}
+.font-mono-cc {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+.font-body-cc {
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+}
+
+/* Carbon substrate: fine PCB grid + faint copper glow */
+.cc-carbon-bg {
+  background-color: var(--cc-carbon);
+  background-image:
+    radial-gradient(1100px 600px at 78% -10%, rgba(201, 139, 58, 0.16), transparent 60%),
+    radial-gradient(900px 500px at 8% 110%, rgba(158, 227, 79, 0.07), transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: auto, auto, 46px 46px, 46px 46px;
+}
+
+/* Copper text gradient */
+.cc-copper-text {
+  background: linear-gradient(120deg, var(--cc-copper-soft), var(--cc-copper-bright) 45%, var(--cc-copper) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Brushed-copper fill for the primary button */
+.cc-copper-fill {
+  background: linear-gradient(135deg, #f0c98a 0%, #d9943f 42%, #b9762b 100%);
+  color: #1a1206;
+}
+.cc-copper-fill:hover {
+  background: linear-gradient(135deg, #f6d49a 0%, #e2a049 42%, #c8802f 100%);
+}
+
+/* Animated solder/via dot */
+.cc-via {
+  box-shadow: 0 0 0 1px rgba(201, 139, 58, 0.5), 0 0 14px rgba(230, 168, 90, 0.55);
+}
+
+/* Power-up reveal: traces draw in, then content rises */
+@keyframes ccTraceDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes ccCurrent {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+@keyframes ccRise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes ccBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.cc-rise {
+  opacity: 0;
+  animation: ccRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.cc-trace path,
+.cc-trace line {
+  stroke-dasharray: var(--len, 1400);
+  stroke-dashoffset: var(--len, 1400);
+  animation: ccTraceDraw 1.6s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+.cc-blink {
+  animation: ccBlink 1.4s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-rise,
+  .cc-trace path,
+  .cc-trace line {
+    animation: none;
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
 }

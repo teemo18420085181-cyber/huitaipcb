@@ -19,22 +19,22 @@ export default function PageShell({
   features = [],
 }: PageShellProps) {
   return (
-    <main className="pt-[100px] min-h-screen bg-bg">
+    <main className="pt-[100px] min-h-screen bg-cc-carbon">
       {/* Hero */}
-      <section className="relative px-[5vw] py-16 md:py-24 bg-brand-primary text-white overflow-hidden">
+      <section className="relative px-[5vw] py-16 md:py-24 bg-cc-carbon-2 text-white overflow-hidden">
         <div
           className="absolute -top-[100px] right-[10%] w-[300px] h-[300px] rounded-full opacity-30"
-          style={{ background: '#FCEA0B', filter: 'blur(100px)' }}
+          style={{ background: '#E6A85A', filter: 'blur(100px)' }}
         />
         <div
           className="absolute -bottom-[100px] left-[10%] w-[280px] h-[280px] rounded-full opacity-20"
-          style={{ background: '#93C249', filter: 'blur(100px)' }}
+          style={{ background: '#9EE34F', filter: 'blur(100px)' }}
         />
         <div className="relative z-10 max-w-[1080px] mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-brand-yellow/10 border border-brand-yellow/40 text-brand-yellow text-[11px] tracking-[0.14em] py-1.5 px-3.5 rounded-full mb-6 font-medium">
+          <div className="inline-flex items-center gap-2 bg-cc-copper/10 border border-cc-copper/40 text-cc-copper-soft text-[11px] tracking-[0.14em] py-1.5 px-3.5 rounded-full mb-6 font-medium">
             <span
-              className="w-1.5 h-1.5 rounded-full bg-brand-yellow"
-              style={{ boxShadow: '0 0 12px #FCEA0B' }}
+              className="w-1.5 h-1.5 rounded-full bg-cc-copper"
+              style={{ boxShadow: '0 0 12px #E6A85A' }}
             />
             {eyebrow}
           </div>
@@ -43,7 +43,7 @@ export default function PageShell({
             {titleHighlight && (
               <>
                 <br />
-                <em className="not-italic text-brand-yellow">{titleHighlight}</em>
+                <em className="not-italic text-cc-copper-soft">{titleHighlight}</em>
               </>
             )}
           </h1>
@@ -60,15 +60,15 @@ export default function PageShell({
             {features.map((f, i) => (
               <div
                 key={i}
-                className="bg-white border border-line rounded-[14px] p-6 hover:border-brand-primary-light transition-all duration-200"
+                className="bg-cc-carbon-2 border border-cc-line rounded-[14px] p-6 hover:border-cc-copper/30-light transition-all duration-200"
               >
-                <div className="w-12 h-12 rounded-[10px] bg-brand-primary text-brand-yellow flex items-center justify-center text-xl mb-4">
+                <div className="w-12 h-12 rounded-[10px] bg-cc-carbon-2 text-cc-copper-soft flex items-center justify-center text-xl mb-4">
                   {f.icon}
                 </div>
-                <h3 className="text-base font-semibold text-brand-primary mb-2">
+                <h3 className="text-base font-semibold text-cc-ink mb-2">
                   {f.title}
                 </h3>
-                <p className="text-sm text-ink-muted leading-relaxed">
+                <p className="text-sm text-cc-ink-mute leading-relaxed">
                   {f.desc}
                 </p>
               </div>
@@ -79,21 +79,21 @@ export default function PageShell({
 
       {/* Coming Soon banner */}
       <section className="px-[5vw] pb-24">
-        <div className="max-w-[820px] mx-auto bg-white border border-line rounded-2xl p-8 md:p-12 text-center">
-          <div className="w-14 h-14 rounded-full bg-brand-yellow/15 text-brand-primary flex items-center justify-center mx-auto mb-5">
+        <div className="max-w-[820px] mx-auto bg-cc-carbon-2 border border-cc-line rounded-2xl p-8 md:p-12 text-center">
+          <div className="w-14 h-14 rounded-full bg-cc-copper/15 text-cc-ink flex items-center justify-center mx-auto mb-5">
             <Construction size={22} strokeWidth={2} />
           </div>
-          <h2 className="text-xl md:text-2xl font-semibold text-brand-primary mb-3">
+          <h2 className="text-xl md:text-2xl font-semibold text-cc-ink mb-3">
             More details coming soon
           </h2>
-          <p className="text-sm text-ink-muted leading-relaxed max-w-[520px] mx-auto mb-6">
+          <p className="text-sm text-cc-ink-mute leading-relaxed max-w-[520px] mx-auto mb-6">
             {comingSoonText}
           </p>
           <TrackedLink
             href="/contact"
             eventName="quote_click"
             eventParams={{ location: 'page_shell_placeholder', destination: '/contact', button_text: 'Send us your inquiry' }}
-            className="inline-flex items-center gap-2 bg-brand-primary text-white text-sm font-medium py-3 px-6 rounded-lg hover:bg-brand-primary-light transition-colors"
+            className="inline-flex items-center gap-2 bg-cc-carbon-2 text-white text-sm font-medium py-3 px-6 rounded-lg hover:opacity-90 transition-colors"
           >
             Send us your inquiry
             <ArrowRight size={15} strokeWidth={2.5} />

@@ -20,27 +20,26 @@ const RESOURCE_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-primary-dark px-[5vw] py-12 pb-8 text-white">
+    <footer className="font-body-cc relative border-t border-cc-line bg-cc-carbon-2 px-[5vw] py-12 pb-8 text-cc-ink">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cc-copper/30 to-transparent" />
       <div className="mx-auto max-w-[1280px]">
-        <div className="grid grid-cols-2 gap-8 border-b border-white/[0.08] pb-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-2 gap-8 border-b border-cc-line pb-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
           <div className="col-span-2 flex flex-col gap-2 md:col-span-1">
             <div className="mb-3 flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-yellow text-xs font-bold text-brand-primary">
+              <div className="cc-copper-fill flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold">
                 HT
               </div>
               <div>
-                <strong className="block text-sm font-semibold tracking-wide text-white">
-                  ONESTOPPCBA
-                </strong>
-                <span className="text-[9px] font-medium tracking-[0.14em] text-white/40">
+                <strong className="block text-sm font-semibold tracking-wide text-cc-ink">ONESTOPPCBA</strong>
+                <span className="font-mono-cc text-[9px] font-medium tracking-[0.16em] text-cc-ink-mute">
                   HUITAI ELECTRONICS
                 </span>
               </div>
             </div>
-            <p className="text-xs leading-loose text-white/55">
+            <p className="text-xs leading-loose text-cc-ink-mute">
               Shenzhen Huitai Electronics Technology Co., Ltd.
             </p>
-            <p className="text-xs leading-loose text-white/55">
+            <p className="text-xs leading-loose text-cc-ink-mute">
               Building D, 4F, Zhaochang Industrial Park,<br />
               Gonghe Industrial Road, Shajing,<br />
               Bao&apos;an District, Shenzhen, China
@@ -48,14 +47,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5 className="mb-3.5 text-[11px] font-semibold tracking-[0.14em] text-brand-yellow">
+            <h5 className="font-mono-cc mb-3.5 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
               SERVICES
             </h5>
             {SERVICES_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="block text-xs leading-loose text-white/55 transition-colors hover:text-white"
+                className="block text-xs leading-loose text-cc-ink-mute transition-colors hover:text-cc-ink"
               >
                 {link.label}
               </Link>
@@ -63,14 +62,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5 className="mb-3.5 text-[11px] font-semibold tracking-[0.14em] text-brand-yellow">
+            <h5 className="font-mono-cc mb-3.5 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
               RESOURCES
             </h5>
             {RESOURCE_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className="block text-xs leading-loose text-white/55 transition-colors hover:text-white"
+                className="block text-xs leading-loose text-cc-ink-mute transition-colors hover:text-cc-ink"
               >
                 {link.label}
               </Link>
@@ -78,38 +77,36 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5 className="mb-3.5 text-[11px] font-semibold tracking-[0.14em] text-brand-yellow">
+            <h5 className="font-mono-cc mb-3.5 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
               CONTACT
             </h5>
             <TrackedAnchor
               href="mailto:teemo18420085181@gmail.com"
               eventName="email_click"
               eventParams={{ location: 'footer', contact_method: 'email' }}
-              className="block text-xs leading-loose text-white/55 transition-colors hover:text-white"
+              className="block text-xs leading-loose text-cc-ink-mute transition-colors hover:text-cc-ink"
             >
               teemo18420085181@gmail.com
             </TrackedAnchor>
-            <span className="block text-xs leading-loose text-white/55">
-              Mon-Sat, 09:00-18:00 CST
-            </span>
+            <span className="block text-xs leading-loose text-cc-ink-mute">Mon-Sat, 09:00-18:00 CST</span>
             <TrackedLink
               href="/contact"
               eventName="quote_click"
               eventParams={{ location: 'footer', destination: '/contact' }}
-              className="mt-1 block text-xs leading-loose text-brand-yellow/80 transition-colors hover:text-brand-yellow"
+              className="mt-1 block text-xs leading-loose text-cc-copper-soft transition-colors hover:text-cc-copper-bright"
             >
-              Get PCB Assembly Quote
+              Get a PCB Assembly Quote
             </TrackedLink>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-2 pt-6 text-[11px] text-white/40">
-          <span>Copyright 2026 Huitai Electronics Technology Co., Ltd. All rights reserved.</span>
+        <div className="font-mono-cc flex flex-wrap items-center justify-between gap-2 pt-6 text-[11px] text-cc-ink-mute">
+          <span>© 2026 Huitai Electronics Technology Co., Ltd.</span>
           <span className="flex gap-3">
-            <Link href="/privacy" className="transition-colors hover:text-white">Privacy</Link>
-            <span>/</span>
-            <Link href="/terms" className="transition-colors hover:text-white">Terms</Link>
-            <span>/</span>
+            <Link href="/privacy" className="transition-colors hover:text-cc-ink">Privacy</Link>
+            <span className="text-cc-copper/40">/</span>
+            <Link href="/terms" className="transition-colors hover:text-cc-ink">Terms</Link>
+            <span className="text-cc-copper/40">/</span>
             <span>NDA Available</span>
           </span>
         </div>

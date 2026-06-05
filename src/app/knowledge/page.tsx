@@ -56,28 +56,28 @@ export default async function KnowledgePage() {
   return (
     <>
       <Nav />
-      <main className="min-h-screen bg-bg pt-[64px]">
-        <section className="relative overflow-hidden bg-brand-primary px-[5vw] py-16 text-white md:py-24">
+      <main className="min-h-screen bg-cc-carbon pt-[64px]">
+        <section className="relative overflow-hidden bg-cc-carbon-2 px-[5vw] py-16 text-white md:py-24">
           <div
             className="absolute -top-[100px] right-[10%] h-[300px] w-[300px] rounded-full opacity-30"
-            style={{ background: '#FCEA0B', filter: 'blur(100px)' }}
+            style={{ background: '#E6A85A', filter: 'blur(100px)' }}
           />
           <div
             className="absolute -bottom-[100px] left-[10%] h-[280px] w-[280px] rounded-full opacity-20"
-            style={{ background: '#93C249', filter: 'blur(100px)' }}
+            style={{ background: '#9EE34F', filter: 'blur(100px)' }}
           />
           <div className="relative z-10 mx-auto max-w-[1080px] text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-yellow/40 bg-brand-yellow/10 px-3.5 py-1.5 text-[11px] font-medium tracking-[0.14em] text-brand-yellow">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cc-copper/40 bg-cc-copper/10 px-3.5 py-1.5 text-[11px] font-medium tracking-[0.14em] text-cc-copper-soft">
               <span
-                className="h-1.5 w-1.5 rounded-full bg-brand-yellow"
-                style={{ boxShadow: '0 0 12px #FCEA0B' }}
+                className="h-1.5 w-1.5 rounded-full bg-cc-copper"
+                style={{ boxShadow: '0 0 12px #E6A85A' }}
               />
               KNOWLEDGE BASE
             </div>
             <h1 className="mb-5 text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-[52px]">
               Guides written by engineers,
               <br />
-              <em className="not-italic text-brand-yellow">not marketers.</em>
+              <em className="not-italic text-cc-copper-soft">not marketers.</em>
             </h1>
             <p className="mx-auto max-w-[620px] text-base leading-relaxed text-white/70 md:text-lg">
               Practical articles covering everything from your first Gerber file
@@ -94,11 +94,11 @@ export default async function KnowledgePage() {
                 <Link
                   key={article.slug}
                   href={`/knowledge/${article.slug}`}
-                  className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+                  className="group flex flex-col overflow-hidden rounded-2xl border border-cc-line bg-cc-carbon-2 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div className="relative h-48 overflow-hidden bg-brand-primary-dark">
+                  <div className="relative h-48 overflow-hidden bg-cc-carbon">
                     <ArticleImage article={article} />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-cc-carbon-2/50 to-transparent" />
                     <div className="absolute left-4 top-4">
                       <span
                         className={`rounded-full border px-2.5 py-1 text-[10px] font-semibold tracking-wide backdrop-blur-sm ${article.categoryColor}`}
@@ -109,15 +109,15 @@ export default async function KnowledgePage() {
                   </div>
 
                   <div className="flex flex-1 flex-col p-5">
-                    <h2 className="mb-2 text-base font-semibold leading-tight text-brand-primary transition-colors group-hover:text-brand-primary-light">
+                    <h2 className="mb-2 text-base font-semibold leading-tight text-cc-ink transition-colors group-hover:text-cc-ink-light">
                       {article.title}
                     </h2>
-                    <p className="flex-1 text-sm leading-relaxed text-ink-muted">
+                    <p className="flex-1 text-sm leading-relaxed text-cc-ink-mute">
                       {article.excerpt}
                     </p>
-                    <div className="mt-4 flex items-center justify-between border-t border-line pt-4">
-                      <span className="text-[11px] text-ink-muted">{article.readTime}</span>
-                      <span className="text-xs font-medium text-brand-primary transition-colors group-hover:text-brand-green-dark">
+                    <div className="mt-4 flex items-center justify-between border-t border-cc-line pt-4">
+                      <span className="text-[11px] text-cc-ink-mute">{article.readTime}</span>
+                      <span className="text-xs font-medium text-cc-ink transition-colors group-hover:text-cc-signal">
                         Read guide &rarr;
                       </span>
                     </div>
@@ -130,10 +130,10 @@ export default async function KnowledgePage() {
 
         <section className="px-[5vw] pb-16">
           <div className="mx-auto max-w-[1280px]">
-            <div className="rounded-2xl bg-brand-primary-dark p-8 md:p-10">
+            <div className="rounded-2xl bg-cc-carbon p-8 md:p-10">
               <div className="grid items-start gap-8 md:grid-cols-[1fr_auto]">
                 <div>
-                  <div className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-brand-yellow">
+                  <div className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
                     COMING SOON
                   </div>
                   <h2 className="mb-4 text-xl font-semibold text-white md:text-2xl">
@@ -142,14 +142,14 @@ export default async function KnowledgePage() {
                   <div className="grid gap-2.5 sm:grid-cols-2">
                     {COMING_SOON.map((title) => (
                       <div key={title} className="flex items-start gap-2 text-sm text-white/60">
-                        <span className="mt-0.5 flex-shrink-0 text-brand-yellow">-</span>
+                        <span className="mt-0.5 flex-shrink-0 text-cc-copper-soft">-</span>
                         {title}
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="flex-shrink-0">
-                  <div className="min-w-[220px] rounded-xl border border-white/10 bg-white/[0.05] p-6 text-center">
+                  <div className="min-w-[220px] rounded-xl border border-white/10 bg-cc-carbon-2/[0.05] p-6 text-center">
                     <div className="mb-1 text-sm font-medium text-white">
                       Have a topic request?
                     </div>
@@ -158,7 +158,7 @@ export default async function KnowledgePage() {
                     </div>
                     <Link
                       href="/#customer-qa"
-                      className="inline-block rounded-lg bg-brand-yellow px-5 py-2.5 text-xs font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
+                      className="inline-block rounded-lg bg-cc-copper px-5 py-2.5 text-xs font-semibold text-cc-ink transition-all hover:-translate-y-0.5"
                     >
                       Suggest a topic &rarr;
                     </Link>

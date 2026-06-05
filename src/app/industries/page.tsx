@@ -73,19 +73,19 @@ export default function IndustriesPage() {
   return (
     <>
       <Nav />
-      <main className="pt-[64px] min-h-screen bg-bg">
-        <section className="relative px-[5vw] py-16 md:py-24 bg-brand-primary text-white overflow-hidden">
-          <div className="absolute -top-[100px] right-[10%] w-[300px] h-[300px] rounded-full opacity-30" style={{ background: '#FCEA0B', filter: 'blur(100px)' }} />
-          <div className="absolute -bottom-[100px] left-[10%] w-[280px] h-[280px] rounded-full opacity-20" style={{ background: '#93C249', filter: 'blur(100px)' }} />
+      <main className="pt-[64px] min-h-screen bg-cc-carbon">
+        <section className="relative px-[5vw] py-16 md:py-24 bg-cc-carbon-2 text-white overflow-hidden">
+          <div className="absolute -top-[100px] right-[10%] w-[300px] h-[300px] rounded-full opacity-30" style={{ background: '#E6A85A', filter: 'blur(100px)' }} />
+          <div className="absolute -bottom-[100px] left-[10%] w-[280px] h-[280px] rounded-full opacity-20" style={{ background: '#9EE34F', filter: 'blur(100px)' }} />
           <div className="relative z-10 max-w-[1080px] mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-brand-yellow/10 border border-brand-yellow/40 text-brand-yellow text-[11px] tracking-[0.14em] py-1.5 px-3.5 rounded-full mb-6 font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-yellow" style={{ boxShadow: '0 0 12px #FCEA0B' }} />
+            <div className="inline-flex items-center gap-2 bg-cc-copper/10 border border-cc-copper/40 text-cc-copper-soft text-[11px] tracking-[0.14em] py-1.5 px-3.5 rounded-full mb-6 font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-cc-copper" style={{ boxShadow: '0 0 12px #E6A85A' }} />
               INDUSTRIES WE SERVE
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-[52px] font-semibold leading-tight tracking-tight mb-5">
               From startups to scale-ups.
               <br />
-              <em className="not-italic text-brand-yellow">Across practical B2B use cases.</em>
+              <em className="not-italic text-cc-copper-soft">Across practical B2B use cases.</em>
             </h1>
             <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[680px] mx-auto">
               We&apos;ve shipped boards for hardware teams across industrial, IoT, consumer, automotive aftermarket, medical, and test equipment sectors. Whatever your industry — we&apos;ve likely built a board like yours.
@@ -96,7 +96,7 @@ export default function IndustriesPage() {
         <section className="px-[5vw] py-20">
           <div className="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
             {INDUSTRIES.map((ind, i) => (
-              <div key={ind.n} className="group bg-white border border-line rounded-2xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <div key={ind.n} className="group bg-cc-carbon-2 border border-cc-line rounded-2xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                 <div className="relative h-52 overflow-hidden">
                   <Image
                     src={ind.image}
@@ -105,19 +105,19 @@ export default function IndustriesPage() {
                     className="object-cover group-hover:scale-[1.04] transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/70 via-brand-primary/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cc-carbon-2/70 via-cc-carbon-2/20 to-transparent" />
                   <div className="absolute top-4 left-4 flex items-center gap-2">
-                    <div className="w-9 h-9 rounded-xl bg-brand-yellow flex items-center justify-center text-brand-primary text-[12px] font-bold shadow-md">{ind.n}</div>
-                    <div className="text-[9px] text-white/70 tracking-[0.18em] font-medium bg-brand-primary/50 backdrop-blur px-2.5 py-1 rounded-full">{ind.tag}</div>
+                    <div className="w-9 h-9 rounded-xl bg-cc-copper flex items-center justify-center text-cc-ink text-[12px] font-bold shadow-md">{ind.n}</div>
+                    <div className="text-[9px] text-white/70 tracking-[0.18em] font-medium bg-cc-carbon-2/50 backdrop-blur px-2.5 py-1 rounded-full">{ind.tag}</div>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-base font-semibold text-brand-primary mb-2 leading-tight">{ind.title}</h3>
-                  <p className="text-sm text-ink-muted leading-relaxed mb-4">{ind.desc}</p>
+                  <h3 className="text-base font-semibold text-cc-ink mb-2 leading-tight">{ind.title}</h3>
+                  <p className="text-sm text-cc-ink-mute leading-relaxed mb-4">{ind.desc}</p>
                   <div className="grid grid-cols-2 gap-1.5">
                     {ind.examples.map((e, ei) => (
-                      <div key={ei} className="flex items-center gap-1.5 text-[11px] text-ink-muted">
-                        <span className="w-1 h-1 rounded-full bg-brand-yellow flex-shrink-0" />{e}
+                      <div key={ei} className="flex items-center gap-1.5 text-[11px] text-cc-ink-mute">
+                        <span className="w-1 h-1 rounded-full bg-cc-copper flex-shrink-0" />{e}
                       </div>
                     ))}
                   </div>
@@ -128,11 +128,11 @@ export default function IndustriesPage() {
         </section>
 
         <section className="px-[5vw] pb-20">
-          <div className="max-w-[820px] mx-auto bg-brand-primary rounded-2xl p-10 text-center text-white relative overflow-hidden">
-            <div className="absolute -top-[80px] -right-[80px] w-[200px] h-[200px] rounded-full opacity-20" style={{ background: '#FCEA0B', filter: 'blur(60px)' }} />
+          <div className="max-w-[820px] mx-auto bg-cc-carbon-2 rounded-2xl p-10 text-center text-white relative overflow-hidden">
+            <div className="absolute -top-[80px] -right-[80px] w-[200px] h-[200px] rounded-full opacity-20" style={{ background: '#E6A85A', filter: 'blur(60px)' }} />
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">Don&apos;t see your industry listed?</h2>
             <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Send us your Gerber files and we&apos;ll confirm if we can manufacture your board. If we&apos;ve never made a board like it, we&apos;ll tell you upfront.</p>
-            <TrackedLink href="/contact" eventName="quote_click" eventParams={{ location: 'industries_bottom_cta', destination: '/contact', button_text: 'Send us your project' }} className="inline-flex items-center gap-2 bg-brand-yellow text-brand-primary text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
+            <TrackedLink href="/contact" eventName="quote_click" eventParams={{ location: 'industries_bottom_cta', destination: '/contact', button_text: 'Send us your project' }} className="inline-flex items-center gap-2 bg-cc-copper text-cc-ink text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
               Send us your project →
             </TrackedLink>
           </div>

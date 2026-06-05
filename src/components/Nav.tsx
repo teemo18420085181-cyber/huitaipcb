@@ -23,41 +23,33 @@ export default function Nav() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 h-16 z-50 bg-bg/85 backdrop-blur-md border-b border-line flex items-center justify-between px-[5vw]">
-      <Link href="/" className="flex items-center gap-3 cursor-pointer group">
-        <Image
-          src="/logo.svg"
-          alt="OneStopPCBA Logo"
-          width={80}
-          height={80}
-          className="w-[80px] h-[80px] transition-transform group-hover:rotate-[-5deg]"
-        />
+    <nav className="font-body-cc fixed left-0 right-0 top-0 z-50 flex h-16 items-center justify-between border-b border-cc-line bg-cc-carbon/80 px-[5vw] backdrop-blur-md">
+      <Link href="/" className="group flex items-center gap-2.5">
+        <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-[9px] bg-cc-carbon-2 ring-1 ring-cc-copper/30 transition-transform group-hover:-rotate-6">
+          <Image src="/logo.svg" alt="OneStopPCBA Logo" width={36} height={36} className="h-7 w-7 object-contain" />
+        </span>
         <div className="flex flex-col leading-none">
-          <strong className="text-sm font-semibold text-brand-primary tracking-wide">
-            ONESTOPPCBA
-          </strong>
-          <em className="not-italic text-[9px] text-ink-muted tracking-[0.14em] font-medium">
+          <strong className="text-sm font-semibold tracking-wide text-cc-ink">ONESTOPPCBA</strong>
+          <em className="font-mono-cc not-italic text-[9px] font-medium tracking-[0.16em] text-cc-ink-mute">
             HUITAI ELECTRONICS
           </em>
         </div>
       </Link>
 
-      <div className="hidden md:flex gap-7 items-center h-full">
+      <div className="hidden h-full items-center gap-7 md:flex">
         {NAV_ITEMS.map((item) => {
           const active = isActive(item.href);
           return (
             <Link
               key={item.name}
               href={item.href}
-              className={`group relative h-full flex items-center text-[13px] font-medium transition-colors ${
-                active
-                  ? 'text-brand-primary'
-                  : 'text-ink hover:text-brand-primary'
+              className={`group relative flex h-full items-center text-[13px] font-medium transition-colors ${
+                active ? 'text-cc-copper-soft' : 'text-cc-ink-mute hover:text-cc-ink'
               }`}
             >
               <span>{item.name}</span>
               <span
-                className={`absolute left-0 right-0 bottom-0 h-[2px] bg-brand-yellow transition-transform duration-200 origin-center ${
+                className={`absolute bottom-[18px] left-0 right-0 h-px origin-center bg-cc-copper transition-transform duration-200 ${
                   active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                 }`}
               />
@@ -71,15 +63,15 @@ export default function Nav() {
           href="/contact"
           eventName="quote_click"
           eventParams={{ location: 'nav', destination: '/contact' }}
-          className="text-xs text-brand-primary font-medium py-2 px-4 rounded-lg border border-line hover:border-brand-primary transition-all hidden sm:inline-block"
+          className="hidden rounded-lg border border-cc-copper/30 px-4 py-2 text-xs font-medium text-cc-ink transition-all hover:border-cc-copper/60 hover:text-cc-copper-soft sm:inline-block"
         >
-          Get PCB Assembly Quote
+          Get a Quote
         </TrackedLink>
         <TrackedLink
           href="/contact"
           eventName="upload_gerber_bom_click"
           eventParams={{ location: 'nav', destination: '/contact' }}
-          className="text-xs text-white font-medium py-2 px-4 rounded-lg bg-brand-primary hover:bg-brand-primary-light hover:-translate-y-0.5 transition-all inline-flex items-center gap-1.5"
+          className="cc-copper-fill inline-flex items-center gap-1.5 rounded-lg px-4 py-2 text-xs font-semibold transition-all hover:-translate-y-0.5"
         >
           <Upload size={13} strokeWidth={2.5} />
           Upload Gerber &amp; BOM

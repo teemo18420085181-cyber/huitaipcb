@@ -62,53 +62,49 @@ const PROCESS = [
 
 export default function ProcessGrid() {
   return (
-    <section className="py-[90px] px-[5vw]">
-      <div className="max-w-[1280px] mx-auto">
+    <section className="font-body-cc px-[5vw] py-[90px]">
+      <div className="mx-auto max-w-[1280px]">
         <div className="mb-12 max-w-[680px]">
-          <div className="inline-flex items-center gap-2 text-[11px] text-brand-primary font-semibold tracking-[0.16em] mb-3.5">
-            <span className="w-[18px] h-0.5 bg-brand-yellow rounded-sm" />
+          <div className="font-mono-cc mb-3.5 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] text-cc-copper-soft">
+            <span className="h-px w-[18px] bg-cc-copper" />
             THE TURNKEY WORKFLOW
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-[44px] font-semibold text-brand-primary tracking-tight leading-tight mb-3.5">
-            Eight stages,{' '}
-            <em className="not-italic text-brand-green-dark">one team,</em> zero
-            handoffs.
+          <h2 className="font-display mb-3.5 text-3xl font-bold leading-tight tracking-tight text-cc-ink md:text-4xl lg:text-[44px]">
+            Eight stages, <span className="cc-copper-text">one team,</span> zero handoffs.
           </h2>
-          <p className="text-[15px] text-ink-muted leading-relaxed">
-            From the moment you upload files to the day boards arrive — every
-            stage coordinated through our Shenzhen engineering and manufacturing partners.
+          <p className="text-[15px] leading-relaxed text-cc-ink-mute">
+            From the moment you upload files to the day boards arrive — every stage coordinated
+            through our Shenzhen engineering and manufacturing partners.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {PROCESS.map((p) => (
             <Link
               key={p.n}
               href={p.href}
-              className="group bg-white border border-line rounded-[14px] overflow-hidden hover:border-brand-primary-light hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+              className="group overflow-hidden rounded-[14px] border border-cc-line bg-cc-carbon-2 transition-all duration-200 hover:-translate-y-1 hover:border-cc-copper/40"
             >
-              <div className="relative h-40 overflow-hidden bg-brand-primary-dark">
+              <div className="relative h-40 overflow-hidden bg-cc-carbon-3">
                 <Image
                   src={p.image}
                   alt={p.name}
                   fill
-                  className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover opacity-75 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-90"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/60 via-brand-primary/10 to-transparent" />
-                <div className="absolute top-3 left-3 w-8 h-8 rounded-lg bg-brand-yellow flex items-center justify-center text-brand-primary text-[11px] font-bold shadow-md">
+                <div className="absolute inset-0 bg-gradient-to-t from-cc-carbon via-cc-carbon/40 to-transparent" />
+                <div className="cc-copper-fill font-mono-cc absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg text-[11px] font-bold">
                   {p.n}
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="text-sm font-semibold text-brand-primary mb-1.5 group-hover:text-brand-primary-light transition-colors">
+                <h3 className="mb-1.5 text-sm font-semibold text-cc-ink transition-colors group-hover:text-cc-copper-soft">
                   {p.name}
                 </h3>
-                <p className="text-xs text-ink-muted leading-relaxed line-clamp-3">
-                  {p.desc}
-                </p>
+                <p className="line-clamp-3 text-xs leading-relaxed text-cc-ink-mute">{p.desc}</p>
               </div>
-              <div className="h-[3px] bg-gradient-to-r from-brand-yellow to-brand-green -mt-px opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="-mt-px h-[3px] bg-gradient-to-r from-cc-copper to-cc-signal opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </Link>
           ))}
         </div>

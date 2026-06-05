@@ -210,12 +210,12 @@ export default function PcbaQuoteFileChecklistPage() {
   return (
     <>
       <Nav />
-      <main className="min-h-screen bg-bg pt-[64px]">
+      <main className="min-h-screen bg-cc-carbon pt-[64px]">
         <JsonLdScripts />
 
-        <section className="bg-brand-primary px-[5vw] py-16 text-white md:py-24">
+        <section className="bg-cc-carbon-2 px-[5vw] py-16 text-white md:py-24">
           <div className="mx-auto max-w-[1080px]">
-            <div className="mb-6 inline-flex rounded-lg border border-brand-yellow/40 bg-brand-yellow/10 px-3 py-1.5 text-[11px] font-semibold tracking-[0.14em] text-brand-yellow">
+            <div className="mb-6 inline-flex rounded-lg border border-cc-copper/40 bg-cc-copper/10 px-3 py-1.5 text-[11px] font-semibold tracking-[0.14em] text-cc-copper-soft">
               RFQ FILE PREPARATION
             </div>
             <h1 className="max-w-[760px] text-4xl font-semibold leading-tight md:text-5xl">
@@ -230,7 +230,7 @@ export default function PcbaQuoteFileChecklistPage() {
                 href="/contact"
                 eventName="quote_click"
                 eventParams={{ location: 'pcba_quote_checklist_hero', destination: '/contact' }}
-                className="rounded-lg bg-brand-yellow px-6 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
+                className="rounded-lg bg-cc-copper px-6 py-3 text-sm font-semibold text-cc-ink transition-all hover:-translate-y-0.5"
               >
                 Send Files for Review
               </TrackedLink>
@@ -249,11 +249,11 @@ export default function PcbaQuoteFileChecklistPage() {
         <section className="px-[5vw] py-14">
           <div className="mx-auto grid max-w-[1080px] gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
             <div className="space-y-7">
-              <section className="rounded-xl border border-brand-primary/10 bg-white p-7 shadow-sm">
-                <div className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-brand-primary">
+              <section className="rounded-xl border border-cc-copper/15 bg-cc-carbon-2 p-7 shadow-sm">
+                <div className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-cc-ink">
                   QUICK ANSWER
                 </div>
-                <p className="text-sm leading-7 text-ink-muted">
+                <p className="text-sm leading-7 text-cc-ink-mute">
                   For a PCBA quote, prepare Gerber files, a BOM with MPNs and quantities, Pick and Place data if
                   available, PCB specifications, testing requirements, delivery information, and any special
                   assembly notes. Complete files help Huitai Electronics review fabrication, component sourcing,
@@ -261,12 +261,12 @@ export default function PcbaQuoteFileChecklistPage() {
                 </p>
               </section>
 
-              <section className="rounded-xl border border-line bg-white p-7">
-                <h2 className="mb-4 text-2xl font-semibold text-brand-primary">Checklist Table</h2>
+              <section className="rounded-xl border border-cc-line bg-cc-carbon-2 p-7">
+                <h2 className="mb-4 text-2xl font-semibold text-cc-ink">Checklist Table</h2>
                 <div className="overflow-x-auto">
                   <table className="w-full min-w-[760px] border-collapse text-left text-sm">
                     <thead>
-                      <tr className="border-b border-line bg-bg-muted text-brand-primary">
+                      <tr className="border-b border-cc-line bg-cc-carbon text-cc-ink">
                         <th className="px-4 py-3 font-semibold">File / Information</th>
                         <th className="px-4 py-3 font-semibold">Required or Optional</th>
                         <th className="px-4 py-3 font-semibold">Why It Matters</th>
@@ -275,11 +275,11 @@ export default function PcbaQuoteFileChecklistPage() {
                     </thead>
                     <tbody>
                       {checklistItems.map((row) => (
-                        <tr key={row.item} className="border-b border-line last:border-b-0">
-                          <td className="px-4 py-4 font-semibold text-brand-primary">{row.item}</td>
-                          <td className="px-4 py-4 text-ink-muted">{row.status}</td>
-                          <td className="px-4 py-4 leading-6 text-ink-muted">{row.why}</td>
-                          <td className="px-4 py-4 leading-6 text-ink-muted">{row.notes}</td>
+                        <tr key={row.item} className="border-b border-cc-line last:border-b-0">
+                          <td className="px-4 py-4 font-semibold text-cc-ink">{row.item}</td>
+                          <td className="px-4 py-4 text-cc-ink-mute">{row.status}</td>
+                          <td className="px-4 py-4 leading-6 text-cc-ink-mute">{row.why}</td>
+                          <td className="px-4 py-4 leading-6 text-cc-ink-mute">{row.notes}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -287,8 +287,8 @@ export default function PcbaQuoteFileChecklistPage() {
                 </div>
               </section>
 
-              <section className="rounded-xl border border-line bg-white p-7">
-                <h2 className="mb-4 text-2xl font-semibold text-brand-primary">How to Prepare the RFQ Package</h2>
+              <section className="rounded-xl border border-cc-line bg-cc-carbon-2 p-7">
+                <h2 className="mb-4 text-2xl font-semibold text-cc-ink">How to Prepare the RFQ Package</h2>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {[
                     'Group Gerber files, BOM, and placement data in one clear folder.',
@@ -296,26 +296,26 @@ export default function PcbaQuoteFileChecklistPage() {
                     'Separate prototype, pilot, and production quantities if they differ.',
                     'Add testing, programming, packaging, and delivery notes before review.',
                   ].map((item) => (
-                    <div key={item} className="rounded-lg border border-line bg-bg-muted p-4 text-sm leading-6 text-ink-muted">
+                    <div key={item} className="rounded-lg border border-cc-line bg-cc-carbon p-4 text-sm leading-6 text-cc-ink-mute">
                       {item}
                     </div>
                   ))}
                 </div>
               </section>
 
-              <section className="rounded-xl border border-line bg-white p-7">
-                <h2 className="mb-5 text-2xl font-semibold text-brand-primary">FAQ</h2>
+              <section className="rounded-xl border border-cc-line bg-cc-carbon-2 p-7">
+                <h2 className="mb-5 text-2xl font-semibold text-cc-ink">FAQ</h2>
                 <div className="space-y-4">
                   {faqs.map((faq) => (
-                    <div key={faq.question} className="border-b border-line pb-4 last:border-b-0 last:pb-0">
-                      <h3 className="mb-2 text-base font-semibold text-brand-primary">{faq.question}</h3>
-                      <p className="text-sm leading-7 text-ink-muted">{faq.answer}</p>
+                    <div key={faq.question} className="border-b border-cc-line pb-4 last:border-b-0 last:pb-0">
+                      <h3 className="mb-2 text-base font-semibold text-cc-ink">{faq.question}</h3>
+                      <p className="text-sm leading-7 text-cc-ink-mute">{faq.answer}</p>
                     </div>
                   ))}
                 </div>
               </section>
 
-              <section className="rounded-xl border border-brand-primary/10 bg-brand-primary p-7 text-white">
+              <section className="rounded-xl border border-cc-copper/15 bg-cc-carbon-2 p-7 text-white">
                 <h2 className="mb-3 text-2xl font-semibold">Send Gerber, BOM, quantity, and testing requirements for review.</h2>
                 <p className="mb-5 max-w-[720px] text-sm leading-7 text-white/70">
                   Huitai Electronics can review available RFQ files before turnkey PCBA quotation and production planning.
@@ -325,7 +325,7 @@ export default function PcbaQuoteFileChecklistPage() {
                     href="/contact"
                     eventName="quote_click"
                     eventParams={{ location: 'pcba_quote_checklist_bottom', destination: '/contact' }}
-                    className="inline-flex rounded-lg bg-brand-yellow px-5 py-3 text-sm font-semibold text-brand-primary transition-all hover:-translate-y-0.5"
+                    className="inline-flex rounded-lg bg-cc-copper px-5 py-3 text-sm font-semibold text-cc-ink transition-all hover:-translate-y-0.5"
                   >
                     Request a PCBA Quote
                   </TrackedLink>
@@ -341,17 +341,17 @@ export default function PcbaQuoteFileChecklistPage() {
               </section>
             </div>
 
-            <aside className="h-fit rounded-xl border border-line bg-white p-6 lg:sticky lg:top-24">
-              <div className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-brand-primary">
+            <aside className="h-fit rounded-xl border border-cc-line bg-cc-carbon-2 p-6 lg:sticky lg:top-24">
+              <div className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-cc-ink">
                 RELATED PAGES
               </div>
-              <h2 className="mb-3 text-xl font-semibold text-brand-primary">Continue PCBA RFQ preparation</h2>
-              <p className="mb-5 text-sm leading-6 text-ink-muted">
+              <h2 className="mb-3 text-xl font-semibold text-cc-ink">Continue PCBA RFQ preparation</h2>
+              <p className="mb-5 text-sm leading-6 text-cc-ink-mute">
                 Review related cost, file, BOM sourcing, contact, and turnkey assembly resources.
               </p>
               <div className="space-y-2">
                 {relatedLinks.map((link) => (
-                  <Link key={link.href} href={link.href} className="block text-sm text-brand-primary underline underline-offset-4">
+                  <Link key={link.href} href={link.href} className="block text-sm text-cc-ink underline underline-offset-4">
                     {link.label}
                   </Link>
                 ))}

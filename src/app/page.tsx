@@ -1,4 +1,3 @@
-import Splash from '@/components/Splash';
 import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
@@ -31,21 +30,20 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-      <Splash />
       <Nav />
       <main>
         <Hero />
         <TrustStrip />
-        <section className="border-y border-line bg-white px-[5vw] py-6">
+        <section className="font-body-cc border-b border-cc-line bg-cc-carbon-2 px-[5vw] py-6">
           <div className="mx-auto flex max-w-[1280px] flex-wrap items-center gap-3">
-            <span className="text-[11px] font-semibold tracking-[0.16em] text-brand-primary">
+            <span className="font-mono-cc text-[11px] font-semibold tracking-[0.18em] text-cc-copper-soft">
               KEY PCBA PAGES
             </span>
             {HOME_SERVICE_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-full border border-line px-3.5 py-2 text-xs font-medium text-ink-muted transition-colors hover:border-brand-primary hover:text-brand-primary"
+                className="rounded-full border border-cc-line px-3.5 py-2 text-xs font-medium text-cc-ink-mute transition-colors hover:border-cc-copper/60 hover:text-cc-copper-soft"
               >
                 {link.label}
               </Link>

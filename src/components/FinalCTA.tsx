@@ -3,32 +3,31 @@ import TrackedLink from '@/components/TrackedLink';
 
 export default function FinalCTA() {
   return (
-    <section className="bg-brand-primary text-white py-20 px-[5vw] relative overflow-hidden">
+    <section className="font-body-cc relative overflow-hidden border-t border-cc-line bg-cc-carbon-2 px-[5vw] py-24">
       <div
-        className="absolute -top-[200px] -right-[100px] w-[500px] h-[500px] rounded-full opacity-15"
-        style={{ background: '#FCEA0B', filter: 'blur(120px)' }}
+        className="pointer-events-none absolute -right-[100px] -top-[200px] h-[500px] w-[500px] rounded-full opacity-20"
+        style={{ background: '#c98b3a', filter: 'blur(130px)' }}
       />
       <div
-        className="absolute -bottom-[200px] -left-[100px] w-[400px] h-[400px] rounded-full opacity-[0.12]"
-        style={{ background: '#93C249', filter: 'blur(110px)' }}
+        className="pointer-events-none absolute -bottom-[200px] -left-[100px] h-[400px] w-[400px] rounded-full opacity-[0.1]"
+        style={{ background: '#9ee34f', filter: 'blur(120px)' }}
       />
 
-      <div className="max-w-[880px] mx-auto text-center relative z-10">
-        <h2 className="text-3xl md:text-4xl lg:text-[42px] font-semibold tracking-tight leading-tight mb-4">
-          Ready to send us your{' '}
-          <em className="not-italic text-brand-yellow">next project?</em>
+      <div className="relative z-10 mx-auto max-w-[880px] text-center">
+        <h2 className="font-display mb-4 text-3xl font-bold leading-tight tracking-tight text-cc-ink md:text-4xl lg:text-[42px]">
+          Ready to send us your <span className="cc-copper-text">next project?</span>
         </h2>
-        <p className="text-[15px] text-white/65 leading-relaxed max-w-[560px] mx-auto mb-8">
-          Upload your Gerber files and BOM. Our engineering team will review them
-          and respond with the next questions, scope, and lead time for a full turnkey quote.
+        <p className="mx-auto mb-8 max-w-[560px] text-[15px] leading-relaxed text-cc-ink-mute">
+          Upload your Gerber files and BOM. Our engineering team will review them and respond with
+          the next questions, scope, and lead time for a full turnkey quote.
         </p>
-        <div className="flex gap-3 justify-center flex-wrap">
+        <div className="flex flex-wrap justify-center gap-3">
           <TrackedLink
             href="/contact"
             eventName="upload_gerber_bom_click"
             eventParams={{ location: 'final_cta', destination: '/contact' }}
-            className="bg-brand-yellow text-brand-primary text-[13px] font-semibold py-3 px-6 rounded-[9px] cursor-pointer border-0 inline-flex items-center gap-2 hover:-translate-y-0.5 transition-all"
-            style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}
+            className="cc-copper-fill inline-flex items-center gap-2 rounded-[10px] px-6 py-3.5 text-[13px] font-semibold transition-all hover:-translate-y-0.5"
+            style={{ boxShadow: '0 8px 30px rgba(201,139,58,0.32)' }}
           >
             <Upload size={16} strokeWidth={2.5} />
             Upload Gerber &amp; BOM
@@ -37,7 +36,7 @@ export default function FinalCTA() {
             href="/contact"
             eventName="quote_click"
             eventParams={{ location: 'final_cta', destination: '/contact', button_text: 'Talk to Engineering' }}
-            className="bg-transparent text-white text-[13px] py-3 px-5 rounded-[10px] border border-white/20 cursor-pointer hover:border-white/40 transition-all"
+            className="inline-flex items-center rounded-[10px] border border-cc-copper/30 bg-cc-carbon/40 px-5 py-3.5 text-[13px] font-medium text-cc-ink transition-all hover:border-cc-copper/60"
           >
             Talk to Engineering
           </TrackedLink>
