@@ -209,6 +209,53 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       },
     ],
   },
+  {
+    slug: 'iot-device-pcb-assembly-china',
+    category: 'Applications',
+    categoryColor: 'bg-brand-primary/8 text-brand-primary border-brand-primary/15',
+    title: 'IoT device PCB assembly in China: what to plan for',
+    excerpt: 'Key considerations for IoT PCBA — wireless modules, antennas, power, testing, and a path from small batch to volume production.',
+    image: '/factory/real-smt-1.jpg',
+    readTime: '6 min read',
+    metaDescription: 'IoT device PCB assembly in China — planning wireless modules, antennas, power, testing, and the path from prototype to volume PCBA. Engineer-reviewed, reply within 24h.',
+    sections: [
+      {
+        heading: 'What makes IoT PCBA different',
+        body: [
+          'IoT product boards add a few constraints over a basic PCBA: a wireless module or RF section, an antenna, power management for battery or always-on operation, and connectors or sensors. These choices affect layout, sourcing, and testing, so they are worth reviewing before the board goes to assembly.',
+          'For [turnkey IoT PCBA](/turnkey-pcb-assembly), the goal is to coordinate fabrication, component sourcing, assembly, and testing while keeping these wireless and power details in view.',
+        ],
+      },
+      {
+        heading: 'Sourcing the wireless and power parts early',
+        body: [
+          'Wireless modules (Wi-Fi, BLE, LoRa, cellular) and certain power or sensor ICs can have longer lead times or availability swings. Identifying these early — and pre-approving alternates — protects your schedule.',
+          'See [BOM sourcing and PCB assembly](/bom-sourcing-pcb-assembly) for how MPN checks and approved alternatives keep an IoT build on track.',
+        ],
+      },
+      {
+        heading: 'Antenna and RF layout review',
+        body: [
+          'Antenna keep-out areas, module placement, and ground design influence wireless performance. An engineering review before assembly can flag obvious RF layout risks, missing footprints, or unclear orientation.',
+          'For a [China PCBA](/china-pcb-assembly) build, send your Gerber, BOM, and any RF or mechanical notes so these details are confirmed up front.',
+        ],
+      },
+      {
+        heading: 'Testing IoT boards',
+        body: [
+          'IoT boards usually need functional testing for power-up, connectivity, and basic I/O. Provide firmware, a test method, fixtures, or pass/fail criteria so the [testing scope](/pcba-testing-quality-control) can be confirmed.',
+          'Note: regulatory certification such as FCC or CE is the product owner’s responsibility, but a clean, well-tested build makes later certification smoother.',
+        ],
+      },
+      {
+        heading: 'From small batch to volume',
+        body: [
+          'A common path is to validate a [small batch](/low-volume-pcba-assembly) first, confirm the BOM and test plan, then scale to volume. The same file package and sourcing decisions carry forward.',
+          '[Send your IoT project files](/contact) for an engineering review and a quote — reply within 24h.',
+        ],
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeArticle(slug: string) {
