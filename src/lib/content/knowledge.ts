@@ -256,6 +256,53 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       },
     ],
   },
+  {
+    slug: 'keyboard-pcb-assembly-china',
+    category: 'Applications',
+    categoryColor: 'bg-brand-primary/8 text-brand-primary border-brand-primary/15',
+    title: 'Custom keyboard PCB assembly in China: what to know',
+    excerpt: 'A practical guide to custom mechanical keyboard PCBA — hotswap sockets, switches, LEDs, sourcing, and prototyping before a group buy or batch.',
+    image: '/factory/real-aoi-op.jpg',
+    readTime: '6 min read',
+    metaDescription: 'Custom keyboard PCB assembly in China — hotswap sockets, switches, RGB LEDs, mixed SMD/through-hole assembly, sourcing, and prototyping. Engineer-reviewed, reply within 24h.',
+    sections: [
+      {
+        heading: 'What makes keyboard PCBA different',
+        body: [
+          'Custom mechanical keyboard PCBs mix several part types on one board: switch or hotswap sockets, diodes, a microcontroller, a USB-C connector, stabilizers, and often per-key or underglow RGB LEDs. That mix of surface-mount and through-hole parts is what shapes the assembly plan.',
+          'Because keyboard projects — including group buys and small runs — are usually [low-volume](/low-volume-pcba-assembly), engineering review and sourcing clarity tend to matter more than high-volume pricing.',
+        ],
+      },
+      {
+        heading: 'A mixed SMD and hotswap assembly job',
+        body: [
+          'Diodes, the controller, and LEDs are typically surface-mount, while hotswap sockets and some connectors are through-hole or bottom-mounted. A keyboard build usually needs SMT assembly plus DIP or hand-soldered steps, so it helps to confirm which parts go where before quoting.',
+          'Send your Gerber files and a clear BOM so placement and orientation are confirmed early. See [BOM sourcing](/bom-sourcing-pcb-assembly) for how MPN checks help avoid switch, socket, or LED mix-ups.',
+        ],
+      },
+      {
+        heading: 'Sourcing the keyboard-specific parts',
+        body: [
+          'Hotswap sockets, specific switch footprints, addressable RGB LEDs (such as SK6812), and certain microcontrollers can have availability swings. Identifying these early and pre-approving alternates protects your timeline.',
+          'See [China PCBA lead times](/knowledge/pcb-assembly-lead-time-china) for how component sourcing drives both schedule and small-run cost.',
+        ],
+      },
+      {
+        heading: 'Prototype first, then the group buy or batch',
+        body: [
+          'Most custom keyboard projects start with a [prototype](/prototype-pcb-assembly) to validate the key matrix, switch fit, stabilizer clearance, and firmware before committing to a larger run.',
+          'Once the prototype is confirmed, the same files and BOM decisions carry forward into the batch — see [is there a minimum order quantity](/knowledge/pcb-assembly-minimum-order-quantity) for how small runs are handled.',
+        ],
+      },
+      {
+        heading: 'Files and testing for a keyboard PCBA quote',
+        body: [
+          'Send Gerber files, a BOM with manufacturer part numbers, the switch or hotswap type, quantity, and any firmware or test notes. Key-matrix continuity testing and firmware flashing can be coordinated when instructions or files are provided.',
+          '[Upload your keyboard files](/contact) for an engineering review and a quote — reply within 24h.',
+        ],
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeArticle(slug: string) {
