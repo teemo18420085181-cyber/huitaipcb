@@ -359,7 +359,7 @@ function FlowCard({ step, index }: { step: typeof STEPS[0]; index: number }) {
         style={{ opacity: hovered ? 0 : 1 }}
       >
         <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center text-brand-primary text-sm font-bold mb-4"
+          className="w-10 h-10 rounded-xl flex items-center justify-center text-cc-carbon text-sm font-bold mb-4"
           style={{ background: step.color }}
         >
           {step.n}
