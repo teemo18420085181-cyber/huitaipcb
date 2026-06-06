@@ -121,7 +121,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
     title: 'How long does PCB assembly take? China PCBA lead times explained',
     excerpt: 'A realistic breakdown of China PCBA lead times — from file and BOM review to SMT assembly, testing, and shipping — and how to shorten them.',
-    image: '/factory/real-smt-1.jpg',
+    image: '/factory/real-ship-2.jpg',
     readTime: '6 min read',
     metaDescription: 'How long does PCB assembly take in China? A realistic look at PCBA lead times across BOM sourcing, PCB fabrication, SMT assembly, testing, and shipping.',
     sections: [
@@ -168,7 +168,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
     title: 'Is there a minimum order quantity for PCB assembly?',
     excerpt: 'How MOQ really works for PCBA — why small and prototype runs are usually possible, what drives small-batch cost, and how to quote them.',
-    image: '/factory/flow-02.png',
+    image: '/factory/real-reels.jpg',
     readTime: '5 min read',
     metaDescription: 'Is there a minimum order quantity for PCB assembly? How small-batch and prototype PCBA runs work, what drives their cost, and what to send for a quote.',
     sections: [
@@ -215,7 +215,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
     title: 'IoT device PCB assembly in China: what to plan for',
     excerpt: 'Key considerations for IoT PCBA — wireless modules, antennas, power, testing, and a path from small batch to volume production.',
-    image: '/factory/real-smt-1.jpg',
+    image: '/factory/real-smt-2.jpg',
     readTime: '6 min read',
     metaDescription: 'IoT device PCB assembly in China — planning wireless modules, antennas, power, testing, and the path from prototype to volume PCBA. Engineer-reviewed, reply within 24h.',
     sections: [
@@ -309,7 +309,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     categoryColor: 'bg-brand-yellow/15 text-brand-primary border-brand-yellow/30',
     title: 'How to order PCB assembly from China: a first-time buyer guide',
     excerpt: 'A clear walkthrough of ordering PCBA from overseas — the process, NDAs, payment, and how to keep a first order low-risk.',
-    image: '/factory/flow-01.png',
+    image: '/factory/real-stencils.jpg',
     readTime: '6 min read',
     metaDescription: 'How to order PCB assembly from China for the first time — the RFQ process, NDA and IP, payment terms, and how to keep a first order low-risk. Reply within 24h.',
     sections: [

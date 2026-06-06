@@ -98,7 +98,7 @@ export function staticArticleToMarkdown(article: KnowledgeArticle) {
 }
 
 export function mapStaticArticle(article: KnowledgeArticle): KnowledgeDisplayArticle {
-  const visual = getArticleVisual(article.slug);
+  const visual = getArticleVisual(article.slug, article.image);
 
   return {
     slug: article.slug,
