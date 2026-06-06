@@ -24,6 +24,7 @@ const SERVICE_STEPS = [
     title: 'Review files before quotation',
     desc: 'We review Gerber files, BOM lists, pick and place data, drawings, sample photos, quantity, and testing requirements so the quote scope is clear.',
     image: '/factory/svc-engineering-review.jpg',
+    alt: 'Engineer reviewing Gerber and BOM files for PCB assembly quotation',
   },
   {
     n: '02',
@@ -31,6 +32,7 @@ const SERVICE_STEPS = [
     title: 'Coordinate PCB fabrication as part of PCBA delivery',
     desc: 'Bare board fabrication is coordinated for turnkey PCBA projects. The goal is assembled board delivery, not standalone bare PCB sales.',
     image: '/factory/svc-pcb-fabrication.jpg',
+    alt: 'Bare PCB panels on the fabrication line for turnkey PCBA',
   },
   {
     n: '03',
@@ -38,6 +40,7 @@ const SERVICE_STEPS = [
     title: 'Review sourcing options and purchasing plans',
     desc: 'We check MPN clarity, component availability, lifecycle risks, and customer-approved alternatives before purchasing parts for assembly.',
     image: '/factory/svc-bom-sourcing.jpg',
+    alt: 'Component reel barcode check during BOM sourcing for PCB assembly',
   },
   {
     n: '04',
@@ -45,6 +48,7 @@ const SERVICE_STEPS = [
     title: 'Coordinate SMT assembly and optional DIP work',
     desc: 'SMT assembly, optional through-hole/DIP assembly, connector soldering, and post-assembly handling are planned according to the project requirements.',
     image: '/factory/svc-smt-assembly.jpg',
+    alt: 'SMT assembly line placing components on PCBs for turnkey PCBA manufacturing',
   },
   {
     n: '05',
@@ -52,6 +56,7 @@ const SERVICE_STEPS = [
     title: 'Plan inspection and testing scope',
     desc: 'Visual inspection, AOI, shipment checks, and functional testing can be coordinated based on customer instructions, firmware, fixtures, or acceptance criteria.',
     image: '/factory/svc-inspection-testing.jpg',
+    alt: 'AOI inspection and functional testing of assembled PCBA boards',
   },
   {
     n: '06',
@@ -59,6 +64,7 @@ const SERVICE_STEPS = [
     title: 'Prepare assembled PCBA boards for shipment',
     desc: 'After confirmed inspection and testing steps, finished PCBA boards are packaged and prepared for international delivery according to the project plan.',
     image: '/factory/svc-finished-delivery.jpg',
+    alt: 'Anti-static packaging of finished PCBA boards ready for shipment',
   },
 ];
 
@@ -151,7 +157,7 @@ export default function ServicesPage() {
                   <div className="relative h-36 overflow-hidden bg-cc-carbon-3">
                     <Image
                       src={step.image}
-                      alt={step.title}
+                      alt={step.alt}
                       fill
                       className="object-cover opacity-90 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-100"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
