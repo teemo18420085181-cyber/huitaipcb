@@ -123,6 +123,8 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'PCB fabrication and assembly service', href: '/pcb-fabrication-and-assembly' },
       { label: 'BOM sourcing and PCB assembly', href: '/bom-sourcing-pcb-assembly' },
       { label: 'PCBA testing and quality control', href: '/pcba-testing-quality-control' },
+      { label: 'China PCBA lead times explained', href: '/knowledge/pcb-assembly-lead-time-china' },
+      { label: 'IoT device PCB assembly in China', href: '/knowledge/iot-device-pcb-assembly-china' },
       { label: 'Upload Gerber and BOM for review', href: '/contact' },
     ],
     faq: [
@@ -251,6 +253,8 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'Low-volume PCBA assembly', href: '/low-volume-pcba-assembly' },
       { label: 'Prototype vs batch PCB assembly', href: '/knowledge/prototype-vs-batch-pcb-assembly' },
       { label: 'What files are needed for a PCBA quote?', href: '/knowledge/what-files-required-pcba-quote' },
+      { label: 'Is there a minimum order quantity?', href: '/knowledge/pcb-assembly-minimum-order-quantity' },
+      { label: 'China PCBA lead times explained', href: '/knowledge/pcb-assembly-lead-time-china' },
       { label: 'Upload prototype files for review', href: '/contact' },
     ],
     faq: [
@@ -443,6 +447,8 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'Turnkey PCBA manufacturing', href: '/turnkey-pcb-assembly' },
       { label: 'Prototype PCB assembly service', href: '/prototype-pcb-assembly' },
       { label: 'Prototype vs batch PCB assembly', href: '/knowledge/prototype-vs-batch-pcb-assembly' },
+      { label: 'Is there a minimum order quantity?', href: '/knowledge/pcb-assembly-minimum-order-quantity' },
+      { label: 'Custom keyboard PCB assembly', href: '/knowledge/keyboard-pcb-assembly-china' },
       { label: 'Send low-volume RFQ', href: '/contact' },
     ],
     faq: [
@@ -496,6 +502,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'Turnkey PCBA manufacturing', href: '/turnkey-pcb-assembly' },
       { label: 'BOM best practices', href: '/knowledge/bom-best-practices' },
       { label: 'What files are required for a PCBA quote?', href: '/knowledge/what-files-required-pcba-quote' },
+      { label: 'China PCBA lead times explained', href: '/knowledge/pcb-assembly-lead-time-china' },
       { label: 'Send BOM for review', href: '/contact' },
     ],
     faq: [

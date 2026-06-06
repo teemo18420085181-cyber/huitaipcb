@@ -303,6 +303,53 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       },
     ],
   },
+  {
+    slug: 'how-to-order-pcb-assembly-from-china',
+    category: 'Getting Started',
+    categoryColor: 'bg-brand-yellow/15 text-brand-primary border-brand-yellow/30',
+    title: 'How to order PCB assembly from China: a first-time buyer guide',
+    excerpt: 'A clear walkthrough of ordering PCBA from overseas — the process, NDAs, payment, and how to keep a first order low-risk.',
+    image: '/factory/flow-01.png',
+    readTime: '6 min read',
+    metaDescription: 'How to order PCB assembly from China for the first time — the RFQ process, NDA and IP, payment terms, and how to keep a first order low-risk. Reply within 24h.',
+    sections: [
+      {
+        heading: 'The process at a glance',
+        body: [
+          'Ordering PCB assembly from an overseas supplier follows a predictable path: send your files for review, receive an engineer-reviewed quote, confirm scope and sign an NDA if needed, arrange payment, then production runs through sourcing, assembly, testing, and shipping. Knowing the steps up front makes a first order far less stressful.',
+          'See the [PCBA quote file checklist](/pcba-quote-file-checklist) for exactly what to prepare, and [China PCBA lead times](/knowledge/pcb-assembly-lead-time-china) for how long each stage takes.',
+        ],
+      },
+      {
+        heading: 'Protecting your design',
+        body: [
+          'Reputable suppliers sign an NDA before receiving design files — ours takes under 24 hours, and you can use your template or ours.',
+          'As a precaution, avoid sending confidential credentials or full production firmware through public channels until the scope and NDA are agreed.',
+        ],
+      },
+      {
+        heading: 'Payment, kept simple',
+        body: [
+          'For overseas orders, common methods are T/T (bank wire) and PayPal for smaller amounts, invoiced in USD, EUR, or GBP. A deposit with the balance before shipment is typical on a first order; net terms can follow once a working relationship is established.',
+          'Whatever the method, confirm the exact terms in writing on your quote before paying.',
+        ],
+      },
+      {
+        heading: 'Lowering risk on a first order',
+        body: [
+          'Start with a [prototype or small batch](/prototype-pcb-assembly) to validate quality before committing to volume. Ask for a test report with the shipment, keep the BOM and test scope explicit, and confirm the shipping term (DAP vs DDP) so customs duties are not a surprise.',
+          'A supplier that reviews your files and raises questions before quoting — rather than returning an instant black-box price — is usually the safer choice for a [China PCBA](/china-pcb-assembly) project.',
+        ],
+      },
+      {
+        heading: 'What to send to get started',
+        body: [
+          'Gerber files, a BOM with manufacturer part numbers, quantity, and any testing notes are enough for a first quote. Partial files are fine — engineers will tell you what is missing.',
+          '[Send your files](/contact) and you will get an engineer-reviewed reply within 24 hours.',
+        ],
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeArticle(slug: string) {
