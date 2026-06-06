@@ -88,6 +88,16 @@ export default function Footer() {
             >
               teemo18420085181@gmail.com
             </TrackedAnchor>
+            <TrackedAnchor
+              href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20a%20PCB%20assembly%20quote."
+              target="_blank"
+              rel="noopener noreferrer"
+              eventName="whatsapp_click"
+              eventParams={{ location: 'footer', contact_method: 'whatsapp' }}
+              className="block text-xs leading-loose text-cc-signal transition-colors hover:text-cc-ink"
+            >
+              WhatsApp: +86 184 2008 5181
+            </TrackedAnchor>
             <span className="block text-xs leading-loose text-cc-ink-mute">Mon-Sat, 09:00-18:00 CST</span>
             <TrackedLink
               href="/contact"

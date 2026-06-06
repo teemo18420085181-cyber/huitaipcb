@@ -4,6 +4,7 @@ import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
 import JsonLd from '../components/JsonLd';
 import Analytics from '@/components/Analytics';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://huitaipcb.com'),
@@ -88,6 +89,7 @@ export default function RootLayout({
   <Analytics />
   <JsonLd />
   {children}
+  <FloatingWhatsApp />
 </body>
     </html>
   );
