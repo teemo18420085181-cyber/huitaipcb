@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import TrackedLink from '@/components/TrackedLink';
@@ -22,36 +23,42 @@ const SERVICE_STEPS = [
     tag: 'Engineering review',
     title: 'Review files before quotation',
     desc: 'We review Gerber files, BOM lists, pick and place data, drawings, sample photos, quantity, and testing requirements so the quote scope is clear.',
+    image: '/factory/real-aoi-op.jpg',
   },
   {
     n: '02',
     tag: 'PCB fabrication',
     title: 'Coordinate PCB fabrication as part of PCBA delivery',
     desc: 'Bare board fabrication is coordinated for turnkey PCBA projects. The goal is assembled board delivery, not standalone bare PCB sales.',
+    image: '/factory/real-stencils.jpg',
   },
   {
     n: '03',
     tag: 'BOM sourcing',
     title: 'Review sourcing options and purchasing plans',
     desc: 'We check MPN clarity, component availability, lifecycle risks, and customer-approved alternatives before purchasing parts for assembly.',
+    image: '/factory/real-reels.jpg',
   },
   {
     n: '04',
     tag: 'SMT and DIP assembly',
     title: 'Coordinate SMT assembly and optional DIP work',
     desc: 'SMT assembly, optional through-hole/DIP assembly, connector soldering, and post-assembly handling are planned according to the project requirements.',
+    image: '/factory/real-smt-1.jpg',
   },
   {
     n: '05',
     tag: 'Inspection and testing',
     title: 'Plan inspection and testing scope',
     desc: 'Visual inspection, AOI, shipment checks, and functional testing can be coordinated based on customer instructions, firmware, fixtures, or acceptance criteria.',
+    image: '/factory/real-aoi-line.jpg',
   },
   {
     n: '06',
     tag: 'Finished delivery',
     title: 'Prepare assembled PCBA boards for shipment',
     desc: 'After confirmed inspection and testing steps, finished PCBA boards are packaged and prepared for international delivery according to the project plan.',
+    image: '/factory/real-ship-1.jpg',
   },
 ];
 
@@ -137,13 +144,30 @@ export default function ServicesPage() {
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {SERVICE_STEPS.map((step) => (
-                <div key={step.n} className="rounded-2xl border border-cc-line bg-cc-carbon-2 p-6">
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="text-[11px] font-semibold tracking-[0.14em] text-cc-ink">{step.tag}</span>
-                    <span className="rounded-full bg-cc-carbon px-3 py-1 text-xs font-semibold text-cc-ink">{step.n}</span>
+                <div
+                  key={step.n}
+                  className="group overflow-hidden rounded-2xl border border-cc-line bg-cc-carbon-2 transition-all duration-200 hover:-translate-y-1 hover:border-cc-copper/40"
+                >
+                  <div className="relative h-36 overflow-hidden bg-cc-carbon-3">
+                    <Image
+                      src={step.image}
+                      alt={step.title}
+                      fill
+                      className="object-cover opacity-75 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-90"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-cc-carbon-2 via-cc-carbon-2/30 to-transparent" />
+                    <span className="cc-copper-fill font-mono-cc absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg text-[11px] font-bold">
+                      {step.n}
+                    </span>
+                    <span className="font-mono-cc absolute bottom-3 left-3 text-[10px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+                      {step.tag.toUpperCase()}
+                    </span>
                   </div>
-                  <h3 className="mb-3 text-lg font-semibold text-cc-ink">{step.title}</h3>
-                  <p className="text-sm leading-7 text-cc-ink-mute">{step.desc}</p>
+                  <div className="p-6">
+                    <h3 className="mb-3 text-lg font-semibold text-cc-ink">{step.title}</h3>
+                    <p className="text-sm leading-7 text-cc-ink-mute">{step.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
