@@ -1,8 +1,22 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import TrackedLink from '@/components/TrackedLink';
 import type { SeoLandingPage as SeoLandingPageData } from '@/lib/content/seoPages';
+
+const HERO_IMAGES: Record<string, string> = {
+  'pcb-assembly-services': '/factory/real-smt-1.jpg',
+  'china-pcb-assembly': '/factory/svc-finished-delivery.jpg',
+  'pcb-assembly-company': '/factory/svc-engineering-review.jpg',
+  'prototype-pcb-assembly': '/factory/real-smt-2.jpg',
+  'turnkey-pcb-assembly': '/factory/svc-smt-assembly.jpg',
+  'pcb-fabrication-and-assembly': '/factory/svc-pcb-fabrication.jpg',
+  'low-volume-pcba-assembly': '/factory/real-reels.jpg',
+  'bom-sourcing-pcb-assembly': '/factory/svc-bom-sourcing.jpg',
+  'pcba-testing-quality-control': '/factory/svc-inspection-testing.jpg',
+};
+const DEFAULT_HERO = '/factory/svc-smt-assembly.jpg';
 
 function buildServiceSchema(page: SeoLandingPageData) {
   const url = `https://huitaipcb.com/${page.slug}`;
@@ -49,6 +63,7 @@ function buildFaqSchema(page: SeoLandingPageData) {
 export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
   const ctaHeading = page.ctaHeading || 'Send Your Files for Engineering Review';
   const ctaBody = page.ctaBody || 'Send your Gerber files, BOM list, quantity, and testing requirements. Huitai will review the available information before quotation.';
+  const heroImage = HERO_IMAGES[page.slug] || DEFAULT_HERO;
 
   return (
     <>
@@ -66,35 +81,53 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
         )}
 
         <section className="cc-carbon-bg relative overflow-hidden border-b border-cc-line px-[5vw] py-16 md:py-24">
-          <div className="relative z-10 mx-auto max-w-[1080px]">
-            <div className="font-mono-cc mb-6 inline-flex items-center gap-2 rounded-full border border-cc-line bg-cc-carbon-2/60 px-3.5 py-1.5 text-[11px] font-medium tracking-[0.16em] text-cc-copper-soft">
-              <span className="cc-via h-1.5 w-1.5 rounded-full bg-cc-copper-bright" />
-              {page.eyebrow}
+          <div className="relative z-10 mx-auto grid max-w-[1120px] items-center gap-10 lg:grid-cols-[1fr_minmax(0,400px)]">
+            <div>
+              <div className="font-mono-cc mb-6 inline-flex items-center gap-2 rounded-full border border-cc-line bg-cc-carbon-2/60 px-3.5 py-1.5 text-[11px] font-medium tracking-[0.16em] text-cc-copper-soft">
+                <span className="cc-via h-1.5 w-1.5 rounded-full bg-cc-copper-bright" />
+                {page.eyebrow}
+              </div>
+              <h1 className="font-display mb-5 text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl lg:text-[50px]">
+                {page.title}
+              </h1>
+              <p className="max-w-[640px] text-base leading-relaxed text-cc-ink-mute md:text-lg">
+                {page.intro}
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <TrackedLink
+                  href="/contact"
+                  eventName="quote_click"
+                  eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact' }}
+                  className="cc-copper-fill rounded-lg px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5"
+                  style={{ boxShadow: '0 8px 30px rgba(201,139,58,0.3)' }}
+                >
+                  Get PCB Assembly Quote
+                </TrackedLink>
+                <TrackedLink
+                  href="/contact"
+                  eventName="upload_gerber_bom_click"
+                  eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact' }}
+                  className="rounded-lg border border-cc-copper/30 bg-cc-carbon-2/40 px-6 py-3 text-sm font-semibold text-cc-ink transition-all hover:border-cc-copper/60"
+                >
+                  Upload Gerber &amp; BOM
+                </TrackedLink>
+              </div>
             </div>
-            <h1 className="font-display mb-5 max-w-[820px] text-4xl font-bold leading-[1.05] tracking-tight md:text-5xl lg:text-[52px]">
-              {page.title}
-            </h1>
-            <p className="max-w-[760px] text-base leading-relaxed text-cc-ink-mute md:text-lg">
-              {page.intro}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <TrackedLink
-                href="/contact"
-                eventName="quote_click"
-                eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact' }}
-                className="cc-copper-fill rounded-lg px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5"
-                style={{ boxShadow: '0 8px 30px rgba(201,139,58,0.3)' }}
-              >
-                Get PCB Assembly Quote
-              </TrackedLink>
-              <TrackedLink
-                href="/contact"
-                eventName="upload_gerber_bom_click"
-                eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact' }}
-                className="rounded-lg border border-cc-copper/30 bg-cc-carbon-2/40 px-6 py-3 text-sm font-semibold text-cc-ink transition-all hover:border-cc-copper/60"
-              >
-                Upload Gerber &amp; BOM
-              </TrackedLink>
+
+            <div className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl border border-cc-line lg:block">
+              <Image
+                src={heroImage}
+                alt={page.serviceName}
+                fill
+                className="object-cover"
+                sizes="400px"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-cc-carbon/55 via-transparent to-transparent" />
+              <span className="absolute -left-px -top-px h-3 w-3 border-l border-t border-cc-copper/70" />
+              <span className="absolute -right-px -top-px h-3 w-3 border-r border-t border-cc-copper/70" />
+              <span className="absolute -bottom-px -left-px h-3 w-3 border-b border-l border-cc-copper/70" />
+              <span className="absolute -bottom-px -right-px h-3 w-3 border-b border-r border-cc-copper/70" />
             </div>
           </div>
         </section>
