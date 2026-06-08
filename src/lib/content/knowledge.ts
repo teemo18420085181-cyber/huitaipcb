@@ -356,7 +356,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
     title: 'PCB surface finish guide: HASL vs ENIG vs OSP',
     excerpt: 'How to choose a PCB surface finish — HASL, ENIG, and OSP compared on cost, flatness, shelf life, and fine-pitch capability.',
-    image: '/factory/svc-pcb-fabrication.jpg',
+    image: '/factory/pcb-surface-finish.jpg',
     readTime: '6 min read',
     metaDescription: 'PCB surface finish compared: HASL vs ENIG vs OSP — cost, solderability, flatness for BGA/fine-pitch, and shelf life — so you can pick the right one for your PCB assembly.',
     sections: [
