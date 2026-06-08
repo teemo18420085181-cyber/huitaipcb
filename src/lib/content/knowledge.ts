@@ -350,6 +350,60 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       },
     ],
   },
+  {
+    slug: 'pcb-surface-finish-hasl-enig-osp',
+    category: 'Fabrication',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'PCB surface finish guide: HASL vs ENIG vs OSP',
+    excerpt: 'How to choose a PCB surface finish — HASL, ENIG, and OSP compared on cost, flatness, shelf life, and fine-pitch capability.',
+    image: '/factory/svc-pcb-fabrication.jpg',
+    readTime: '6 min read',
+    metaDescription: 'PCB surface finish compared: HASL vs ENIG vs OSP — cost, solderability, flatness for BGA/fine-pitch, and shelf life — so you can pick the right one for your PCB assembly.',
+    sections: [
+      {
+        heading: 'What a surface finish does',
+        body: [
+          'The surface finish is the coating on a bare board’s exposed copper pads. Its job is to protect the copper from oxidation before assembly and to give a solderable surface for the components. The finish affects cost, shelf life, how flat the pads are (which matters for fine-pitch parts), and assembly yield.',
+          'For a [turnkey PCBA](/turnkey-pcb-assembly) project there is no single “best” finish — the right one depends on your component types, quantity, storage time, and budget.',
+        ],
+      },
+      {
+        heading: 'HASL — the low-cost default',
+        body: [
+          'HASL (Hot Air Solder Leveling) coats the pads with solder, then levels it with hot air. It is the most common and lowest-cost finish, with excellent solderability and a long shelf life.',
+          'The trade-off is a slightly uneven, domed pad surface, which is not ideal for fine-pitch QFN or BGA parts. Lead-free HASL is available for RoHS. HASL is a solid default for standard boards with larger pads.',
+        ],
+      },
+      {
+        heading: 'ENIG — flat and reliable',
+        body: [
+          'ENIG (Electroless Nickel Immersion Gold) plates the copper with nickel and a thin layer of gold. It gives a very flat surface, making it the preferred choice for fine-pitch components, QFN, and BGA. It also has a long shelf life (often 12 months or more) and good corrosion resistance.',
+          'ENIG costs more than HASL or OSP, but for dense, high-reliability boards it is usually worth it — many [IoT and smart-display assemblies](/knowledge/iot-device-pcb-assembly-china) use ENIG for this reason.',
+        ],
+      },
+      {
+        heading: 'OSP — cheap and flat, but time-sensitive',
+        body: [
+          'OSP (Organic Solderability Preservative) is a thin organic coating over the copper. It is low-cost, flat, and environmentally friendly, with good solderability for boards that will be assembled soon.',
+          'Its limits are a shorter shelf life and tolerance for fewer reflow cycles, and it is hard to inspect visually (no metallic coating to see). OSP suits cost-sensitive boards assembled within a few months.',
+        ],
+      },
+      {
+        heading: 'Other options: Immersion Silver and Tin',
+        body: [
+          'Immersion Silver and Immersion Tin are flat, fine-pitch-friendly alternatives with moderate cost, though both are more sensitive to handling and storage.',
+          'They are less common than the three above, but available when a specific assembly, contact, or press-fit requirement calls for them.',
+        ],
+      },
+      {
+        heading: 'Which finish should you choose?',
+        body: [
+          'A quick rule of thumb: choose lead-free HASL for standard, cost-sensitive boards with larger pads; ENIG for fine-pitch, BGA, high-reliability, or longer storage; OSP for low-cost boards assembled soon. See our [fabrication and assembly capabilities](/pcb-fabrication-and-assembly) for the finishes we coordinate.',
+          'Not sure which fits your design? [Send your Gerber and BOM](/contact) and our engineering team will recommend a finish based on your components, quantity, and storage needs — reply within 24h.',
+        ],
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeArticle(slug: string) {
