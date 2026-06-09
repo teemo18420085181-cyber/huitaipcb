@@ -43,10 +43,10 @@ export const metadata: Metadata = {
       'Turnkey PCBA manufacturing support from Shenzhen, China, including PCB fabrication coordination, BOM sourcing, SMT assembly, DIP assembly, inspection, testing, and delivery.',
     images: [
       {
-        url: '/logo.svg',
-        width: 800,
-        height: 800,
-        alt: 'Huitai Electronics - PCB & PCBA Manufacturing',
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Huitai Electronics - Turnkey PCB & PCBA Manufacturing in Shenzhen, China',
       },
     ],
   },
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: 'Huitai Electronics | Turnkey PCB Assembly & Manufacturing',
     description:
       'Turnkey PCBA manufacturing support from Shenzhen, China.',
-    images: ['/logo.svg'],
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
