@@ -336,6 +336,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'What files are needed for a PCBA quote?', href: '/knowledge/what-files-required-pcba-quote' },
       { label: 'What is turnkey PCBA?', href: '/knowledge/what-is-turnkey-pcba' },
       { label: 'BOM best practices', href: '/knowledge/bom-best-practices' },
+      { label: 'Common PCBA defects and how to prevent them', href: '/knowledge/common-pcba-defects-and-prevention' },
       { label: 'Prototype vs batch PCB assembly', href: '/knowledge/prototype-vs-batch-pcb-assembly' },
       { label: 'PCB fabrication and assembly', href: '/pcb-fabrication-and-assembly' },
       { label: 'Low-volume PCBA assembly', href: '/low-volume-pcba-assembly' },
@@ -553,6 +554,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     workflow: ['Review quality and testing requirements', 'Confirm inspection and functional test scope', 'Coordinate testing according to agreed conditions', 'Prepare shipment after checks and documentation as required'],
     filesNeeded: [...commonFiles, 'Functional test instructions, firmware, fixture notes, or pass/fail criteria when testing is required'],
     relatedLinks: [
+      { label: 'Common PCBA defects and how to prevent them', href: '/knowledge/common-pcba-defects-and-prevention' },
       { label: 'Turnkey PCBA manufacturing', href: '/turnkey-pcb-assembly' },
       { label: 'Quality control overview', href: '/quality' },
       { label: 'Request testing review', href: '/contact' },

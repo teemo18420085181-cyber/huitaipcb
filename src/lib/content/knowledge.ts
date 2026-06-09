@@ -404,6 +404,60 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       },
     ],
   },
+  {
+    slug: 'common-pcba-defects-and-prevention',
+    category: 'Quality',
+    categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
+    title: 'Common PCBA defects and how to prevent them',
+    excerpt: 'The PCBA defects that matter — tombstoning, bridging, cold joints, BGA voids — how a good assembler catches them, and how engineering review prevents them.',
+    image: '/factory/svc-inspection-testing.jpg',
+    readTime: '6 min read',
+    metaDescription: 'Common PCB assembly defects explained — tombstoning, solder bridging, cold joints, BGA voids — and how AOI, X-ray, testing, and DFM review catch and prevent them.',
+    sections: [
+      {
+        heading: 'Quality is the real question for overseas buyers',
+        body: [
+          'Behind "can I trust a China PCBA supplier" is one real worry: will the boards arrive working and consistent? The reassuring answer is that the common PCBA defects are well understood — a good assembler catches them with inspection and prevents most of them before production even starts.',
+          'Below are the defects we watch for, how we detect them, and how engineering review stops them early.',
+        ],
+      },
+      {
+        heading: 'The common SMT defects',
+        body: [
+          'Tombstoning — a small two-terminal part lifts on one end during reflow, usually from uneven heating or unbalanced pads. Solder bridging — excess solder links two pads that should be separate, common on fine-pitch ICs. Insufficient or cold joints — too little paste or heat leaves a weak connection.',
+          'Component shift, missing parts, wrong part, or reversed polarity round out the usual list. Most come down to paste volume, the reflow profile, placement accuracy, or a footprint issue — all controllable.',
+        ],
+      },
+      {
+        heading: 'The defects that hide under the part',
+        body: [
+          'Some defects are invisible from the top. BGA and QFN solder joints can have voids or opens hidden beneath the component — we verify these with X-ray. Through-hole joints can also be cold or incomplete after wave or hand soldering.',
+          'This is why visual inspection alone is not enough for dense boards; the right mix of inspection methods matters.',
+        ],
+      },
+      {
+        heading: 'How we catch them',
+        body: [
+          'The inspection stack depends on the board: AOI (automated optical inspection) checks placement and solder on every board; X-ray verifies hidden BGA joints; flying probe or ICT confirms electrical continuity; and functional testing validates the board against your criteria.',
+          'See [PCBA testing and quality control](/pcba-testing-quality-control) for how the test scope is set per project.',
+        ],
+      },
+      {
+        heading: 'How we prevent them up front',
+        body: [
+          'Catching defects is good; preventing them is better. Before production we run a DFM review of your files, inspect incoming components (IQC), dial in the reflow profile and stencil for your board, and confirm the test plan.',
+          'This engineering-review-first approach is exactly why we do not return instant black-box quotes — see our [quality process](/quality) and [turnkey workflow](/turnkey-pcb-assembly).',
+        ],
+      },
+      {
+        heading: 'Worried about quality on a China order?',
+        body: [
+          'A supplier that reviews your design and raises manufacturability questions before quoting is your best defense against defects.',
+          '[Send your Gerber and BOM](/contact) and we will review the design, flag any risks, and propose an inspection and test plan — reply within 24h.',
+        ],
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeArticle(slug: string) {
