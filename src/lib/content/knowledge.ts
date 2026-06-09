@@ -410,7 +410,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
     title: 'Common PCBA defects and how to prevent them',
     excerpt: 'The PCBA defects that matter — tombstoning, bridging, cold joints, BGA voids — how a good assembler catches them, and how engineering review prevents them.',
-    image: '/factory/svc-inspection-testing.jpg',
+    image: '/factory/common-pcba-defects.jpg',
     readTime: '6 min read',
     metaDescription: 'Common PCB assembly defects explained — tombstoning, solder bridging, cold joints, BGA voids — and how AOI, X-ray, testing, and DFM review catch and prevent them.',
     sections: [
