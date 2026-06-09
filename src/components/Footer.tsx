@@ -36,6 +36,9 @@ export default function Footer() {
                 </span>
               </div>
             </div>
+            <p className="text-xs leading-relaxed text-cc-ink">
+              China-based turnkey PCBA service provider — PCB fabrication, BOM sourcing, SMT assembly, testing and finished PCBA delivery.
+            </p>
             <p className="text-xs leading-loose text-cc-ink-mute">
               Shenzhen Huitai Electronics Technology Co., Ltd.
             </p>

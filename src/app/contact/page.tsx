@@ -38,6 +38,50 @@ export default function ContactPage() {
               </p>
             </div>
 
+            <div className="mb-8 grid gap-6 rounded-2xl border border-cc-line bg-cc-carbon-2 p-6 sm:grid-cols-2 md:p-7">
+              <div>
+                <div className="font-mono-cc mb-3 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+                  WHAT TO SEND
+                </div>
+                <ul className="space-y-1.5 text-sm leading-6 text-cc-ink-mute">
+                  {[
+                    'Gerber files',
+                    'BOM (with manufacturer part numbers)',
+                    'Pick-and-place file',
+                    'Assembly drawing',
+                    'Quantity',
+                    'Target delivery time',
+                    'Testing requirements',
+                    'Sample photos, if files are incomplete',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-signal" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <div className="font-mono-cc mb-3 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+                  GOOD TO KNOW
+                </div>
+                <ul className="space-y-1.5 text-sm leading-6 text-cc-ink-mute">
+                  {[
+                    'Engineering review before quotation — no black-box pricing',
+                    'PCB fabrication, BOM sourcing, SMT assembly, testing and delivery',
+                    'Prototype and low-volume PCBA accepted',
+                    'Incomplete files? Send a partial BOM or sample photos first',
+                    'Testing planned based on your instructions',
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-copper" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
             <InquiryForm />
 
             <div className="mt-8 grid gap-5 rounded-2xl border border-cc-line bg-cc-carbon-2 p-6 sm:grid-cols-[1fr_auto] sm:items-center md:p-8">

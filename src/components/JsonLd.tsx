@@ -14,7 +14,7 @@ export default function JsonLd() {
       height: 800,
     },
     description:
-      'Huitai Electronics is a turnkey PCB and PCBA manufacturer in Shenzhen, China, providing PCB fabrication, SMT assembly, BOM sourcing, and box build services with fast turnaround and ISO quality.',
+      'Huitai Electronics is a China-based turnkey PCBA service provider supporting PCB fabrication, BOM sourcing, SMT assembly, through-hole assembly, functional testing, and finished PCBA delivery for prototype and low-volume electronics projects.',
     foundingDate: '2010',
     email: 'teemo18420085181@gmail.com',
     address: {
@@ -35,7 +35,7 @@ export default function JsonLd() {
     '@id': 'https://huitaipcb.com/#website',
     url: 'https://huitaipcb.com',
     name: 'Huitai Electronics',
-    description: 'Turnkey PCB Assembly & Manufacturing from Shenzhen, China',
+    description: 'China-based turnkey PCBA service provider — PCB fabrication, BOM sourcing, SMT assembly, testing, and finished PCBA delivery.',
     publisher: {
       '@id': 'https://huitaipcb.com/#organization',
     },
@@ -88,7 +88,7 @@ export default function JsonLd() {
     areaServed: 'Worldwide',
     serviceType: 'PCB Manufacturing',
     description:
-      'Full turnkey PCB and PCBA manufacturing including PCB fabrication, SMT assembly, DIP through-hole assembly, BOM sourcing, and box build services.',
+      'Turnkey PCBA service including PCB fabrication, BOM sourcing, SMT assembly, through-hole (DIP) assembly, functional testing, and finished PCBA delivery for prototype and low-volume projects.',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'PCB & PCBA Services',

@@ -15,6 +15,7 @@ import Footer from '@/components/Footer';
 const HOME_SERVICE_LINKS = [
   { label: 'Turnkey PCBA Manufacturing', href: '/turnkey-pcb-assembly' },
   { label: 'China PCB Assembly Service', href: '/china-pcb-assembly' },
+  { label: 'BOM Sourcing for PCB Assembly', href: '/bom-sourcing-pcb-assembly' },
   { label: 'PCB Assembly Company in China', href: '/pcb-assembly-company' },
   { label: 'Prototype PCB Assembly', href: '/prototype-pcb-assembly' },
   { label: 'Get PCB Assembly Quote', href: '/contact' },
