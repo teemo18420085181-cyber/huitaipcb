@@ -458,6 +458,59 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       },
     ],
   },
+  {
+    slug: 'pcb-reverse-engineering-china',
+    category: 'Engineering',
+    categoryColor: 'bg-cc-copper/10 text-cc-copper border-cc-copper/20',
+    title: 'PCB reverse engineering: what it can and cannot recover',
+    excerpt: 'Reverse engineering turns a physical board into Gerber, BOM, and schematic so an obsolete board can be reproduced — but firmware and IC contents are a separate, limited, and legally bounded matter.',
+    image: '/factory/svc-engineering-review.jpg',
+    readTime: '6 min read',
+    metaDescription: 'PCB reverse engineering in China turns a sample board into Gerber, BOM, and schematic for obsolete board reproduction. What can be recovered, the firmware limits, and how to start.',
+    sections: [
+      {
+        heading: 'Quick answer',
+        body: [
+          'PCB reverse engineering recovers the hardware of a physical board — the copper artwork (Gerber), the bill of materials (BOM), and usually a schematic — so a board that is obsolete or no longer available can be reproduced. What it does not automatically recover is the firmware or the protected contents of programmed ICs; that is a separate, limited, and legally bounded matter. Huitai focuses on legitimate reproduction of boards a customer owns or has the right to reproduce, and pairs reverse engineering with [China PCB assembly](/china-pcb-assembly) so you get working boards, not just files.',
+        ],
+      },
+      {
+        heading: 'What reverse engineering can recover (the hardware)',
+        body: [
+          'From a clear, complete sample board, the hardware can usually be recovered into three engineering outputs: Gerber and drill data for the PCB, a BOM of the visible and identifiable components, and a schematic that maps how those parts connect. With those files, the board can be re-fabricated and re-assembled.',
+          'Recovery quality depends on the sample. A clean, undamaged board with readable component markings reverses far better than a corroded board, a board with sanded-off part numbers, or one missing components.',
+        ],
+      },
+      {
+        heading: 'What it does not automatically recover — firmware and IC contents',
+        body: [
+          'A common misunderstanding is that reverse engineering copies "everything," including the program. It does not. The contents of a programmed microcontroller, a locked flash chip, or a custom IC are not visible in the copper and are not recovered by hardware reverse engineering.',
+          'Firmware or IC contents are a separate request with real limits — technical, and legal. We will tell you honestly whether a given board can be reproduced as functional hardware, and we do not promise to copy protected or encrypted programs.',
+        ],
+      },
+      {
+        heading: 'Reproducing an obsolete or discontinued board',
+        body: [
+          'A typical obsolete-board reproduction runs end to end: reverse engineer the sample into Gerber, BOM, and schematic; review the BOM for obsolete or single-source parts and discuss approved alternatives; fabricate the PCB; assemble it; and test against agreed criteria.',
+          'This is most useful for discontinued industrial control boards and legacy equipment where the original is no longer made. See [BOM sourcing for PCB assembly](/bom-sourcing-pcb-assembly) for how obsolete parts are handled during reproduction.',
+        ],
+      },
+      {
+        heading: 'The legal and ownership boundary',
+        body: [
+          'Reverse engineering should only be used for boards you own or have the right to reproduce — for example, replacing your own obsolete equipment. We do not reproduce designs to bypass another company’s intellectual property, and we may decline boards where ownership or rights are unclear.',
+          'Being clear about this protects both sides and keeps the work legitimate.',
+        ],
+      },
+      {
+        heading: 'What to send for an evaluation',
+        body: [
+          'To evaluate a reverse-engineering project, send a clear, undamaged sample board (or sharp top and bottom photos), the layer count if known, any original documentation you have, and a short note on whether you need the board reproduced as hardware only or also need the original function restored.',
+          '[Send your sample board or photos for a reverse-engineering evaluation](/contact) and we will tell you what can realistically be recovered, flag any BOM risks, and outline a reproduction and test plan — reply within 24h.',
+        ],
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeArticle(slug: string) {

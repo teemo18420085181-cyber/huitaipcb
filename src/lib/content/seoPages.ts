@@ -126,6 +126,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'BOM sourcing for PCB assembly', href: '/bom-sourcing-pcb-assembly' },
       { label: 'Prepare files for a PCB assembly quote', href: '/knowledge/pcb-assembly-file-preparation-guide' },
       { label: 'What affects a PCB assembly quote in China', href: '/knowledge/what-determines-pcb-assembly-quote-china' },
+      { label: 'PCB reverse engineering and obsolete boards', href: '/knowledge/pcb-reverse-engineering-china' },
       { label: 'Turnkey PCBA manufacturing in China', href: '/turnkey-pcb-assembly' },
       { label: 'PCBA testing and quality control', href: '/pcba-testing-quality-control' },
       { label: 'Request a PCB assembly quote', href: '/contact' },
@@ -443,6 +444,10 @@ export const seoPages: Record<string, SeoLandingPage> = {
         heading: 'Common Cost Factors',
         body: 'Small-batch cost is affected by setup time, component availability, SMT programming, stencil requirements, testing scope, packaging, and whether alternatives need approval before purchasing.',
       },
+      {
+        heading: 'Why Unit Price Is Higher at Low Volume',
+        body: 'At low volume, the per-board price is usually higher because fixed setup costs are shared across fewer boards. SMT line setup and programming, stencil fabrication, first-article checks, and any test-fixture preparation cost roughly the same for 10 boards as for 1,000, so they weigh much more on each unit. Component minimum order quantities also matter: if a part is sold in reels of 5,000, a small run still pays toward that minimum. This is normal across the industry — a clear BOM, approved alternates, and a sensible test scope are the practical ways to keep low-volume cost reasonable.',
+      },
     ],
     bullets: ['Prototype-to-small-batch transition', 'BOM sourcing and alternatives review', 'SMT assembly and optional DIP assembly', 'Testing requirements planning', 'Lead time and shipment coordination'],
     workflow: ['Review quantity and production purpose', 'Check BOM risks and alternative options', 'Coordinate assembly route and inspection plan', 'Confirm testing and delivery requirements'],
@@ -463,6 +468,10 @@ export const seoPages: Record<string, SeoLandingPage> = {
       {
         question: 'Is low-volume PCBA always cheaper?',
         answer: 'Not always. Setup, sourcing, stencil, inspection, and testing costs can have a larger impact on small quantities, so we review the full project before quotation.',
+      },
+      {
+        question: 'Why is my per-board price higher at low volume?',
+        answer: 'Fixed costs — SMT setup and programming, stencil, first-article checks, and any test fixture — are shared across fewer boards, so each unit carries more of them. Component minimum order quantities can add to this. A clean BOM with approved alternates and a sensible test scope help keep the per-board price reasonable.',
       },
       {
         question: 'Can you help with component alternatives?',

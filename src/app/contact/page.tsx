@@ -31,7 +31,7 @@ export default function ContactPage() {
                 Get a PCB Assembly Quote
               </h1>
               <p className="text-[15px] text-cc-ink-mute leading-relaxed max-w-[640px] mx-auto">
-                Upload your Gerber files, BOM lists, PCB drawings, sample photos, or project requirements. Our engineering team reviews your files before quotation — no automated black-box pricing.
+                Send your Gerber, BOM, CPL (pick-and-place), assembly drawing, or sample board photos for engineering review. Our engineering team reviews your files before quotation — no automated black-box pricing.
               </p>
               <p className="text-[13px] text-cc-ink-mute leading-relaxed max-w-[620px] mx-auto mt-3">
                 Not sure if your files are complete? Send what you have. Our team can review the available information and let you know what is missing.
