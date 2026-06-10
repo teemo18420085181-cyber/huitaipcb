@@ -138,7 +138,7 @@ export default function ContactPage() {
                   </p>
                 </div>
                 <a
-                  href={'https://www.google.com/maps/search/?api=1&query=Zhaochang+Industrial+Park,+Gonghe+Industrial+Road,+Shajing,+Baoan,+Shenzhen,+China'}
+                  href={'https://www.google.com/maps/search/?api=1&query=22.728689,113.824020'}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex w-fit items-center gap-2 rounded-lg border border-cc-copper/30 bg-cc-carbon-3/40 px-4 py-2.5 text-sm font-semibold text-cc-copper-soft transition-colors hover:border-cc-copper/60"
@@ -148,10 +148,10 @@ export default function ContactPage() {
               </div>
               <iframe
                 title="Huitai Electronics location in Shajing, Bao'an, Shenzhen, China"
-                src={'https://www.openstreetmap.org/export/embed.html?bbox=113.804%2C22.716%2C113.844%2C22.742&layer=mapnik&marker=22.728689%2C113.824020'}
+                src={'https://maps.google.com/maps?q=Zhaochang%20Industrial%20Park%2C%20Gonghe%20Industrial%20Road%2C%20Shajing%2C%20Baoan%2C%20Shenzhen%2C%20China&hl=en&z=16&output=embed'}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="block h-[340px] w-full border-0 grayscale-[0.2] contrast-[1.03]"
+                className="block h-[340px] w-full border-0"
               />
             </div>
           </div>
