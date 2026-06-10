@@ -25,7 +25,7 @@ export default function JsonLd() {
       addressCountry: 'CN',
     },
     sameAs: [
-      'https://huitaipcb.com',
+      'https://www.crunchbase.com/organization/huitai-electronics',
     ],
   };
 
