@@ -125,6 +125,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     relatedLinks: [
       { label: 'BOM sourcing for PCB assembly', href: '/bom-sourcing-pcb-assembly' },
       { label: 'Prepare files for a PCB assembly quote', href: '/knowledge/pcb-assembly-file-preparation-guide' },
+      { label: 'Get a quote with incomplete files', href: '/knowledge/pcba-quote-with-incomplete-files' },
       { label: 'What affects a PCB assembly quote in China', href: '/knowledge/what-determines-pcb-assembly-quote-china' },
       { label: 'Turnkey PCBA manufacturing in China', href: '/turnkey-pcb-assembly' },
       { label: 'PCBA testing and quality control', href: '/pcba-testing-quality-control' },

@@ -458,6 +458,59 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       },
     ],
   },
+  {
+    slug: 'pcba-quote-with-incomplete-files',
+    category: 'Getting Started',
+    categoryColor: 'bg-cc-copper/15 text-cc-ink border-cc-copper/30',
+    title: 'How to get a PCBA quote with incomplete files',
+    excerpt: 'You do not need a perfect data package to start. Here is the minimum that lets an engineering team give a preliminary PCB assembly quote, and how a firm quote is reached once the gaps are filled.',
+    image: '/factory/svc-engineering-review.jpg',
+    readTime: '5 min read',
+    metaDescription: 'How to get a PCB assembly quote when your files are incomplete — the minimum information needed for a preliminary quote, what engineering review checks, and how to reach a firm price.',
+    sections: [
+      {
+        heading: 'Quick answer',
+        body: [
+          'You do not need a complete data package to get started. If your files are incomplete, send what you have — a partial or older Gerber, a partial BOM, board markings, photos of your own board, the quantity, and the target application. An engineering review uses that to give a preliminary PCB assembly quote and a clear list of what is still missing for a firm price. The fastest path is to send the available information now rather than waiting until every file is perfect.',
+        ],
+      },
+      {
+        heading: 'What "incomplete files" usually means',
+        body: [
+          'In practice, "incomplete" covers a range of situations: a Gerber without drill data, a BOM missing manufacturer part numbers, no pick-and-place (CPL) file, no assembly drawing, or only a schematic and a few photos of your own board. Each gap affects a different part of the quote — fabrication, sourcing, or placement — but rarely blocks a preliminary estimate.',
+          'See [how to prepare files for a PCB assembly quote](/knowledge/pcb-assembly-file-preparation-guide) for the full file list and what each one is used for.',
+        ],
+      },
+      {
+        heading: 'The minimum needed for a preliminary quote',
+        body: [
+          'For a useful preliminary estimate, the practical minimum is: the board outline or dimensions and layer count (even approximate), a partial component list or a clear photo of your populated board so parts can be identified, the order quantity, and what the board is for.',
+          'With that, an assembler can estimate fabrication, rough out the BOM cost, and flag the biggest sourcing risks before you invest time completing every file.',
+        ],
+      },
+      {
+        heading: 'What the engineering review checks and fills in',
+        body: [
+          'Engineering review is where incomplete information gets turned into a buildable scope. We identify visible components and their packages, flag parts that look obsolete or single-source, note where a drill file or assembly drawing is still required, and confirm whether your stated quantity and application change the recommended process.',
+          'Component sourcing risk is usually the most important gap — see [BOM sourcing for PCB assembly](/bom-sourcing-pcb-assembly) for how obsolete and substitute parts are handled.',
+        ],
+      },
+      {
+        heading: 'Preliminary quote vs firm quote',
+        body: [
+          'A preliminary quote is an honest estimate based on partial information; it can move once the missing files arrive. A firm quote needs a complete, manufacturable data set: production Gerber and drill files, a BOM with manufacturer part numbers and approved alternates, a CPL (pick-and-place) file, an assembly drawing with polarity notes, quantity, and testing requirements.',
+          'Sending files in stages is normal. The preliminary number tells you whether the project is in range; completing the package locks the price and lead time.',
+        ],
+      },
+      {
+        heading: 'Send what you have',
+        body: [
+          'If you are waiting to "finish" your files before asking, you are probably waiting too long. Send the available Gerber, BOM, CPL, assembly drawing, or clear photos of your board for engineering review.',
+          '[Start a PCB assembly quote with the files you have](/contact) and we will give a preliminary estimate, list exactly what is missing, and flag any sourcing risks — reply within 24h. You can also explore our [China PCB assembly](/china-pcb-assembly) workflow.',
+        ],
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeArticle(slug: string) {
