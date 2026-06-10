@@ -124,6 +124,36 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+
+            <div className="mt-8 overflow-hidden rounded-2xl border border-cc-line bg-cc-carbon-2">
+              <div className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between md:p-8">
+                <div>
+                  <div className="font-mono-cc mb-2 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+                    FIND US
+                  </div>
+                  <h2 className="font-display text-xl font-bold text-cc-ink">Shenzhen, China</h2>
+                  <p className="mt-1 max-w-[440px] text-sm leading-relaxed text-cc-ink-mute">
+                    Building D, 4F, Zhaochang Industrial Park, Gonghe Industrial Road, Shajing,
+                    Bao&apos;an District, Shenzhen, China
+                  </p>
+                </div>
+                <a
+                  href={'https://www.google.com/maps/search/?api=1&query=Zhaochang+Industrial+Park,+Gonghe+Industrial+Road,+Shajing,+Baoan,+Shenzhen,+China'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-fit items-center gap-2 rounded-lg border border-cc-copper/30 bg-cc-carbon-3/40 px-4 py-2.5 text-sm font-semibold text-cc-copper-soft transition-colors hover:border-cc-copper/60"
+                >
+                  Open in Google Maps
+                </a>
+              </div>
+              <iframe
+                title="Huitai Electronics location in Shenzhen, China"
+                src={'https://maps.google.com/maps?q=Zhaochang+Industrial+Park,+Gonghe+Industrial+Road,+Shajing,+Baoan,+Shenzhen,+China&z=14&output=embed'}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="block h-[340px] w-full border-0 grayscale-[0.25] contrast-[1.05]"
+              />
+            </div>
           </div>
         </section>
       </main>
