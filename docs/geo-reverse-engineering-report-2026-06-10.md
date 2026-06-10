@@ -5,6 +5,15 @@ Scope: Reverse-engineer which PCBA suppliers AI search engines (ChatGPT, Perplex
 Doubao, Google AI Overview) tend to recommend, identify why, and turn the gaps into an executable
 content plan for huitaipcb.com.
 
+> ⛔ POLICY UPDATE (2026-06-10): The **PCB reverse engineering / board copy / IC unlock /
+> reproduction** content direction is **DROPPED and must NOT be pursued on the English site.**
+> Overseas (esp. US/EU) B2B buyers treat any "reverse engineering / copy / unlock / clone" wording
+> as an IP-infringement signal — it repels exactly the customers we want. The RE article published
+> earlier on 2026-06-10 was **removed** the same day. Ignore every reverse-engineering / obsolete-
+> board-reproduction recommendation below (Sections 1, 2, 5, 6 items #1–3 & #5, 7.1, and the P2 RE
+> tasks in the action plan). All other GEO findings (incomplete-file quoting, BOM risk depth,
+> low-volume cost, turnkey-vs-kitted, file literacy, supplier selection) remain valid.
+
 ---
 
 ## 1. Executive Summary

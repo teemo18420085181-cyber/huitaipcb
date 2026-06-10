@@ -3,6 +3,12 @@
 Companion to `geo-reverse-engineering-report-2026-06-10.md`. Tasks are ordered P0 → P2.
 Code edits marked **[done this session]** were executed on 2026-06-10.
 
+> ⛔ POLICY UPDATE (2026-06-10): All **reverse engineering / board copy / reproduction / firmware /
+> obsolete-board-replacement** tasks are **DROPPED** for IP-sensitivity reasons (overseas buyers read
+> it as an infringement signal). This cancels **P0.1** (the RE article — already removed) and **P2.1,
+> P2.2, P2.3, P2.5**. Do not create any English-site content using reverse-engineering / copy /
+> unlock / clone / reproduction wording. All non-RE tasks below remain valid.
+
 ---
 
 ## P0 — do now (executed this session unless noted)
