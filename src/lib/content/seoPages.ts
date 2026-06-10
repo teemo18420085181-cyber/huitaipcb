@@ -515,6 +515,14 @@ export const seoPages: Record<string, SeoLandingPage> = {
         heading: 'How BOM Sourcing Affects Cost and Lead Time',
         body: 'Component cost is often the largest part of a PCBA quote, and a single long-lead or single-source part can gate the whole build. A clean BOM with approved alternates lets us buy ahead on risky parts and quote a realistic lead time instead of a placeholder.',
       },
+      {
+        heading: 'Quoting From a BOM Without Gerber Files',
+        body: 'You can ask for a quote from a BOM even if your Gerber files are not ready. A BOM alone lets us review component cost, availability, and sourcing risk — the parts that usually drive the price most. A firm quote still needs Gerber and a CPL (pick-and-place) file, but a BOM-first review tells you early whether the project is in range, before your design files are finished.',
+      },
+      {
+        heading: 'When a Local or Alternative Component Makes Sense',
+        body: 'When a specified part is obsolete, on long lead time, or much cheaper from another source, we may suggest a functionally equivalent alternative — sometimes from a different or local manufacturer. This is only ever a suggestion: you review the proposed alternate against your requirements and approve it before we buy. Parts you mark as no-substitute are never changed. The goal is to reduce cost or lead-time risk without changing how your board works.',
+      },
     ],
     bullets: ['Line-by-line BOM review and MPN checking', 'Availability and lifecycle risk review', 'Customer-approved alternatives only', 'Long-lead and single-source part flagging', 'Purchasing coordinated with the assembly schedule'],
     workflow: ['BOM received and part numbers checked', 'Package and quantity confirmation', 'Availability and lifecycle risk review', 'Substitute communication and customer approval', 'Sourcing plan confirmed, then purchasing and assembly'],
@@ -525,6 +533,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'China PCB assembly supplier', href: '/china-pcb-assembly' },
       { label: 'What affects a PCB assembly quote in China', href: '/knowledge/what-determines-pcb-assembly-quote-china' },
       { label: 'Prepare files for a PCB assembly quote', href: '/knowledge/pcb-assembly-file-preparation-guide' },
+      { label: 'Get a quote with incomplete files', href: '/knowledge/pcba-quote-with-incomplete-files' },
       { label: 'BOM best practices', href: '/knowledge/bom-best-practices' },
       { label: 'Turnkey PCBA manufacturing', href: '/turnkey-pcb-assembly' },
       { label: 'Send your BOM for a quote', href: '/contact' },
@@ -549,6 +558,14 @@ export const seoPages: Record<string, SeoLandingPage> = {
       {
         question: 'How does BOM sourcing affect lead time?',
         answer: 'Long-lead, single-source, or obsolete parts are usually the main driver of lead time. Marking them early lets us buy ahead and quote a realistic schedule.',
+      },
+      {
+        question: 'Can I get a quote from just a BOM, without Gerber?',
+        answer: 'Yes. A BOM is enough for a preliminary review of component cost, availability, and sourcing risk. A firm quote still needs Gerber and a CPL (pick-and-place) file, but a BOM-first review tells you early whether the project is in range.',
+      },
+      {
+        question: 'Can you use a local or cheaper alternative component?',
+        answer: 'We can suggest a functionally equivalent alternative when a part is obsolete, long-lead, or costly — including from a different or local manufacturer. You always approve any substitution first, and parts marked no-substitute are never changed.',
       },
     ],
   },
