@@ -464,7 +464,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     categoryColor: 'bg-cc-copper/15 text-cc-ink border-cc-copper/30',
     title: 'How to get a PCBA quote with incomplete files',
     excerpt: 'You do not need a perfect data package to start. Here is the minimum that lets an engineering team give a preliminary PCB assembly quote, and how a firm quote is reached once the gaps are filled.',
-    image: '/factory/svc-engineering-review.jpg',
+    image: '/factory/pcba-quote-incomplete-files.jpg',
     readTime: '5 min read',
     metaDescription: 'How to get a PCB assembly quote when your files are incomplete — the minimum information needed for a preliminary quote, what engineering review checks, and how to reach a firm price.',
     sections: [
