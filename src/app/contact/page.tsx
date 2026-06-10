@@ -147,11 +147,11 @@ export default function ContactPage() {
                 </a>
               </div>
               <iframe
-                title="Huitai Electronics location in Shenzhen, China"
-                src={'https://maps.google.com/maps?q=Zhaochang+Industrial+Park,+Gonghe+Industrial+Road,+Shajing,+Baoan,+Shenzhen,+China&z=14&output=embed'}
+                title="Huitai Electronics location in Shajing, Bao'an, Shenzhen, China"
+                src={'https://www.openstreetmap.org/export/embed.html?bbox=113.804%2C22.716%2C113.844%2C22.742&layer=mapnik&marker=22.728689%2C113.824020'}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="block h-[340px] w-full border-0 grayscale-[0.25] contrast-[1.05]"
+                className="block h-[340px] w-full border-0 grayscale-[0.2] contrast-[1.03]"
               />
             </div>
           </div>
