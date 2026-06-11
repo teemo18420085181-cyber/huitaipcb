@@ -518,7 +518,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     title: 'Top 7 Low-Volume Turnkey PCBA Suppliers in China (2026)',
     excerpt:
       'A practical comparison of seven China PCBA suppliers for low-volume turnkey orders — who fits engineer-supported small batches, who fits instant-quote prototypes, and how to choose between them.',
-    image: '/factory/svc-smt-assembly.jpg',
+    image: '/factory/low-volume-pcba-suppliers.jpg',
     readTime: '8 min read',
     metaDescription:
       'Compare 7 low-volume turnkey PCBA suppliers in China for 2026 — Huitai Electronics, JLCPCB, PCBWay, NextPCB, PCBGOGO, Viasion, and RayMing — by MOQ flexibility, engineering support, BOM sourcing, and service model.',
