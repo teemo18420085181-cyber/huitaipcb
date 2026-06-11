@@ -616,7 +616,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     title: 'JLCPCB Alternatives for Turnkey PCBA Assembly (2026)',
     excerpt:
       'JLCPCB is excellent at what it is built for — but its model has limits. The signs you have outgrown it, and which turnkey PCBA alternatives fit custom BOMs, low-volume production, and engineering support.',
-    image: '/factory/svc-engineering-review.jpg',
+    image: '/factory/jlcpcb-alternatives.jpg',
     readTime: '7 min read',
     metaDescription:
       'Looking for JLCPCB alternatives for turnkey PCBA? When to stay with JLCPCB, the 5 signs you have outgrown it, and how alternatives like Huitai Electronics, PCBWay, NextPCB, and Viasion compare for custom BOMs and low-volume production.',
