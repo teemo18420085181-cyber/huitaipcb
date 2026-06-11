@@ -609,6 +609,71 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       },
     ],
   },
+  {
+    slug: 'jlcpcb-alternatives-turnkey-pcba',
+    category: 'Decision Guide',
+    categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
+    title: 'JLCPCB Alternatives for Turnkey PCBA Assembly (2026)',
+    excerpt:
+      'JLCPCB is excellent at what it is built for — but its model has limits. The signs you have outgrown it, and which turnkey PCBA alternatives fit custom BOMs, low-volume production, and engineering support.',
+    image: '/factory/svc-engineering-review.jpg',
+    readTime: '7 min read',
+    metaDescription:
+      'Looking for JLCPCB alternatives for turnkey PCBA? When to stay with JLCPCB, the 5 signs you have outgrown it, and how alternatives like Huitai Electronics, PCBWay, NextPCB, and Viasion compare for custom BOMs and low-volume production.',
+    sections: [
+      {
+        heading: 'Quick answer',
+        body: [
+          'JLCPCB is the right choice for cheap, fast prototypes built from common catalog parts — nothing on this page changes that. People look for JLCPCB alternatives when their project stops fitting that model: parts outside the platform library, a BOM that needs sourcing judgment, repeat low-volume production, functional testing against custom criteria, or the need to talk to an engineer before money is spent. The realistic alternatives split by need: PCBWay or NextPCB for more capable platform-style service, and service-led turnkey suppliers such as Huitai Electronics, PCBGOGO, or Viasion when you need open-market BOM sourcing and a person who owns your project.',
+          'Disclosure: this guide is published by Huitai Electronics, one of the alternatives discussed below. We say plainly when JLCPCB or another option is the better choice.',
+        ],
+      },
+      {
+        heading: 'When JLCPCB is still the right choice',
+        body: [
+          'Be honest with yourself before switching: if your board uses common catalog components, your files are final, you are ordering a handful of prototypes, and you do not need custom testing — stay. No turnkey supplier will beat the platform price on that job, and switching buys you nothing.',
+          'The rest of this guide is for the moment that stops being true.',
+        ],
+      },
+      {
+        heading: '5 signs you have outgrown the platform model',
+        body: [
+          '**1. Your parts are not in the library.** Economic platform assembly draws on a fixed parts catalog. Once your design needs specific manufacturer part numbers, unusual packages, or end-of-life parts, you need [open-market BOM sourcing](/bom-sourcing-pcb-assembly) — buying against your BOM, with approved alternates, not around a catalog.',
+          '**2. Your BOM needs judgment, not just fulfillment.** Shortages, lifecycle risk, substitute approval, long-lead buys — a platform quotes what you upload; it does not tell you that a part is about to go obsolete. A supplier who reviews the BOM line by line catches this [before the quote](/knowledge/pcba-quote-with-incomplete-files).',
+          '**3. You are moving from one-off to repeat production.** Pilot runs and repeat low-volume batches need process continuity: the same stencil decisions, the same test plan, a partner who already knows the board. See [prototype vs batch assembly](/knowledge/prototype-vs-batch-pcb-assembly) for what changes.',
+          '**4. You need testing against your criteria.** Standard platform output is a board that passes AOI. If you need functional testing against firmware, fixtures, or acceptance criteria you define, that is a [testing and quality-control scope](/pcba-testing-quality-control) a platform form cannot capture.',
+          '**5. You need to talk to an engineer before spending.** When the design has open questions — a footprint you are unsure about, a tolerance that worries you — an instant quote is exactly the wrong product. You want manufacturability questions raised before the price is fixed, not change orders after.',
+        ],
+      },
+      {
+        heading: 'The alternatives, by what you actually need',
+        body: [
+          '| Need | Alternative | Why |\n| --- | --- | --- |\n| More capability, still platform-style | PCBWay | Higher layer counts, special processes, more human support |\n| Industrial boards with DFM checks | NextPCB | Platform flow plus stronger automated DFM feedback |\n| Quick-turn small batches, quote-based | PCBGOGO | Established quick-turn shop with sales support |\n| Small-to-medium EMS without MOQ pressure | Viasion | 15+ years traditional EMS, welcomes small orders |\n| Engineer-supported low-volume turnkey | Huitai Electronics | Engineering review before every quote, open-market sourcing, direct engineer contact |',
+          'For a fuller comparison of these suppliers, see our [Top 7 low-volume turnkey PCBA suppliers guide](/knowledge/top-low-volume-turnkey-pcba-suppliers-china).',
+        ],
+      },
+      {
+        heading: 'What switching looks like in practice',
+        body: [
+          'Moving from a platform to a turnkey supplier is mostly a files exercise. Send the same package you already have — Gerber and drill files, BOM with manufacturer part numbers, pick-and-place file, assembly drawing — plus two things platforms never asked you for: your quantity plan (one batch or repeat?) and your test expectations. [Incomplete files are workable](/knowledge/pcba-quote-with-incomplete-files); a preliminary quote scopes the gaps.',
+          'Expect the first response to be questions rather than a price. That is the product you are switching for: a [turnkey supplier](/turnkey-pcb-assembly) is pricing your project, not your upload. A serious one replies within a day or two with manufacturability notes, sourcing flags, and a quote scope — at Huitai the reply lands within 24 hours.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### Is a turnkey supplier more expensive than JLCPCB?\n\nFor simple catalog-part prototypes, yes — the platform price is hard to beat. For custom BOMs and low-volume production the comparison changes: open-market sourcing, fewer re-spins from caught design issues, and testing matched to your criteria often make the total project cost lower even when the unit quote looks higher.\n\n### Can I move just the assembly and keep ordering bare boards from JLCPCB?\n\nYes, this is common. A turnkey supplier can work with consigned bare boards, or quote fabrication and assembly together — comparing both is reasonable. One accountable supplier for the whole chain usually simplifies quality questions.\n\n### What if some of my parts are still JLCPCB catalog parts?\n\nNot a problem. Open-market sourcing includes the same distributors the platforms buy from. A line-by-line BOM review will source each part from the best available channel and flag any that carry risk.\n\n### How small an order will a turnkey supplier accept?\n\nService-led suppliers in this space generally accept pilot runs and small batches without a big MOQ — at Huitai, low-volume is the normal case, not an exception. Expect setup costs to weigh more per board at small quantities, whoever you choose.\n\n### How do I judge a turnkey supplier before committing?\n\nSend real files and watch the response. Questions before a price is a green flag; an instant number on a custom BOM is not. Ask for the inspection and test plan in writing, and run a small paid batch before volume.',
+        ],
+      },
+      {
+        heading: 'Ready when your project is',
+        body: [
+          'If one of the five signs above describes your project, the switch costs you one email to find out.',
+          '[Send your Gerber and BOM for an engineering review](/contact) — we will flag sourcing and manufacturability risks and reply with a clear quote scope within 24 hours. You can also read more about [low-volume PCBA assembly](/low-volume-pcba-assembly).',
+        ],
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeArticle(slug: string) {
