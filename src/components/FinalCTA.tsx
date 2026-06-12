@@ -1,5 +1,6 @@
-import { Upload } from 'lucide-react';
+import { MessageCircle, Upload } from 'lucide-react';
 import TrackedLink from '@/components/TrackedLink';
+import TrackedAnchor from '@/components/TrackedAnchor';
 
 export default function FinalCTA() {
   return (
@@ -23,23 +24,26 @@ export default function FinalCTA() {
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <TrackedLink
-            href="/contact"
+            href="/contact#project-files"
             eventName="upload_gerber_bom_click"
-            eventParams={{ location: 'final_cta', destination: '/contact' }}
+            eventParams={{ location: 'final_cta', destination: '/contact#project-files' }}
             className="cc-copper-fill inline-flex items-center gap-2 rounded-[10px] px-6 py-3.5 text-[13px] font-semibold transition-all hover:-translate-y-0.5"
             style={{ boxShadow: '0 8px 30px rgba(201,139,58,0.32)' }}
           >
             <Upload size={16} strokeWidth={2.5} />
             Upload Gerber &amp; BOM
           </TrackedLink>
-          <TrackedLink
-            href="/contact"
-            eventName="quote_click"
-            eventParams={{ location: 'final_cta', destination: '/contact', button_text: 'Talk to Engineering' }}
-            className="inline-flex items-center rounded-[10px] border border-cc-copper/30 bg-cc-carbon/40 px-5 py-3.5 text-[13px] font-medium text-cc-ink transition-all hover:border-cc-copper/60"
+          <TrackedAnchor
+            href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20to%20discuss%20a%20PCB%20assembly%20project."
+            target="_blank"
+            rel="noopener noreferrer"
+            eventName="whatsapp_click"
+            eventParams={{ location: 'final_cta', contact_method: 'whatsapp' }}
+            className="inline-flex items-center gap-2 rounded-[10px] border border-cc-copper/30 bg-cc-carbon/40 px-5 py-3.5 text-[13px] font-medium text-cc-ink transition-all hover:border-cc-copper/60"
           >
+            <MessageCircle size={15} strokeWidth={2.5} className="text-cc-copper-soft" />
             Talk to Engineering
-          </TrackedLink>
+          </TrackedAnchor>
         </div>
       </div>
     </section>

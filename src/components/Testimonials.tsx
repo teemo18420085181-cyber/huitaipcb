@@ -1,7 +1,7 @@
 const TESTIMONIALS = [
   {
     quote:
-      "We've worked with OneStopPCBA for over 18 months across 12 product revisions. Not a single shipment was late. Their DFM review caught a critical impedance issue that would have killed our launch timeline — and they flagged it the morning after we uploaded.",
+      "We've worked with Huitai Electronics for over 18 months across 12 product revisions. Not a single shipment was late. Their DFM review caught a critical impedance issue that would have killed our launch timeline — and they flagged it the morning after we uploaded.",
     name: 'Hardware startup customer, USA',
     title: '',
     company: '',
@@ -10,7 +10,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "Getting quotes from Chinese manufacturers used to take a week of back-and-forth. With OneStopPCBA I upload files Monday morning and have a detailed quote and DFM report by Tuesday. That turnaround completely changed how we plan our sprints.",
+      "Getting quotes from Chinese manufacturers used to take a week of back-and-forth. With Huitai Electronics I upload files Monday morning and have a detailed quote and DFM report by Tuesday. That turnaround completely changed how we plan our sprints.",
     name: 'Industrial electronics customer, Germany',
     title: '',
     company: '',

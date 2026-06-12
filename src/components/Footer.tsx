@@ -30,14 +30,15 @@ export default function Footer() {
                 HT
               </div>
               <div>
-                <strong className="block text-sm font-semibold tracking-wide text-cc-ink">ONESTOPPCBA</strong>
+                <strong className="block text-sm font-semibold tracking-wide text-cc-ink">HUITAI ELECTRONICS</strong>
                 <span className="font-mono-cc text-[9px] font-medium tracking-[0.16em] text-cc-ink-mute">
-                  HUITAI ELECTRONICS
+                  TURNKEY PCBA MANUFACTURING
                 </span>
               </div>
             </div>
             <p className="text-xs leading-relaxed text-cc-ink">
-              China-based turnkey PCBA service provider — PCB fabrication, BOM sourcing, SMT assembly, testing and finished PCBA delivery.
+              China-based turnkey PCBA partner for PCB fabrication, BOM sourcing, assembly,
+              testing, and finished PCBA delivery.
             </p>
             <p className="text-xs leading-loose text-cc-ink-mute">
               Shenzhen Huitai Electronics Technology Co., Ltd.
@@ -103,9 +104,9 @@ export default function Footer() {
             </TrackedAnchor>
             <span className="block text-xs leading-loose text-cc-ink-mute">Mon-Sat, 09:00-18:00 CST</span>
             <TrackedLink
-              href="/contact"
+              href="/contact#quote-form"
               eventName="quote_click"
-              eventParams={{ location: 'footer', destination: '/contact' }}
+              eventParams={{ location: 'footer', destination: '/contact#quote-form' }}
               className="mt-1 block text-xs leading-loose text-cc-copper-soft transition-colors hover:text-cc-copper-bright"
             >
               Get a PCB Assembly Quote

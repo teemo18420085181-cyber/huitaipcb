@@ -5,7 +5,6 @@ export default function JsonLd() {
     '@id': 'https://huitaipcb.com/#organization',
     name: 'Huitai Electronics',
     legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
-    alternateName: 'OneStopPCBA',
     url: 'https://huitaipcb.com',
     logo: {
       '@type': 'ImageObject',
@@ -48,7 +47,6 @@ export default function JsonLd() {
     '@id': 'https://huitaipcb.com/#localbusiness',
     name: 'Huitai Electronics',
     legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
-    alternateName: 'OneStopPCBA',
     image: 'https://huitaipcb.com/logo.svg',
     url: 'https://huitaipcb.com',
     email: 'teemo18420085181@gmail.com',

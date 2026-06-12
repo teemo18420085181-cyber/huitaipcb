@@ -1,13 +1,13 @@
 const STATS = [
-  { n: 'Gerber', label: 'DFM review before quote' },
-  { n: 'BOM', label: 'Component sourcing support' },
-  { n: 'SMT', label: 'Assembly process coordination' },
-  { n: 'Test', label: 'Functional testing planning' },
+  { n: '<24h', label: 'Engineering response target' },
+  { n: 'NDA', label: 'Available on request' },
+  { n: 'Proto', label: 'Prototype and low-volume support' },
+  { n: 'Test', label: 'Planned to project scope' },
 ];
 
 export default function TrustStrip() {
   return (
-    <section className="cc-carbon-bg font-body-cc border-y border-cc-line px-[5vw] py-9">
+    <section className="cc-carbon-bg font-body-cc border-y border-cc-line px-[5vw] py-7">
       <div className="mx-auto grid max-w-[1280px] grid-cols-2 gap-6 md:grid-cols-4 md:gap-7">
         {STATS.map((s) => (
           <div key={s.label} className="flex flex-col items-start border-l-2 border-cc-copper pl-[18px]">

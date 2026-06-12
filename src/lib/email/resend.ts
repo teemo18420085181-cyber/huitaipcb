@@ -20,7 +20,7 @@ export async function sendInquiryNotification(data: InquiryNotificationData) {
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; color: #1A1640;">
       <div style="background: #27215B; color: #fff; padding: 24px; border-radius: 12px 12px 0 0;">
-        <h2 style="margin: 0; font-size: 18px;">📩 新询盘通知 — OneStopPCBA</h2>
+        <h2 style="margin: 0; font-size: 18px;">📩 新询盘通知 — Huitai Electronics</h2>
         <p style="margin: 8px 0 0; font-size: 12px; color: rgba(255,255,255,.7);">询盘ID: ${data.inquiryId}</p>
       </div>
       <div style="background: #fff; padding: 24px; border: 1px solid #E8E6F0; border-top: none; border-radius: 0 0 12px 12px;">
@@ -54,7 +54,7 @@ export async function sendInquiryNotification(data: InquiryNotificationData) {
   `;
 
   return resend.emails.send({
-    from: `OneStopPCBA <${from}>`,
+    from: `Huitai Electronics <${from}>`,
     to,
     subject: `📩 New Inquiry from ${data.name}${data.company ? ` (${data.company})` : ''}`,
     html,
@@ -84,7 +84,7 @@ export async function sendInquiryConfirmation(
           <li>If your files are complete, you'll receive a <strong>full turnkey quote</strong>.</li>
           <li>You'll be assigned <strong>one dedicated project engineer</strong> for the entire project.</li>
         </ul>
-        <p style="font-size: 14px; line-height: 1.7; color: #6B6783; margin-top: 24px;">Best regards,<br/>The OneStopPCBA Engineering Team</p>
+        <p style="font-size: 14px; line-height: 1.7; color: #6B6783; margin-top: 24px;">Best regards,<br/>The Huitai Electronics Engineering Team</p>
       </div>
       <div style="text-align: center; padding: 20px; font-size: 11px; color: #6B6783;">
         Shenzhen Huitai Electronics Technology Co., Ltd.<br/>
@@ -94,7 +94,7 @@ export async function sendInquiryConfirmation(
   `;
 
   return resend.emails.send({
-    from: `OneStopPCBA <${from}>`,
+    from: `Huitai Electronics <${from}>`,
     to: customerEmail,
     subject: 'Thanks for your inquiry — we\'ll respond within 24h',
     html,

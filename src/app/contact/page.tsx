@@ -21,40 +21,53 @@ export default function ContactPage() {
   return (
     <>
       <Nav />
-      <main className="pt-[100px] min-h-screen bg-cc-carbon">
-        <section className="px-[5vw] py-12">
-          <div className="max-w-[920px] mx-auto">
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 text-[11px] text-cc-ink font-semibold tracking-[0.16em] mb-3.5">
-                <span className="w-[18px] h-0.5 bg-cc-copper rounded-sm" />
-                GET A QUOTE
+      <main className="min-h-screen bg-cc-carbon pt-16">
+        <section className="px-[5vw] py-12 md:py-16">
+          <div className="mx-auto max-w-[1180px]">
+            <div className="grid items-start gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:gap-12">
+              <div className="lg:sticky lg:top-28">
+                <div className="mb-4 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+                  <span className="h-0.5 w-[18px] rounded-sm bg-cc-copper" />
+                  ENGINEER-REVIEWED RFQ
+                </div>
+                <h1 className="font-display mb-4 text-4xl font-bold leading-tight tracking-tight text-cc-ink md:text-5xl">
+                  Send your files. We will map the next step.
+                </h1>
+                <p className="mb-6 max-w-[520px] text-[15px] leading-relaxed text-cc-ink-mute">
+                  Upload your Gerber, BOM, drawings, photos, or whatever you have. Huitai
+                  Electronics reviews the available information before quotation and tells you
+                  what is still needed.
+                </p>
+                <div className="hidden gap-3 lg:grid">
+                  {[
+                    ['01', 'Engineering review before quotation'],
+                    ['02', 'Incomplete files are welcome'],
+                    ['03', 'Reply target within 24 hours'],
+                  ].map(([number, text]) => (
+                    <div key={number} className="flex items-center gap-3 rounded-xl border border-cc-line bg-cc-carbon-2/60 p-3.5">
+                      <span className="cc-copper-fill font-mono-cc flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-[10px] font-bold">
+                        {number}
+                      </span>
+                      <span className="text-sm leading-snug text-cc-ink">{text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <h1 className="text-3xl md:text-[40px] font-semibold text-cc-ink tracking-tight leading-tight mb-3">
-                Get a PCB Assembly Quote
-              </h1>
-              <p className="text-[15px] text-cc-ink-mute leading-relaxed max-w-[640px] mx-auto">
-                Send your Gerber, BOM, CPL (pick-and-place), assembly drawing, or sample board photos for engineering review. Our engineering team reviews your files before quotation — no automated black-box pricing.
-              </p>
-              <p className="text-[13px] text-cc-ink-mute leading-relaxed max-w-[620px] mx-auto mt-3">
-                Not sure if your files are complete? Send what you have. Our team can review the available information and let you know what is missing.
-              </p>
+
+              <InquiryForm />
             </div>
 
-            <div className="mb-8 grid gap-6 rounded-2xl border border-cc-line bg-cc-carbon-2 p-6 sm:grid-cols-2 md:p-7">
+            <div className="mt-10 grid gap-6 rounded-2xl border border-cc-line bg-cc-carbon-2 p-6 sm:grid-cols-2 md:p-7">
               <div>
                 <div className="font-mono-cc mb-3 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
-                  WHAT TO SEND
+                  USEFUL FILES
                 </div>
                 <ul className="space-y-1.5 text-sm leading-6 text-cc-ink-mute">
                   {[
-                    'Gerber files',
-                    'BOM (with manufacturer part numbers)',
-                    'Pick-and-place file',
-                    'Assembly drawing',
-                    'Quantity',
-                    'Target delivery time',
-                    'Testing requirements',
-                    'Sample photos, if files are incomplete',
+                    'Gerber files and BOM',
+                    'Pick-and-place file or assembly drawing',
+                    'Quantity and target delivery time',
+                    'Testing requirements or sample photos',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2">
                       <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-signal" />
@@ -65,15 +78,14 @@ export default function ContactPage() {
               </div>
               <div>
                 <div className="font-mono-cc mb-3 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
-                  GOOD TO KNOW
+                  WHAT HAPPENS NEXT
                 </div>
                 <ul className="space-y-1.5 text-sm leading-6 text-cc-ink-mute">
                   {[
-                    'Engineering review before quotation — no black-box pricing',
-                    'PCB fabrication, BOM sourcing, SMT assembly, testing and delivery',
-                    'Prototype and low-volume PCBA accepted',
-                    'Incomplete files? Send a partial BOM or sample photos first',
-                    'Testing planned based on your instructions',
+                    'We review files and clarify missing details',
+                    'We align sourcing, assembly, and test scope',
+                    'You receive a quotation and lead-time plan',
+                    'NDA is available on request',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2">
                       <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-copper" />
@@ -83,8 +95,6 @@ export default function ContactPage() {
                 </ul>
               </div>
             </div>
-
-            <InquiryForm />
 
             <div className="mt-8 grid gap-5 rounded-2xl border border-cc-line bg-cc-carbon-2 p-6 sm:grid-cols-[1fr_auto] sm:items-center md:p-8">
               <div>

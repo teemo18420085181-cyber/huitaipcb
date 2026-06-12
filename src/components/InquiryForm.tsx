@@ -24,7 +24,14 @@ export default function InquiryForm() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const formStartedRef = useRef(false);
   const [dragOver, setDragOver] = useState(false);
+
+  const handleFormFocus = () => {
+    if (formStartedRef.current) return;
+    formStartedRef.current = true;
+    trackEvent('form_start', { page_path: '/contact', form_name: 'rfq_contact_form' });
+  };
 
   const handleFiles = (newFiles: FileList | null) => {
     if (!newFiles) return;
@@ -107,48 +114,60 @@ export default function InquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-cc-carbon-2 border border-cc-line rounded-2xl p-6 md:p-10 space-y-5" translate="no">
-      <div className="grid md:grid-cols-2 gap-5">
+    <form
+      id="quote-form"
+      onSubmit={handleSubmit}
+      onFocusCapture={handleFormFocus}
+      className="space-y-5 rounded-2xl border border-cc-line bg-cc-carbon-2 p-6 shadow-2xl shadow-black/20 md:p-8"
+      translate="no"
+    >
+      <div className="border-b border-cc-line pb-5">
+        <div className="font-mono-cc mb-2 text-[10px] font-semibold tracking-[0.18em] text-cc-copper-soft">
+          QUICK RFQ
+        </div>
+        <h2 className="font-display text-2xl font-bold text-cc-ink">Start with the essentials</h2>
+        <p className="mt-2 text-sm leading-relaxed text-cc-ink-mute">
+          Name, email, a short project note, and any available files are enough to begin.
+        </p>
+      </div>
+
+      <div className="grid gap-5 md:grid-cols-2">
         <FormField label="Your Name *" name="name" required />
         <FormField label="Email *" name="email" type="email" required />
-        <FormField label="Company" name="company" />
-        <FormField label="Country" name="country" />
-        <FormField label="Phone / WhatsApp" name="phone" type="tel" />
-        <FormField label="Project Type" name="project_type" placeholder="Prototype, low-volume, turnkey PCBA..." />
-        <FormField label="Quantity" name="quantity" placeholder="50 pcs, 500 pcs, pilot run..." />
+        <div className="md:col-span-2">
+          <FormField label="Quantity" name="quantity" placeholder="50 pcs, 500 pcs, pilot run..." />
+        </div>
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-cc-ink tracking-wide mb-2">
-          Project Details *
+        <label htmlFor="message" className="mb-2 block text-xs font-medium tracking-wide text-cc-ink">
+          Project Brief *
         </label>
         <textarea
           name="message"
+          id="message"
           required
-          rows={5}
-          placeholder="Briefly describe your project: quantity, target lead time, any specifications. Example: '50pcs prototype, 4-layer board with BGA, needs functional test, target delivery in 2 weeks.'"
-          className="w-full px-4 py-3 text-sm border border-cc-line bg-cc-carbon-3 text-cc-ink placeholder:text-cc-ink-mute/60 rounded-lg focus:outline-none focus:border-cc-copper/60 transition-colors"
+          rows={4}
+          placeholder="What are you building, what quantity do you need, and what should we review first?"
+          className="w-full rounded-lg border border-cc-line bg-cc-carbon-3 px-4 py-3 text-sm text-cc-ink transition-colors placeholder:text-cc-ink-mute/60 focus:border-cc-copper/60 focus:outline-none"
         />
       </div>
 
-      <div>
-        <label className="block text-xs font-medium text-cc-ink tracking-wide mb-2">
-          Testing Requirements
-        </label>
-        <textarea
-          name="testing_requirements"
-          rows={3}
-          placeholder="Functional test, ICT, firmware flashing, inspection report, sample approval requirements..."
-          className="w-full px-4 py-3 text-sm border border-cc-line bg-cc-carbon-3 text-cc-ink placeholder:text-cc-ink-mute/60 rounded-lg focus:outline-none focus:border-cc-copper/60 transition-colors"
-        />
-      </div>
-
-      {/* File upload area */}
-      <div>
-        <label className="block text-xs font-medium text-cc-ink tracking-wide mb-2">
-          Project Files (Gerber, BOM, drawings, photos)
+      <div id="project-files">
+        <label className="mb-2 block text-xs font-medium tracking-wide text-cc-ink">
+          Project Files <span className="font-normal text-cc-ink-mute">(recommended)</span>
         </label>
         <div
+          role="button"
+          tabIndex={0}
+          aria-label="Upload project files"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              trackEvent('click_file_upload_button', { location: 'contact_form' });
+              fileInputRef.current?.click();
+            }
+          }}
           onClick={() => {
             trackEvent('click_file_upload_button', { location: 'contact_form' });
             fileInputRef.current?.click();
@@ -163,18 +182,16 @@ export default function InquiryForm() {
             setDragOver(true);
           }}
           onDragLeave={() => setDragOver(false)}
-          className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+          className={`cursor-pointer rounded-xl border-2 border-dashed p-6 text-center transition-colors focus:outline-none focus:ring-2 focus:ring-cc-copper/50 ${
             dragOver
               ? 'border-cc-copper bg-cc-copper/5'
-              : 'border-cc-line hover:border-cc-copper/40'
+              : 'border-cc-copper/35 bg-cc-carbon/35 hover:border-cc-copper/70'
           }`}
         >
-          <Upload size={28} className="mx-auto text-cc-ink mb-2" strokeWidth={2} />
-          <div className="text-sm font-medium text-cc-ink">
-            Drop files here or click to browse
-          </div>
-          <div className="text-xs text-cc-ink-mute mt-1">
-            Up to 10 files, 25MB each. Gerber, BOM, PDF, Excel, images, drawings accepted.
+          <Upload size={28} className="mx-auto mb-2 text-cc-copper-soft" strokeWidth={2} />
+          <div className="text-sm font-semibold text-cc-ink">Upload Gerber, BOM, drawings, or photos</div>
+          <div className="mt-1 text-xs text-cc-ink-mute">
+            Drop files here or click to browse. Up to 10 files, 25MB each.
           </div>
           <input
             ref={fileInputRef}
@@ -189,21 +206,17 @@ export default function InquiryForm() {
         {files.length > 0 && (
           <div className="mt-3 space-y-2">
             {files.map((f, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-3 px-3 py-2 bg-cc-carbon rounded-lg"
-              >
-                <FileText size={16} className="text-cc-ink flex-shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <div className="text-sm truncate">{f.name}</div>
-                  <div className="text-[11px] text-cc-ink-mute">
-                    {formatSize(f.size)}
-                  </div>
+              <div key={`${f.name}-${i}`} className="flex items-center gap-3 rounded-lg bg-cc-carbon px-3 py-2">
+                <FileText size={16} className="flex-shrink-0 text-cc-copper-soft" />
+                <div className="min-w-0 flex-1">
+                  <div className="truncate text-sm text-cc-ink">{f.name}</div>
+                  <div className="text-[11px] text-cc-ink-mute">{formatSize(f.size)}</div>
                 </div>
                 <button
                   type="button"
+                  aria-label={`Remove ${f.name}`}
                   onClick={() => removeFile(i)}
-                  className="text-cc-ink-mute hover:text-red-500 transition-colors"
+                  className="text-cc-ink-mute transition-colors hover:text-red-400"
                 >
                   <X size={16} />
                 </button>
@@ -213,19 +226,38 @@ export default function InquiryForm() {
         )}
       </div>
 
-      {/* Consent */}
-      <label className="flex items-start gap-2.5 text-xs text-cc-ink-mute cursor-pointer pt-2">
-        <input
-          type="checkbox"
-          name="consent"
-          value="true"
-          required
-          className="mt-0.5 accent-cc-copper"
-        />
+      <details className="group rounded-xl border border-cc-line bg-cc-carbon/30">
+        <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold text-cc-ink transition-colors hover:text-cc-copper-soft">
+          <span className="inline-flex items-center gap-2">
+            <span className="text-cc-copper-soft transition-transform group-open:rotate-45">+</span>
+            Add company, phone, project type, or testing details
+          </span>
+        </summary>
+        <div className="grid gap-5 border-t border-cc-line p-4 md:grid-cols-2">
+          <FormField label="Company" name="company" />
+          <FormField label="Country" name="country" />
+          <FormField label="Phone / WhatsApp" name="phone" type="tel" />
+          <FormField label="Project Type" name="project_type" placeholder="Prototype, low-volume, turnkey PCBA..." />
+          <div className="md:col-span-2">
+            <label htmlFor="testing_requirements" className="mb-2 block text-xs font-medium tracking-wide text-cc-ink">
+              Testing Requirements
+            </label>
+            <textarea
+              name="testing_requirements"
+              id="testing_requirements"
+              rows={3}
+              placeholder="Functional test, ICT, firmware flashing, inspection report, sample approval requirements..."
+              className="w-full rounded-lg border border-cc-line bg-cc-carbon-3 px-4 py-3 text-sm text-cc-ink transition-colors placeholder:text-cc-ink-mute/60 focus:border-cc-copper/60 focus:outline-none"
+            />
+          </div>
+        </div>
+      </details>
+
+      <label className="flex cursor-pointer items-start gap-2.5 pt-1 text-xs text-cc-ink-mute">
+        <input type="checkbox" name="consent" value="true" required className="mt-0.5 accent-cc-copper" />
         <span>
-          I agree to be contacted regarding this inquiry. My information will be
-          used solely to provide a quote and project communication, never shared
-          with third parties. See our{' '}
+          I agree to be contacted regarding this inquiry. My information will be used solely for
+          quotation and project communication. See our{' '}
           <a href="/privacy" className="text-cc-ink underline">
             Privacy Policy
           </a>
@@ -234,7 +266,7 @@ export default function InquiryForm() {
       </label>
 
       {error && (
-        <div className="text-sm text-red-300 bg-red-500/10 border border-red-500/30 px-4 py-3 rounded-lg">
+        <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
           {error}
         </div>
       )}
@@ -242,7 +274,7 @@ export default function InquiryForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full cc-copper-fill font-semibold py-3.5 rounded-lg transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-60"
+        className="cc-copper-fill flex w-full items-center justify-center gap-2 rounded-lg py-3.5 font-semibold transition-all hover:-translate-y-0.5 disabled:opacity-60"
       >
         {submitting ? (
           <>
@@ -252,10 +284,13 @@ export default function InquiryForm() {
         ) : (
           <>
             <Upload size={16} strokeWidth={2.5} />
-            Send RFQ
+            Send RFQ for Engineering Review
           </>
         )}
       </button>
+      <p className="text-center text-[11px] tracking-wide text-cc-ink-mute">
+        Reply target within 24 hours / NDA available on request
+      </p>
     </form>
   );
 }
@@ -275,11 +310,12 @@ function FormField({
 }) {
   return (
     <div>
-      <label className="block text-xs font-medium text-cc-ink tracking-wide mb-2">
+      <label htmlFor={name} className="block text-xs font-medium text-cc-ink tracking-wide mb-2">
         {label}
       </label>
       <input
         type={type}
+        id={name}
         name={name}
         required={required}
         placeholder={placeholder}

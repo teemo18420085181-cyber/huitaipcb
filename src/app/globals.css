@@ -27,12 +27,22 @@ html {
   scroll-behavior: smooth;
 }
 
+#quote-form,
+#project-files {
+  scroll-margin-top: 96px;
+}
+
 body {
   font-family: 'Hanken Grotesk', system-ui, sans-serif;
   background: var(--cc-carbon);
   color: var(--cc-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(201, 139, 58, 0.35);
+  color: var(--cc-ink);
 }
 
 /* Splash-specific keyframes */

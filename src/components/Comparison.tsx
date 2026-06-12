@@ -52,7 +52,7 @@ export default function Comparison() {
               <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-cc-signal/90 text-cc-carbon">
                 <Check size={14} strokeWidth={3} />
               </div>
-              <div className="text-sm font-semibold text-cc-signal">With OneStopPCBA turnkey</div>
+              <div className="text-sm font-semibold text-cc-signal">With Huitai Electronics turnkey</div>
             </div>
             {GOOD_POINTS.map((p, i) => (
               <div key={i} className="flex items-start gap-2.5 py-2 text-[13px] leading-relaxed text-cc-ink">

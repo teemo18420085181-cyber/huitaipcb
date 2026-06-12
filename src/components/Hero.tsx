@@ -1,8 +1,9 @@
 'use client';
 
 import type { CSSProperties } from 'react';
-import { Upload, ArrowUpRight, Check } from 'lucide-react';
+import { Upload, MessageCircle, Check } from 'lucide-react';
 import TrackedLink from '@/components/TrackedLink';
+import TrackedAnchor from '@/components/TrackedAnchor';
 
 const traceStyle = (len: number, delay = 0): CSSProperties =>
   ({ '--len': len, animationDelay: `${delay}s` } as CSSProperties);
@@ -52,7 +53,7 @@ function CircuitLayer() {
 
 export default function Hero() {
   return (
-    <section className="cc-carbon-bg font-body-cc relative flex min-h-[92vh] flex-col justify-center overflow-hidden px-[5vw] pb-24 pt-[150px] text-cc-ink">
+    <section className="cc-carbon-bg font-body-cc relative flex min-h-[82vh] flex-col justify-center overflow-hidden px-[5vw] pb-20 pt-[130px] text-cc-ink">
       <CircuitLayer />
       {/* top + bottom hairlines */}
       <div className="pointer-events-none absolute inset-x-0 top-[88px] h-px bg-gradient-to-r from-transparent via-cc-copper/30 to-transparent" />
@@ -65,7 +66,7 @@ export default function Hero() {
             style={{ animationDelay: '0.15s' }}
           >
             <span className="cc-via h-1.5 w-1.5 rounded-full bg-cc-copper-bright" />
-            TURNKEY PCBA · SHENZHEN, CHINA
+            TURNKEY PCBA / SHENZHEN, CHINA
           </div>
 
           <h1
@@ -82,30 +83,32 @@ export default function Hero() {
             style={{ animationDelay: '0.4s' }}
           >
             Send your Gerber files, BOM, samples, or requirements. Real engineers review
-            them before quoting — then we run PCB fabrication, sourcing, SMT/DIP assembly,
+            them before quoting, then we run PCB fabrication, sourcing, SMT/DIP assembly,
             testing, and delivery as one managed build.
           </p>
 
           <div className="cc-rise mb-11 flex flex-wrap gap-3" style={{ animationDelay: '0.52s' }}>
             <TrackedLink
-              href="/contact"
-              eventName="quote_click"
-              eventParams={{ location: 'home_hero', destination: '/contact' }}
+              href="/contact#project-files"
+              eventName="upload_gerber_bom_click"
+              eventParams={{ location: 'home_hero', destination: '/contact#project-files' }}
               className="cc-copper-fill group inline-flex items-center gap-2 rounded-[10px] px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-all hover:-translate-y-0.5"
               style={{ boxShadow: '0 8px 30px rgba(201,139,58,0.32)' }}
             >
               <Upload size={16} strokeWidth={2.5} />
-              Get a PCB Assembly Quote
+              Upload Gerber &amp; BOM
             </TrackedLink>
-            <TrackedLink
-              href="/contact"
-              eventName="upload_gerber_bom_click"
-              eventParams={{ location: 'home_hero', destination: '/contact' }}
+            <TrackedAnchor
+              href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20to%20discuss%20a%20PCB%20assembly%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              eventName="whatsapp_click"
+              eventParams={{ location: 'home_hero', contact_method: 'whatsapp' }}
               className="group inline-flex items-center gap-2 rounded-[10px] border border-cc-copper/30 bg-cc-carbon-2/40 px-5 py-3.5 text-[13px] font-medium text-cc-ink transition-all hover:border-cc-copper/60 hover:bg-cc-carbon-2"
             >
-              Upload Gerber &amp; BOM
-              <ArrowUpRight size={15} strokeWidth={2.5} className="text-cc-copper-soft transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </TrackedLink>
+              <MessageCircle size={15} strokeWidth={2.5} className="text-cc-copper-soft" />
+              Ask an Engineer
+            </TrackedAnchor>
           </div>
 
           <div className="cc-rise font-mono-cc flex flex-wrap items-center gap-x-5 gap-y-2.5" style={{ animationDelay: '0.64s' }}>
