@@ -85,12 +85,12 @@ export default function Footer() {
               CONTACT
             </h5>
             <TrackedAnchor
-              href="mailto:teemo18420085181@gmail.com"
+              href="mailto:sales@huitaipcb.com"
               eventName="email_click"
               eventParams={{ location: 'footer', contact_method: 'email' }}
               className="block text-xs leading-loose text-cc-ink-mute transition-colors hover:text-cc-ink"
             >
-              teemo18420085181@gmail.com
+              sales@huitaipcb.com
             </TrackedAnchor>
             <TrackedAnchor
               href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20a%20PCB%20assembly%20quote."

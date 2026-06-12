@@ -35,7 +35,7 @@ export default function TermsPage() {
             </p>
             <h2 className="text-lg font-semibold text-cc-ink">Contact</h2>
             <p>
-              Questions about these terms can be sent to <a href="mailto:teemo18420085181@gmail.com" className="text-cc-ink underline">teemo18420085181@gmail.com</a>.
+              Questions about these terms can be sent to <a href="mailto:sales@huitaipcb.com" className="text-cc-ink underline">sales@huitaipcb.com</a>.
             </p>
           </div>
         </article>

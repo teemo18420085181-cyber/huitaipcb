@@ -14,7 +14,9 @@ interface InquiryNotificationData {
 }
 
 export async function sendInquiryNotification(data: InquiryNotificationData) {
-  const to = process.env.INQUIRY_NOTIFICATION_EMAIL || 'teemo18420085181@gmail.com';
+  const to = process.env.INQUIRY_NOTIFICATION_EMAIL
+    ? process.env.INQUIRY_NOTIFICATION_EMAIL.split(',').map((s) => s.trim())
+    : ['sales@huitaipcb.com', 'teemo18420085181@gmail.com'];
   const from = process.env.INQUIRY_FROM_EMAIL || 'noreply@huitaipcb.com';
 
   const html = `
