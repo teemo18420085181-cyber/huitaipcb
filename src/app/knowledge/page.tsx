@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import { getKnowledgeIndexArticles, type KnowledgeDisplayArticle } from '@/lib/content/articles';
+import { OG_IMAGES } from '@/lib/seo/og';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,6 +17,7 @@ export const metadata = {
     description:
       'Practical PCB assembly guides for overseas buyers preparing Gerber files, BOM lists, sourcing requirements, testing plans, and PCBA quotations.',
     url: 'https://huitaipcb.com/knowledge',
+    images: OG_IMAGES,
   },
 };
 

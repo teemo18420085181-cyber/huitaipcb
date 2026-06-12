@@ -6,6 +6,7 @@
     title: 'Request a PCB Assembly Quote | Upload Gerber & BOM',
     description: 'Request a PCB assembly quote from Huitai Electronics. Upload Gerber files, BOM lists, drawings, sample photos, and testing requirements for engineering review.',
     url: 'https://huitaipcb.com/contact',
+    images: OG_IMAGES,
   },
 };
 
@@ -14,6 +15,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import InquiryForm from '@/components/InquiryForm';
 import TrackedAnchor from '@/components/TrackedAnchor';
+import { OG_IMAGES } from '@/lib/seo/og';
 
 export default function ContactPage() {
   return (

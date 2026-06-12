@@ -2,12 +2,13 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import TrackedLink from '@/components/TrackedLink';
+import { OG_IMAGES } from '@/lib/seo/og';
 
 export const metadata = {
   title: 'Quality Control — 6-Layer Inspection | Huitai Electronics',
   description: 'AOI, X-Ray BGA inspection, flying probe, ICT, functional testing and IQC options for PCB assembly projects that need documented quality control.',
   alternates: { canonical: 'https://huitaipcb.com/quality' },
-  openGraph: { url: 'https://huitaipcb.com/quality' },
+  openGraph: { url: 'https://huitaipcb.com/quality', images: OG_IMAGES },
 };
 
 const QC = [

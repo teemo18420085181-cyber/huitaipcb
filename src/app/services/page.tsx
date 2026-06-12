@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import TrackedLink from '@/components/TrackedLink';
+import { OG_IMAGES } from '@/lib/seo/og';
 
 export const metadata = {
   title: 'PCBA Services Overview | Huitai Electronics',
@@ -10,6 +11,7 @@ export const metadata = {
     'Explore Huitai Electronics PCBA service workflow, including engineering review, PCB fabrication coordination, BOM sourcing, SMT assembly, DIP assembly, testing, and finished PCBA delivery.',
   alternates: { canonical: 'https://huitaipcb.com/services' },
   openGraph: {
+    images: OG_IMAGES,
     title: 'PCBA Services Overview | Huitai Electronics',
     description:
       'Explore Huitai Electronics PCBA service workflow from Gerber and BOM review to finished PCBA delivery.',

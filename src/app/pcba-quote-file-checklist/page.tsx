@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Footer from '@/components/Footer';
 import Nav from '@/components/Nav';
 import TrackedLink from '@/components/TrackedLink';
+import { OG_IMAGES } from '@/lib/seo/og';
 
 const pageUrl = 'https://huitaipcb.com/pcba-quote-file-checklist';
 
@@ -142,6 +143,7 @@ export const metadata: Metadata = {
     description:
       'Prepare Gerber files, BOM, placement data, testing requirements, quantity, and assembly notes for turnkey PCBA quotation review.',
     url: pageUrl,
+    images: OG_IMAGES,
   },
 };
 

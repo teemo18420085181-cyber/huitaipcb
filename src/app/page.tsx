@@ -11,6 +11,7 @@ import Testimonials from '@/components/Testimonials';
 import FeedbackBoard from '@/components/FeedbackBoard';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
+import { OG_IMAGES } from '@/lib/seo/og';
 
 const HOME_SERVICE_LINKS = [
   { label: 'Turnkey PCBA Manufacturing', href: '/turnkey-pcb-assembly' },
@@ -25,7 +26,7 @@ export const metadata = {
   title: 'PCB Assembly & Turnkey PCBA in China | Huitai Electronics',
   description: 'Turnkey PCB assembly in China for overseas hardware teams. Gerber & BOM reviewed by engineers before quoting — no black-box pricing. Reply within 24h.',
   alternates: { canonical: 'https://huitaipcb.com/' },
-  openGraph: { url: 'https://huitaipcb.com/' },
+  openGraph: { url: 'https://huitaipcb.com/', images: OG_IMAGES },
 };
 
 export default function HomePage() {

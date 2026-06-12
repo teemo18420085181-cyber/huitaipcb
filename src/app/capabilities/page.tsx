@@ -2,12 +2,13 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
 import TrackedLink from '@/components/TrackedLink';
+import { OG_IMAGES } from '@/lib/seo/og';
 
 export const metadata = {
   title: 'Capabilities — PCB & PCBA Technical Specs | Huitai Electronics',
   description: 'PCB fabrication: 1-30 layers, HDI, Rogers, rigid-flex, aluminum MCPCB, impedance control. Full SMT assembly specs from Shenzhen.',
   alternates: { canonical: 'https://huitaipcb.com/capabilities' },
-  openGraph: { url: 'https://huitaipcb.com/capabilities' },
+  openGraph: { url: 'https://huitaipcb.com/capabilities', images: OG_IMAGES },
 };
 
 const CAPS = [

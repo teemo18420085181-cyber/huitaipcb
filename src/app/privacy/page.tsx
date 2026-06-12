@@ -1,11 +1,12 @@
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
+import { OG_IMAGES } from '@/lib/seo/og';
 
 export const metadata = {
   title: 'Privacy Policy',
   description: 'Privacy Policy for Huitai Electronics PCB assembly inquiry and RFQ handling.',
   alternates: { canonical: 'https://huitaipcb.com/privacy' },
-  openGraph: { url: 'https://huitaipcb.com/privacy' },
+  openGraph: { url: 'https://huitaipcb.com/privacy', images: OG_IMAGES },
 };
 
 export default function PrivacyPage() {
