@@ -681,7 +681,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     title: 'Are China PCB Assembly Online Quotes Accurate? (2026)',
     excerpt:
       'Instant online quotes are great for simple prototypes and misleading for everything else. Here is exactly what an online quote prices, where it goes wrong, and what to send for a number you can actually plan around.',
-    image: '/factory/svc-engineering-review.jpg',
+    image: '/factory/online-quote-accuracy.jpg',
     readTime: '7 min read',
     metaDescription:
       'Are instant China PCB assembly online quotes accurate? When an online quote is reliable, the 5 things it cannot price, why the final invoice differs, and what to send for an accurate engineer-reviewed quote.',
