@@ -674,6 +674,78 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       },
     ],
   },
+  {
+    slug: 'china-pcb-assembly-online-quote-accuracy',
+    category: 'Decision Guide',
+    categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
+    title: 'Are China PCB Assembly Online Quotes Accurate? (2026)',
+    excerpt:
+      'Instant online quotes are great for simple prototypes and misleading for everything else. Here is exactly what an online quote prices, where it goes wrong, and what to send for a number you can actually plan around.',
+    image: '/factory/svc-engineering-review.jpg',
+    readTime: '7 min read',
+    metaDescription:
+      'Are instant China PCB assembly online quotes accurate? When an online quote is reliable, the 5 things it cannot price, why the final invoice differs, and what to send for an accurate engineer-reviewed quote.',
+    sections: [
+      {
+        heading: 'Quick answer',
+        body: [
+          'An instant online PCB assembly quote is accurate when your board is simple, every component is a common catalog part, your files are final, and you need no custom testing. In that case the algorithm has everything it needs and the number is reliable. It becomes inaccurate the moment your project has a custom BOM, hard-to-source or end-of-life parts, special processes, incomplete files, or undefined testing — because an online quote prices the board, not your actual project. For anything beyond a standard prototype, an engineer-reviewed quote is the one you can plan a budget and a launch date around.',
+          'Disclosure: this guide is published by Huitai Electronics, which provides engineer-reviewed quotes. We say plainly below when an instant online quote is the right tool.',
+        ],
+      },
+      {
+        heading: 'What an online quote actually prices',
+        body: [
+          'An instant quote engine works from the inputs you type and upload: layer count, board dimensions, quantity, and the parts it can match to its own component library. From those it calculates fabrication and assembly cost in seconds. That is genuinely useful — it is fast, transparent, and good enough for a huge share of standard boards.',
+          'The catch is in its assumptions. An online quote assumes your files are complete and manufacturable, every BOM line maps cleanly to an in-stock catalog part, and no special process or test is needed. When those assumptions hold, the price is right. When they do not, the engine has no way to know — it quotes the happy path anyway.',
+        ],
+      },
+      {
+        heading: 'The 5 things an online quote cannot price',
+        body: [
+          '**1. Components outside the catalog.** If your BOM uses specific manufacturer part numbers the platform does not stock, those lines are either ignored or flagged for manual sourcing later — exactly where the real cost lives. [Open-market BOM sourcing](/bom-sourcing-pcb-assembly) prices them against your actual BOM.',
+          '**2. Shortages and end-of-life parts.** An engine quotes a part as if it is available at list price. It will not tell you a critical IC is on 26-week lead time or has gone obsolete — you discover that after you have paid.',
+          '**3. Special processes and tolerances.** Controlled impedance, unusual finishes, fine-pitch BGA, rigid-flex — these add real process steps that simple parametric quoting under-counts.',
+          '**4. Incomplete or ambiguous files.** No pick-and-place file, a missing drill layer, an assembly drawing that contradicts the Gerber — an engine cannot catch these, so it prices a board it cannot actually build as specified. See [how a quote works with incomplete files](/knowledge/pcba-quote-with-incomplete-files).',
+          '**5. Your test and acceptance scope.** "Functional test against my firmware" is not a checkbox an engine can price. If testing matters to you, an instant quote almost never includes it.',
+        ],
+      },
+      {
+        heading: 'Why the final invoice differs from the online number',
+        body: [
+          'When an online quote turns out wrong, it usually is not because anyone moved the price — it is because the engine quoted an idealized version of your project and reality showed up during production. A part was short, a footprint needed a respin, a test step got added. Each becomes a change request, and the "cheap" instant number drifts upward.',
+          'This is the core difference: an instant quote is a price for a board that matches its assumptions; an engineer-reviewed quote is a price for your specific project after someone has checked whether those assumptions actually hold. One is faster; the other is the number you can budget against.',
+        ],
+      },
+      {
+        heading: 'When an online quote is the right tool',
+        body: [
+          'To be fair to instant quoting: if your design uses only common catalog parts, your files are final, you are ordering a handful of standard prototype boards, and you do not need custom testing, an online quote from a platform like JLCPCB or PCBWay is accurate and hard to beat on speed and price. Use it.',
+          'The honest line is about fit, not quality. For that standard case, instant quoting wins. For custom BOMs and production planning, a reviewed quote wins — see [when you have outgrown the platform model](/knowledge/jlcpcb-alternatives-turnkey-pcba).',
+        ],
+      },
+      {
+        heading: 'What to send for an accurate quote',
+        body: [
+          'An accurate quote does not require a perfect data package, but the more of this you send, the firmer the number: Gerber and drill files, a BOM with manufacturer part numbers and approved alternates, a pick-and-place file, an assembly drawing, your quantity, and your testing requirements. See the full [PCBA quote file checklist](/pcba-quote-file-checklist).',
+          'If your files are incomplete, send what you have plus clear photos of your board — an engineering review gives a preliminary number and a precise list of what is still needed for a firm price, rather than a confident-but-wrong instant figure.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### How accurate is an instant online PCB assembly quote?\n\nVery accurate for simple boards built entirely from a platform\'s catalog parts with final files and no custom testing. Accuracy drops sharply once your BOM has parts outside the catalog, sourcing risk, special processes, incomplete files, or defined test requirements — because the engine prices the board, not those project realities.\n\n### Why is my final price different from the online quote?\n\nUsually because the engine quoted an idealized version: it assumed every part was in stock at list price, your files were fully manufacturable, and no testing was needed. When a part is short, a footprint needs a respin, or a test step is added, those become change requests that move the price. An engineer-reviewed quote surfaces these before you commit.\n\n### Is an online quote or an engineer-reviewed quote better?\n\nNeither is universally better — they fit different projects. An online quote is better for fast, standard catalog-part prototypes. An engineer-reviewed quote is better for custom BOMs, low-volume production, and anything you need to budget and schedule accurately.\n\n### Can I get an accurate quote without complete files?\n\nYes. Send what you have — a partial BOM, board photos, quantity, and the application. An engineering review returns a preliminary quote plus a clear list of what is missing for a firm price. This is often more useful than a precise-looking instant number based on incomplete assumptions.\n\n### How fast is an engineer-reviewed quote?\n\nSlower than an instant engine, but not by much in practice — at Huitai the target is a reviewed reply within 24 hours, with sourcing and manufacturability risks already flagged so the number does not move later.',
+        ],
+      },
+      {
+        heading: 'Get a quote you can plan around',
+        body: [
+          'If your project is anything more than a standard catalog-part prototype, the accurate number is one engineering review away.',
+          '[Send your Gerber and BOM](/contact) — we will review the files, flag sourcing and manufacturability risks, and reply with a clear quote scope within 24 hours. See also our [China PCB assembly](/china-pcb-assembly) workflow.',
+        ],
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeArticle(slug: string) {

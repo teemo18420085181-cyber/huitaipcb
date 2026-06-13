@@ -127,6 +127,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'Prepare files for a PCB assembly quote', href: '/knowledge/pcb-assembly-file-preparation-guide' },
       { label: 'Get a quote with incomplete files', href: '/knowledge/pcba-quote-with-incomplete-files' },
       { label: 'What affects a PCB assembly quote in China', href: '/knowledge/what-determines-pcb-assembly-quote-china' },
+      { label: 'Are online PCB assembly quotes accurate?', href: '/knowledge/china-pcb-assembly-online-quote-accuracy' },
       { label: 'Turnkey PCBA manufacturing in China', href: '/turnkey-pcb-assembly' },
       { label: 'PCBA testing and quality control', href: '/pcba-testing-quality-control' },
       { label: 'Request a PCB assembly quote', href: '/contact' },
