@@ -93,23 +93,23 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
               <p className="max-w-[640px] text-base leading-relaxed text-cc-ink-mute md:text-lg">
                 {page.intro}
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 grid max-w-[560px] gap-3 sm:flex sm:flex-wrap">
                 <TrackedLink
-                  href="/contact"
-                  eventName="quote_click"
-                  eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact' }}
-                  className="cc-copper-fill rounded-lg px-6 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5"
+                  href="/contact#project-files"
+                  eventName="upload_gerber_bom_click"
+                  eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact#project-files' }}
+                  className="cc-copper-fill rounded-lg px-6 py-3 text-center text-sm font-semibold transition-all hover:-translate-y-0.5"
                   style={{ boxShadow: '0 8px 30px rgba(201,139,58,0.3)' }}
                 >
-                  Get PCB Assembly Quote
+                  Upload Files for Engineering Review
                 </TrackedLink>
                 <TrackedLink
-                  href="/contact"
-                  eventName="upload_gerber_bom_click"
-                  eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact' }}
-                  className="rounded-lg border border-cc-copper/30 bg-cc-carbon-2/40 px-6 py-3 text-sm font-semibold text-cc-ink transition-all hover:border-cc-copper/60"
+                  href="/pcba-quote-file-checklist"
+                  eventName="quote_file_checklist_click"
+                  eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/pcba-quote-file-checklist' }}
+                  className="rounded-lg border border-cc-copper/30 bg-cc-carbon-2/40 px-6 py-3 text-center text-sm font-semibold text-cc-ink transition-all hover:border-cc-copper/60"
                 >
-                  Upload Gerber &amp; BOM
+                  See RFQ File Checklist
                 </TrackedLink>
               </div>
             </div>
@@ -211,12 +211,12 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
                 <h2 className="font-display relative mb-3 text-2xl font-bold text-cc-ink">{ctaHeading}</h2>
                 <p className="relative mb-5 max-w-[720px] text-sm leading-7 text-cc-ink-mute">{ctaBody}</p>
                 <TrackedLink
-                  href="/contact"
+                  href="/contact#project-files"
                   eventName="upload_gerber_bom_click"
-                  eventParams={{ location: 'service_bottom_cta', page_slug: page.slug, destination: '/contact' }}
+                  eventParams={{ location: 'service_bottom_cta', page_slug: page.slug, destination: '/contact#project-files' }}
                   className="cc-copper-fill relative inline-flex rounded-lg px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5"
                 >
-                  Upload Gerber &amp; BOM
+                  Upload Files for Engineering Review
                 </TrackedLink>
               </section>
             </div>

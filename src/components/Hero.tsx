@@ -87,12 +87,12 @@ export default function Hero() {
             testing, and delivery as one managed build.
           </p>
 
-          <div className="cc-rise mb-11 flex flex-wrap gap-3" style={{ animationDelay: '0.52s' }}>
+          <div className="cc-rise mb-11 grid w-full gap-3 sm:flex sm:w-auto sm:flex-wrap" style={{ animationDelay: '0.52s' }}>
             <TrackedLink
               href="/contact#project-files"
               eventName="upload_gerber_bom_click"
               eventParams={{ location: 'home_hero', destination: '/contact#project-files' }}
-              className="cc-copper-fill group inline-flex items-center gap-2 rounded-[10px] px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-all hover:-translate-y-0.5"
+              className="cc-copper-fill group inline-flex w-full items-center justify-center gap-2 rounded-[10px] px-6 py-3.5 text-[13px] font-semibold tracking-wide transition-all hover:-translate-y-0.5 sm:w-auto"
               style={{ boxShadow: '0 8px 30px rgba(201,139,58,0.32)' }}
             >
               <Upload size={16} strokeWidth={2.5} />
@@ -104,7 +104,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               eventName="whatsapp_click"
               eventParams={{ location: 'home_hero', contact_method: 'whatsapp' }}
-              className="group inline-flex items-center gap-2 rounded-[10px] border border-cc-copper/30 bg-cc-carbon-2/40 px-5 py-3.5 text-[13px] font-medium text-cc-ink transition-all hover:border-cc-copper/60 hover:bg-cc-carbon-2"
+              className="group inline-flex w-full items-center justify-center gap-2 rounded-[10px] border border-cc-copper/30 bg-cc-carbon-2/40 px-5 py-3.5 text-[13px] font-medium text-cc-ink transition-all hover:border-cc-copper/60 hover:bg-cc-carbon-2 sm:w-auto"
             >
               <MessageCircle size={15} strokeWidth={2.5} className="text-cc-copper-soft" />
               Ask an Engineer
@@ -123,7 +123,7 @@ export default function Hero() {
 
         {/* ---- Right: build manifest (datasheet card) ---- */}
         <div
-          className="cc-rise relative rounded-2xl border border-cc-line bg-cc-carbon-2/70 p-6 backdrop-blur-sm"
+          className="cc-rise relative min-w-0 rounded-2xl border border-cc-line bg-cc-carbon-2/70 p-6 backdrop-blur-sm"
           style={{ animationDelay: '0.46s', boxShadow: '0 30px 60px -30px rgba(0,0,0,0.8)' }}
         >
           {/* corner ticks */}
@@ -135,10 +135,10 @@ export default function Hero() {
           <div className="mb-5 flex items-center justify-between">
             <div className="font-mono-cc flex items-center gap-2 text-[12px] text-cc-ink">
               <span className="cc-via cc-blink h-1.5 w-1.5 rounded-full bg-cc-signal" />
-              RUN / #PRJ-2841
+              SAMPLE BUILD / #PRJ-2841
             </div>
-            <span className="font-mono-cc rounded border border-cc-signal/30 px-1.5 py-0.5 text-[9px] tracking-[0.2em] text-cc-signal">
-              LIVE
+            <span className="font-mono-cc rounded border border-cc-copper/30 px-1.5 py-0.5 text-[9px] tracking-[0.16em] text-cc-copper-soft">
+              ILLUSTRATIVE
             </span>
           </div>
 

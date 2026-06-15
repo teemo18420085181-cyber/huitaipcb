@@ -179,8 +179,7 @@ body {
 }
 
 .cc-rise {
-  opacity: 0;
-  animation: ccRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: ccRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 .cc-trace path,
 .cc-trace line {

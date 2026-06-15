@@ -121,22 +121,22 @@ export default function ServicesPage() {
               engineering review, PCB fabrication coordination, BOM sourcing, SMT assembly, optional
               DIP assembly, inspection, testing, packaging, and finished board shipment.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 grid max-w-[560px] gap-3 sm:flex sm:flex-wrap">
               <TrackedLink
-                href="/contact"
-                eventName="quote_click"
-                eventParams={{ location: 'services_hero', destination: '/contact' }}
-                className="rounded-lg bg-cc-copper px-6 py-3 text-sm font-semibold text-cc-ink transition-all hover:-translate-y-0.5"
+                href="/contact#project-files"
+                eventName="upload_gerber_bom_click"
+                eventParams={{ location: 'services_hero', destination: '/contact#project-files' }}
+                className="rounded-lg bg-cc-copper px-6 py-3 text-center text-sm font-semibold text-cc-ink transition-all hover:-translate-y-0.5"
               >
-                Get PCB Assembly Quote
+                Upload Files for Engineering Review
               </TrackedLink>
               <TrackedLink
-                href="/contact"
-                eventName="upload_gerber_bom_click"
-                eventParams={{ location: 'services_hero', destination: '/contact' }}
-                className="rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/50"
+                href="/pcba-quote-file-checklist"
+                eventName="quote_file_checklist_click"
+                eventParams={{ location: 'services_hero', destination: '/pcba-quote-file-checklist' }}
+                className="rounded-lg border border-white/25 px-6 py-3 text-center text-sm font-semibold text-white transition-all hover:border-white/50"
               >
-                Upload Gerber &amp; BOM
+                See RFQ File Checklist
               </TrackedLink>
             </div>
           </div>
@@ -147,7 +147,9 @@ export default function ServicesPage() {
             <div className="mb-8 max-w-[720px]">
               <h2 className="mb-3 text-2xl font-semibold text-cc-ink">How the PCBA workflow is coordinated</h2>
               <p className="text-sm leading-7 text-cc-ink-mute">
-                This page is a service overview. For detailed commercial pages, use the service links below so each RFQ topic has a clear destination.
+                Start with the stage that matches your project. We can review available files, clarify
+                the missing information, and coordinate only the sourcing, assembly, testing, and
+                delivery steps your build needs.
               </p>
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -207,12 +209,12 @@ export default function ServicesPage() {
               Upload your Gerber files, BOM list, quantity, and testing requirements. We will review the available information before quotation.
             </p>
             <TrackedLink
-              href="/contact"
+              href="/contact#project-files"
               eventName="upload_gerber_bom_click"
-              eventParams={{ location: 'services_bottom_cta', destination: '/contact' }}
+              eventParams={{ location: 'services_bottom_cta', destination: '/contact#project-files' }}
               className="inline-flex rounded-lg bg-cc-copper px-6 py-3 text-sm font-semibold text-cc-ink transition-all hover:-translate-y-0.5"
             >
-              Upload Gerber &amp; BOM
+              Upload Files for Engineering Review
             </TrackedLink>
           </div>
         </section>
