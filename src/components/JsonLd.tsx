@@ -13,7 +13,7 @@ export default function JsonLd() {
       height: 800,
     },
     description:
-      'Huitai Electronics is a China-based turnkey PCBA service provider supporting PCB fabrication, BOM sourcing, SMT assembly, through-hole assembly, functional testing, and finished PCBA delivery for prototype and low-volume electronics projects.',
+      'Huitai Electronics is a China-based turnkey PCBA manufacturer supporting PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, testing support, and finished PCBA delivery.',
     email: 'sales@huitaipcb.com',
     address: {
       '@type': 'PostalAddress',
@@ -33,7 +33,7 @@ export default function JsonLd() {
     '@id': 'https://huitaipcb.com/#website',
     url: 'https://huitaipcb.com',
     name: 'Huitai Electronics',
-    description: 'China-based turnkey PCBA service provider — PCB fabrication, BOM sourcing, SMT assembly, testing, and finished PCBA delivery.',
+    description: 'China-based turnkey PCBA manufacturer supporting PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, testing support, and finished PCBA delivery.',
     publisher: {
       '@id': 'https://huitaipcb.com/#organization',
     },
@@ -78,14 +78,14 @@ export default function JsonLd() {
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Turnkey PCB Assembly',
+    name: 'Turnkey PCBA Manufacturing',
     provider: {
       '@id': 'https://huitaipcb.com/#organization',
     },
     areaServed: 'Worldwide',
-    serviceType: 'PCB Manufacturing',
+    serviceType: 'Turnkey PCBA manufacturing service',
     description:
-      'Turnkey PCBA service including PCB fabrication, BOM sourcing, SMT assembly, through-hole (DIP) assembly, functional testing, and finished PCBA delivery for prototype and low-volume projects.',
+      'China-based turnkey PCBA manufacturing support including PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, testing support, and finished PCBA delivery.',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'PCB & PCBA Services',
@@ -95,7 +95,7 @@ export default function JsonLd() {
           itemOffered: {
             '@type': 'Service',
             name: 'PCB Fabrication',
-            description: '1-30 layer PCB manufacturing with FR4, Rogers, HDI, Rigid-flex, Aluminum MCPCB',
+            description: 'PCB fabrication support coordinated according to project materials, stack-up, and technical requirements',
           },
         },
         {
@@ -103,7 +103,7 @@ export default function JsonLd() {
           itemOffered: {
             '@type': 'Service',
             name: 'SMT Assembly',
-            description: 'Surface-mount technology assembly with high precision pick-and-place machines',
+            description: 'SMT assembly coordinated according to the confirmed component, placement, and process requirements',
           },
         },
         {
@@ -111,15 +111,15 @@ export default function JsonLd() {
           itemOffered: {
             '@type': 'Service',
             name: 'BOM Sourcing',
-            description: 'Component sourcing review with alternatives checks and incoming component inspection options',
+            description: 'BOM review, sourcing coordination, and customer-approved alternative component options',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Box Build Assembly',
-            description: 'Full product assembly including PCBA, enclosures, cables, and final testing',
+            name: 'Testing Support and Finished PCBA Delivery',
+            description: 'Inspection, testing support, documentation, packaging, and finished PCBA delivery according to the agreed project scope',
           },
         },
       ],

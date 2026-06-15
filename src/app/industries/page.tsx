@@ -22,42 +22,42 @@ const INDUSTRIES = [
   {
     n: '02', tag: 'IoT & CONNECTED DEVICES',
     title: 'Wireless modules and sensor nodes for the connected world.',
-    desc: 'WiFi, BLE, LoRa, NB-IoT, and 4G/LTE communication boards. From ESP32-based prototypes to custom RF-certified modules. We have experience with compact board design, low-power circuit requirements, and antenna layout for reliable wireless performance.',
+    desc: 'WiFi, BLE, LoRa, NB-IoT, and 4G/LTE communication boards. RF-related assemblies, compact board constraints, low-power requirements, and antenna-layout considerations can be reviewed before quotation based on the project scope.',
     examples: ['WiFi / BLE sensor nodes', 'LoRa gateway boards', 'NB-IoT tracker modules', '4G/LTE communication modules', 'Smart meter sub-boards', 'Edge computing nodes'],
     image: '/factory/ind-02.png',
   },
   {
     n: '03', tag: 'POWER ELECTRONICS',
     title: 'Power supply and conversion boards built to handle the load.',
-    desc: 'DC-DC converters, AC-DC power supplies, motor drivers, BMS (battery management systems), UPS inverter boards, and EV charging station boards. High-current trace routing, thermal management, and heavy copper are our specialty.',
+    desc: 'DC-DC converters, AC-DC power supplies, motor drivers, BMS (battery management systems), UPS inverter boards, and EV charging station boards. High-current routing, thermal management, and heavy-copper requirements can be reviewed before quotation.',
     examples: ['DC-DC buck / boost converters', 'Battery management systems', 'Motor driver boards', 'EV charging station controllers', 'UPS inverter boards', 'Solar MPPT controllers'],
     image: '/factory/ind-03.png',
   },
   {
     n: '04', tag: 'LED & LIGHTING CONTROL',
     title: 'Driver boards and control systems for smart lighting.',
-    desc: 'LED driver boards, PWM dimming controllers, RGB/RGBW color management boards, smart lighting system controllers, and aluminum MCPCB substrates for high-power LED arrays. We manufacture and assemble LED boards at any scale.',
+    desc: 'LED driver boards, PWM dimming controllers, RGB/RGBW color management boards, smart lighting system controllers, and aluminum MCPCB substrates for high-power LED arrays. LED board fabrication and assembly requirements can be reviewed for prototype and production quantities before quotation.',
     examples: ['PWM LED dimming controllers', 'DALI / 0-10V driver boards', 'RGB / RGBW color controllers', 'High-power LED MCPCB arrays', 'Smart home lighting modules', 'Horticultural grow light boards'],
     image: '/factory/ind-04.png',
   },
   {
     n: '05', tag: 'CONSUMER ELECTRONICS',
-    title: 'Smart home and consumer product boards at volume.',
-    desc: 'Smart home touch panels, audio devices, wireless charging receivers, wearable base boards, and consumer IoT products. We understand the design requirements for compact form factor, cost optimization, and the high volume inspection standards that consumer products demand.',
+    title: 'Smart home and consumer product boards.',
+    desc: 'Smart home touch panels, audio devices, wireless charging receivers, wearable base boards, and consumer IoT products. Compact form factor, cost targets, production quantities, and inspection requirements can be reviewed before quotation.',
     examples: ['Smart home touch controllers', 'Wireless charging boards', 'Audio DSP boards', 'Smart speaker sub-boards', 'Consumer wearable bases', 'Smart appliance control boards'],
     image: '/factory/ind-05.png',
   },
   {
     n: '06', tag: 'AUTOMOTIVE AFTERMARKET',
     title: 'Diagnostic tools, tracking, and vehicle electronics.',
-    desc: 'OBD diagnostic modules, GPS trackers, dash camera boards, CAN bus interface modules, and automotive sensor boards for the aftermarket. We manufacture to AEC-Q100 component specs where required and can support extended temperature testing.',
+    desc: 'OBD diagnostic modules, GPS trackers, dash camera boards, CAN bus interface modules, and automotive sensor boards for the aftermarket. Projects using AEC-Q100-qualified components can be reviewed against customer-specified assembly and test requirements before quotation.',
     examples: ['OBD-II diagnostic modules', 'GPS vehicle trackers', 'Dash camera main boards', 'CAN bus data loggers', 'Tire pressure monitoring', 'Fleet management modules'],
     image: '/factory/ind-06.png',
   },
   {
     n: '07', tag: 'MEDICAL & WEARABLE',
     title: 'Precision miniaturized boards for health monitoring.',
-    desc: 'Patient monitoring devices, wearable health sensors, portable medical instruments, and lab equipment sub-boards (non-implantable, non-life-critical). IPC workmanship requirements can be discussed based on project needs.',
+    desc: 'Patient monitoring devices, wearable health sensors, portable medical instruments, and lab equipment sub-boards (non-implantable, non-life-critical). Workmanship and testing requirements can be discussed based on project needs.',
     examples: ['Wearable ECG / SpO2 sensors', 'Patient monitoring sub-boards', 'Portable glucometer boards', 'Rehabilitation device controllers', 'Lab instrument modules', 'Biometric authentication boards'],
     image: '/factory/ind-07.png',
   },
@@ -89,7 +89,7 @@ export default function IndustriesPage() {
               <em className="not-italic text-cc-copper-soft">Across practical B2B use cases.</em>
             </h1>
             <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[680px] mx-auto">
-              We&apos;ve shipped boards for hardware teams across industrial, IoT, consumer, automotive aftermarket, medical, and test equipment sectors. Whatever your industry — we&apos;ve likely built a board like yours.
+              We review PCBA projects across industrial, IoT, consumer, automotive aftermarket, medical wearable, and test equipment applications. Send your files so we can confirm project fit before quotation.
             </p>
           </div>
         </section>
@@ -132,7 +132,7 @@ export default function IndustriesPage() {
           <div className="max-w-[820px] mx-auto bg-cc-carbon-2 rounded-2xl p-10 text-center text-white relative overflow-hidden">
             <div className="absolute -top-[80px] -right-[80px] w-[200px] h-[200px] rounded-full opacity-20" style={{ background: '#E6A85A', filter: 'blur(60px)' }} />
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">Don&apos;t see your industry listed?</h2>
-            <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Send us your Gerber files and we&apos;ll confirm if we can manufacture your board. If we&apos;ve never made a board like it, we&apos;ll tell you upfront.</p>
+            <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Send us your Gerber files and project requirements. We&apos;ll review the available information and confirm the suitable production and test scope before quotation.</p>
             <TrackedLink href="/contact" eventName="quote_click" eventParams={{ location: 'industries_bottom_cta', destination: '/contact', button_text: 'Send us your project' }} className="inline-flex items-center gap-2 bg-cc-copper text-cc-ink text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
               Send us your project →
             </TrackedLink>

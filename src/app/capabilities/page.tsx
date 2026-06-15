@@ -5,8 +5,8 @@ import TrackedLink from '@/components/TrackedLink';
 import { OG_IMAGES } from '@/lib/seo/og';
 
 export const metadata = {
-  title: 'Capabilities — PCB & PCBA Technical Specs | Huitai Electronics',
-  description: 'PCB fabrication: 1-30 layers, HDI, Rogers, rigid-flex, aluminum MCPCB, impedance control. Full SMT assembly specs from Shenzhen.',
+  title: 'PCB & PCBA Capability Review | Huitai Electronics',
+  description: 'PCB and PCBA capabilities are reviewed case by case based on board complexity, materials, BOM availability, assembly process, inspection, and testing requirements.',
   alternates: { canonical: 'https://huitaipcb.com/capabilities' },
   openGraph: { url: 'https://huitaipcb.com/capabilities', images: OG_IMAGES },
 };
@@ -14,51 +14,51 @@ export const metadata = {
 const CAPS = [
   {
     n: '01', tag: 'MULTI-LAYER PCB',
-    title: 'From 2-layer prototypes to 30-layer production boards.',
-    desc: 'We fabricate PCBs from single-sided to 30 layers using FR4 (TG130/170/180) as standard substrate. Standard 4–6 layer turnaround is 5 business days. Controlled impedance available across all layer counts.',
-    specs: ['1–30 layers', 'FR4 TG130 / TG170 / TG180', 'Min board thickness: 0.4mm', 'Max board size: 600×500mm', 'Min hole size: 0.15mm', 'Impedance control ±10%'],
+    title: 'Multi-layer PCB requirements reviewed for each project.',
+    desc: 'Layer count, materials, board dimensions, hole sizes, impedance requirements, and target lead time are reviewed against the project files before quotation.',
+    specs: ['Layer stack-up review', 'Material options by project', 'Board dimensions reviewed', 'Hole and via requirements', 'Impedance requirements reviewed', 'Lead time confirmed per project'],
     image: '/factory/cap-01.png',
     badge: 'Standard', badgeColor: 'bg-cc-copper text-cc-ink',
   },
   {
     n: '02', tag: 'HDI — HIGH DENSITY INTERCONNECT',
-    title: 'Micro vias, blind vias, buried vias for compact designs.',
-    desc: 'HDI technology enables smaller boards with higher component density. We support any-layer HDI with laser-drilled micro vias down to 0.1mm, blind and buried vias, and trace widths down to 3mil. Essential for smartphones, wearables, and high-speed digital designs.',
-    specs: ['Min trace/space: 3mil / 3mil', 'Laser micro via: 0.1mm', 'Blind & buried vias', 'Any-layer HDI available', 'Sequential lamination', 'Via-in-pad with fill & cap'],
+    title: 'HDI requirements reviewed for compact designs.',
+    desc: 'Micro-via, blind-via, buried-via, via-in-pad, trace-space, and lamination requirements are reviewed case by case based on the design files and agreed production scope.',
+    specs: ['Micro-via requirements', 'Blind & buried via review', 'Via-in-pad options', 'Trace/space review', 'Lamination planning', 'Capability confirmed before quotation'],
     image: '/factory/cap-02.png',
     badge: 'Advanced', badgeColor: 'bg-cc-carbon-2 text-white',
   },
   {
     n: '03', tag: 'HIGH-FREQUENCY — ROGERS / PTFE',
-    title: 'RF and microwave boards with controlled dielectric properties.',
-    desc: 'For RF, antenna, radar, and microwave applications, standard FR4 is not sufficient. We fabricate on Rogers RO4000 series, RO3000 series, PTFE composites, and other specialty laminates with controlled Dk and Df values.',
-    specs: ['Rogers RO4350B, RO4003C', 'Rogers RO3010, RT/Duroid', 'PTFE composites', 'Dk tolerance ±0.05', 'Low loss Df <0.004', '50Ω microstrip design'],
+    title: 'RF and microwave material requirements reviewed by project.',
+    desc: 'Rogers, PTFE, controlled dielectric, impedance, and RF-related fabrication requirements can be reviewed against the stack-up, frequency, and customer specifications before quotation.',
+    specs: ['Specialty laminate review', 'Stack-up requirements', 'Dk / Df considerations', 'Impedance requirements', 'RF trace review', 'Material availability check'],
     image: '/factory/cap-03.png',
     badge: 'High-Frequency', badgeColor: 'bg-cc-signal text-white',
   },
   {
     n: '04', tag: 'RIGID-FLEX PCB',
     title: 'Flexible and rigid sections in one integrated board.',
-    desc: 'Rigid-flex PCBs combine the reliability of rigid boards with the flexibility of FPC. Ideal for wearables, medical devices, and applications where the board must bend. We manufacture and assemble rigid-flex as a single turnkey project.',
-    specs: ['Polyimide (PI) flex substrate', '1–8 flex layers', 'Min bend radius: 6× board thickness', 'Static and dynamic flex', 'ZIF connectors assembled', 'Conformal coating available'],
+    desc: 'Rigid-flex construction, flex layers, bend requirements, connectors, and coating needs can be reviewed as part of a turnkey PCBA project before quotation.',
+    specs: ['Rigid-flex construction review', 'Flex layer requirements', 'Bend requirements', 'Connector assembly options', 'Coating requirements', 'Scope confirmed per project'],
     image: '/factory/cap-04.png',
     badge: 'Rigid-Flex', badgeColor: 'bg-cc-copper text-cc-ink',
   },
   {
     n: '05', tag: 'ALUMINUM MCPCB',
     title: 'Metal core PCBs for LED and high-power applications.',
-    desc: 'Aluminum metal core PCBs (MCPCB) provide excellent thermal management for high-power LED arrays, motor driver boards, and power electronics. The aluminum base conducts heat away from components, extending product life.',
-    specs: ['Aluminum base: 1.0–3.0mm thick', 'Thermal conductivity: 1–3 W/mK', 'Dielectric layer: 75–150μm', 'Single & double-sided', 'LED array layouts', 'Custom shapes & cutouts'],
+    desc: 'Aluminum MCPCB material, thermal, dielectric, thickness, layout, and shape requirements can be reviewed for LED, motor-control, and power-electronics projects.',
+    specs: ['Aluminum material review', 'Thermal requirements', 'Dielectric requirements', 'Board thickness review', 'LED / power layouts', 'Custom shape review'],
     image: '/factory/cap-05.png',
     badge: 'MCPCB', badgeColor: 'bg-cc-carbon-2 text-white',
   },
   {
     n: '06', tag: 'IMPEDANCE CONTROL & TESTING',
-    title: 'Verified electrical performance on every controlled-impedance board.',
-    desc: 'Controlled impedance is critical for high-speed digital signals, RF traces, and differential pairs. We model and verify impedance during fabrication and test every board with TDR or vector network analyzer. Test reports included.',
-    specs: ['Single-ended: 25Ω–150Ω', 'Differential pairs: 50Ω–120Ω', 'Tolerance: ±10% standard, ±5% tight', 'TDR testing on every board', 'Coupon-based verification', 'Test report with shipment'],
+    title: 'Controlled-impedance and test requirements reviewed by project.',
+    desc: 'Controlled-impedance targets, verification method, inspection scope, and required documentation can be discussed before quotation and confirmed in the agreed project scope.',
+    specs: ['Impedance target review', 'Verification method by scope', 'Coupon options when required', 'Inspection requirements', 'Test scope confirmed before production', 'Documentation by agreement'],
     image: '/factory/cap-06.png',
-    badge: 'Verified', badgeColor: 'bg-cc-signal text-white',
+    badge: 'By Scope', badgeColor: 'bg-cc-signal text-white',
   },
 ];
 
@@ -76,11 +76,11 @@ export default function CapabilitiesPage() {
               TECHNICAL CAPABILITIES
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-[52px] font-semibold leading-tight tracking-tight mb-5">
-              Every board type.<br />
-              <em className="not-italic text-cc-copper-soft">Built to your spec.</em>
+              Capabilities reviewed.<br />
+              <em className="not-italic text-cc-copper-soft">Built to the agreed scope.</em>
             </h1>
             <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[680px] mx-auto">
-              From standard FR4 to Rogers high-frequency, HDI micro-vias, rigid-flex, and aluminum MCPCB — we cover the full spectrum of PCB fabrication technologies.
+              From standard FR4 to specialty materials, HDI, rigid-flex, and aluminum MCPCB projects, available fabrication and assembly capabilities are confirmed case by case after engineering review.
             </p>
             <div className="mx-auto mt-5 max-w-[720px] rounded-xl border border-sky-100/25 bg-cc-carbon-2/10 px-4 py-3 text-sm leading-relaxed text-white/75 md:text-[15px]">
               Our PCB fabrication capabilities are provided as part of turnkey PCB assembly projects. We focus on assembled PCBA delivery, not standalone bare PCB orders.
@@ -125,7 +125,7 @@ export default function CapabilitiesPage() {
           <div className="max-w-[820px] mx-auto bg-cc-carbon-2 rounded-2xl p-10 text-center text-white relative overflow-hidden">
             <div className="absolute -top-[80px] -right-[80px] w-[200px] h-[200px] rounded-full opacity-20" style={{ background: '#E6A85A', filter: 'blur(60px)' }} />
             <h2 className="text-2xl md:text-3xl font-semibold mb-3">Not sure which spec fits your design?</h2>
-            <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Upload your Gerber files and our engineering team will review your design and recommend the right process before quotation.</p>
+            <p className="text-white/65 text-sm leading-relaxed mb-6 max-w-[500px] mx-auto">Upload your Gerber files so our engineering team can identify open requirements and confirm the available process, inspection, documentation, and target lead time before quotation.</p>
             <TrackedLink href="/contact" eventName="upload_gerber_bom_click" eventParams={{ location: 'capabilities_bottom_cta', destination: '/contact' }} className="inline-flex items-center gap-2 bg-cc-copper text-cc-ink text-sm font-semibold py-3 px-7 rounded-xl hover:-translate-y-0.5 transition-all" style={{ boxShadow: '0 4px 20px rgba(252,234,11,.3)' }}>
               Upload Gerber & BOM →
             </TrackedLink>
