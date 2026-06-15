@@ -371,7 +371,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         heading: 'HASL — the low-cost default',
         body: [
           'HASL (Hot Air Solder Leveling) coats the pads with solder, then levels it with hot air. It is the most common and lowest-cost finish, with excellent solderability and a long shelf life.',
-          'The trade-off is a slightly uneven, domed pad surface, which is not ideal for fine-pitch QFN or BGA parts. Lead-free HASL is available for RoHS. HASL is a solid default for standard boards with larger pads.',
+          'The trade-off is a slightly uneven, domed pad surface, which is not ideal for fine-pitch QFN or BGA parts. Lead-free HASL is often selected when RoHS-related requirements apply, but the surface finish alone does not establish product compliance. HASL is a common option for standard boards with larger pads.',
         ],
       },
       {
@@ -398,7 +398,8 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       {
         heading: 'Which finish should you choose?',
         body: [
-          'A quick rule of thumb: choose lead-free HASL for standard, cost-sensitive boards with larger pads; ENIG for fine-pitch, BGA, high-reliability, or longer storage; OSP for low-cost boards assembled soon. See our [fabrication and assembly capabilities](/pcb-fabrication-and-assembly) for the finishes we coordinate.',
+          'A quick rule of thumb: consider lead-free HASL for standard, cost-sensitive boards with larger pads; ENIG for fine-pitch, BGA, high-reliability, or longer storage; OSP for low-cost boards assembled soon. Surface finish selection depends on product requirements, assembly process, shelf life, and compliance needs. See our [fabrication and assembly capabilities](/pcb-fabrication-and-assembly) for the finishes we coordinate.',
+          'RoHS-related material requirements should be confirmed before quotation. Material declarations or compliance documents should be discussed project by project when required.',
           'Not sure which fits your design? [Send your Gerber and BOM](/contact) and our engineering team will recommend a finish based on your components, quantity, and storage needs — reply within 24h.',
         ],
       },
@@ -515,96 +516,97 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     slug: 'top-low-volume-turnkey-pcba-suppliers-china',
     category: 'Decision Guide',
     categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
-    title: 'Top 7 Low-Volume Turnkey PCBA Suppliers in China (2026)',
+    title: 'China Low-Volume Turnkey PCBA Supplier Comparison Guide (2026)',
     excerpt:
-      'A practical comparison of seven China PCBA suppliers for low-volume turnkey orders — who fits engineer-supported small batches, who fits instant-quote prototypes, and how to choose between them.',
+      'Examples of China PCBA suppliers buyers often compare for low-volume turnkey orders, with different service models, sourcing approaches, and project-fit considerations.',
     image: '/factory/low-volume-pcba-suppliers.jpg',
     readTime: '8 min read',
     metaDescription:
-      'Compare 7 low-volume turnkey PCBA suppliers in China for 2026 — Huitai Electronics, JLCPCB, PCBWay, NextPCB, PCBGOGO, Viasion, and RayMing — by MOQ flexibility, engineering support, BOM sourcing, and service model.',
+      'A China low-volume turnkey PCBA supplier comparison guide covering service models, engineering support, BOM sourcing, and questions buyers should verify directly.',
     sections: [
       {
         heading: 'Quick answer',
         body: [
-          'For low-volume turnkey PCBA in China — small batches, pilot runs, and prototype-to-production projects where one supplier handles PCB fabrication, component sourcing, assembly, and testing — the suppliers below cover the realistic options in 2026. If your design uses common catalog parts and you want the cheapest instant quote, an online platform like JLCPCB or PCBWay is hard to beat. If your project needs a custom BOM, sourcing judgment, engineering dialogue before the price is fixed, or flexibility that a standardized platform cannot give, a service-led supplier such as Huitai Electronics, Viasion, or PCBGOGO is usually the better fit.',
-          'Full disclosure: this guide is published by Huitai Electronics, and we list our own service first for the use case it covers. To keep the comparison useful, each entry below also says plainly when one of the other six is the better choice.',
+          'For low-volume turnkey PCBA in China — small batches, pilot runs, and prototype-to-production projects where one supplier coordinates PCB fabrication, component sourcing, assembly, and testing — buyers often compare online platforms and service-led suppliers. Platform-style services may suit catalog-part prototypes, while service-led suppliers may suit custom BOMs, sourcing review, or projects that need engineering dialogue before quotation.',
+          'Use this guide as a starting point for supplier comparison, not as a fixed ranking. Buyers should verify capabilities, certifications, lead time, engineering support, and project fit directly with each supplier.',
+          'Disclosure: this guide is published by Huitai Electronics. Huitai is included to explain its own turnkey PCBA positioning, not to claim an independent or objective ranking.',
         ],
       },
       {
-        heading: 'The 7 suppliers at a glance',
+        heading: 'Supplier examples at a glance',
         body: [
-          '| # | Supplier | Best for | Service model |\n| --- | --- | --- | --- |\n| 1 | Huitai Electronics | Engineer-supported low-volume turnkey with open-market BOM sourcing | Engineering review before every quote; direct engineer contact |\n| 2 | JLCPCB | Cheapest prototypes built from catalog parts | Online instant quote, highly standardized |\n| 3 | PCBWay | Complex one-off prototypes and special processes | Online platform with broader custom options |\n| 4 | NextPCB | Industrial prototypes with DFM emphasis | Online platform plus engineering checks |\n| 5 | PCBGOGO | Quick-turn prototype and small-batch assembly | Quote-based service with sales support |\n| 6 | Viasion | Small-to-medium batches without MOQ pressure | Traditional quote-based EMS service |\n| 7 | RayMing | RF, high-frequency, and special-material boards | Project-based engineering service |',
+          '| Supplier | Possible fit to evaluate | Service model |\n| --- | --- | --- |\n| JLCPCB | Catalog-part prototypes and standardized online ordering | Online instant-quote platform |\n| PCBWay | Prototypes requiring broader custom-process options | Online platform with custom quoting options |\n| NextPCB | Industrial prototype projects seeking DFM-oriented review | Online platform plus engineering checks |\n| PCBGOGO | Quote-based prototype and small-batch assembly | Quote-based service with sales support |\n| Viasion | Small-to-medium batch EMS projects | Traditional quote-based EMS service |\n| RayMing | RF, high-frequency, and special-material project review | Project-based engineering service |\n| Huitai Electronics | Engineer-reviewed low-volume turnkey with BOM sourcing coordination | Service-led turnkey PCBA workflow |',
         ],
       },
       {
-        heading: '1. Huitai Electronics — engineer-supported low-volume turnkey',
+        heading: 'JLCPCB — standardized online prototypes',
         body: [
-          'Huitai Electronics is a Shenzhen-based [China PCB assembly service](/china-pcb-assembly) for overseas B2B customers, focused on exactly the segment this guide covers: prototypes, pilot runs, and low-volume batches that need one accountable partner for [PCB fabrication, BOM sourcing, SMT/DIP assembly, and testing](/turnkey-pcb-assembly). There is no big MOQ requirement — [small batches and pilot runs are the normal case](/low-volume-pcba-assembly), not an exception.',
-          'The working model is deliberately different from instant-quote platforms: every project gets an engineering review before quotation — file check, line-by-line [BOM availability and alternates review](/bom-sourcing-pcb-assembly), and manufacturability questions raised up front — with a reply within 24 hours and direct engineer contact over email or WhatsApp. Components are sourced from the open market against your BOM, so you are not limited to a platform parts library, and quotes can start [even when files are incomplete](/knowledge/pcba-quote-with-incomplete-files).',
-          'Choose someone else when: your design uses only common catalog parts and the lowest possible prototype price matters more than sourcing flexibility or engineering dialogue — that is JLCPCB territory.',
+          'JLCPCB is an online PCB prototyping platform with automated quoting and a parts-library-based SMT assembly workflow. Buyers commonly evaluate it for standard boards and catalog-part prototypes.',
+          'For low-volume turnkey buyers, the standardized workflow may be less suitable when a BOM includes parts outside the catalog, sourcing risks, or project-specific engineering questions. Verify the available parts, process scope, test options, and support model directly before ordering.',
         ],
       },
       {
-        heading: '2. JLCPCB — cheapest standardized prototypes',
+        heading: 'PCBWay — custom prototype options',
         body: [
-          'JLCPCB is the largest online PCB prototyping platform in China, and for what it is built for it is excellent: very low prices, fast automated quoting, and reliable quality on standard boards. Its economic SMT assembly draws on its own parts library, which makes simple builds extremely cheap.',
-          'The trade-off for low-volume turnkey buyers: the model is optimized for speed and price, not for project-level engineering dialogue. If your BOM includes parts outside the catalog, hard-to-source or end-of-life components, or you need someone to question your design before money is spent, the standardized flow can become the constraint. Choose JLCPCB when your design fits its library and you want the lowest entry cost; move to a service-led supplier when it stops fitting.',
+          'PCBWay is another online platform that buyers may evaluate for prototypes requiring custom process options and human support around an online workflow.',
+          'It may fit a complex one-off prototype when the required capabilities and support scope are confirmed directly. For repeat low-volume production with sourcing decisions in each batch, compare the platform workflow with a dedicated turnkey service before choosing.',
         ],
       },
       {
-        heading: '3. PCBWay — complex prototypes and special processes',
+        heading: 'NextPCB — industrial prototype and DFM-oriented review',
         body: [
-          'PCBWay is the other major Shenzhen platform, generally a step up from JLCPCB in custom options: more layer counts, special processes, flexible and rigid-flex boards, and human support around the online flow. Pricing is slightly higher but still platform-grade.',
-          'Choose PCBWay when you have a complex one-off prototype that needs capabilities beyond the budget platforms, but you are still comfortable managing the project yourself through a web interface. For repeat low-volume production with sourcing decisions in every batch, a dedicated turnkey partner usually scales better.',
+          'NextPCB presents an online quoting flow with DFM-oriented checking for industrial and higher-reliability board projects.',
+          'Buyers considering this model should verify whether the available DFM feedback, engineering interaction, and production scope match the project requirements.',
         ],
       },
       {
-        heading: '4. NextPCB — industrial prototypes with DFM emphasis',
+        heading: 'PCBGOGO — quote-based prototype and small-batch assembly',
         body: [
-          'NextPCB positions itself between the pure platforms and traditional EMS: an online quoting flow combined with stronger DFM (design-for-manufacturability) checking, aimed at industrial and higher-reliability boards.',
-          'Choose NextPCB when you want platform convenience but your board is industrial-grade and you value automated DFM feedback. The engineering interaction is still largely tool-driven rather than a person who owns your project.',
+          'PCBGOGO offers a quote-based model with human sales support rather than a purely self-service workflow, and buyers may evaluate it for prototype and small-batch PCBA.',
+          'Confirm the engineering-review process, BOM sourcing scope, inspection plan, and target lead time directly, especially when files are incomplete or the BOM needs sourcing judgment.',
         ],
       },
       {
-        heading: '5. PCBGOGO — quick-turn prototype and small-batch assembly',
+        heading: 'Viasion — traditional quote-based EMS service',
         body: [
-          'PCBGOGO has specialized in quick-turn PCB prototype and small-to-medium volume assembly for over a decade, with a quote-based model and human sales support rather than pure self-service. It is a solid mainstream choice for small-batch PCBA.',
-          'Choose PCBGOGO when you want a established quick-turn shop and your project is well-defined. If your BOM needs sourcing judgment or your files are not production-ready yet, look for a supplier whose process starts with engineering review rather than a quote form.',
+          'Viasion is a Shenzhen EMS provider using a traditional quote-based service model that buyers may evaluate for small-to-medium production projects.',
+          'Confirm MOQ, engineering support, sourcing scope, testing requirements, and responsiveness directly for the planned order size.',
         ],
       },
       {
-        heading: '6. Viasion — small-to-medium batches without MOQ pressure',
+        heading: 'RayMing — RF, high-frequency, and special-material projects',
         body: [
-          'Viasion is a Shenzhen EMS provider with 15+ years of history that explicitly welcomes no-MOQ and small-batch orders, covering PCB fabrication through assembly in a traditional quote-based service model.',
-          'Choose Viasion when you want an experienced traditional EMS for small-to-medium runs. Like most established EMS shops, responsiveness and engineering depth vary by project size — smaller, service-led teams tend to give small customers more attention per order.',
+          'RayMing (RayPCB) is commonly evaluated for projects involving Rogers, Teflon, other high-frequency materials, controlled impedance, and RF or microwave applications.',
+          'Buyers should confirm material availability, fabrication limits, impedance requirements, test scope, and project fit directly before quotation.',
         ],
       },
       {
-        heading: '7. RayMing — RF, high-frequency, and special materials',
+        heading: 'Huitai Electronics — service-led low-volume turnkey',
         body: [
-          'RayMing (RayPCB) is the specialist on this list: Rogers, Teflon, and other high-frequency materials, controlled impedance, and tight-tolerance work for RF and microwave applications.',
-          'Choose RayMing when your board lives or dies on substrate and impedance control. For ordinary FR4 low-volume turnkey work, its specialty focus is more capability than you need.',
+          'Huitai Electronics is a Shenzhen-based [China PCB assembly service](/china-pcb-assembly) for overseas B2B customers. Its stated focus is prototypes, pilot runs, and low-volume batches that need one coordinated workflow for [PCB fabrication, BOM sourcing, SMT/DIP assembly, testing support, and finished PCBA delivery](/turnkey-pcb-assembly).',
+          'The working model starts with engineering review before quotation, including available-file review, [BOM availability and alternatives review](/bom-sourcing-pcb-assembly), and manufacturability questions. Scope, lead time, sourcing channels, inspection, and testing requirements are confirmed project by project. Quotes can begin [even when files are incomplete](/knowledge/pcba-quote-with-incomplete-files).',
+          'Huitai is included here to explain the service model offered by the publisher of this guide. Buyers should compare it with other suppliers and verify project fit directly.',
         ],
       },
       {
         heading: 'How to choose between them',
         body: [
-          'Three questions settle most cases. First: is every part in your BOM a common catalog part? If yes, start with JLCPCB or PCBWay — the price advantage is real. If no, you need open-market sourcing, which is the core of a [turnkey service](/turnkey-pcb-assembly).',
-          'Second: are your files final? If your Gerber, BOM, or test plan still has open questions, an instant-quote platform will quote whatever you upload — a supplier that runs [engineering review before quotation](/knowledge/pcba-quote-with-incomplete-files) will catch the problems while they are still cheap to fix.',
-          'Third: is this a one-off or the start of repeat production? For one-offs, optimize for price. For prototype-to-production, optimize for a partner who already knows your project — see [how lead times work in China PCBA](/knowledge/pcb-assembly-lead-time-china) and [how to place a first order](/knowledge/how-to-order-pcb-assembly-from-china).',
+          'Three questions help narrow the comparison. First: is every part in your BOM a common catalog part? If yes, an online platform may offer a price advantage. If no, compare suppliers that can review open-market sourcing as part of a [turnkey service](/turnkey-pcb-assembly).',
+          'Second: are your files final? If your Gerber, BOM, or test plan still has open questions, compare the instant-quote workflow with a supplier that provides [engineering review before quotation](/knowledge/pcba-quote-with-incomplete-files) and can identify open requirements before production.',
+          'Third: is this a one-off or the start of repeat production? For one-offs, compare price and process fit. For prototype-to-production, also compare project continuity, sourcing support, and test-scope management — see [how lead times work in China PCBA](/knowledge/pcb-assembly-lead-time-china) and [how to place a first order](/knowledge/how-to-order-pcb-assembly-from-china).',
         ],
       },
       {
         heading: 'FAQ',
         body: [
-          '### Which Chinese PCBA suppliers accept very small orders?\n\nMost suppliers on this list accept small orders, but the economics differ. JLCPCB and PCBWay handle tiny catalog-part prototypes cheapest. Huitai Electronics and Viasion run low-volume and pilot batches without a big MOQ, including custom-sourced BOMs. Expect per-board prices to be higher at low volume everywhere, because setup costs are shared across fewer boards.\n\n### Is JLCPCB or a dedicated turnkey supplier better for low-volume production?\n\nJLCPCB is usually better for one-off prototypes built from its parts library. A dedicated turnkey supplier is usually better once you have repeat batches, parts outside the catalog, sourcing risks, or testing requirements — situations where engineering dialogue and open-market BOM sourcing matter more than the lowest instant quote.\n\n### What does turnkey include at low volume?\n\nA proper low-volume turnkey scope covers file review, PCB fabrication, line-by-line BOM sourcing with approved alternates, SMT and through-hole assembly, inspection (AOI, plus X-ray for BGA where relevant), agreed functional testing, and packed delivery — one supplier accountable for the whole chain.\n\n### How do I keep low-volume PCBA cost reasonable?\n\nThree things help most: a clean BOM with manufacturer part numbers and approved alternates, a test scope matched to the build purpose, and panelization-friendly board design. Setup costs are fixed, so clarity that avoids re-spins saves more than supplier-shopping for a few percent.\n\n### How do I verify a smaller Chinese PCBA supplier before ordering?\n\nSend real project files and judge the response: a serious supplier reviews your design, asks manufacturability and sourcing questions before quoting, names its inspection steps, and puts scope in writing. Generic instant prices on a custom BOM are a warning sign. Start with a small paid pilot run before committing volume.',
+          '### Which Chinese PCBA suppliers accept very small orders?\n\nMOQ and small-order policies can change by supplier, board complexity, and sourcing scope. Ask each supplier to confirm the minimum practical order, setup costs, and whether custom-sourced BOMs are supported for your project.\n\n### Is an online platform or a dedicated turnkey supplier more suitable for low-volume production?\n\nThe answer depends on project fit. Online platforms may suit standardized catalog-part prototypes. A dedicated turnkey supplier may suit repeat batches, parts outside a platform catalog, sourcing risks, or project-specific testing requirements. Compare both models using real project files.\n\n### What can turnkey include at low volume?\n\nA low-volume turnkey scope can include file review, PCB fabrication, BOM sourcing with customer-approved alternatives, SMT and through-hole assembly, agreed inspection, testing support, and packed delivery. Confirm the exact scope in writing before ordering.\n\n### How do I keep low-volume PCBA cost reasonable?\n\nA clean BOM with manufacturer part numbers and approved alternatives, a test scope matched to the build purpose, and panelization-friendly board design can reduce avoidable setup and rework costs.\n\n### How do I verify a Chinese PCBA supplier before ordering?\n\nSend real project files and assess the response. Ask suppliers to confirm capabilities, certifications, lead time, sourcing channels, inspection, testing, and documentation for your exact project. Start with a small paid pilot run before committing volume.',
         ],
       },
       {
         heading: 'Start with an engineering review',
         body: [
-          'If your project is low-volume, custom, or somewhere between prototype and production, the cheapest first step is a real engineering review rather than an instant price.',
-          '[Send your Gerber and BOM](/contact) — we will review the files, flag sourcing and manufacturability risks, and reply with a clear quote scope within 24 hours.',
+          'If your project is low-volume, custom, or somewhere between prototype and production, an engineering review can clarify the scope before price and lead time are confirmed.',
+          '[Send your Gerber and BOM](/contact) for file, sourcing, manufacturability, and testing-scope review before quotation.',
         ],
       },
     ],
@@ -649,7 +651,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         heading: 'The alternatives, by what you actually need',
         body: [
           '| Need | Alternative | Why |\n| --- | --- | --- |\n| More capability, still platform-style | PCBWay | Higher layer counts, special processes, more human support |\n| Industrial boards with DFM checks | NextPCB | Platform flow plus stronger automated DFM feedback |\n| Quick-turn small batches, quote-based | PCBGOGO | Established quick-turn shop with sales support |\n| Small-to-medium EMS without MOQ pressure | Viasion | 15+ years traditional EMS, welcomes small orders |\n| Engineer-supported low-volume turnkey | Huitai Electronics | Engineering review before every quote, open-market sourcing, direct engineer contact |',
-          'For a fuller comparison of these suppliers, see our [Top 7 low-volume turnkey PCBA suppliers guide](/knowledge/top-low-volume-turnkey-pcba-suppliers-china).',
+          'For a fuller comparison of these suppliers, see our [China low-volume turnkey PCBA supplier comparison guide](/knowledge/top-low-volume-turnkey-pcba-suppliers-china).',
         ],
       },
       {

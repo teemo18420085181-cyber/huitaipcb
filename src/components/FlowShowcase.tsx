@@ -14,8 +14,8 @@ const FLOW = [
   {
     n: '02',
     tag: 'BOM SOURCING & IQC',
-    title: 'We source every component. You approve the BOM.',
-    desc: 'Our procurement team prioritizes authorized and franchised channels. Other sourcing options require customer approval, with incoming checks planned by project.',
+    title: 'We review sourcing options. You approve the BOM.',
+    desc: 'BOM availability, sourcing channels, alternative parts, and incoming-check requirements are reviewed by project. Alternative components require customer approval.',
     detail: 'BOM review · sourcing options · alternatives check',
     image: '/factory/flow-02.png',
     badge: 'Source review',
@@ -23,18 +23,18 @@ const FLOW = [
   {
     n: '03',
     tag: 'PCB FABRICATION',
-    title: 'Your bare boards manufactured to spec.',
-    desc: 'We fabricate 1–30 layer PCBs across a full range of substrate types. Whether your design calls for standard FR4, high-frequency Rogers, HDI micro-vias, rigid-flex, or aluminum MCPCB — we cover it. Every bare board is electrically tested before assembly.',
-    detail: 'FR4 (TG130/170/180) · HDI · Rogers / PTFE · Rigid-flex · Aluminum MCPCB · Heavy copper · Impedance control',
+    title: 'Bare-board requirements reviewed before fabrication.',
+    desc: 'Layer count, materials, stack-up, dimensions, impedance, and electrical-test requirements are reviewed before quotation based on PCB complexity and the agreed project scope.',
+    detail: 'Materials · stack-up · dimensions · impedance · electrical-test scope',
     image: '/factory/flow-03.png',
     badge: 'Managed fab',
   },
   {
     n: '04',
     tag: 'SMT ASSEMBLY',
-    title: 'Automated precision SMT placement.',
-    desc: 'Components are placed using high-precision pick-and-place machines. We handle 01005 packages up to large BGAs. Lead-free reflow is standard. AOI inspection follows immediately.',
-    detail: 'Min component: 01005 · BGA · QFN · LGA · High-mix capable',
+    title: 'SMT placement planned around your assembly.',
+    desc: 'Component packages, placement requirements, reflow process, and AOI needs are reviewed before quotation based on the design files and agreed production scope.',
+    detail: 'Placement review · package requirements · reflow · AOI by scope',
     image: '/factory/flow-04.png',
     badge: 'Automated',
   },
@@ -43,7 +43,7 @@ const FLOW = [
     tag: 'THROUGH-HOLE & POST-SOLDERING',
     title: 'DIP, connectors, and hand soldering.',
     desc: 'Through-hole components are inserted and hand-soldered or wave-soldered after SMT. Workmanship requirements can be discussed based on project needs.',
-    detail: 'Wave solder · Selective solder · Hand solder · IPC-J-STD-001',
+    detail: 'Wave solder · selective solder · hand solder · workmanship requirements',
     image: '/factory/flow-05.png',
     badge: 'Expert operators',
   },
@@ -51,17 +51,17 @@ const FLOW = [
     n: '06',
     tag: 'INSPECTION & TESTING',
     title: 'Testing planned around your project.',
-    desc: 'AOI catches missing or misaligned components. X-Ray verifies hidden solder joints on BGAs. Flying probe or ICT confirms electrical continuity. Functional testing validates board operation.',
-    detail: 'AOI · X-Ray · Flying probe · ICT · Functional test · Visual QC',
+    desc: 'AOI, X-Ray, flying probe, ICT, functional testing, and visual inspection can be discussed before quotation and included according to the agreed project requirements.',
+    detail: 'Inspection and test options confirmed by project scope',
     image: '/factory/flow-06.png',
     badge: 'Test plan',
   },
   {
     n: '07',
     tag: 'BOX BUILD & FINAL ASSEMBLY',
-    title: 'From boards to finished products.',
-    desc: 'We install boards into enclosures, route cable harnesses, and perform final product integration. Finished goods ready for your customers — no further work needed.',
-    detail: 'Enclosure mounting · Cable harnessing · Firmware flashing · Final QC',
+    title: 'Final integration requirements reviewed by project.',
+    desc: 'Enclosure mounting, cable harnessing, firmware flashing, final integration, and inspection requirements can be discussed and confirmed before quotation.',
+    detail: 'Integration and final-inspection scope by agreement',
     image: '/factory/flow-07.png',
     badge: 'Turnkey finish',
   },
@@ -91,8 +91,8 @@ export default function FlowShowcase() {
             <br className="hidden md:block" /> step by step.
           </h2>
           <p className="mx-auto max-w-[620px] text-[15px] leading-relaxed text-cc-ink-mute">
-            This is what happens after you send us your Gerber files. Every step coordinated by one
-            engineering contact — no hand-offs, no gaps.
+            A project-dependent workflow is reviewed before quotation based on file readiness, BOM
+            availability, PCB complexity, assembly process, and testing requirements.
           </p>
         </div>
 
