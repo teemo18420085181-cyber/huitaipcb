@@ -14,7 +14,6 @@ export default function JsonLd() {
     },
     description:
       'Huitai Electronics is a China-based turnkey PCBA service provider supporting PCB fabrication, BOM sourcing, SMT assembly, through-hole assembly, functional testing, and finished PCBA delivery for prototype and low-volume electronics projects.',
-    foundingDate: '2010',
     email: 'sales@huitaipcb.com',
     address: {
       '@type': 'PostalAddress',

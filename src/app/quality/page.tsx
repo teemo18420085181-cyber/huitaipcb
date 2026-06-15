@@ -14,8 +14,8 @@ export const metadata = {
 const QC = [
   {
     n: '01', tag: 'INCOMING QUALITY CONTROL',
-    title: 'Every component verified before it touches your board.',
-    desc: 'All incoming components are inspected against the BOM before stock-in. We check authenticity, date codes, packaging integrity, and dimensions using digital calipers and optical loupes. Counterfeit components are rejected immediately — we only use parts from authorized distributors.',
+    title: 'Incoming components checked against the agreed sourcing scope.',
+    desc: 'Incoming component checks are planned against the BOM and sourcing scope. Available checks can include date codes, packaging integrity, markings, and physical dimensions. Authorized and franchised channels are prioritized, and other sourcing options require customer approval.',
     specs: ['Approved sourcing options', 'Date-code verification', 'Physical dimension check', 'Package integrity inspection', 'Anti-static handling', 'Traceability records when required'],
     image: '/factory/qua-03.png',
     badge: 'IQC', badgeColor: 'bg-cc-copper text-cc-ink',
@@ -30,9 +30,9 @@ const QC = [
   },
   {
     n: '03', tag: 'X-RAY INSPECTION',
-    title: 'Hidden solder joints verified inside and out.',
-    desc: 'BGAs, QFNs, LGAs, and other bottom-terminated components cannot be inspected visually. Our X-Ray system images solder balls through the package, checking for voids, bridges, open joints, and misalignment. Mandatory for any board with area-array packages.',
-    specs: ['BGA ball array verification', 'Void rate measurement', 'Hidden joint inspection', 'QFN / LGA / CSP supported', 'Defect analysis software', 'Full image archive with report'],
+    title: 'Hidden solder joints can be inspected with X-Ray.',
+    desc: 'BGAs, QFNs, LGAs, and other bottom-terminated components cannot be fully inspected visually. X-Ray inspection can be planned for hidden joints when required by the package, risk level, and agreed inspection scope.',
+    specs: ['BGA ball array verification', 'Void review when required', 'Hidden joint inspection', 'QFN / LGA / CSP support', 'Defect review options', 'Images or reports by agreed scope'],
     image: '/factory/qua-01.png',
     badge: 'X-Ray', badgeColor: 'bg-cc-signal text-white',
   },
@@ -68,10 +68,11 @@ export default function QualityPage() {
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-[52px] font-semibold leading-tight tracking-tight mb-5">
               Quality steps documented.<br />
-              <em className="not-italic text-cc-copper-soft">Every shipment documented.</em>
+              <em className="not-italic text-cc-copper-soft">Documentation matched to your project.</em>
             </h1>
             <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-[680px] mx-auto">
-              Four layers of quality control from incoming components to final shipment. Trained QC operators, modern inspection equipment, and full traceability on every order.
+              Quality steps can be planned from incoming components to final shipment, with inspection,
+              testing, documentation, and traceability matched to the agreed project requirements.
             </p>
           </div>
         </section>

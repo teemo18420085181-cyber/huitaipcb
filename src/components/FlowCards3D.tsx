@@ -110,7 +110,7 @@ const BOMSourceAnim = () => (
     </circle>
     {/* Sourcing review badge */}
     <rect x="50" y="112" width="80" height="14" rx="4" fill="#9EE34F" opacity="0.2" stroke="#9EE34F" strokeWidth="1"/>
-    <text x="90" y="122" fill="#9EE34F" fontSize="8" textAnchor="middle" fontFamily="monospace">✓ AUTHORIZED ONLY</text>
+    <text x="90" y="122" fill="#9EE34F" fontSize="8" textAnchor="middle" fontFamily="monospace">✓ SOURCING REVIEW</text>
     {/* Label */}
     <text x="90" y="143" fill="#E6A85A" fontSize="10" fontWeight="bold" textAnchor="middle" fontFamily="sans-serif">BOM SOURCING</text>
     <text x="90" y="155" fill="#ffffff88" fontSize="8" textAnchor="middle" fontFamily="sans-serif">Sourcing options</text>

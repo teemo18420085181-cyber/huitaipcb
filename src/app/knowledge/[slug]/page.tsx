@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Nav from '@/components/Nav';
@@ -15,11 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const article = await getKnowledgeDisplayArticle(slug);
 
   if (!article) {
-    return {
-      title: 'Article Not Found | Huitai Electronics',
-      alternates: { canonical: `https://huitaipcb.com/knowledge/${slug}` },
-      openGraph: { url: `https://huitaipcb.com/knowledge/${slug}` },
-    };
+    notFound();
   }
 
   return {
@@ -61,26 +58,7 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
   const article = await getKnowledgeDisplayArticle(slug);
 
   if (!article) {
-    return (
-      <>
-        <Nav />
-        <main className="min-h-screen bg-cc-carbon px-[5vw] pt-[120px]">
-          <div className="mx-auto max-w-[720px] rounded-2xl border border-cc-line bg-cc-carbon-2 p-10 text-center">
-            <h1 className="text-2xl font-semibold text-cc-ink">Article not found</h1>
-            <p className="mt-3 text-sm leading-6 text-cc-ink-mute">
-              This guide may have been moved, unpublished, or is still being prepared by our engineering team.
-            </p>
-            <Link
-              href="/knowledge"
-              className="mt-6 inline-flex rounded-lg bg-cc-copper px-5 py-3 text-sm font-semibold text-cc-ink transition hover:-translate-y-0.5"
-            >
-              Back to Knowledge Base
-            </Link>
-          </div>
-        </main>
-        <Footer />
-      </>
-    );
+    notFound();
   }
 
   const articleUrl = `https://huitaipcb.com/knowledge/${article.slug}`;

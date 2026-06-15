@@ -29,18 +29,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticPages = pages.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
     changeFrequency: path === '' ? 'weekly' as const : 'monthly' as const,
     priority: path === '' ? 1 : 0.8,
   }));
 
   const articleEntries = await getSitemapArticleEntries();
-  const articlePages = articleEntries.map((article) => ({
-    url: `${baseUrl}/knowledge/${article.slug}`,
-    lastModified: article.lastModified ? new Date(article.lastModified) : new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  const articlePages = articleEntries.map((article) => {
+    const entry: MetadataRoute.Sitemap[number] = {
+      url: `${baseUrl}/knowledge/${article.slug}`,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    };
+
+    if (article.lastModified) {
+      entry.lastModified = new Date(article.lastModified);
+    }
+
+    return entry;
+  });
 
   return [...staticPages, ...articlePages];
 }

@@ -12,7 +12,7 @@ const PROCESS = [
   {
     n: '02',
     name: 'BOM Sourcing',
-    desc: 'Component procurement from authorized distributors. IQC inspection on every incoming reel.',
+    desc: 'Authorized and franchised sourcing channels are prioritized. Other sourcing options require customer approval, with incoming checks planned by project.',
     image: '/factory/flow-02.png',
     href: '/services',
   },
