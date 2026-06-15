@@ -20,7 +20,7 @@
 
 - 站点:**huitaipcb.com**;真实源码 `G:\onestoppcba\onestoppcba`(Next.js App Router + Supabase + Tailwind);部署 = Vercel,**push main 即部署**。
 - 品牌:主品牌 **Huitai Electronics**,法律主体 Shenzhen Huitai Electronics Technology Co., Ltd.(仅作 legalName)。**OneStopPCBA 已于 2026-06-12 全面弃用**(可见品牌+结构化数据+邮件模板全切,src 已清零)。
-- 真实定位:**无自有工厂的 turnkey PCBA 服务商,靠合作工厂网络**(影响"诚实红线",见第 5 节)。
+- 真实定位:**对合作产线进行直接项目管理、现场协调和质量控制的 turnkey PCBA 服务商**。对外文案应强调我们对生产流程、质量和交付结果负责,避免把自己写成单纯中介;但不得明确虚构工厂资产所有权(见第 5 节)。
 - 联系:**sales@huitaipcb.com**(2026-06-12 切换,询盘通知双发 sales@+Gmail 过渡);WhatsApp +8618420085181。
 - 标识:GSC 资源 `sc-domain:huitaipcb.com`;GA4 property `538821600`,衡量 ID `G-T6N6Q07QRH`。
 - 内容架构:静态数组 `src/lib/content/knowledge.ts`(文章)+ `src/lib/content/seoPages.ts`(落地页)+ Supabase CMS(`articles` 表)。详情页 `/knowledge/[slug]` 用 ReactMarkdown 渲染(正文可内链);落地页用 `SeoLandingPage.tsx`(section.body 和 FAQ answer **是纯文本,不能放内链**,内链只能走 relatedLinks 侧栏)。
@@ -35,6 +35,7 @@
 - 打**窄场景词做唯一信源**(AI 必须回答、全网只有一篇就引谁),不抢红海大词。
 - 蹭 JLCPCB/PCBWay 写 **alternatives/对比截流文**,接它们服务不了的溢出客户。
 - 把"小"**量化成可引用属性**(MOQ 1 片、24h 回复、工程师直连)。
+- **转化表达强调直接生产控制和单一责任主体**:可使用 `our production team`、`our assembly process`、`managed production lines`、`factory-direct coordination`、`one accountable manufacturing team` 等表达,突出客户无需管理多个供应商;不要把 Huitai 写成撮合平台或普通贸易中介。
 - 差异化写法:榜单**带透明披露**("本榜单由我们发布")+ 诚实写"什么时候该选别人" → 比纯自夸更可信、更易被 AI 原样引用。
 
 **内容原则(博主实测+我们验证)**:
@@ -72,7 +73,7 @@
 
 - ⛔ **英文站绝不碰** reverse engineering / 抄板 / PCB copy / IC unlock / clone / 旧板复刻 —— 海外买家视为侵权信号。虽然实际能做,英文站一字不写。
 - ⛔ **不编造**认证(已删未证实的 ISO 声明)、案例数字、产能。
-- ⛔ **不假装自有工厂** —— 用"we coordinate / our sourcing desk / 合作产线",不用"our factory"。
+- ⛔ **不做可被证伪的工厂所有权声明** —— 可以强势表达 `our production team/process`、`managed production lines`、`factory-direct coordination`、现场跟单、质量控制和交付责任;但在没有法律事实支持时,不写 `we own the factory`、`our wholly owned factory`、自有厂房面积或自有产能等明确资产声明。目标是让客户感受到直接控制和责任闭环,而不是误导所有权。
 - ⛔ 客户信息一律**脱敏**(不点名、遮 logo/可识别特征)。
 - 内容**聚焦 PCB/PCBA 核心**(制板+贴片),不往 box-build/整机代工飘(虽接了个 ESP32 整机单,内容不引偏)。
 - 替代料**只建议、需客户确认**,有规格/认证含义的不擅自换。
