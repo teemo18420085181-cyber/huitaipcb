@@ -88,9 +88,9 @@ export const seoPages: Record<string, SeoLandingPage> = {
   },
   'china-pcb-assembly': {
     slug: 'china-pcb-assembly',
-    title: 'China PCB Assembly Supplier for Turnkey PCBA Projects',
-    seoTitle: 'China PCB Assembly Supplier for Turnkey PCBA & BOM Sourcing',
-    metaDescription: 'Work with a China PCB assembly supplier for PCB fabrication, BOM sourcing, SMT assembly, testing and finished PCBA delivery. Send Gerber, BOM or sample photos for engineering review.',
+    title: 'China PCB Assembly Service for Turnkey PCBA Projects',
+    seoTitle: 'China PCB Assembly Service & Supplier | Turnkey PCBA China',
+    metaDescription: 'China PCB assembly service — BOM sourcing, SMT assembly, functional testing, and finished PCBA delivery with English-speaking engineers. Send Gerber & BOM, reply in 24h.',
     eyebrow: 'CHINA PCB ASSEMBLY SUPPLIER',
     primaryKeyword: 'China PCB Assembly Supplier',
     serviceName: 'China PCB Assembly Supplier',
@@ -118,6 +118,14 @@ export const seoPages: Record<string, SeoLandingPage> = {
         heading: 'How We Reduce Sourcing and Assembly Risk',
         body: 'Our process is engineering review first: files received, engineering and BOM risk check, PCB fabrication and assembly review, testing requirement confirmation, then quotation. This clarifies scope before any parts are purchased or assembly starts, which is why we do not return instant black-box prices.',
       },
+      {
+        heading: 'English-Speaking Engineering Support',
+        body: 'Working with a China PCB assembly service should not mean slow, unclear email threads. Overseas buyers work directly with English-speaking engineers who review files, raise manufacturability and BOM questions early, and keep the quotation scope clear. The aim is fewer back-and-forth cycles, no black-box pricing, and a typical reply within 24 hours — so you always know what was reviewed and what is still needed.',
+      },
+      {
+        heading: 'How Quality Is Verified Before Shipment',
+        body: 'Quality is the real question behind choosing any China PCB assembly supplier. Inspection and test scope is set per project rather than assumed: AOI checks placement and solder on the boards, X-ray verifies hidden BGA and QFN joints, flying probe or ICT confirms electrical continuity, and functional testing validates the board against your firmware or acceptance criteria. Agreeing the test plan before production is how defects are caught early instead of discovered after the boards ship.',
+      },
     ],
     bullets: ['PCB fabrication coordinated as part of PCBA delivery', 'BOM sourcing and customer-approved alternatives', 'SMT assembly and through-hole (DIP) assembly', 'Inspection and functional testing based on project needs', 'Prototype and low-volume friendly', 'International delivery preparation'],
     workflow: ['Send Gerber, BOM, quantity, and testing requirements', 'Engineering review of files, BOM risk, and assembly notes', 'Confirm PCB fabrication, sourcing, and test scope', 'SMT/DIP assembly, inspection, and functional testing', 'Packaging and worldwide delivery'],
@@ -128,8 +136,10 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'Get a quote with incomplete files', href: '/knowledge/pcba-quote-with-incomplete-files' },
       { label: 'What affects a PCB assembly quote in China', href: '/knowledge/what-determines-pcb-assembly-quote-china' },
       { label: 'Are online PCB assembly quotes accurate?', href: '/knowledge/china-pcb-assembly-online-quote-accuracy' },
+      { label: 'Top 7 low-volume turnkey PCBA suppliers in China', href: '/knowledge/top-low-volume-turnkey-pcba-suppliers-china' },
       { label: 'Turnkey PCBA manufacturing in China', href: '/turnkey-pcb-assembly' },
       { label: 'PCBA testing and quality control', href: '/pcba-testing-quality-control' },
+      { label: 'Custom keyboard PCB assembly in China', href: '/knowledge/keyboard-pcb-assembly-china' },
       { label: 'Request a PCB assembly quote', href: '/contact' },
     ],
     faq: [
@@ -152,6 +162,18 @@ export const seoPages: Record<string, SeoLandingPage> = {
       {
         question: 'Do you provide testing before shipment?',
         answer: 'Testing such as visual inspection, AOI, and functional testing can be planned when you provide a test method, firmware, or acceptance criteria. The test scope is confirmed before production.',
+      },
+      {
+        question: 'How long does PCB assembly from China take?',
+        answer: 'Lead time depends on board complexity, component availability, quantity, and testing scope. Prototype and low-volume runs are usually faster, while long-lead parts or special testing add time. The realistic schedule is confirmed during engineering review, before quotation, rather than promised blindly.',
+      },
+      {
+        question: 'How do I verify quality from a China PCB assembly supplier?',
+        answer: 'Ask for the inspection and test plan in writing before production — which boards get AOI, whether BGA joints are X-rayed, and how functional testing is done against your criteria. A supplier that reviews your design and raises manufacturability questions before quoting is a stronger quality signal than the lowest instant price.',
+      },
+      {
+        question: 'Do you provide online PCB assembly quotes?',
+        answer: 'We provide engineer-reviewed quotes rather than instant black-box pricing. For simple catalog-part boards an instant online quote can be accurate, but for custom BOMs, sourcing risk, or testing it is often wrong. Send your files and we return a reviewed quote with sourcing and manufacturability risks flagged.',
       },
     ],
   },
