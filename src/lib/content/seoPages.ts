@@ -562,6 +562,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'Prepare files for a PCB assembly quote', href: '/knowledge/pcb-assembly-file-preparation-guide' },
       { label: 'Get a quote with incomplete files', href: '/knowledge/pcba-quote-with-incomplete-files' },
       { label: 'BOM best practices', href: '/knowledge/bom-best-practices' },
+      { label: 'BOM risk & alternative component sourcing', href: '/knowledge/bom-risk-alternative-component-sourcing' },
       { label: 'Turnkey PCBA manufacturing', href: '/turnkey-pcb-assembly' },
       { label: 'Send your BOM for a quote', href: '/contact' },
     ],

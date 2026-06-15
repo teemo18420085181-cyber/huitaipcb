@@ -746,6 +746,78 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       },
     ],
   },
+  {
+    slug: 'bom-risk-alternative-component-sourcing',
+    category: 'Sourcing',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'BOM Risk & Alternative Component Sourcing for Low-Volume PCBA',
+    excerpt:
+      'Component supply in 2026 is selectively tight, not universally short. Here are the five BOM risks to check before you build, how alternative sourcing actually works (and its limits), and how to prepare a BOM that survives shortages.',
+    image: '/factory/svc-bom-sourcing.jpg',
+    readTime: '8 min read',
+    metaDescription:
+      'How to manage BOM risk and alternative component sourcing for low-volume PCBA in 2026 — what component shortage really means now, the 5 risks to check (EOL, single-source, MOQ, long lead time, authenticity), and how to prepare a shortage-resistant BOM.',
+    sections: [
+      {
+        heading: 'Quick answer',
+        body: [
+          'For a low-volume PCBA project, BOM risk — not assembly itself — is usually what blows up the budget and the schedule. The good news is that component supply in 2026 is selectively tight, not universally short: most standard passives and common parts are readily available, while specific lines (some high-capacitance / large-case MLCCs and certain MCU and memory families, partly squeezed by AI-server demand) have seen longer lead times and tighter allocation. The practical answer is not to panic-buy everything — it is to review the BOM line by line before you build, identify the few parts that actually carry risk, line up approved alternates for them, and lock long-lead parts early.',
+          'Disclosure: this guide is published by Huitai Electronics, which does BOM sourcing as part of turnkey PCBA. The sourcing approach below is what we actually do; the supply commentary is kept general because specifics change by part, manufacturer, and date.',
+        ],
+      },
+      {
+        heading: 'What "component shortage" actually means in 2026',
+        body: [
+          'It is easy to read headlines and assume everything is short. In practice the tightness is concentrated, not across the board. Through mid-2026, industry reporting points to extended lead times on particular high-capacitance and large-case MLCCs, plus select MCU and memory lines — driven partly by AI-server and data-center demand pulling capacity — while standard 0402/0603 passives and many jellybean parts remain broadly available.',
+          'The specifics (which exact series, how many weeks) vary by manufacturer, package, and the week you ask, and they go stale quickly. That is exactly why a BOM should be checked line by line against current availability rather than assumed from a general "there is a shortage" headline. The risk lives in a handful of lines, not the whole list.',
+        ],
+      },
+      {
+        heading: 'The 5 BOM risks to check before you build',
+        body: [
+          '**1. Long lead time.** A single part on a multi-week or multi-month lead time can gate your whole build. These need to be identified and ordered first, not discovered at kitting.',
+          '**2. End-of-life / obsolescence.** A part may still appear in catalogs but be marked NRND (not recommended for new designs) or EOL. Designing it in now means a redesign later — better to flag and substitute early.',
+          '**3. Single-source parts.** If only one manufacturer makes a critical part and you have no approved alternate, one allocation event holds your build hostage. Single-sourcing a cheap part is a surprisingly common way to stall a project.',
+          '**4. Minimum order quantity (MOQ).** Many components are sold in reels of thousands. On a low-volume build you may pay toward a full reel for a handful of boards, which changes cost more than the unit price suggests. See [why per-board price is higher at low volume](/low-volume-pcba-assembly).',
+          '**5. Authenticity / counterfeit risk.** When a part is scarce, the grey market fills the gap — and that is where counterfeits appear. Parts should come from the manufacturer or authorized channels, not whoever has stock at any price.',
+        ],
+      },
+      {
+        heading: 'How alternative sourcing works — and its limits',
+        body: [
+          'Alternative sourcing means having a backup part that does the same job when the first choice is short, obsolete, or over-priced. For jellybean components — common resistors, capacitors, and standard regulators — a manufacturer can usually propose an equivalent quickly, and it is worth authorizing that in advance so a $0.02 part never stalls a build.',
+          'The limit is important and we are strict about it: substitutes are proposed, never silently swapped. Any part with a functional, tolerance, footprint, thermal, or compliance implication — and anything you have marked no-substitute — is confirmed with you before purchase. An "equivalent" that is not truly equivalent is worse than a delay. This is why a clean BOM with approved alternates already listed speeds everything up.',
+        ],
+      },
+      {
+        heading: 'What this looks like on the sourcing desk',
+        body: [
+          'In practice, BOM risk work happens before a quote is finalized, not during production. Each line is checked for current availability and lifecycle status, the few risky parts are flagged, long-lead items are surfaced so they can be ordered early, and where a part is short or single-source we propose customer-approved alternates rather than guessing.',
+          'This is also the most current, first-hand part of sourcing: which specific parts are tight this month, and what is actually substituting well, is something a sourcing team sees in live quotes — not something a generic article can keep up to date. It is the reason we review the BOM before quoting instead of returning an instant number. See [BOM sourcing for PCB assembly](/bom-sourcing-pcb-assembly) and [why instant online quotes are often wrong](/knowledge/china-pcb-assembly-online-quote-accuracy).',
+        ],
+      },
+      {
+        heading: 'How to prepare a BOM that survives shortages',
+        body: [
+          'You can remove most BOM risk before you ever send an RFQ. Include manufacturer part numbers (not just generic descriptions) for every line, list one or two approved alternates for critical parts, and clearly mark the no-substitute parts so they are never swapped. Note any part you already know is long-lead or single-source.',
+          'Then share your real quantity and timeline. A sourcing team that knows your production window can buy ahead on long-lead parts instead of hitting the problem at kitting. For the full column-by-column format, see [BOM best practices for fast sourcing](/knowledge/bom-best-practices).',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### Are electronic components still in shortage in 2026?\n\nSelectively, not universally. Most standard passives and common parts are broadly available, while particular lines — some high-capacitance/large-case MLCCs and certain MCU and memory families — have seen longer lead times and tighter allocation, partly from AI-server demand. The specifics change by manufacturer, series, and date, so a BOM should be checked line by line rather than judged from a general headline.\n\n### What is the difference between a shortage and obsolescence?\n\nA shortage is temporary — the part still exists but is hard to get right now. Obsolescence (EOL / NRND) is permanent — the manufacturer is ending or has ended production. A shortage may be solved by waiting or finding stock; obsolescence usually needs a substitute or a redesign, so it is better caught early.\n\n### Can I approve alternative components in advance?\n\nYes, and it helps a lot. Listing one or two approved alternates per critical part, and authorizing equivalents for jellybean components, lets sourcing move immediately when a part is short — without waiting on an email for every line. Parts with functional or compliance implications are still confirmed before purchase.\n\n### How do I reduce BOM risk on a low-volume build?\n\nUse manufacturer part numbers, list approved alternates, mark no-substitute parts, flag anything you know is long-lead or single-source, and share your real timeline. Most BOM risk can be removed on paper before the first board is built.\n\n### What if a part on my BOM is end-of-life?\n\nIt is flagged during engineering review, and we propose a form-fit-function alternate for your approval, or note where a small design change may be needed. Catching an EOL part before production is far cheaper than discovering it mid-build.',
+        ],
+      },
+      {
+        heading: 'Send your BOM for a risk review',
+        body: [
+          'The cheapest time to find a sourcing problem is before production — on paper, during engineering review.',
+          '[Send your BOM and Gerber files](/contact) and we will check each line for availability, lifecycle, and sourcing risk, flag the parts that matter, and propose approved alternates — with a clear quote scope back within 24 hours.',
+        ],
+      },
+    ],
+  },
 ];
 
 export function getKnowledgeArticle(slug: string) {
