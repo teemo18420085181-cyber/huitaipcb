@@ -753,7 +753,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     title: 'BOM Risk & Alternative Component Sourcing for Low-Volume PCBA',
     excerpt:
       'Component supply in 2026 is selectively tight, not universally short. Here are the five BOM risks to check before you build, how alternative sourcing actually works (and its limits), and how to prepare a BOM that survives shortages.',
-    image: '/factory/svc-bom-sourcing.jpg',
+    image: '/factory/bom-risk-sourcing.jpg',
     readTime: '8 min read',
     metaDescription:
       'How to manage BOM risk and alternative component sourcing for low-volume PCBA in 2026 — what component shortage really means now, the 5 risks to check (EOL, single-source, MOQ, long lead time, authenticity), and how to prepare a shortage-resistant BOM.',
