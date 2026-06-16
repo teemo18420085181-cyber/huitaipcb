@@ -18,6 +18,20 @@ const HERO_IMAGES: Record<string, string> = {
 };
 const DEFAULT_HERO = '/factory/svc-smt-assembly.jpg';
 
+const HERO_REVIEW_POINTS = [
+  'Gerber + BOM review',
+  'BOM shortage check',
+  'SMT/DIP scope discussion',
+  'Testing requirements',
+];
+
+const RFQ_CHECKLIST = [
+  'Gerber / drill files',
+  'BOM with manufacturer part numbers',
+  'Quantity target and schedule',
+  'Testing or inspection notes',
+];
+
 function buildServiceSchema(page: SeoLandingPageData) {
   const url = `https://huitaipcb.com/${page.slug}`;
 
@@ -112,6 +126,14 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
                   See RFQ File Checklist
                 </TrackedLink>
               </div>
+              <div className="mt-7 grid max-w-[640px] gap-2 sm:grid-cols-2">
+                {HERO_REVIEW_POINTS.map((item) => (
+                  <div key={item} className="flex items-center gap-2 rounded-lg border border-cc-line bg-cc-carbon-2/60 px-3 py-2 text-xs text-cc-ink-mute">
+                    <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-signal" />
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl border border-cc-line lg:block">
@@ -128,6 +150,15 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
               <span className="absolute -right-px -top-px h-3 w-3 border-r border-t border-cc-copper/70" />
               <span className="absolute -bottom-px -left-px h-3 w-3 border-b border-l border-cc-copper/70" />
               <span className="absolute -bottom-px -right-px h-3 w-3 border-b border-r border-cc-copper/70" />
+              <div className="absolute bottom-4 left-4 right-4 rounded-xl border border-cc-line bg-cc-carbon/82 p-4 backdrop-blur-md">
+                <div className="font-mono-cc mb-1 text-[10px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+                  BUYER FILE REVIEW
+                </div>
+                <div className="text-sm font-semibold text-cc-ink">Reply within 24 hours by email</div>
+                <p className="mt-1 text-xs leading-5 text-cc-ink-mute">
+                  Scope, missing files, sourcing risks, and testing questions are clarified before quote.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -221,7 +252,16 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
               </section>
             </div>
 
-            <aside className="h-fit rounded-2xl border border-cc-line bg-cc-carbon-2 p-6 lg:sticky lg:top-24">
+            <aside className="h-fit overflow-hidden rounded-2xl border border-cc-line bg-cc-carbon-2 lg:sticky lg:top-24">
+              <div className="border-b border-cc-line bg-cc-copper/[0.07] px-6 py-4">
+                <div className="font-mono-cc text-[10px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+                  EMAIL RESPONSE WITHIN 24H
+                </div>
+                <p className="mt-1 text-xs leading-5 text-cc-ink-mute">
+                  Send what you have. We will reply with the next questions or review path.
+                </p>
+              </div>
+              <div className="p-6">
               <div className="font-mono-cc mb-3 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
                 SEND RFQ
               </div>
@@ -231,13 +271,21 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
               <p className="mb-5 text-sm leading-6 text-cc-ink-mute">
                 Send Gerber files, BOM lists, PCB drawings, sample photos, schematic if available, assembly requirements, and testing requirements.
               </p>
+              <div className="mb-5 space-y-2 rounded-xl border border-cc-line bg-cc-carbon/45 p-4">
+                {RFQ_CHECKLIST.map((item) => (
+                  <div key={item} className="flex items-start gap-2 text-xs leading-5 text-cc-ink-mute">
+                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-signal" />
+                    {item}
+                  </div>
+                ))}
+              </div>
               <TrackedLink
-                href="/contact"
-                eventName="quote_click"
-                eventParams={{ location: 'service_sidebar', page_slug: page.slug, destination: '/contact' }}
+                href="/contact#project-files"
+                eventName="upload_gerber_bom_click"
+                eventParams={{ location: 'service_sidebar', page_slug: page.slug, destination: '/contact#project-files' }}
                 className="cc-copper-fill inline-flex w-full justify-center rounded-lg px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5"
               >
-                Request a PCBA Quote
+                Send Files for Review
               </TrackedLink>
               <div className="mt-5 border-t border-cc-line pt-5 text-xs leading-6 text-cc-ink-mute">
                 <div className="font-mono-cc mb-2 font-semibold tracking-wide text-cc-copper-soft">Related pages</div>
@@ -248,6 +296,7 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
                     </Link>
                   ))}
                 </div>
+              </div>
               </div>
             </aside>
           </div>

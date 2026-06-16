@@ -2,6 +2,8 @@ import { MessageCircle, Upload } from 'lucide-react';
 import TrackedLink from '@/components/TrackedLink';
 import TrackedAnchor from '@/components/TrackedAnchor';
 
+const CTA_POINTS = ['Gerber + BOM review', 'BOM shortage questions', 'Testing scope discussion', 'Email reply within 24h'];
+
 export default function FinalCTA() {
   return (
     <section className="font-body-cc relative overflow-hidden border-t border-cc-line bg-cc-carbon-2 px-[5vw] py-24">
@@ -14,14 +16,21 @@ export default function FinalCTA() {
         style={{ background: '#9ee34f', filter: 'blur(120px)' }}
       />
 
-      <div className="relative z-10 mx-auto max-w-[880px] text-center">
+      <div className="relative z-10 mx-auto max-w-[940px] text-center">
         <h2 className="font-display mb-4 text-3xl font-bold leading-tight tracking-tight text-cc-ink md:text-4xl lg:text-[42px]">
           Ready to send us your <span className="cc-copper-text">next project?</span>
         </h2>
         <p className="mx-auto mb-8 max-w-[560px] text-[15px] leading-relaxed text-cc-ink-mute">
           Upload your Gerber files and BOM. Our engineering team will review them and respond with
-          the next questions, scope, and lead time for a full turnkey quote.
+          the next questions within 24 hours by email, then confirm scope, sourcing, testing, and quotation details.
         </p>
+        <div className="mx-auto mb-8 grid max-w-[780px] gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {CTA_POINTS.map((item) => (
+            <div key={item} className="rounded-xl border border-cc-line bg-cc-carbon/45 px-3 py-3 text-xs font-medium text-cc-ink-mute">
+              {item}
+            </div>
+          ))}
+        </div>
         <div className="flex flex-wrap justify-center gap-3">
           <TrackedLink
             href="/contact#project-files"

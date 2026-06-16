@@ -1,7 +1,7 @@
 'use client';
 
 import type { CSSProperties } from 'react';
-import { Upload, MessageCircle, Check } from 'lucide-react';
+import { Check, MessageCircle, Upload } from 'lucide-react';
 import TrackedLink from '@/components/TrackedLink';
 import TrackedAnchor from '@/components/TrackedAnchor';
 
@@ -9,19 +9,30 @@ const traceStyle = (len: number, delay = 0): CSSProperties =>
   ({ '--len': len, animationDelay: `${delay}s` } as CSSProperties);
 
 const STEPS = [
-  { step: '01', name: 'Files & DFM Review', meta: 'Completed', status: 'done' },
+  { step: '01', name: 'Files & DFM Review', meta: 'Files checked', status: 'done' },
   { step: '02', name: 'BOM Sourcing & IQC', meta: 'Risk items flagged', status: 'done' },
-  { step: '03', name: 'PCB Fabrication', meta: 'Fabrication scope reviewed', status: 'done' },
-  { step: '04', name: 'SMT Assembly', meta: 'In progress', status: 'active' },
-  { step: '05', name: 'Functional Testing', meta: 'Pending scope', status: 'pending' },
-  { step: '06', name: 'Packaging & Shipping', meta: 'Pending', status: 'pending' },
+  { step: '03', name: 'PCB Fabrication', meta: 'Scope reviewed', status: 'done' },
+  { step: '04', name: 'SMT / DIP Assembly', meta: 'Process planning', status: 'active' },
+  { step: '05', name: 'Inspection & Testing', meta: 'By project scope', status: 'pending' },
+  { step: '06', name: 'Packaging & Shipping', meta: 'After final review', status: 'pending' },
 ];
 
-const TRUST = ['Engineering review before quoting', 'NDA on request', 'Functional testing by need'];
+const REVIEW_NOTES = [
+  { label: '24h email reply', desc: 'Project emails and RFQ questions are replied to within 24 hours' },
+  { label: 'Engineering review', desc: 'DFM, BOM risk, and assembly scope checked before quotation' },
+  { label: 'NDA on request', desc: 'Available before sharing sensitive project files' },
+  { label: 'Testing by scope', desc: 'Inspection and test plans discussed project by project' },
+];
 
-const FILE_PROMPTS = ['Gerber / drill files', 'BOM with MPNs', 'Quantity and schedule', 'Testing notes'];
+const FILE_PROMPTS = [
+  { label: 'Gerber / drill files', note: 'PCB fabrication data' },
+  { label: 'BOM with MPNs', note: 'Parts, quantities, and alternatives' },
+  { label: 'Quantity and schedule', note: 'Prototype or low-volume target' },
+  { label: 'Testing notes', note: 'ICT, functional, or inspection needs' },
+];
 
-/* Decorative copper routing that "draws in" on load */
+const REVIEW_FOCUS = ['Missing files', 'BOM shortage risk', 'Assembly process', 'Testing scope'];
+
 function CircuitLayer() {
   return (
     <svg
@@ -37,7 +48,6 @@ function CircuitLayer() {
         <path style={traceStyle(900, 0.3)} d="M1120 -20 V160 L1180 220 V520" />
         <path style={traceStyle(700, 0.4)} d="M170 920 V700 L110 640 V360" />
       </g>
-      {/* via pads */}
       {[
         [300, 210], [780, 210], [1180, 210], [620, 640], [1040, 580], [1180, 520], [110, 360],
       ].map(([cx, cy], i) => (
@@ -55,13 +65,13 @@ function CircuitLayer() {
 
 export default function Hero() {
   return (
-    <section className="cc-carbon-bg font-body-cc relative flex min-h-[82vh] flex-col justify-center overflow-hidden px-[5vw] pb-20 pt-[130px] text-cc-ink">
+    <section className="cc-carbon-bg font-body-cc relative flex min-h-[86vh] flex-col justify-center overflow-hidden px-[5vw] pb-20 pt-[130px] text-cc-ink">
       <CircuitLayer />
-      {/* top + bottom hairlines */}
+      <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[620px] -translate-x-1/2 rounded-full bg-cc-copper/10 blur-[120px]" />
+      <div className="pointer-events-none absolute bottom-0 right-0 h-[360px] w-[360px] rounded-full bg-cc-signal/5 blur-[110px]" />
       <div className="pointer-events-none absolute inset-x-0 top-[88px] h-px bg-gradient-to-r from-transparent via-cc-copper/30 to-transparent" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
-        {/* ---- Left ---- */}
         <div className="flex flex-col items-start">
           <div
             className="cc-rise font-mono-cc mb-7 inline-flex items-center gap-2.5 rounded-full border border-cc-line bg-cc-carbon-2/60 px-3.5 py-1.5 text-[11px] tracking-[0.18em] text-cc-copper-soft"
@@ -81,11 +91,11 @@ export default function Hero() {
           </h1>
 
           <p
-            className="cc-rise mb-9 max-w-[520px] text-[15px] leading-relaxed text-cc-ink-mute"
+            className="cc-rise mb-9 max-w-[540px] text-[15px] leading-relaxed text-cc-ink-mute"
             style={{ animationDelay: '0.4s' }}
           >
             Send Gerber files, BOM, samples, or incomplete project notes. We review
-            BOM risk, missing files, assembly scope, and testing needs before quoting,
+            missing data, BOM risk, assembly scope, and testing needs before quoting,
             then coordinate PCB fabrication, sourcing, SMT/DIP assembly, testing support,
             and finished PCBA delivery.
           </p>
@@ -114,36 +124,45 @@ export default function Hero() {
             </TrackedAnchor>
           </div>
 
-          <div className="cc-rise mb-8 w-full max-w-[620px] rounded-2xl border border-cc-line bg-cc-carbon-2/55 p-4" style={{ animationDelay: '0.58s' }}>
-            <div className="font-mono-cc mb-3 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
-              WHAT TO SEND FOR A USEFUL REVIEW
+          <div className="cc-rise mb-8 w-full max-w-[640px] overflow-hidden rounded-2xl border border-cc-line bg-cc-carbon-2/70 shadow-2xl shadow-black/20" style={{ animationDelay: '0.58s' }}>
+            <div className="flex items-center justify-between border-b border-cc-line px-4 py-3">
+              <div className="font-mono-cc text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+                RFQ PACKAGE
+              </div>
+              <div className="font-mono-cc text-[10px] tracking-[0.14em] text-cc-ink-mute">
+                BEFORE QUOTE REVIEW
+              </div>
             </div>
-            <div className="grid gap-2 sm:grid-cols-2">
+            <div className="grid gap-px bg-cc-line sm:grid-cols-2">
               {FILE_PROMPTS.map((item) => (
-                <div key={item} className="flex items-center gap-2 text-[12px] leading-5 text-cc-ink-mute">
-                  <Check size={13} strokeWidth={3} className="flex-shrink-0 text-cc-signal" />
-                  {item}
+                <div key={item.label} className="bg-cc-carbon-2/95 p-4">
+                  <div className="mb-1 flex items-center gap-2 text-[13px] font-semibold text-cc-ink">
+                    <Check size={13} strokeWidth={3} className="flex-shrink-0 text-cc-signal" />
+                    {item.label}
+                  </div>
+                  <div className="pl-5 text-xs leading-5 text-cc-ink-mute">{item.note}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="cc-rise font-mono-cc flex flex-wrap items-center gap-x-5 gap-y-2.5" style={{ animationDelay: '0.64s' }}>
-            {TRUST.map((item) => (
-              <div key={item} className="flex items-center gap-1.5 text-[11px] tracking-wide text-cc-ink-mute">
-                <Check size={13} strokeWidth={3} className="flex-shrink-0 text-cc-signal" />
-                {item}
+          <div className="cc-rise grid w-full max-w-[860px] gap-3 sm:grid-cols-2 lg:grid-cols-4" style={{ animationDelay: '0.64s' }}>
+            {REVIEW_NOTES.map((item) => (
+              <div key={item.label} className="rounded-xl border border-cc-line bg-white/[0.025] p-4">
+                <div className="mb-2 flex items-center gap-2 text-[12px] font-semibold text-cc-ink">
+                  <Check size={13} strokeWidth={3} className="flex-shrink-0 text-cc-signal" />
+                  {item.label}
+                </div>
+                <p className="text-[11px] leading-5 text-cc-ink-mute">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
-        {/* ---- Right: build manifest (datasheet card) ---- */}
         <div
-          className="cc-rise relative min-w-0 rounded-2xl border border-cc-line bg-cc-carbon-2/70 p-6 backdrop-blur-sm"
+          className="cc-rise relative min-w-0 rounded-2xl border border-cc-line bg-cc-carbon-2/75 p-6 backdrop-blur-sm"
           style={{ animationDelay: '0.46s', boxShadow: '0 30px 60px -30px rgba(0,0,0,0.8)' }}
         >
-          {/* corner ticks */}
           <span className="absolute -left-px -top-px h-3 w-3 border-l border-t border-cc-copper/70" />
           <span className="absolute -right-px -top-px h-3 w-3 border-r border-t border-cc-copper/70" />
           <span className="absolute -bottom-px -left-px h-3 w-3 border-b border-l border-cc-copper/70" />
@@ -159,8 +178,25 @@ export default function Hero() {
             </span>
           </div>
 
+          <div className="mb-5 rounded-xl border border-cc-line bg-cc-carbon/55 p-4">
+            <div className="mb-3 flex items-center justify-between">
+              <div className="font-mono-cc text-[10px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+                REVIEW FOCUS
+              </div>
+              <div className="h-1.5 w-24 overflow-hidden rounded-full bg-white/10">
+                <div className="h-full w-2/3 rounded-full bg-gradient-to-r from-cc-copper to-cc-signal" />
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              {REVIEW_FOCUS.map((item) => (
+                <div key={item} className="rounded-lg border border-cc-line bg-white/[0.03] px-3 py-2 text-[11px] text-cc-ink-mute">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="relative">
-            {/* connecting copper spine */}
             <span className="absolute bottom-3 left-[18px] top-3 w-px bg-gradient-to-b from-cc-copper/50 via-cc-copper/30 to-transparent" />
             {STEPS.map((item) => (
               <div
@@ -188,14 +224,14 @@ export default function Hero() {
                   <span className="font-mono-cc text-[10px] font-semibold tracking-wide text-cc-signal">DONE</span>
                 )}
                 {item.status === 'active' && (
-                  <span className="font-mono-cc text-[10px] font-semibold tracking-wide text-cc-copper-soft">●●●</span>
+                  <span className="font-mono-cc text-[10px] font-semibold tracking-wide text-cc-copper-soft">LIVE</span>
                 )}
               </div>
             ))}
           </div>
 
           <div className="font-mono-cc mt-4 flex items-center justify-between border-t border-cc-line pt-3 text-[10px] tracking-wide text-cc-ink-mute">
-            <span>SCHEDULE · PROJECT-DEPENDENT</span>
+            <span>SCHEDULE | PROJECT-DEPENDENT</span>
             <span className="text-cc-copper-soft">REVIEW BEFORE QUOTE</span>
           </div>
         </div>
