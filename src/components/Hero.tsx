@@ -10,14 +10,16 @@ const traceStyle = (len: number, delay = 0): CSSProperties =>
 
 const STEPS = [
   { step: '01', name: 'Files & DFM Review', meta: 'Completed', status: 'done' },
-  { step: '02', name: 'BOM Sourcing & IQC', meta: '24 components reviewed', status: 'done' },
-  { step: '03', name: 'PCB Fabrication', meta: '4-layer FR-4 prepared', status: 'done' },
+  { step: '02', name: 'BOM Sourcing & IQC', meta: 'Risk items flagged', status: 'done' },
+  { step: '03', name: 'PCB Fabrication', meta: 'Fabrication scope reviewed', status: 'done' },
   { step: '04', name: 'SMT Assembly', meta: 'In progress', status: 'active' },
   { step: '05', name: 'Functional Testing', meta: 'Pending scope', status: 'pending' },
   { step: '06', name: 'Packaging & Shipping', meta: 'Pending', status: 'pending' },
 ];
 
 const TRUST = ['Engineering review before quoting', 'NDA on request', 'Functional testing by need'];
+
+const FILE_PROMPTS = ['Gerber / drill files', 'BOM with MPNs', 'Quantity and schedule', 'Testing notes'];
 
 /* Decorative copper routing that "draws in" on load */
 function CircuitLayer() {
@@ -82,9 +84,10 @@ export default function Hero() {
             className="cc-rise mb-9 max-w-[520px] text-[15px] leading-relaxed text-cc-ink-mute"
             style={{ animationDelay: '0.4s' }}
           >
-            Send your Gerber files, BOM, samples, or requirements. Real engineers review
-            them before quoting, then we run PCB fabrication, sourcing, SMT/DIP assembly,
-            testing, and delivery as one managed build.
+            Send Gerber files, BOM, samples, or incomplete project notes. We review
+            BOM risk, missing files, assembly scope, and testing needs before quoting,
+            then coordinate PCB fabrication, sourcing, SMT/DIP assembly, testing support,
+            and finished PCBA delivery.
           </p>
 
           <div className="cc-rise mb-11 grid w-full gap-3 sm:flex sm:w-auto sm:flex-wrap" style={{ animationDelay: '0.52s' }}>
@@ -96,7 +99,7 @@ export default function Hero() {
               style={{ boxShadow: '0 8px 30px rgba(201,139,58,0.32)' }}
             >
               <Upload size={16} strokeWidth={2.5} />
-              Upload Gerber &amp; BOM
+              Send Gerber + BOM for Review
             </TrackedLink>
             <TrackedAnchor
               href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20to%20discuss%20a%20PCB%20assembly%20project."
@@ -107,8 +110,22 @@ export default function Hero() {
               className="group inline-flex w-full items-center justify-center gap-2 rounded-[10px] border border-cc-copper/30 bg-cc-carbon-2/40 px-5 py-3.5 text-[13px] font-medium text-cc-ink transition-all hover:border-cc-copper/60 hover:bg-cc-carbon-2 sm:w-auto"
             >
               <MessageCircle size={15} strokeWidth={2.5} className="text-cc-copper-soft" />
-              Ask an Engineer
+              Ask About BOM Shortage
             </TrackedAnchor>
+          </div>
+
+          <div className="cc-rise mb-8 w-full max-w-[620px] rounded-2xl border border-cc-line bg-cc-carbon-2/55 p-4" style={{ animationDelay: '0.58s' }}>
+            <div className="font-mono-cc mb-3 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+              WHAT TO SEND FOR A USEFUL REVIEW
+            </div>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {FILE_PROMPTS.map((item) => (
+                <div key={item} className="flex items-center gap-2 text-[12px] leading-5 text-cc-ink-mute">
+                  <Check size={13} strokeWidth={3} className="flex-shrink-0 text-cc-signal" />
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="cc-rise font-mono-cc flex flex-wrap items-center gap-x-5 gap-y-2.5" style={{ animationDelay: '0.64s' }}>
@@ -178,8 +195,8 @@ export default function Hero() {
           </div>
 
           <div className="font-mono-cc mt-4 flex items-center justify-between border-t border-cc-line pt-3 text-[10px] tracking-wide text-cc-ink-mute">
-            <span>LEAD TIME · EST. 1–3 WK</span>
-            <span className="text-cc-copper-soft">REPLY &lt; 24H</span>
+            <span>SCHEDULE · PROJECT-DEPENDENT</span>
+            <span className="text-cc-copper-soft">REVIEW BEFORE QUOTE</span>
           </div>
         </div>
       </div>

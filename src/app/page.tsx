@@ -16,12 +16,12 @@ const HOME_SERVICE_LINKS = [
   { label: 'BOM Sourcing for PCB Assembly', href: '/bom-sourcing-pcb-assembly' },
   { label: 'PCB Assembly Company in China', href: '/pcb-assembly-company' },
   { label: 'Prototype PCB Assembly', href: '/prototype-pcb-assembly' },
-  { label: 'Get PCB Assembly Quote', href: '/contact' },
+  { label: 'Upload Gerber & BOM', href: '/contact#project-files' },
 ];
 
 export const metadata = {
   title: 'PCB Assembly & Turnkey PCBA in China | Huitai Electronics',
-  description: 'Turnkey PCB assembly in China for overseas hardware teams. Gerber & BOM reviewed by engineers before quoting — no black-box pricing. Reply within 24h.',
+  description: 'Turnkey PCB assembly in China for overseas hardware teams. Send Gerber and BOM files for engineering review, sourcing checks, SMT/DIP assembly, testing support, and finished PCBA delivery.',
   alternates: { canonical: 'https://huitaipcb.com/' },
   openGraph: { url: 'https://huitaipcb.com/', images: OG_IMAGES },
 };
