@@ -9,6 +9,8 @@ type TrackedLinkProps = LinkProps &
   AnchorHTMLAttributes<HTMLAnchorElement> & {
     eventName?: string;
     eventParams?: Record<string, string | number | boolean>;
+    additionalEventName?: string;
+    additionalEventParams?: Record<string, string | number | boolean>;
   };
 
 const TRACKED_NAVIGATION_DELAY_MS = 200;
@@ -40,6 +42,8 @@ export default function TrackedLink({
   href,
   eventName,
   eventParams,
+  additionalEventName,
+  additionalEventParams,
   onClick,
   replace,
   scroll,
@@ -56,28 +60,33 @@ export default function TrackedLink({
     const link = event.currentTarget;
     const buttonText = link.textContent?.replace(/\s+/g, ' ').trim();
     const hrefString = hrefToString(href);
+    const params = {
+      ...(eventParams || {}),
+      ...(buttonText ? { button_text: buttonText } : {}),
+    };
+
+    const trackLinkClick = () => {
+      trackEvent(eventName, params);
+      if (additionalEventName) {
+        trackEvent(additionalEventName, {
+          ...params,
+          ...(additionalEventParams || {}),
+        });
+      }
+    };
 
     if (isModifiedClick(event) || target === '_blank' || link.hasAttribute('download')) {
-      trackEvent(eventName, {
-        ...(eventParams || {}),
-        ...(buttonText ? { button_text: buttonText } : {}),
-      });
+      trackLinkClick();
       return;
     }
 
     if (!hrefString || hrefString.startsWith('http') || hrefString.startsWith('mailto:') || hrefString.startsWith('tel:')) {
-      trackEvent(eventName, {
-        ...(eventParams || {}),
-        ...(buttonText ? { button_text: buttonText } : {}),
-      });
+      trackLinkClick();
       return;
     }
 
     event.preventDefault();
-    trackEvent(eventName, {
-      ...(eventParams || {}),
-      ...(buttonText ? { button_text: buttonText } : {}),
-    });
+    trackLinkClick();
 
     window.setTimeout(() => {
       if (replace) {

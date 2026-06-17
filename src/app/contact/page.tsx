@@ -1,10 +1,10 @@
 ﻿export const metadata = {
-  title: 'Request a PCB Assembly Quote | Upload Gerber & BOM',
-  description: 'Request a PCB assembly quote from Huitai Electronics. Upload Gerber files, BOM lists, drawings, sample photos, and testing requirements for engineering review.',
+  title: 'Request a PCBA Quote | Upload Gerber, BOM & Project Files',
+  description: 'Upload Gerber, BOM, drawings, sample photos, or project notes for engineering review. Huitai checks PCBA scope, sourcing risks, testing needs, and quotation details.',
   alternates: { canonical: 'https://huitaipcb.com/contact' },
   openGraph: {
-    title: 'Request a PCB Assembly Quote | Upload Gerber & BOM',
-    description: 'Request a PCB assembly quote from Huitai Electronics. Upload Gerber files, BOM lists, drawings, sample photos, and testing requirements for engineering review.',
+    title: 'Request a PCBA Quote | Upload Gerber, BOM & Project Files',
+    description: 'Upload Gerber, BOM, drawings, sample photos, or project notes for engineering review. Huitai checks PCBA scope, sourcing risks, testing needs, and quotation details.',
     url: 'https://huitaipcb.com/contact',
     images: OG_IMAGES,
   },
@@ -31,17 +31,17 @@ export default function ContactPage() {
                   ENGINEER-REVIEWED RFQ
                 </div>
                 <h1 className="font-display mb-4 text-4xl font-bold leading-tight tracking-tight text-cc-ink md:text-5xl">
-                  Send your files. We will map the next step.
+                  Upload Gerber & BOM for PCBA Quote Review
                 </h1>
                 <p className="mb-6 max-w-[520px] text-[15px] leading-relaxed text-cc-ink-mute">
-                  Upload your Gerber, BOM, drawings, photos, or whatever you have. Huitai
-                  Electronics reviews the available information before quotation and tells you
-                  what is still needed.
+                  Send Gerber files, BOM, drawings, sample photos, or project notes for
+                  engineering review before quotation. Huitai Electronics checks turnkey PCBA
+                  scope, BOM sourcing risk, testing needs, and low-volume build details.
                 </p>
                 <div className="hidden gap-3 lg:grid">
                   {[
                     ['01', 'Engineering review before quotation'],
-                    ['02', 'Incomplete files are welcome'],
+                    ['02', 'Gerber and BOM review'],
                     ['03', 'Reply target within 24 hours'],
                   ].map(([number, text]) => (
                     <div key={number} className="flex items-center gap-3 rounded-xl border border-cc-line bg-cc-carbon-2/60 p-3.5">
@@ -66,7 +66,7 @@ export default function ContactPage() {
                   {[
                     'Gerber files and BOM',
                     'Pick-and-place file or assembly drawing',
-                    'Quantity and target delivery time',
+                    'Quantity, prototype, or low-volume target',
                     'Testing requirements or sample photos',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2">
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 <ul className="space-y-1.5 text-sm leading-6 text-cc-ink-mute">
                   {[
                     'We review files and clarify missing details',
-                    'We align sourcing, assembly, and test scope',
+                    'We align BOM sourcing, assembly, and test scope',
                     'You receive a quotation and lead-time plan',
                     'NDA is available on request',
                   ].map((item) => (
@@ -103,7 +103,7 @@ export default function ContactPage() {
                 </div>
                 <h2 className="font-display mb-2 text-xl font-bold text-cc-ink">Message us directly</h2>
                 <p className="mb-4 max-w-[420px] text-sm leading-relaxed text-cc-ink-mute">
-                  For a quick question or to start a conversation, reach us on WhatsApp — or scan the
+                  For a quick question or to start a conversation, reach us on WhatsApp, or scan the
                   WeChat code to add us.
                 </p>
                 <TrackedAnchor
@@ -125,7 +125,7 @@ export default function ContactPage() {
                 <div className="rounded-xl bg-white p-2.5">
                   <Image
                     src="/factory/wechat-qr.png"
-                    alt="WeChat QR code — scan to add Huitai Electronics"
+                    alt="WeChat QR code - scan to add Huitai Electronics"
                     width={150}
                     height={150}
                     className="h-[150px] w-[150px]"

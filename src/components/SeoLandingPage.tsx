@@ -77,6 +77,7 @@ function buildFaqSchema(page: SeoLandingPageData) {
 export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
   const ctaHeading = page.ctaHeading || 'Send Your Files for Engineering Review';
   const ctaBody = page.ctaBody || 'Send your Gerber files, BOM list, quantity, and testing requirements. Huitai will review the available information before quotation.';
+  const primaryCtaLabel = page.primaryCtaLabel || 'Upload Gerber & BOM for Engineering Review';
   const heroImage = HERO_IMAGES[page.slug] || DEFAULT_HERO;
 
   return (
@@ -111,11 +112,12 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
                 <TrackedLink
                   href="/contact#project-files"
                   eventName="upload_gerber_bom_click"
+                  additionalEventName="quote_cta_click"
                   eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/contact#project-files' }}
                   className="cc-copper-fill rounded-lg px-6 py-3 text-center text-sm font-semibold transition-all hover:-translate-y-0.5"
                   style={{ boxShadow: '0 8px 30px rgba(201,139,58,0.3)' }}
                 >
-                  Upload Files for Engineering Review
+                  {primaryCtaLabel}
                 </TrackedLink>
                 <TrackedLink
                   href="/pcba-quote-file-checklist"
@@ -244,10 +246,11 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
                 <TrackedLink
                   href="/contact#project-files"
                   eventName="upload_gerber_bom_click"
+                  additionalEventName="quote_cta_click"
                   eventParams={{ location: 'service_bottom_cta', page_slug: page.slug, destination: '/contact#project-files' }}
                   className="cc-copper-fill relative inline-flex rounded-lg px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5"
                 >
-                  Upload Files for Engineering Review
+                  {primaryCtaLabel}
                 </TrackedLink>
               </section>
             </div>
@@ -282,10 +285,11 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
               <TrackedLink
                 href="/contact#project-files"
                 eventName="upload_gerber_bom_click"
+                additionalEventName="quote_cta_click"
                 eventParams={{ location: 'service_sidebar', page_slug: page.slug, destination: '/contact#project-files' }}
                 className="cc-copper-fill inline-flex w-full justify-center rounded-lg px-5 py-3 text-sm font-semibold transition-all hover:-translate-y-0.5"
               >
-                Send Files for Review
+                {primaryCtaLabel}
               </TrackedLink>
               <div className="mt-5 border-t border-cc-line pt-5 text-xs leading-6 text-cc-ink-mute">
                 <div className="font-mono-cc mb-2 font-semibold tracking-wide text-cc-copper-soft">Related pages</div>

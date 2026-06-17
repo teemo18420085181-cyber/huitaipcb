@@ -31,6 +31,7 @@ export default function InquiryForm() {
     if (formStartedRef.current) return;
     formStartedRef.current = true;
     trackEvent('form_start', { page_path: '/contact', form_name: 'rfq_contact_form' });
+    trackEvent('rfq_form_start', { page_path: '/contact', form_name: 'rfq_contact_form' });
   };
 
   const handleFiles = (newFiles: FileList | null) => {
@@ -39,6 +40,11 @@ export default function InquiryForm() {
     setFiles((prev) => [...prev, ...arr]);
     if (arr.length > 0) {
       trackEvent('upload_file', {
+        file_count: arr.length,
+        total_file_count: files.length + arr.length,
+        location: 'contact_form',
+      });
+      trackEvent('rfq_file_upload', {
         file_count: arr.length,
         total_file_count: files.length + arr.length,
         location: 'contact_form',
@@ -63,6 +69,19 @@ export default function InquiryForm() {
 
     const formData = new FormData(e.currentTarget);
     files.forEach((f) => formData.append('files', f));
+    const projectType = formData.get('project_type');
+    const quantity = formData.get('quantity');
+    const projectTypeParam = typeof projectType === 'string' && projectType.trim() ? projectType.trim().slice(0, 80) : 'unspecified';
+    const quantityRange = getQuantityRange(quantity);
+    trackEvent('quote_cta_click', {
+      page_path: '/contact',
+      form_name: 'rfq_contact_form',
+      location: 'contact_form_submit_button',
+      project_type: projectTypeParam,
+      quantity_range: quantityRange,
+      has_attachment: files.length > 0,
+    });
+
     try {
       const res = await fetch('/api/inquiry', {
         method: 'POST',
@@ -75,13 +94,18 @@ export default function InquiryForm() {
         return;
       }
       setSubmitted(true);
-      const projectType = formData.get('project_type');
-      const quantity = formData.get('quantity');
       void trackEvent('contact_form_submit', {
         page_path: '/contact',
         form_name: 'rfq_contact_form',
-        project_type: typeof projectType === 'string' && projectType.trim() ? projectType.trim().slice(0, 80) : 'unspecified',
-        quantity_range: getQuantityRange(quantity),
+        project_type: projectTypeParam,
+        quantity_range: quantityRange,
+        has_attachment: files.length > 0,
+      });
+      void trackEvent('rfq_submit_success', {
+        page_path: '/contact',
+        form_name: 'rfq_contact_form',
+        project_type: projectTypeParam,
+        quantity_range: quantityRange,
         has_attachment: files.length > 0,
       });
       void trackEvent('generate_lead', {
@@ -125,9 +149,9 @@ export default function InquiryForm() {
         <div className="font-mono-cc mb-2 text-[10px] font-semibold tracking-[0.18em] text-cc-copper-soft">
           QUICK RFQ
         </div>
-        <h2 className="font-display text-2xl font-bold text-cc-ink">Start with the essentials</h2>
+        <h2 className="font-display text-2xl font-bold text-cc-ink">Upload Gerber & BOM for Engineering Review</h2>
         <p className="mt-2 text-sm leading-relaxed text-cc-ink-mute">
-          Name, email, a short project note, and any available files are enough to begin.
+          Name, email, quantity, a short project note, and any available files are enough to begin a PCBA quote review.
         </p>
       </div>
 
@@ -284,7 +308,7 @@ export default function InquiryForm() {
         ) : (
           <>
             <Upload size={16} strokeWidth={2.5} />
-            Send RFQ for Engineering Review
+            Upload Gerber & BOM for Engineering Review
           </>
         )}
       </button>
