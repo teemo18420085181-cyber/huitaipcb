@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint src next.config.js postcss.config.js tailwind.config.ts eslint.config.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
