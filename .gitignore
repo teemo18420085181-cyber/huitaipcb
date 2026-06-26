@@ -35,4 +35,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local temp files
+.tmp-*/
+.tmp-*.log
 /图片
