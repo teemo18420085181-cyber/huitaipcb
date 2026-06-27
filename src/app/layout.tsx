@@ -29,9 +29,12 @@ export const metadata: Metadata = {
   creator: 'Huitai Electronics',
   publisher: 'Huitai Electronics',
   icons: {
-    icon: '/logo.svg',
-    shortcut: '/logo.svg',
-    apple: '/logo.svg',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [{ url: '/apple-icon.png', type: 'image/png', sizes: '180x180' }],
   },
   openGraph: {
     type: 'website',

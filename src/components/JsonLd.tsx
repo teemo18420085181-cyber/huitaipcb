@@ -8,9 +8,9 @@ export default function JsonLd() {
     url: 'https://huitaipcb.com',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://huitaipcb.com/logo.svg',
-      width: 800,
-      height: 800,
+      url: 'https://huitaipcb.com/icon.png',
+      width: 512,
+      height: 512,
     },
     description:
       'Huitai Electronics is a China-based turnkey PCBA manufacturer supporting PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, testing support, and finished PCBA delivery.',
@@ -46,7 +46,7 @@ export default function JsonLd() {
     '@id': 'https://huitaipcb.com/#localbusiness',
     name: 'Huitai Electronics',
     legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
-    image: 'https://huitaipcb.com/logo.svg',
+    image: 'https://huitaipcb.com/icon.png',
     url: 'https://huitaipcb.com',
     email: 'sales@huitaipcb.com',
     priceRange: '$$',

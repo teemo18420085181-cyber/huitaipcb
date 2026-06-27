@@ -13,10 +13,14 @@ const HERO_IMAGES: Record<string, string> = {
   'turnkey-pcb-assembly': '/factory/svc-smt-assembly.jpg',
   'pcb-fabrication-and-assembly': '/factory/svc-pcb-fabrication.jpg',
   'low-volume-pcba-assembly': '/factory/real-reels.jpg',
-  'bom-sourcing-pcb-assembly': '/factory/svc-bom-sourcing.jpg',
+  'bom-sourcing-pcb-assembly': '/factory/bom-risk-sourcing.jpg',
   'pcba-testing-quality-control': '/factory/svc-inspection-testing.jpg',
 };
 const DEFAULT_HERO = '/factory/svc-smt-assembly.jpg';
+
+const HERO_IMAGE_ALTS: Record<string, string> = {
+  'bom-sourcing-pcb-assembly': 'BOM sourcing risk review with component reels, BOM list, and electronic parts',
+};
 
 const HERO_REVIEW_POINTS = [
   'Gerber + BOM review',
@@ -34,6 +38,7 @@ const RFQ_CHECKLIST = [
 
 function buildServiceSchema(page: SeoLandingPageData) {
   const url = `https://huitaipcb.com/${page.slug}`;
+  const schemaImage = page.slug === 'bom-sourcing-pcb-assembly' ? HERO_IMAGES[page.slug] : undefined;
 
   return {
     '@context': 'https://schema.org',
@@ -42,6 +47,7 @@ function buildServiceSchema(page: SeoLandingPageData) {
     serviceType: page.serviceType,
     description: page.metaDescription,
     url,
+    ...(schemaImage ? { image: `https://huitaipcb.com${schemaImage}` } : {}),
     provider: {
       '@type': 'Organization',
       name: 'Huitai Electronics',
@@ -79,6 +85,7 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
   const ctaBody = page.ctaBody || 'Send your Gerber files, BOM list, quantity, and testing requirements. Huitai will review the available information before quotation.';
   const primaryCtaLabel = page.primaryCtaLabel || 'Upload Gerber & BOM for Engineering Review';
   const heroImage = HERO_IMAGES[page.slug] || DEFAULT_HERO;
+  const heroImageAlt = HERO_IMAGE_ALTS[page.slug] || page.serviceName;
 
   return (
     <>
@@ -141,7 +148,7 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
             <div className="relative hidden aspect-[4/3] overflow-hidden rounded-2xl border border-cc-line lg:block">
               <Image
                 src={heroImage}
-                alt={page.serviceName}
+                alt={heroImageAlt}
                 fill
                 className="object-cover"
                 sizes="400px"
