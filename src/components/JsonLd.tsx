@@ -4,8 +4,9 @@ export default function JsonLd() {
     '@type': 'Organization',
     '@id': 'https://huitaipcb.com/#organization',
     name: 'Huitai Electronics',
+    alternateName: 'Huitai PCBA',
     legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
-    url: 'https://huitaipcb.com',
+    url: 'https://huitaipcb.com/',
     logo: {
       '@type': 'ImageObject',
       url: 'https://huitaipcb.com/icon.png',
@@ -31,8 +32,12 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': 'https://huitaipcb.com/#website',
-    url: 'https://huitaipcb.com',
+    url: 'https://huitaipcb.com/',
     name: 'Huitai Electronics',
+    alternateName: [
+      'Huitai PCBA',
+      'Huitai Electronics PCBA',
+    ],
     description: 'China-based turnkey PCBA manufacturer supporting PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, testing support, and finished PCBA delivery.',
     publisher: {
       '@id': 'https://huitaipcb.com/#organization',
@@ -45,9 +50,10 @@ export default function JsonLd() {
     '@type': 'LocalBusiness',
     '@id': 'https://huitaipcb.com/#localbusiness',
     name: 'Huitai Electronics',
+    alternateName: 'Huitai PCBA',
     legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
     image: 'https://huitaipcb.com/icon.png',
-    url: 'https://huitaipcb.com',
+    url: 'https://huitaipcb.com/',
     email: 'sales@huitaipcb.com',
     priceRange: '$$',
     address: {

@@ -23,7 +23,11 @@ export const metadata = {
   title: 'PCB Assembly & Turnkey PCBA in China | Huitai Electronics',
   description: 'Turnkey PCB assembly in China for overseas hardware teams. Send Gerber and BOM files for engineering review, sourcing checks, SMT/DIP assembly, testing support, and finished PCBA delivery.',
   alternates: { canonical: 'https://huitaipcb.com/' },
-  openGraph: { url: 'https://huitaipcb.com/', images: OG_IMAGES },
+  openGraph: {
+    url: 'https://huitaipcb.com/',
+    siteName: 'Huitai Electronics',
+    images: OG_IMAGES,
+  },
 };
 
 export default function HomePage() {
