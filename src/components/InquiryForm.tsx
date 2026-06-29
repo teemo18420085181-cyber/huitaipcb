@@ -18,7 +18,83 @@ function getQuantityRange(quantity: FormDataEntryValue | null) {
   return '1000+';
 }
 
-export default function InquiryForm() {
+type InquiryFormLocale = 'en' | 'de';
+
+const FORM_COPY = {
+  en: {
+    pagePath: '/contact',
+    successTitle: 'Thank you!',
+    successBody: "We've received your inquiry and a confirmation email is on its way. Our engineering team will review your files and respond within",
+    successTime: '24 hours',
+    networkError: 'Network error. Please try again.',
+    errorFallback: 'Something went wrong. Please try again.',
+    eyebrow: 'QUICK RFQ',
+    title: 'Upload Gerber & BOM for Engineering Review',
+    intro: 'Name, email, quantity, a short project note, and any available files are enough to begin a PCBA quote review.',
+    name: 'Your Name *',
+    email: 'Email *',
+    quantity: 'Quantity',
+    quantityPlaceholder: '50 pcs, 500 pcs, pilot run...',
+    brief: 'Project Brief *',
+    briefPlaceholder: 'What are you building, what quantity do you need, and what should we review first?',
+    files: 'Project Files',
+    recommended: 'recommended',
+    uploadAria: 'Upload project files',
+    uploadTitle: 'Upload Gerber, BOM, drawings, or photos',
+    uploadHint: 'Drop files here or click to browse. Up to 10 files, 25MB each.',
+    detailsSummary: 'Add company, phone, project type, or testing details',
+    company: 'Company',
+    country: 'Country',
+    phone: 'Phone / WhatsApp',
+    projectType: 'Project Type',
+    projectTypePlaceholder: 'Prototype, low-volume, turnkey PCBA...',
+    testing: 'Testing Requirements',
+    testingPlaceholder: 'Functional test, ICT, firmware flashing, inspection report, sample approval requirements...',
+    consentPrefix: 'I agree to be contacted regarding this inquiry. My information will be used solely for quotation and project communication. See our',
+    privacy: 'Privacy Policy',
+    submitting: 'Submitting...',
+    submit: 'Upload Gerber & BOM for Engineering Review',
+    footer: 'Reply target within 24 hours / NDA available on request',
+  },
+  de: {
+    pagePath: '/de/contact',
+    successTitle: 'Vielen Dank!',
+    successBody: 'Wir haben Ihre Anfrage erhalten. Unser Team prüft die Projektdaten und meldet sich per E-Mail.',
+    successTime: '',
+    networkError: 'Netzwerkfehler. Bitte versuchen Sie es erneut.',
+    errorFallback: 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.',
+    eyebrow: 'KURZE RFQ',
+    title: 'Gerber & BOM für technische PCBA-Prüfung hochladen',
+    intro: 'Name, E-Mail, Stückzahl, kurze Projektnotiz und verfügbare Dateien reichen aus, um eine PCBA-Angebotsprüfung zu starten.',
+    name: 'Ihr Name *',
+    email: 'E-Mail *',
+    quantity: 'Stückzahl',
+    quantityPlaceholder: '50 Stück, 500 Stück, Pilotserie...',
+    brief: 'Projektbeschreibung *',
+    briefPlaceholder: 'Was entwickeln Sie, welche Stückzahl benötigen Sie, und was soll zuerst geprüft werden?',
+    files: 'Projektdaten',
+    recommended: 'empfohlen',
+    uploadAria: 'Projektdaten hochladen',
+    uploadTitle: 'Gerber, BOM, Zeichnungen oder Fotos hochladen',
+    uploadHint: 'Dateien hier ablegen oder zum Auswählen klicken. Bis zu 10 Dateien, je 25 MB.',
+    detailsSummary: 'Firma, Telefon, Projekttyp oder Prüfdetails ergänzen',
+    company: 'Firma',
+    country: 'Land',
+    phone: 'Telefon / WhatsApp',
+    projectType: 'Projekttyp',
+    projectTypePlaceholder: 'Prototyp, Kleinserie, Turnkey-PCBA...',
+    testing: 'Prüfanforderungen',
+    testingPlaceholder: 'Funktionstest, ICT, Firmware, Inspektionsbericht, Musterfreigabe...',
+    consentPrefix: 'Ich bin damit einverstanden, zu dieser Anfrage kontaktiert zu werden. Meine Angaben werden nur für Angebot und Projektkommunikation verwendet. Siehe',
+    privacy: 'Datenschutzerklärung',
+    submitting: 'Wird gesendet...',
+    submit: 'Gerber & BOM zur Prüfung senden',
+    footer: 'NDA auf Anfrage möglich / Rückfragen per E-Mail',
+  },
+} as const;
+
+export default function InquiryForm({ locale = 'en' }: { locale?: InquiryFormLocale }) {
+  const copy = FORM_COPY[locale];
   const [files, setFiles] = useState<File[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -30,8 +106,8 @@ export default function InquiryForm() {
   const handleFormFocus = () => {
     if (formStartedRef.current) return;
     formStartedRef.current = true;
-    trackEvent('form_start', { page_path: '/contact', form_name: 'rfq_contact_form' });
-    trackEvent('rfq_form_start', { page_path: '/contact', form_name: 'rfq_contact_form' });
+    trackEvent('form_start', { page_path: copy.pagePath, form_name: 'rfq_contact_form' });
+    trackEvent('rfq_form_start', { page_path: copy.pagePath, form_name: 'rfq_contact_form' });
   };
 
   const handleFiles = (newFiles: FileList | null) => {
@@ -74,7 +150,7 @@ export default function InquiryForm() {
     const projectTypeParam = typeof projectType === 'string' && projectType.trim() ? projectType.trim().slice(0, 80) : 'unspecified';
     const quantityRange = getQuantityRange(quantity);
     trackEvent('quote_cta_click', {
-      page_path: '/contact',
+      page_path: copy.pagePath,
       form_name: 'rfq_contact_form',
       location: 'contact_form_submit_button',
       project_type: projectTypeParam,
@@ -89,32 +165,32 @@ export default function InquiryForm() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || 'Something went wrong. Please try again.');
+        setError(data.error || copy.errorFallback);
         setSubmitting(false);
         return;
       }
       setSubmitted(true);
       void trackEvent('contact_form_submit', {
-        page_path: '/contact',
+        page_path: copy.pagePath,
         form_name: 'rfq_contact_form',
         project_type: projectTypeParam,
         quantity_range: quantityRange,
         has_attachment: files.length > 0,
       });
       void trackEvent('rfq_submit_success', {
-        page_path: '/contact',
+        page_path: copy.pagePath,
         form_name: 'rfq_contact_form',
         project_type: projectTypeParam,
         quantity_range: quantityRange,
         has_attachment: files.length > 0,
       });
       void trackEvent('generate_lead', {
-        page_path: '/contact',
+        page_path: copy.pagePath,
         form_name: 'rfq_contact_form',
         lead_type: 'pcba_quote',
       });
     } catch (err) {
-      setError('Network error. Please try again.');
+      setError(copy.networkError);
       setSubmitting(false);
     }
   };
@@ -126,12 +202,16 @@ export default function InquiryForm() {
           <CheckCircle size={32} className="text-cc-signal" strokeWidth={2.5} />
         </div>
         <h2 className="text-2xl font-semibold text-cc-ink mb-2">
-          Thank you!
+          {copy.successTitle}
         </h2>
         <p className="text-cc-ink-mute leading-relaxed max-w-[480px] mx-auto">
-          We&apos;ve received your inquiry and a confirmation email is on its way.
-          Our engineering team will review your files and respond within{' '}
-          <strong>24 hours</strong>.
+          {copy.successBody}
+          {copy.successTime && (
+            <>
+              {' '}
+              <strong>{copy.successTime}</strong>.
+            </>
+          )}
         </p>
       </div>
     );
@@ -147,44 +227,44 @@ export default function InquiryForm() {
     >
       <div className="border-b border-cc-line pb-5">
         <div className="font-mono-cc mb-2 text-[10px] font-semibold tracking-[0.18em] text-cc-copper-soft">
-          QUICK RFQ
+          {copy.eyebrow}
         </div>
-        <h2 className="font-display text-2xl font-bold text-cc-ink">Upload Gerber & BOM for Engineering Review</h2>
+        <h2 className="font-display text-2xl font-bold text-cc-ink">{copy.title}</h2>
         <p className="mt-2 text-sm leading-relaxed text-cc-ink-mute">
-          Name, email, quantity, a short project note, and any available files are enough to begin a PCBA quote review.
+          {copy.intro}
         </p>
       </div>
 
       <div className="grid gap-5 md:grid-cols-2">
-        <FormField label="Your Name *" name="name" required />
-        <FormField label="Email *" name="email" type="email" required />
+        <FormField label={copy.name} name="name" required />
+        <FormField label={copy.email} name="email" type="email" required />
         <div className="md:col-span-2">
-          <FormField label="Quantity" name="quantity" placeholder="50 pcs, 500 pcs, pilot run..." />
+          <FormField label={copy.quantity} name="quantity" placeholder={copy.quantityPlaceholder} />
         </div>
       </div>
 
       <div>
         <label htmlFor="message" className="mb-2 block text-xs font-medium tracking-wide text-cc-ink">
-          Project Brief *
+          {copy.brief}
         </label>
         <textarea
           name="message"
           id="message"
           required
           rows={4}
-          placeholder="What are you building, what quantity do you need, and what should we review first?"
+          placeholder={copy.briefPlaceholder}
           className="w-full rounded-lg border border-cc-line bg-cc-carbon-3 px-4 py-3 text-sm text-cc-ink transition-colors placeholder:text-cc-ink-mute/60 focus:border-cc-copper/60 focus:outline-none"
         />
       </div>
 
       <div id="project-files">
         <label className="mb-2 block text-xs font-medium tracking-wide text-cc-ink">
-          Project Files <span className="font-normal text-cc-ink-mute">(recommended)</span>
+          {copy.files} <span className="font-normal text-cc-ink-mute">({copy.recommended})</span>
         </label>
         <div
           role="button"
           tabIndex={0}
-          aria-label="Upload project files"
+          aria-label={copy.uploadAria}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
@@ -213,9 +293,9 @@ export default function InquiryForm() {
           }`}
         >
           <Upload size={28} className="mx-auto mb-2 text-cc-copper-soft" strokeWidth={2} />
-          <div className="text-sm font-semibold text-cc-ink">Upload Gerber, BOM, drawings, or photos</div>
+          <div className="text-sm font-semibold text-cc-ink">{copy.uploadTitle}</div>
           <div className="mt-1 text-xs text-cc-ink-mute">
-            Drop files here or click to browse. Up to 10 files, 25MB each.
+            {copy.uploadHint}
           </div>
           <input
             ref={fileInputRef}
@@ -254,23 +334,23 @@ export default function InquiryForm() {
         <summary className="cursor-pointer list-none px-4 py-3 text-sm font-semibold text-cc-ink transition-colors hover:text-cc-copper-soft">
           <span className="inline-flex items-center gap-2">
             <span className="text-cc-copper-soft transition-transform group-open:rotate-45">+</span>
-            Add company, phone, project type, or testing details
+            {copy.detailsSummary}
           </span>
         </summary>
         <div className="grid gap-5 border-t border-cc-line p-4 md:grid-cols-2">
-          <FormField label="Company" name="company" />
-          <FormField label="Country" name="country" />
-          <FormField label="Phone / WhatsApp" name="phone" type="tel" />
-          <FormField label="Project Type" name="project_type" placeholder="Prototype, low-volume, turnkey PCBA..." />
+          <FormField label={copy.company} name="company" />
+          <FormField label={copy.country} name="country" />
+          <FormField label={copy.phone} name="phone" type="tel" />
+          <FormField label={copy.projectType} name="project_type" placeholder={copy.projectTypePlaceholder} />
           <div className="md:col-span-2">
             <label htmlFor="testing_requirements" className="mb-2 block text-xs font-medium tracking-wide text-cc-ink">
-              Testing Requirements
+              {copy.testing}
             </label>
             <textarea
               name="testing_requirements"
               id="testing_requirements"
               rows={3}
-              placeholder="Functional test, ICT, firmware flashing, inspection report, sample approval requirements..."
+              placeholder={copy.testingPlaceholder}
               className="w-full rounded-lg border border-cc-line bg-cc-carbon-3 px-4 py-3 text-sm text-cc-ink transition-colors placeholder:text-cc-ink-mute/60 focus:border-cc-copper/60 focus:outline-none"
             />
           </div>
@@ -280,10 +360,9 @@ export default function InquiryForm() {
       <label className="flex cursor-pointer items-start gap-2.5 pt-1 text-xs text-cc-ink-mute">
         <input type="checkbox" name="consent" value="true" required className="mt-0.5 accent-cc-copper" />
         <span>
-          I agree to be contacted regarding this inquiry. My information will be used solely for
-          quotation and project communication. See our{' '}
+          {copy.consentPrefix}{' '}
           <a href="/privacy" className="text-cc-ink underline">
-            Privacy Policy
+            {copy.privacy}
           </a>
           .
         </span>
@@ -303,17 +382,17 @@ export default function InquiryForm() {
         {submitting ? (
           <>
             <Loader2 size={16} className="animate-spin" />
-            Submitting...
+            {copy.submitting}
           </>
         ) : (
           <>
             <Upload size={16} strokeWidth={2.5} />
-            Upload Gerber & BOM for Engineering Review
+            {copy.submit}
           </>
         )}
       </button>
       <p className="text-center text-[11px] tracking-wide text-cc-ink-mute">
-        Reply target within 24 hours / NDA available on request
+        {copy.footer}
       </p>
     </form>
   );

@@ -25,6 +25,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/pcba-testing-quality-control',
     '/turnkey-pcb-assembly',
     '/pcba-quote-file-checklist',
+    '/de',
+    '/de/turnkey-pcb-assembly',
+    '/de/china-pcb-assembly',
+    '/de/bom-sourcing-pcb-assembly',
+    '/de/prototype-pcb-assembly',
+    '/de/contact',
   ];
 
   const staticPages = pages.map((path) => ({
