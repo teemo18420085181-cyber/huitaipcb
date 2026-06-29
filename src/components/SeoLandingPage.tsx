@@ -151,8 +151,7 @@ export default function SeoLandingPage({ page }: { page: SeoLandingPageData }) {
                 alt={heroImageAlt}
                 fill
                 className="object-cover"
-                sizes="400px"
-                priority
+                sizes="(min-width: 1024px) 400px, 1px"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-cc-carbon/55 via-transparent to-transparent" />
               <span className="absolute -left-px -top-px h-3 w-3 border-l border-t border-cc-copper/70" />
