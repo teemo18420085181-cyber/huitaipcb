@@ -36,7 +36,7 @@ const REVIEW_FOCUS = ['Missing files', 'BOM shortage risk', 'Assembly process', 
 function CircuitLayer() {
   return (
     <svg
-      className="cc-trace pointer-events-none absolute inset-0 h-full w-full"
+      className="cc-trace pointer-events-none absolute inset-0 hidden h-full w-full md:block"
       viewBox="0 0 1440 900"
       preserveAspectRatio="xMidYMid slice"
       fill="none"
@@ -65,11 +65,11 @@ function CircuitLayer() {
 
 export default function Hero() {
   return (
-    <section className="cc-carbon-bg font-body-cc relative flex min-h-[86vh] flex-col justify-center overflow-hidden px-[5vw] pb-20 pt-[130px] text-cc-ink">
+    <section className="cc-carbon-bg font-body-cc relative flex flex-col justify-center overflow-hidden px-[5vw] pb-16 pt-[112px] text-cc-ink md:min-h-[86vh] md:pb-20 md:pt-[130px]">
       <CircuitLayer />
-      <div className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[620px] -translate-x-1/2 rounded-full bg-cc-copper/10 blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 right-0 h-[360px] w-[360px] rounded-full bg-cc-signal/5 blur-[110px]" />
-      <div className="pointer-events-none absolute inset-x-0 top-[88px] h-px bg-gradient-to-r from-transparent via-cc-copper/30 to-transparent" />
+      <div className="pointer-events-none absolute left-1/2 top-24 hidden h-[420px] w-[620px] -translate-x-1/2 rounded-full bg-cc-copper/10 blur-[120px] md:block" />
+      <div className="pointer-events-none absolute bottom-0 right-0 hidden h-[360px] w-[360px] rounded-full bg-cc-signal/5 blur-[110px] md:block" />
+      <div className="pointer-events-none absolute inset-x-0 top-[88px] hidden h-px bg-gradient-to-r from-transparent via-cc-copper/30 to-transparent md:block" />
 
       <div className="relative z-10 mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-20">
         <div className="flex flex-col items-start">
