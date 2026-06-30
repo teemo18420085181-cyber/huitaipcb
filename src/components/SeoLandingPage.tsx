@@ -21,7 +21,12 @@ const HERO_IMAGES: Record<string, string> = {
 const DEFAULT_HERO = '/factory/svc-smt-assembly.jpg';
 
 const HERO_IMAGE_ALTS: Record<string, string> = {
+  'china-pcb-assembly': 'Finished PCBA boards prepared for China PCB assembly delivery',
+  'prototype-pcb-assembly': 'SMT assembly process for prototype PCBA boards',
+  'turnkey-pcb-assembly': 'SMT assembly process for turnkey PCBA manufacturing',
+  'low-volume-pcba-assembly': 'Component reels prepared for low-volume PCBA assembly',
   'bom-sourcing-pcb-assembly': 'BOM sourcing risk review with component reels, BOM list, and electronic parts',
+  'pcba-testing-quality-control': 'PCBA inspection and testing area for assembled circuit boards',
 };
 
 const HERO_IMAGE_ALTS_DE: Record<string, string> = {
@@ -30,14 +35,14 @@ const HERO_IMAGE_ALTS_DE: Record<string, string> = {
 
 function buildServiceSchema(page: SeoLandingPageData, locale: Locale) {
   const url = absoluteUrl(locale === 'de' ? `/de/${page.slug}` : `/${page.slug}`);
-  const schemaImage = page.slug === 'bom-sourcing-pcb-assembly' ? HERO_IMAGES[page.slug] : undefined;
+  const schemaImage = HERO_IMAGES[page.slug];
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: page.serviceName,
     serviceType: page.serviceType,
-    description: page.metaDescription,
+    description: page.quickAnswer,
     url,
     inLanguage: locale === 'de' ? 'de-DE' : 'en-US',
     ...(schemaImage ? { image: `https://huitaipcb.com${schemaImage}` } : {}),
@@ -55,6 +60,31 @@ function buildServiceSchema(page: SeoLandingPageData, locale: Locale) {
       '@type': 'BusinessAudience',
       audienceType: 'Overseas engineers, hardware teams, startups, industrial product companies, and purchasing managers',
     },
+  };
+}
+
+function buildBreadcrumbSchema(page: SeoLandingPageData, locale: Locale) {
+  const servicePath = locale === 'de' ? `/de/${page.slug}` : `/${page.slug}`;
+  const homeUrl = absoluteUrl(locale === 'de' ? '/de' : '/');
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    inLanguage: locale === 'de' ? 'de-DE' : 'en-US',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: locale === 'de' ? 'Startseite' : 'Home',
+        item: homeUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: page.serviceName,
+        item: absoluteUrl(servicePath),
+      },
+    ],
   };
 }
 
@@ -90,6 +120,10 @@ export default function SeoLandingPage({ page, locale = 'en' }: { page: SeoLandi
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(buildServiceSchema(page, locale)) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildBreadcrumbSchema(page, locale)) }}
         />
         {page.faq.length > 0 && (
           <script
@@ -177,6 +211,52 @@ export default function SeoLandingPage({ page, locale = 'en' }: { page: SeoLandi
                 <p className="text-sm leading-7 text-cc-ink">{page.quickAnswer}</p>
               </section>
 
+              {(page.whoThisIsFor || page.filesNeeded || page.productionChecks) && (
+                <section className="grid gap-4 md:grid-cols-3">
+                  {page.whoThisIsFor && (
+                    <div className="rounded-2xl border border-cc-line bg-cc-carbon-2 p-6">
+                      <h2 className="font-display mb-4 text-xl font-bold text-cc-ink">{ui.whoThisIsFor}</h2>
+                      <div className="space-y-3">
+                        {page.whoThisIsFor.map((item) => (
+                          <div key={item} className="flex items-start gap-2 text-sm leading-6 text-cc-ink-mute">
+                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-copper" />
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {page.filesNeeded && (
+                    <div className="rounded-2xl border border-cc-line bg-cc-carbon-2 p-6">
+                      <h2 className="font-display mb-4 text-xl font-bold text-cc-ink">{ui.whatFilesWeNeed}</h2>
+                      <div className="space-y-3">
+                        {page.filesNeeded.map((item) => (
+                          <div key={item} className="flex items-start gap-2 text-sm leading-6 text-cc-ink-mute">
+                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-signal" />
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {page.productionChecks && (
+                    <div className="rounded-2xl border border-cc-line bg-cc-carbon-2 p-6">
+                      <h2 className="font-display mb-4 text-xl font-bold text-cc-ink">{ui.whatWeCheckBeforeProduction}</h2>
+                      <div className="space-y-3">
+                        {page.productionChecks.map((item) => (
+                          <div key={item} className="flex items-start gap-2 text-sm leading-6 text-cc-ink-mute">
+                            <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-copper" />
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </section>
+              )}
+
               {page.sections.map((section) => (
                 <section key={section.heading} className="rounded-2xl border border-cc-line bg-cc-carbon-2 p-7">
                   <h2 className="font-display mb-3 text-2xl font-bold text-cc-ink">{section.heading}</h2>
@@ -212,7 +292,7 @@ export default function SeoLandingPage({ page, locale = 'en' }: { page: SeoLandi
                 </section>
               )}
 
-              {page.filesNeeded && (
+              {page.filesNeeded && !page.whoThisIsFor && !page.productionChecks && (
                 <section className="rounded-2xl border border-cc-line bg-cc-carbon-2 p-7">
                   <h2 className="font-display mb-5 text-2xl font-bold text-cc-ink">{ui.filesNeeded}</h2>
                   <div className="grid gap-3 sm:grid-cols-2">
@@ -221,6 +301,23 @@ export default function SeoLandingPage({ page, locale = 'en' }: { page: SeoLandi
                         <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-signal" />
                         {item}
                       </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {page.answerLinks && page.answerLinks.length > 0 && (
+                <section className="rounded-2xl border border-cc-line bg-cc-carbon-2 p-7">
+                  <h2 className="font-display mb-4 text-2xl font-bold text-cc-ink">{ui.relatedServicePaths}</h2>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {page.answerLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="rounded-xl border border-cc-line bg-cc-carbon-3 px-4 py-3 text-sm font-semibold text-cc-ink-mute underline decoration-cc-copper/40 underline-offset-4 transition-colors hover:text-cc-copper-soft"
+                      >
+                        {link.label}
+                      </Link>
                     ))}
                   </div>
                 </section>

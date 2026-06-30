@@ -18,8 +18,11 @@ export type SeoLandingPage = {
   serviceType: string;
   sections: { heading: string; body: string }[];
   bullets: string[];
+  whoThisIsFor?: string[];
+  productionChecks?: string[];
   workflow?: string[];
   filesNeeded?: string[];
+  answerLinks?: RelatedLink[];
   relatedLinks: RelatedLink[];
   ctaHeading?: string;
   ctaBody?: string;
@@ -60,7 +63,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     slug: 'pcb-assembly-services',
     title: 'PCB Assembly Services in China',
     seoTitle: 'PCB Assembly Services in China | Huitai Electronics',
-    metaDescription: 'PCB assembly services in China for overseas teams — engineer-reviewed Gerber & BOM, component sourcing, SMT & DIP assembly, testing, and global delivery. Reply within 24h.',
+    metaDescription: 'PCB assembly services in China for overseas teams — engineer-reviewed Gerber & BOM, component sourcing, SMT & DIP assembly, testing support, and delivery preparation.',
     eyebrow: 'PCB ASSEMBLY SERVICES',
     primaryKeyword: 'PCB Assembly Services',
     serviceName: 'PCB Assembly Services in China',
@@ -96,7 +99,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     primaryKeyword: 'China PCB Assembly Quote',
     serviceName: 'China PCB Assembly Quote Review',
     serviceType: 'China turnkey PCBA assembly service',
-    quickAnswer: 'Huitai Electronics is a Shenzhen-based turnkey PCBA supplier for overseas buyers who need a China PCB assembly quote reviewed from project files, not a bare-board-only or SMT-only order. Gerber files, BOM, quantity, drawings, and testing requirements are checked before quotation so PCB fabrication, component sourcing, SMT/DIP assembly, inspection/testing support, packaging, and delivery stay connected.',
+    quickAnswer: 'Huitai Electronics is a Shenzhen-based turnkey PCBA supplier for overseas hardware teams comparing PCB assembly in China. Buyers can send Gerber files, BOM, pick-and-place data, assembly drawings, quantity, and test requirements for engineering review before quotation. The scope connects PCB fabrication, component sourcing, SMT/DIP assembly, inspection, functional testing support, packaging, and delivery.',
     intro: 'Send Gerber files, BOM, quantity, drawings, sample photos, and testing requirements for engineering review before quotation. Huitai reviews the complete turnkey PCBA scope in China, from PCB fabrication and BOM sourcing to SMT/DIP assembly, inspection/testing support, packaging, and delivery.',
     sections: [
       {
@@ -117,12 +120,32 @@ export const seoPages: Record<string, SeoLandingPage> = {
       },
     ],
     bullets: ['PCB fabrication coordinated as part of PCBA delivery', 'BOM sourcing and customer-approved alternatives', 'SMT assembly and through-hole (DIP) assembly', 'Inspection and functional testing based on confirmed requirements', 'Prototype and low-volume project review', 'Packaging and delivery preparation'],
+    whoThisIsFor: [
+      'Overseas buyers comparing PCB assembly suppliers in China',
+      'Hardware engineers that need Gerber, BOM, assembly, sourcing, and testing reviewed together',
+      'Prototype teams preparing for low-volume PCBA production',
+      'Purchasing teams that want a Shenzhen-based turnkey PCBA supplier instead of separate PCB and SMT vendors',
+    ],
+    productionChecks: [
+      'Gerber readiness, PCB specifications, drill data, and assembly notes',
+      'BOM completeness, MPN clarity, package fit, and sourcing risk',
+      'Pick-and-place data, polarity, orientation, and through-hole assembly requirements',
+      'Inspection points, functional test method, packaging needs, and delivery scope',
+    ],
     workflow: ['Submit Gerber, BOM, quantity, drawings, and testing requirements', 'Engineering review checks files, BOM risk, and assembly notes', 'Quote scope confirms PCB fabrication, sourcing, SMT/DIP, inspection/testing support, and delivery', 'Customer approves sourcing and testing assumptions before purchasing or production', 'Packaging and delivery are prepared after assembly and agreed checks'],
     filesNeeded: commonFiles,
+    answerLinks: [
+      { label: 'Review a one-stop turnkey PCBA scope', href: '/turnkey-pcb-assembly' },
+      { label: 'Prepare prototype PCB assembly files', href: '/prototype-pcb-assembly' },
+      { label: 'Plan low-volume PCBA after validation', href: '/low-volume-pcba-assembly' },
+      { label: 'Check BOM sourcing risk before assembly', href: '/bom-sourcing-pcb-assembly' },
+      { label: 'Upload Gerber and BOM for review', href: '/contact#project-files' },
+    ],
     relatedLinks: [
       { label: 'Turnkey PCBA service in China', href: '/turnkey-pcb-assembly' },
       { label: 'BOM sourcing for PCB assembly', href: '/bom-sourcing-pcb-assembly' },
       { label: 'Prototype PCB assembly review', href: '/prototype-pcb-assembly' },
+      { label: 'Low-volume PCBA assembly', href: '/low-volume-pcba-assembly' },
       { label: 'Upload Gerber and BOM for engineering review', href: '/contact#project-files' },
     ],
     ctaHeading: 'Request a China PCB Assembly Quote',
@@ -138,6 +161,10 @@ export const seoPages: Record<string, SeoLandingPage> = {
         answer: 'Yes. A partial BOM can be reviewed to identify missing MPNs, unclear packages, no-substitute lines, or parts that need confirmation. A firm quote may still need additional file or sourcing details.',
       },
       {
+        question: 'Do you support both PCB fabrication and assembly?',
+        answer: 'Yes. Huitai coordinates PCB fabrication and PCB assembly as one turnkey PCBA workflow, including component sourcing, SMT/DIP assembly, inspection/testing support, packaging, and delivery preparation.',
+      },
+      {
         question: 'Is component sourcing included?',
         answer: 'Component sourcing can be included as part of turnkey PCBA. Huitai reviews MPN clarity, availability, shortage risk, and possible customer-approved alternatives before purchasing.',
       },
@@ -148,6 +175,10 @@ export const seoPages: Record<string, SeoLandingPage> = {
       {
         question: 'How are testing requirements agreed?',
         answer: 'Testing scope is agreed from the information you provide, such as test instructions, firmware, fixtures, inspection criteria, or acceptance notes. Functional testing is planned only after the method and responsibility are confirmed.',
+      },
+      {
+        question: 'What should overseas buyers check before choosing a PCBA supplier?',
+        answer: 'Check whether the supplier reviews Gerber and BOM files together, confirms sourcing risk, explains SMT/DIP and testing scope, requires customer approval for alternatives, and can support the project from prototype to low-volume delivery.',
       },
     ],
   },
@@ -228,7 +259,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     primaryKeyword: 'Prototype PCB Assembly in China',
     serviceName: 'Prototype PCB Assembly in China',
     serviceType: 'Prototype PCBA assembly service',
-    quickAnswer: 'Prototype PCB assembly helps engineering teams validate design files, BOM readiness, component sourcing, assembly feasibility, and testing requirements before a low-volume build. Huitai reviews Gerber, BOM, CPL/pick-and-place data, drawings, quantity, revision notes, and testing inputs before quotation.',
+    quickAnswer: 'Prototype PCB assembly helps early-stage hardware teams validate design files, BOM readiness, component sourcing, SMT/DIP assembly feasibility, and testing requirements before low-volume production. Huitai reviews Gerber, BOM, CPL or pick-and-place data, drawings, quantity, sample board photos, revision notes, and test inputs before quoting a small prototype build.',
     intro: 'Upload prototype Gerber files, BOM, CPL or pick-and-place data, drawings, quantity, sample photos, and project notes for review. Huitai checks file completeness, BOM risk, revision questions, SMT/DIP assembly scope, testing support, and the path from prototype to low-volume production.',
     sections: [
       {
@@ -253,18 +284,44 @@ export const seoPages: Record<string, SeoLandingPage> = {
       },
     ],
     bullets: ['Prototype file readiness review', 'Gerber, BOM, CPL, drawing, quantity, and note check', 'BOM risk and customer-approved alternatives', 'Revision questions before purchasing or assembly', 'Testing support based on confirmed instructions'],
+    whoThisIsFor: [
+      'Hardware startups and engineers validating an early PCBA design',
+      'Industrial device teams that need a small prototype build before low-volume production',
+      'Buyers with Gerber and BOM files that still need DFM/DFA and sourcing review',
+      'Projects where a sample board, revision notes, or test method should be checked before SMT assembly',
+    ],
+    productionChecks: [
+      'Gerber, drill, CPL, polarity, orientation, and assembly drawing consistency',
+      'BOM risk, missing MPNs, obsolete parts, package compatibility, and no-substitute lines',
+      'SMT/DIP assembly feasibility, special handling notes, and first-build review points',
+      'Functional test method, firmware, fixtures, acceptance criteria, and low-volume transition notes',
+    ],
     workflow: ['Submit prototype files, quantity, revision notes, and testing inputs', 'Review missing files, BOM risks, and assembly feasibility', 'Confirm sourcing alternatives only after customer approval', 'Coordinate prototype SMT/DIP assembly, inspection, and agreed testing support', 'Use prototype feedback to prepare low-volume PCBA scope'],
     filesNeeded: commonFiles,
+    answerLinks: [
+      { label: 'Plan low-volume PCBA after prototype validation', href: '/low-volume-pcba-assembly' },
+      { label: 'Compare China PCB assembly quote scope', href: '/china-pcb-assembly' },
+      { label: 'Upload prototype files for engineering review', href: '/contact#project-files' },
+    ],
     relatedLinks: [
       { label: 'BOM sourcing risk review', href: '/bom-sourcing-pcb-assembly' },
       { label: 'Low-volume PCBA assembly', href: '/low-volume-pcba-assembly' },
       { label: 'Turnkey PCBA service in China', href: '/turnkey-pcb-assembly' },
+      { label: 'China PCB assembly quote review', href: '/china-pcb-assembly' },
       { label: 'Upload prototype files for review', href: '/contact#project-files' },
     ],
     ctaHeading: 'Upload Prototype Files for Review',
     ctaBody: 'Send Gerber, BOM, CPL/pick-and-place data, drawings, quantity, sample photos, revision notes, and testing requirements. We will review prototype PCBA scope, BOM sourcing risk, assembly details, and testing needs before quotation.',
     primaryCtaLabel: 'Upload Prototype Files for Review',
     faq: [
+      {
+        question: 'What quantity is suitable for prototype PCB assembly?',
+        answer: 'Prototype PCB assembly is usually used for small quantities that help validate design, BOM, assembly notes, and test requirements before a low-volume build. Huitai can review the target quantity with the project files before quotation.',
+      },
+      {
+        question: 'Can you quote from Gerber and BOM only?',
+        answer: 'Gerber and BOM files can start the review. CPL or pick-and-place data, drawings, sample photos, quantity, revision notes, and testing requirements help make the quote and build scope clearer.',
+      },
       {
         question: 'Can incomplete files be reviewed?',
         answer: 'Yes. Send the available Gerber, BOM, drawings, photos, revision notes, or project description. Huitai can identify missing items before quotation or build planning.',
@@ -282,6 +339,10 @@ export const seoPages: Record<string, SeoLandingPage> = {
         answer: 'Yes. Send the latest revision package and mark the changes from the previous version. Revision notes help keep the BOM, CPL, drawings, and quote assumptions aligned.',
       },
       {
+        question: 'Can you review a sample board before production?',
+        answer: 'Yes. Sample board photos or a physical reference can help clarify orientation, connectors, workmanship expectations, or testing points, but production still needs controlled Gerber, BOM, and assembly data.',
+      },
+      {
         question: 'What testing support can be discussed before low-volume production?',
         answer: 'Testing support can be discussed when you provide instructions, firmware, fixtures, or acceptance criteria. Prototype feedback can then refine inspection points, test scope, and BOM decisions for low-volume PCBA.',
       },
@@ -296,7 +357,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     primaryKeyword: 'Turnkey PCB Assembly Service in China',
     serviceName: 'Turnkey PCB Assembly Service in China',
     serviceType: 'Turnkey PCB assembly service',
-    quickAnswer: 'Turnkey PCB assembly means one PCBA supplier coordinates PCB fabrication, BOM/component sourcing, SMT assembly, DIP assembly, inspection/testing support, packaging, and delivery. Huitai reviews files and quote factors before production so sourcing assumptions, alternatives, testing scope, and delivery requirements are clear.',
+    quickAnswer: 'Turnkey PCB assembly means one supplier manages PCB fabrication, component sourcing, SMT/DIP assembly, inspection, functional testing support, packaging, and delivery. Huitai reviews Gerber, BOM, pick-and-place data, drawings, quantity, sourcing risk, DFM/DFA questions, and test requirements before production so engineers and hardware startups avoid fragmented supplier communication.',
     intro: 'Upload Gerber and BOM for engineering review before quotation. Huitai coordinates one-stop turnkey PCBA in China, including PCB fabrication, BOM/component sourcing, SMT/DIP assembly, inspection/testing support, packaging, and delivery for prototype and low-volume projects.',
     sections: [
       {
@@ -325,13 +386,32 @@ export const seoPages: Record<string, SeoLandingPage> = {
       },
     ],
     bullets: ['PCB fabrication coordination', 'BOM/component sourcing and purchasing review', 'SMT assembly and optional DIP assembly', 'Inspection/testing support based on confirmed requirements', 'Finished PCBA packaging and delivery preparation'],
+    whoThisIsFor: [
+      'Engineers and hardware startups that want one supplier to manage PCB, components, assembly, testing, and delivery',
+      'Overseas teams that want fewer handoffs between separate PCB, sourcing, and SMT suppliers',
+      'Prototype and low-volume projects that need BOM review, DFM/DFA discussion, and testing scope confirmed early',
+      'Industrial electronics projects where purchasing and engineering decisions need a clear approval path',
+    ],
+    productionChecks: [
+      'PCB fabrication specifications, Gerber readiness, stack-up notes, and drill data',
+      'BOM availability, lifecycle risk, package compatibility, and customer-approved alternatives',
+      'DFM/DFA questions, SMT/DIP process needs, polarity, orientation, and special handling',
+      'AOI, visual inspection, functional test method, packaging requirements, and delivery scope',
+    ],
     workflow: ['Upload Gerber, BOM, quantity, and testing requirements', 'Review files, quote factors, BOM risks, and missing information', 'Confirm PCB fabrication, sourcing, alternatives, SMT/DIP assembly, and testing scope', 'Purchase approved components and coordinate assembly after scope confirmation', 'Inspect, test by agreed scope, package, and prepare delivery'],
     filesNeeded: commonFiles,
+    answerLinks: [
+      { label: 'Review BOM sourcing risk before purchasing', href: '/bom-sourcing-pcb-assembly' },
+      { label: 'Prepare prototype PCB assembly files', href: '/prototype-pcb-assembly' },
+      { label: 'Discuss PCBA inspection and testing scope', href: '/quality' },
+      { label: 'Upload Gerber and BOM for engineering review', href: '/contact#project-files' },
+    ],
     relatedLinks: [
       { label: 'BOM sourcing and PCB assembly', href: '/bom-sourcing-pcb-assembly' },
       { label: 'China PCB assembly quote review', href: '/china-pcb-assembly' },
       { label: 'Prototype PCB assembly review', href: '/prototype-pcb-assembly' },
       { label: 'Low-volume PCBA assembly', href: '/low-volume-pcba-assembly' },
+      { label: 'PCBA inspection and testing process', href: '/quality' },
       { label: 'Upload Gerber and BOM for engineering review', href: '/contact#project-files' },
     ],
     ctaHeading: 'Upload Gerber & BOM for Engineering Review',
@@ -347,8 +427,20 @@ export const seoPages: Record<string, SeoLandingPage> = {
         answer: 'Gerber and drill files, BOM, quantity, CPL or pick-and-place data, drawings, sample photos, testing notes, firmware, fixtures, or acceptance criteria help define the review and quotation scope.',
       },
       {
+        question: 'Can Huitai help source components?',
+        answer: 'Yes. Component sourcing can be included in the turnkey PCBA scope. Huitai reviews BOM clarity, availability, lifecycle risk, and possible alternatives before customer-approved purchasing.',
+      },
+      {
+        question: 'How do you check BOM risk before assembly?',
+        answer: 'The BOM is reviewed for missing MPNs, obsolete or unavailable parts, long-lead items, package compatibility, no-substitute notes, and alternatives that need customer approval before purchasing.',
+      },
+      {
         question: 'Can an incomplete BOM be reviewed, and how are alternatives approved?',
         answer: 'Yes. Huitai can review missing MPNs, obsolete or unavailable parts, unclear packages, and possible alternatives. Alternatives are discussed with the customer and approved before purchasing or assembly.',
+      },
+      {
+        question: 'Is turnkey PCBA better than using separate PCB and SMT suppliers?',
+        answer: 'For many overseas projects, turnkey PCBA reduces communication risk because PCB fabrication, sourcing, assembly, inspection, testing scope, packaging, and delivery are reviewed as one connected workflow.',
       },
       {
         question: 'Can prototype and low-volume projects be reviewed?',
@@ -401,17 +493,17 @@ export const seoPages: Record<string, SeoLandingPage> = {
     slug: 'low-volume-pcba-assembly',
     title: 'Low-Volume PCBA Assembly in China',
     seoTitle: 'Low-Volume PCBA Assembly in China | Prototype to Small Batch Builds',
-    metaDescription: 'For 5-500 pcs PCBA projects, Huitai reviews Gerber, BOM, quantity, testing needs, and sourcing risks before quotation. Suitable for prototype and small-batch turnkey PCBA.',
+    metaDescription: 'For 5 to 1,000 pcs type PCBA projects, Huitai reviews Gerber, BOM, quantity, testing needs, and sourcing risks before prototype-to-low-volume production.',
     eyebrow: 'LOW-VOLUME PCBA',
     primaryKeyword: 'Low-Volume PCBA Assembly in China',
     serviceName: 'Low-Volume PCBA Assembly in China',
     serviceType: 'Low-volume PCBA assembly service',
-    quickAnswer: 'Low-volume PCBA assembly is used for validation, trial production, and small batch builds before larger production. Huitai helps review files, check BOM availability, coordinate assembly, and plan testing without promising fixed lead time for every project.',
-    intro: 'For 5-500 pcs PCBA projects, send Gerber, BOM, quantity, testing needs, and sourcing notes for engineering review before quotation. Huitai supports prototype-to-small-batch turnkey PCBA in China.',
+    quickAnswer: 'Low-volume PCBA assembly is used after prototype validation for small batch projects such as 50, 100, 500, or 1,000 pcs, while very small 5 pcs builds can also be reviewed when suitable. Huitai supports sourcing, SMT/DIP assembly, inspection, functional testing support, packaging, and delivery for industrial electronics, IoT, test equipment, and custom hardware.',
+    intro: 'For 5 to 1,000 pcs type PCBA projects, send Gerber, BOM, quantity, testing needs, and sourcing notes for engineering review before quotation. Huitai supports prototype-to-small-batch turnkey PCBA in China.',
     sections: [
       {
         heading: 'What Low-Volume PCBA Is Suitable For',
-        body: 'Low-volume PCBA is useful for 5, 10, 50, 100, or 500 pcs pilot runs, engineering validation, market testing, pre-production builds, and small industrial product batches where process control and sourcing clarity matter.',
+        body: 'Low-volume PCBA is useful for 5, 10, 50, 100, 500, or 1,000 pcs pilot runs, engineering validation, market testing, pre-production builds, and small industrial product batches where process control and sourcing clarity matter.',
       },
       {
         heading: 'Common Cost Factors',
@@ -423,14 +515,31 @@ export const seoPages: Record<string, SeoLandingPage> = {
       },
     ],
     bullets: ['Prototype-to-small-batch transition', 'BOM sourcing and alternatives review', 'SMT assembly and optional DIP assembly', 'Testing requirements planning', 'Lead time and shipment coordination'],
+    whoThisIsFor: [
+      'Industrial electronics, IoT, test equipment, and custom hardware teams moving beyond prototype',
+      'Projects that need 50, 100, 500, or 1,000 pcs type production after validation',
+      'Buyers that want the same PCBA supplier to coordinate sourcing, assembly, testing support, packaging, and delivery',
+      'Teams that need BOM risk and process stability reviewed before small batch production',
+    ],
+    productionChecks: [
+      'Prototype feedback, latest revision files, quantity target, and production purpose',
+      'BOM availability, approved alternatives, long-lead parts, and package compatibility',
+      'SMT/DIP setup, stencil needs, first-article review points, and inspection plan',
+      'Functional test requirements, packaging method, delivery scope, and change-control notes',
+    ],
     workflow: ['Review quantity and production purpose', 'Check BOM risks and alternative options', 'Coordinate assembly route and inspection plan', 'Confirm testing and delivery requirements'],
     filesNeeded: commonFiles,
+    answerLinks: [
+      { label: 'Validate files with prototype PCB assembly first', href: '/prototype-pcb-assembly' },
+      { label: 'Review PCBA inspection and testing scope', href: '/quality' },
+      { label: 'Send low-volume PCBA files for review', href: '/contact#project-files' },
+    ],
     relatedLinks: [
-      { label: 'Turnkey PCBA manufacturing', href: '/turnkey-pcb-assembly' },
       { label: 'Prototype PCB assembly service', href: '/prototype-pcb-assembly' },
+      { label: 'PCBA inspection and testing process', href: '/quality' },
       { label: 'Prototype vs batch PCB assembly', href: '/knowledge/prototype-vs-batch-pcb-assembly' },
       { label: 'Is there a minimum order quantity?', href: '/knowledge/pcb-assembly-minimum-order-quantity' },
-      { label: 'China PCBA supplier comparison guide', href: '/knowledge/top-low-volume-turnkey-pcba-suppliers-china' },
+      { label: 'Turnkey PCBA manufacturing', href: '/turnkey-pcb-assembly' },
       { label: 'JLCPCB alternatives for turnkey PCBA', href: '/knowledge/jlcpcb-alternatives-turnkey-pcba' },
       { label: 'Custom keyboard PCB assembly', href: '/knowledge/keyboard-pcb-assembly-china' },
       { label: 'Request a low-volume PCBA review', href: '/contact#project-files' },
@@ -441,23 +550,23 @@ export const seoPages: Record<string, SeoLandingPage> = {
     faq: [
       {
         question: 'What is considered low-volume PCBA assembly?',
-        answer: 'Low-volume PCBA usually refers to small production runs such as 5, 10, 50, 100, or 500 pcs used for validation, trial production, or early batch supply before scaling.',
+        answer: 'Low-volume PCBA usually refers to small production runs such as 50, 100, 500, or 1,000 pcs after prototype validation. Very small 5 or 10 pcs builds can also be reviewed when the project fits a turnkey PCBA workflow.',
       },
       {
-        question: 'Can you support 5, 10, 50, 100, or 500 pcs?',
-        answer: 'Yes. Huitai can review prototype and low-volume PCBA assembly projects in this range. The quote depends on Gerber readiness, BOM availability, assembly complexity, and testing requirements.',
+        question: 'When should a project move from prototype to low-volume production?',
+        answer: 'A project is usually ready to move when the prototype revision is stable, BOM choices are approved, assembly notes are clear, and the inspection or functional test method is defined for the small batch.',
       },
       {
-        question: 'Is low-volume PCBA always cheaper?',
-        answer: 'Not always. Setup, sourcing, stencil, inspection, and testing costs can have a larger impact on small quantities, so we review the full project before quotation.',
+        question: 'Can the same supplier handle prototype and low-volume production?',
+        answer: 'Yes. Keeping prototype and low-volume PCBA with the same turnkey supplier can preserve file history, BOM decisions, assembly notes, inspection points, and test scope across revisions.',
+      },
+      {
+        question: 'How do you reduce risk before small batch production?',
+        answer: 'Risk is reduced by reviewing the latest Gerber and BOM, confirming approved alternatives, checking assembly notes, defining inspection and test scope, and clarifying packaging and delivery requirements before production.',
       },
       {
         question: 'What files should I prepare for a small-batch PCBA quote?',
         answer: 'Please send Gerber files, BOM, quantity target, drawings, pick-and-place data if available, testing notes, and any no-substitute component requirements.',
-      },
-      {
-        question: 'Why is my per-board price higher at low volume?',
-        answer: 'Fixed costs such as SMT setup and programming, stencil, first-article checks, and any test fixture are shared across fewer boards, so each unit carries more of them. Component minimum order quantities can add to this. A clean BOM with approved alternates and a sensible test scope help keep the per-board price reasonable.',
       },
       {
         question: 'Can you help with component alternatives?',
@@ -478,7 +587,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     primaryKeyword: 'BOM Sourcing for PCB Assembly',
     serviceName: 'BOM Sourcing Review for PCB Assembly',
     serviceType: 'BOM sourcing and PCBA assembly service',
-    quickAnswer: 'BOM sourcing for PCB assembly means reviewing whether the component list is clear, available, compatible with the PCB files, and ready for customer-approved purchasing as part of a turnkey PCBA project. Huitai reviews BOM completeness, MPN clarity, obsolete or unavailable parts, package compatibility, sourcing alternatives, and Gerber/BOM fit before quotation and purchasing.',
+    quickAnswer: 'BOM sourcing for PCB assembly means checking whether each component is clear, available, compatible with the PCB footprint, and suitable for customer-approved purchasing before SMT starts. Huitai reviews obsolete, hard-to-find, long-lead-time, package-risk, and lifecycle issues, then discusses alternatives without replacing any part before customer confirmation.',
     intro: 'Send your BOM for sourcing risk review before PCB assembly quotation. Huitai checks BOM completeness, MPN clarity, obsolete or unavailable parts, package compatibility, sourcing alternatives, and customer approval requirements together with Gerber and assembly files when available.',
     sections: [
       {
@@ -503,8 +612,24 @@ export const seoPages: Record<string, SeoLandingPage> = {
       },
     ],
     bullets: ['BOM completeness and MPN clarity review', 'Obsolete, unavailable, and shortage risk checks', 'Package compatibility checked against Gerber/CPL when available', 'Customer approval before alternatives or purchasing', 'Sourcing plan connected with turnkey PCB assembly scope'],
+    whoThisIsFor: [
+      'PCBA projects where the BOM has obsolete, hard-to-find, long-lead-time, or single-source parts',
+      'Engineers that need MPN, package, footprint, lifecycle, and availability reviewed before SMT assembly',
+      'Overseas buyers that want BOM sourcing handled as part of turnkey PCB assembly, not standalone component distribution',
+      'Teams that need alternative parts discussed and approved before purchasing',
+    ],
+    productionChecks: [
+      'MPN clarity, designators, quantities, package, value, and no-substitute notes',
+      'Lifecycle status, availability, long-lead-time risk, obsolete items, and sourcing stability',
+      'Package and footprint compatibility against Gerber, CPL, and assembly drawings when available',
+      'Customer approval status for alternatives before purchasing or SMT assembly',
+    ],
     workflow: ['BOM received with MPNs, designators, quantities, packages, and notes', 'Missing MPNs, obsolete parts, unavailable items, and package risks are flagged', 'Gerber, CPL, drawings, quantity, and testing notes are reviewed together when available', 'Alternatives are discussed and approved by the customer before purchasing', 'Sourcing scope is confirmed as part of the PCB assembly quotation'],
     filesNeeded: commonFiles,
+    answerLinks: [
+      { label: 'Connect sourcing review with turnkey PCBA', href: '/turnkey-pcb-assembly' },
+      { label: 'Send BOM and Gerber files for review', href: '/contact#project-files' },
+    ],
     ctaHeading: 'Send Your BOM for Sourcing Risk Review',
     ctaBody: 'Send your BOM with MPNs, quantities, designators, packages, approved alternates, and no-substitute notes. If Gerber, CPL, drawings, or testing notes are ready, include them too so sourcing risk and assembly scope can be reviewed together before quotation.',
     primaryCtaLabel: 'Send Your BOM for Sourcing Risk Review',
@@ -516,6 +641,10 @@ export const seoPages: Record<string, SeoLandingPage> = {
       { label: 'Send your BOM for sourcing risk review', href: '/contact#project-files' },
     ],
     faq: [
+      {
+        question: 'Can you help source components for PCBA?',
+        answer: 'Yes. Huitai can review and source components as part of a turnkey PCBA project, including PCB fabrication, BOM sourcing, SMT/DIP assembly, inspection/testing support, packaging, and delivery.',
+      },
       {
         question: 'What if MPNs are missing?',
         answer: 'A BOM with missing MPNs can still be reviewed. Huitai will flag unclear lines, package questions, and parts that need customer confirmation before quotation or purchasing.',
@@ -536,13 +665,17 @@ export const seoPages: Record<string, SeoLandingPage> = {
         question: 'When are parts purchased?',
         answer: 'Parts are purchased after the sourcing plan, customer-approved alternatives, quantity, assembly scope, and quote assumptions are confirmed. Huitai keeps this service tied to the PCBA build, not a separate components-only order.',
       },
+      {
+        question: 'How does BOM sourcing affect PCB assembly lead time?',
+        answer: 'BOM sourcing can affect timing when parts are obsolete, long-lead, single-source, or missing clear MPNs. Reviewing those risks before SMT assembly helps clarify what can be purchased now and what needs customer approval.',
+      },
     ],
   },
   'pcba-testing-quality-control': {
     slug: 'pcba-testing-quality-control',
     title: 'PCBA Testing and Quality Control',
     seoTitle: 'PCBA Testing and Quality Control | Huitai Electronics',
-    metaDescription: 'PCBA testing and quality control — visual inspection, AOI, functional testing to your spec, fixtures, and pre-shipment checks with documentation. Catch issues before shipping. Reply in 24h.',
+    metaDescription: 'PCBA testing and quality control: visual inspection, AOI, functional testing to your spec, fixture discussion, and pre-shipment checks with documentation by agreed scope.',
     eyebrow: 'PCBA TESTING + QC',
     primaryKeyword: 'PCBA Testing and Quality Control',
     serviceName: 'PCBA Testing and Quality Control',
