@@ -15,24 +15,50 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     slug: 'what-files-required-pcba-quote',
     category: 'Getting Started',
     categoryColor: 'bg-cc-copper/15 text-cc-ink border-cc-copper/30',
-    title: 'What files are required for a PCBA quote?',
-    excerpt: 'A practical checklist for Gerber files, BOM lists, assembly drawings, sample photos, and testing requirements.',
+    title: 'What Files Are Needed for a Turnkey PCBA Quote?',
+    excerpt: 'A practical file checklist for a turnkey PCBA quote covering PCB fabrication, sourcing, assembly, testing, and delivery scope.',
     image: '/factory/flow-01.png',
-    readTime: '5 min read',
-    metaDescription: 'Learn which files are required for an accurate PCBA quote, including Gerber files, BOM lists, drawings, sample photos, and testing requirements.',
+    readTime: '7 min read',
+    metaDescription: 'Prepare Gerber, BOM, placement data, drawings, quantity, and test requirements for a turnkey PCBA quote.',
     sections: [
       {
-        heading: 'Core files for quotation',
+        heading: 'Quick answer',
         body: [
-          'Gerber files, drill files, a BOM list, PCB specifications, and assembly drawings are the most useful starting point for a PCB assembly quote.',
-          'If you already have sample boards or product photos, include those as references. They help engineers understand connector orientation, mechanical constraints, and final assembly needs.',
+          'For a turnkey PCBA quote, send the files that define PCB fabrication, component sourcing, SMT/DIP assembly, testing, and delivery scope. The most useful package includes Gerber and drill files, a BOM with manufacturer part numbers, pick-and-place data, assembly drawings, PCB specifications, quantity, and any functional test or packaging requirements.',
         ],
       },
       {
-        heading: 'Helpful optional information',
+        heading: 'Core files for a turnkey PCBA quote',
         body: [
-          'Quantity, target lead time, testing requirements, firmware flashing needs, packaging requirements, and preferred component brands can all improve quotation accuracy.',
-          'If some files are missing, send what you have. An engineering review can identify what is still needed before final pricing.',
+          '| File or information | What it tells the supplier | Why it matters |\n| --- | --- | --- |\n| Gerber and drill files | PCB layers, copper, solder mask, silkscreen, drill data | Defines the PCB fabrication scope |\n| BOM | Component part numbers, quantities, values, designators | Drives component sourcing and BOM risk review |\n| Pick-and-place / CPL file | Component coordinates, side, and rotation | Helps prepare SMT machine programming |\n| Assembly drawing | Polarity, connector orientation, mechanical notes | Reduces ambiguity before assembly |\n| PCB specifications | Thickness, copper weight, finish, color, stack-up notes | Confirms fabrication requirements |\n| Quantity and delivery needs | Prototype, pilot, or low-volume build quantity | Affects setup cost, purchasing, and planning |\n| Test requirements | Functional test method, fixture, firmware, acceptance criteria | Defines the agreed inspection and testing scope |',
+          'If the project is a [turnkey PCB assembly](/turnkey-pcb-assembly) build, these files should be reviewed together. A board can look simple in Gerber data but still carry BOM sourcing risk, polarity ambiguity, or testing requirements that affect the quote.',
+        ],
+      },
+      {
+        heading: 'Gerber, BOM, and placement data work together',
+        body: [
+          'Gerber files define the bare PCB. The BOM defines what must be purchased and mounted. Pick-and-place data tells the assembly team where each SMT component goes and how it should be rotated. When one of these files is missing or inconsistent, the quote may still start, but the supplier has to ask more questions before confirming price and production scope.',
+          'For overseas buyers comparing a [China PCB assembly](/china-pcb-assembly) quote, complete files also make supplier responses easier to compare. You can see whether each supplier is quoting the same PCB specification, sourcing scope, assembly work, and test requirements.',
+        ],
+      },
+      {
+        heading: 'What if files are incomplete?',
+        body: [
+          'Incomplete files can still be reviewed first. Send the Gerber, BOM, board photos, sample board information, or notes you already have, and the engineering review can identify what is missing before a firm quote is prepared.',
+          'The difference is quote accuracy. A preliminary quote based on partial data may change after final BOM, placement, drawing, or test information arrives. Complete data improves sourcing accuracy, reduces engineering back-and-forth, and helps avoid surprises before SMT assembly.',
+        ],
+      },
+      {
+        heading: 'Optional details that improve quote accuracy',
+        body: [
+          'Include any preferred component brands, approved alternatives, no-substitute parts, firmware flashing needs, fixture information, conformal coating notes, packaging requirements, and shipping preferences if they apply.',
+          'For BOM-driven projects, link your quote request with a [BOM sourcing review](/bom-sourcing-pcb-assembly). The same part list that drives purchasing can also reveal obsolete, unavailable, or long-lead components before quotation is finalized.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### What files are needed for a turnkey PCBA quote?\n\nA useful package includes Gerber and drill files, a BOM with manufacturer part numbers, pick-and-place data, assembly drawings, PCB specifications, quantity, and testing or packaging requirements. These files let the supplier review PCB fabrication, sourcing, assembly, testing, and delivery scope together.\n\n### Can Huitai review incomplete files first?\n\nYes. You can send the files you have, such as Gerber, a partial BOM, photos, or a sample board reference. The first review can identify missing data and open questions before a firm quote is confirmed.\n\n### Why is the BOM important for a PCBA quote?\n\nThe BOM controls component sourcing cost, availability, approved alternatives, and shortage risk. A clear BOM with manufacturer part numbers helps the quote reflect the real parts needed for production.\n\n### Is pick-and-place data required before assembly?\n\nIt is strongly recommended for SMT assembly because it defines component coordinates, side, and rotation. If it is missing, the supplier may need extra engineering clarification before machine programming and production.\n\n### Where should I send Gerber and BOM files?\n\nYou can [send Gerber, BOM, drawings, and test requirements](/contact) for engineering review before quotation.',
         ],
       },
     ],
@@ -93,24 +119,56 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     slug: 'prototype-vs-batch-pcb-assembly',
     category: 'Decision Guide',
     categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
-    title: 'Prototype PCB assembly vs batch PCB assembly',
-    excerpt: 'Understand how prototype and batch PCBA projects differ in review depth, tooling, sourcing, testing, and delivery planning.',
+    title: 'Prototype PCB Assembly vs Low-Volume PCBA Production',
+    excerpt: 'Understand how prototype validation leads into low-volume PCBA production with stable files, BOM sourcing, testing, packaging, and delivery planning.',
     image: '/factory/real-aoi-op.jpg',
-    readTime: '6 min read',
-    metaDescription: 'Compare prototype PCB assembly and batch PCB assembly for engineering validation, low-volume builds, sourcing, testing, and production planning.',
+    readTime: '8 min read',
+    metaDescription: 'Compare prototype PCBA and low-volume production for sourcing, testing, repeatability, packaging, and small-batch planning.',
     sections: [
       {
-        heading: 'Prototype PCB assembly',
+        heading: 'Quick answer',
         body: [
-          'Prototype PCB assembly focuses on engineering validation, early testing, and fast feedback. Quantities are usually small, and engineers expect design changes after testing.',
-          'The quote should make clear which processes are prototype-friendly and which tests or fixtures are needed before scaling.',
+          'Prototype PCB assembly is used to validate the design, BOM, assembly process, and test method before a project moves into low-volume PCBA production. Low-volume builds usually need more stable PCB files, a confirmed BOM, repeatable assembly notes, agreed inspection and functional testing, and packaging or delivery planning for small batches such as 50, 100, 500, or 1000 pieces.',
         ],
       },
       {
-        heading: 'Batch PCB assembly',
+        heading: 'Prototype PCB assembly',
         body: [
-          'Batch assembly focuses on repeatability, yield, component availability, process documentation, packaging, and delivery planning.',
-          'Before moving to batch production, confirm the BOM, test plan, inspection standard, and any approved substitutions.',
+          '[Prototype PCB assembly](/prototype-pcb-assembly) focuses on early validation. Quantities are usually small, sometimes starting from only a few boards, and engineers expect revisions after testing.',
+          'The prototype stage checks whether the PCB files, BOM, footprint choices, polarity notes, and test approach are practical before money is spent on larger batches. It is also where DFM/DFA questions and BOM availability issues should be found.',
+        ],
+      },
+      {
+        heading: 'From prototype PCBA to low-volume production',
+        body: [
+          'A project should move from prototype to [low-volume PCBA assembly](/low-volume-pcba-assembly) after the board function is validated, the BOM is stable, critical components are available, and the test method is clear. Typical small-batch projects may be 50, 100, 500, or 1000 pieces depending on the product and demand plan.',
+          'Low-volume production is not just a larger prototype order. It needs repeatable sourcing, SMT/DIP assembly instructions, AOI or visual inspection, functional test scope where required, packaging, and delivery details that can be repeated across batches.',
+        ],
+      },
+      {
+        heading: 'Prototype stage vs low-volume stage',
+        body: [
+          '| Area | Prototype stage | Low-volume stage |\n| --- | --- | --- |\n| Main goal | Validate design and assembly feasibility | Build repeatable small batches after validation |\n| Quantity | Small engineering samples | Commonly 50, 100, 500, or 1000 pcs type projects |\n| BOM | May still change after testing | Should be stable, with approved alternatives if needed |\n| PCB files | May require revision after feedback | Should be verified and controlled by revision |\n| Assembly focus | Find polarity, footprint, and DFM/DFA issues | Repeatable SMT/DIP process and yield control |\n| Testing | Confirm the test method and acceptance criteria | Apply agreed AOI, visual inspection, or functional test scope |\n| Delivery | Engineering samples | Packed boards for pilot, field trial, or small-batch use |',
+        ],
+      },
+      {
+        heading: 'What should be stable before small batch PCBA?',
+        body: [
+          'Before ordering a small batch, confirm the production Gerber files, drill data, BOM, pick-and-place file, assembly drawing, revision number, and any customer-approved component alternatives. A stable BOM is especially important because a last-minute part change can affect footprint, firmware behavior, testing, or cost.',
+          'The same supplier can often carry context from prototype into low-volume production. That reduces repeated file review, keeps sourcing decisions visible, and helps the test scope remain consistent from the first samples to the next batch.',
+        ],
+      },
+      {
+        heading: 'Inspection, testing, packaging, and delivery',
+        body: [
+          'Prototype boards may receive focused engineering checks, while low-volume production should define a repeatable inspection and testing plan. That can include AOI, visual inspection, basic power checks, or functional testing when the customer provides the method, firmware, fixture, or acceptance criteria.',
+          'Packaging and delivery also matter more after prototype validation. Boards for industrial electronics, IoT devices, test equipment, and custom hardware should be packed and labeled so the receiving team can identify revision, quantity, and handling requirements. See our [quality and testing process](/quality) for the inspection scope that can be discussed before production.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### When should a project move from prototype to low-volume production?\n\nMove after the prototype validates the electrical function, assembly feasibility, BOM availability, PCB revision, and test method. If the design or BOM is still changing, another prototype review may be safer before small-batch production.\n\n### Can the same supplier handle prototype and low-volume PCBA?\n\nYes. Using the same turnkey PCBA supplier can preserve file history, BOM decisions, approved alternatives, inspection notes, and test requirements from the prototype stage into the next batch.\n\n### What files are needed before small batch PCBA?\n\nSend production Gerber and drill files, BOM with manufacturer part numbers, pick-and-place data, assembly drawing, quantity, revision notes, and test or packaging requirements.\n\n### How can buyers reduce risk before low-volume production?\n\nValidate the prototype first, freeze the BOM where possible, approve alternatives for risky parts, confirm the test method, and agree on packaging and delivery requirements before production starts.\n\n### Why does a stable BOM matter before small batch assembly?\n\nA BOM change can affect cost, availability, footprint compatibility, firmware behavior, and testing. Stable BOM data helps sourcing, SMT preparation, inspection, and repeat production stay aligned.',
         ],
       },
     ],
@@ -752,70 +810,227 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     slug: 'bom-risk-alternative-component-sourcing',
     category: 'Sourcing',
     categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
-    title: 'BOM Risk & Alternative Component Sourcing for Low-Volume PCBA',
+    title: 'BOM Risk and Alternative Component Sourcing for PCBA',
     excerpt:
-      'Component supply in 2026 is selectively tight, not universally short. Here are the five BOM risks to check before you build, how alternative sourcing actually works (and its limits), and how to prepare a BOM that survives shortages.',
+      'How BOM sourcing affects PCB assembly cost and lead time, including obsolete parts, long-lead components, package matching, lifecycle checks, and customer-approved alternatives.',
     image: '/factory/bom-risk-sourcing.jpg',
     readTime: '8 min read',
     metaDescription:
-      'How to manage BOM risk and alternative component sourcing for low-volume PCBA in 2026 — what component shortage really means now, the 5 risks to check (EOL, single-source, MOQ, long lead time, authenticity), and how to prepare a shortage-resistant BOM.',
+      'Learn how BOM sourcing affects PCBA cost, lead time, alternatives, lifecycle review, and customer approval before assembly.',
     sections: [
       {
         heading: 'Quick answer',
         body: [
-          'For a low-volume PCBA project, BOM risk — not assembly itself — is usually what blows up the budget and the schedule. The good news is that component supply in 2026 is selectively tight, not universally short: most standard passives and common parts are readily available, while specific lines (some high-capacitance / large-case MLCCs and certain MCU and memory families, partly squeezed by AI-server demand) have seen longer lead times and tighter allocation. The practical answer is not to panic-buy everything — it is to review the BOM line by line before you build, identify the few parts that actually carry risk, line up approved alternates for them, and lock long-lead parts early.',
-          'Disclosure: this guide is published by Huitai Electronics, which does BOM sourcing as part of turnkey PCBA. The sourcing approach below is what we actually do; the supply commentary is kept general because specifics change by part, manufacturer, and date.',
+          'BOM sourcing affects PCB assembly cost and lead time because every component must be available, correctly packaged, footprint-compatible, and approved before SMT assembly can start. Obsolete parts, long-lead items, unclear MPNs, or unapproved alternatives can delay purchasing and change the final quote. A line-by-line BOM review before assembly reduces that risk.',
         ],
       },
       {
-        heading: 'What "component shortage" actually means in 2026',
+        heading: 'What BOM sourcing checks before PCBA',
         body: [
-          'It is easy to read headlines and assume everything is short. In practice the tightness is concentrated, not across the board. Through mid-2026, industry reporting points to extended lead times on particular high-capacitance and large-case MLCCs, plus select MCU and memory lines — driven partly by AI-server and data-center demand pulling capacity — while standard 0402/0603 passives and many jellybean parts remain broadly available.',
-          'The specifics (which exact series, how many weeks) vary by manufacturer, package, and the week you ask, and they go stale quickly. That is exactly why a BOM should be checked line by line against current availability rather than assumed from a general "there is a shortage" headline. The risk lives in a handful of lines, not the whole list.',
+          'A practical [BOM sourcing for PCB assembly](/bom-sourcing-pcb-assembly) review checks manufacturer part numbers, quantities, reference designators, package information, lifecycle status, stock availability, lead time, and whether the selected parts match the PCB footprint.',
+          'The review should happen before SMT assembly, not after the boards are fabricated. If a critical part is unavailable or the package does not match the footprint, the project may need an approved alternative, a layout change, or a revised purchasing plan.',
         ],
       },
       {
-        heading: 'The 5 BOM risks to check before you build',
+        heading: 'How BOM sourcing affects cost and lead time',
         body: [
-          '**1. Long lead time.** A single part on a multi-week or multi-month lead time can gate your whole build. These need to be identified and ordered first, not discovered at kitting.',
-          '**2. End-of-life / obsolescence.** A part may still appear in catalogs but be marked NRND (not recommended for new designs) or EOL. Designing it in now means a redesign later — better to flag and substitute early.',
-          '**3. Single-source parts.** If only one manufacturer makes a critical part and you have no approved alternate, one allocation event holds your build hostage. Single-sourcing a cheap part is a surprisingly common way to stall a project.',
-          '**4. Minimum order quantity (MOQ).** Many components are sold in reels of thousands. On a low-volume build you may pay toward a full reel for a handful of boards, which changes cost more than the unit price suggests. See [why per-board price is higher at low volume](/low-volume-pcba-assembly).',
-          '**5. Authenticity / counterfeit risk.** When a part is scarce, the grey market fills the gap — and that is where counterfeits appear. Parts should come from the manufacturer or authorized channels, not whoever has stock at any price.',
+          '| BOM issue | Cost impact | Lead-time impact | What to confirm |\n| --- | --- | --- | --- |\n| Obsolete or NRND part | Redesign or alternative sourcing cost | Delay while a replacement is reviewed | Lifecycle status and customer approval |\n| Long-lead component | Higher purchasing cost or early buy requirement | Can gate the whole build | Availability before quotation |\n| Missing MPN | More engineering and sourcing time | Slower quote and purchasing | Exact manufacturer part number |\n| Package mismatch | Rework, scrap, or PCB revision risk | Delay before SMT preparation | Package, footprint, and land pattern |\n| Single-source part | Less price flexibility | Schedule depends on one supply path | Approved alternatives if possible |',
+          'Authorized distributors, direct manufacturer channels, spot-market availability, and alternative parts can have different prices and risk levels. A low quote based on uncertain stock is not useful if the part disappears before purchasing. For [turnkey PCBA](/turnkey-pcb-assembly), cost and schedule should be based on parts that can actually be purchased for the project.',
         ],
       },
       {
-        heading: 'How alternative sourcing works — and its limits',
+        heading: 'Obsolete, long-lead, and unavailable parts',
         body: [
-          'Alternative sourcing means having a backup part that does the same job when the first choice is short, obsolete, or over-priced. For jellybean components — common resistors, capacitors, and standard regulators — a manufacturer can usually propose an equivalent quickly, and it is worth authorizing that in advance so a $0.02 part never stalls a build.',
-          'The limit is important and we are strict about it: substitutes are proposed, never silently swapped. Any part with a functional, tolerance, footprint, thermal, or compliance implication — and anything you have marked no-substitute — is confirmed with you before purchase. An "equivalent" that is not truly equivalent is worse than a delay. This is why a clean BOM with approved alternates already listed speeds everything up.',
+          'Obsolete or unavailable parts are not just purchasing problems. They can affect schematic function, firmware behavior, thermal performance, safety margins, connector fit, or enclosure compatibility. Even a passive component can matter if tolerance, voltage rating, or package size changes.',
+          'Long-lead parts should be identified early so the buyer can decide whether to wait, approve an alternative, adjust the design, or split prototype and low-volume production planning. This is especially important for [low-volume PCBA assembly](/low-volume-pcba-assembly), where setup cost and component minimums can weigh heavily on each board.',
         ],
       },
       {
-        heading: 'What this looks like on the sourcing desk',
+        heading: 'Alternative components require customer approval',
         body: [
-          'In practice, BOM risk work happens before a quote is finalized, not during production. Each line is checked for current availability and lifecycle status, the few risky parts are flagged, long-lead items are surfaced so they can be ordered early, and where a part is short or single-source we propose customer-approved alternates rather than guessing.',
-          'This is also the most current, first-hand part of sourcing: which specific parts are tight this month, and what is actually substituting well, is something a sourcing team sees in live quotes — not something a generic article can keep up to date. It is the reason we review the BOM before quoting instead of returning an instant number. See [BOM sourcing for PCB assembly](/bom-sourcing-pcb-assembly) and [why instant online quotes are often wrong](/knowledge/china-pcb-assembly-online-quote-accuracy).',
+          'A substitute should never be used silently. Huitai can suggest alternatives when a part is obsolete, out of stock, long-lead, or unusually expensive, but parts are purchased only after the customer confirms the approved option and any related risk.',
+          'For each proposed alternative, the practical review should compare manufacturer part number, package, footprint, electrical rating, tolerance, lifecycle status, and whether the part is functionally suitable for the application. If the part affects firmware, sensing, power, RF, or safety behavior, customer engineering approval is especially important.',
         ],
       },
       {
-        heading: 'How to prepare a BOM that survives shortages',
+        heading: 'What buyers should prepare before BOM sourcing review',
         body: [
-          'You can remove most BOM risk before you ever send an RFQ. Include manufacturer part numbers (not just generic descriptions) for every line, list one or two approved alternates for critical parts, and clearly mark the no-substitute parts so they are never swapped. Note any part you already know is long-lead or single-source.',
-          'Then share your real quantity and timeline. A sourcing team that knows your production window can buy ahead on long-lead parts instead of hitting the problem at kitting. For the full column-by-column format, see [BOM best practices for fast sourcing](/knowledge/bom-best-practices).',
+          '- Manufacturer part number and manufacturer name for each line\n- Reference designators and quantities\n- Package, value, tolerance, voltage, or power rating where relevant\n- Approved alternatives if the design already allows them\n- No-substitute markings for critical parts\n- Target quantity and expected repeat order range\n- Gerber and placement files so package and footprint can be checked together\n- Test requirements that may depend on specific components',
+          'A BOM is strongest when it is reviewed with the PCB files, not separately. Package and footprint checks require both the part list and the board data.',
         ],
       },
       {
         heading: 'FAQ',
         body: [
-          '### Are electronic components still in shortage in 2026?\n\nSelectively, not universally. Most standard passives and common parts are broadly available, while particular lines — some high-capacitance/large-case MLCCs and certain MCU and memory families — have seen longer lead times and tighter allocation, partly from AI-server demand. The specifics change by manufacturer, series, and date, so a BOM should be checked line by line rather than judged from a general headline.\n\n### What is the difference between a shortage and obsolescence?\n\nA shortage is temporary — the part still exists but is hard to get right now. Obsolescence (EOL / NRND) is permanent — the manufacturer is ending or has ended production. A shortage may be solved by waiting or finding stock; obsolescence usually needs a substitute or a redesign, so it is better caught early.\n\n### Can I approve alternative components in advance?\n\nYes, and it helps a lot. Listing one or two approved alternates per critical part, and authorizing equivalents for jellybean components, lets sourcing move immediately when a part is short — without waiting on an email for every line. Parts with functional or compliance implications are still confirmed before purchase.\n\n### How do I reduce BOM risk on a low-volume build?\n\nUse manufacturer part numbers, list approved alternates, mark no-substitute parts, flag anything you know is long-lead or single-source, and share your real timeline. Most BOM risk can be removed on paper before the first board is built.\n\n### What if a part on my BOM is end-of-life?\n\nIt is flagged during engineering review, and we propose a form-fit-function alternate for your approval, or note where a small design change may be needed. Catching an EOL part before production is far cheaper than discovering it mid-build.',
+          '### Why does BOM sourcing affect PCBA lead time?\n\nPCB assembly cannot start until the required parts are available, approved, and matched to the PCB footprint. One obsolete, long-lead, or unclear BOM line can delay purchasing and SMT preparation.\n\n### What happens if a component is obsolete?\n\nThe part should be flagged before purchasing. The supplier can discuss an approved alternative, a possible design change, or a revised sourcing plan, but the final decision should come from the customer.\n\n### Can Huitai suggest alternative components?\n\nYes. Huitai can suggest alternatives during BOM sourcing review, especially for unavailable, long-lead, or high-risk parts. Alternatives are not purchased or used without customer confirmation.\n\n### Will components be replaced without customer approval?\n\nNo. Substitutions require customer approval because even similar-looking parts can differ in package, electrical rating, tolerance, lifecycle, firmware behavior, or test result.\n\n### How can buyers prepare a better BOM?\n\nUse exact manufacturer part numbers, include package and rating details, mark no-substitute parts, list approved alternatives where possible, and send Gerber or placement files so package compatibility can be checked.',
         ],
       },
       {
         heading: 'Send your BOM for a risk review',
         body: [
-          'The cheapest time to find a sourcing problem is before production — on paper, during engineering review.',
-          '[Send your BOM and Gerber files](/contact) and we will check each line for availability, lifecycle, and sourcing risk, flag the parts that matter, and propose approved alternates — with a clear quote scope back within 24 hours.',
+          'The best time to find a sourcing problem is before production, during engineering review and quotation.',
+          '[Send your BOM and Gerber files](/contact) for sourcing risk review before component purchasing and SMT assembly.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'prototype-pcb-assembly-china-buyer-checklist',
+    category: 'Buyer Guide',
+    categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
+    title: 'Prototype PCB Assembly in China: What Overseas Buyers Should Check',
+    excerpt:
+      'A practical checklist for overseas engineers and hardware teams preparing prototype PCBA in China, from Gerber and BOM review to testing and low-volume planning.',
+    image: '/factory/knowledge-covers/prototype-vs-batch-pcba-cover.webp',
+    readTime: '9 min read',
+    metaDescription:
+      'Checklist for prototype PCB assembly in China: files, BOM risk, DFM/DFA review, testing, and low-volume planning.',
+    sections: [
+      {
+        heading: 'Quick answer',
+        body: [
+          'Before ordering prototype PCB assembly in China, overseas buyers should check whether the supplier can review Gerber, BOM, pick-and-place data, assembly drawings, sample boards, component availability, DFM/DFA risks, and test requirements before production. Prototype PCBA is for early validation, so the goal is to find design, sourcing, and assembly issues before low-volume production.',
+        ],
+      },
+      {
+        heading: 'Who this guide is for',
+        body: [
+          'This guide is for overseas engineers, hardware startups, industrial electronics teams, and purchasing managers preparing a first prototype or a revised board. It is most useful when the project needs [prototype PCB assembly](/prototype-pcb-assembly) with PCB fabrication, component sourcing, SMT/DIP assembly, and basic inspection or functional test support in one workflow.',
+          'Prototype PCBA is not the same as ordering a bare PCB. It combines fabrication data, part sourcing, assembly preparation, inspection, and test planning. That is why early engineering review matters more than a fast-looking upload form.',
+        ],
+      },
+      {
+        heading: 'Files to prepare before requesting a quote',
+        body: [
+          'The best starting package includes Gerber and drill files, BOM, pick-and-place or centroid data, assembly drawing, PCB specifications, target quantity, revision notes, and test requirements. If you have a sample board, photos, enclosure constraints, or known assembly concerns, include them as references.',
+          'A [China PCB assembly](/china-pcb-assembly) supplier should review these files together. Gerber defines the board. BOM defines the parts. Pick-and-place data defines component location and rotation. The assembly drawing clarifies polarity, connector orientation, mechanical notes, and special handling requirements.',
+        ],
+      },
+      {
+        heading: 'Buyer checklist before prototype assembly',
+        body: [
+          '| Check item | Why it matters | What to send |\n| --- | --- | --- |\n| PCB data is production-ready | Avoids fabrication or stencil mistakes | Gerber, drill files, stack-up notes |\n| BOM has clear MPNs | Reduces sourcing delay and wrong-part risk | BOM with manufacturer part numbers |\n| Placement data is available | Helps SMT programming and rotation check | Pick-and-place / centroid file |\n| Polarity is clear | Prevents connector, diode, LED, or IC orientation errors | Assembly drawing and marked notes |\n| Components are available | Avoids quote changes and stalled builds | Approved alternatives or no-substitute notes |\n| Test method is defined | Makes inspection and functional test scope realistic | Firmware, fixture, procedure, acceptance criteria |\n| Revision is controlled | Keeps prototype feedback tied to the right files | Version number and change notes |',
+          'Incomplete files can still be reviewed, but the review should clearly separate a preliminary quote from a firm production scope. Complete files improve quote accuracy and reduce questions before SMT assembly.',
+        ],
+      },
+      {
+        heading: 'DFM/DFA and sample board review',
+        body: [
+          'DFM and DFA review look for practical issues before the build starts: unclear footprints, missing drill data, tight component spacing, insufficient polarity marks, hand-soldered parts that need DIP handling, panelization concerns, or components that may be difficult to source in the required package.',
+          'If a sample board exists, it can help the supplier understand orientation, connector height, mechanical constraints, and expected finished appearance. A sample board does not replace Gerber or BOM data, but it can reveal details that drawings do not show clearly.',
+        ],
+      },
+      {
+        heading: 'Testing and the path to low-volume production',
+        body: [
+          'Prototype testing depends on the information the customer provides. A supplier can discuss visual inspection, AOI, power-on checks, or functional testing when the test method, firmware, fixture, or acceptance criteria are available. The test scope should be agreed before production, not assumed after assembly.',
+          'After the prototype validates design and sourcing decisions, the same project can move toward [low-volume PCBA assembly](/low-volume-pcba-assembly). At that point the BOM should be stable, PCB files should be revision-controlled, component alternatives should be approved where needed, and the inspection or test plan should be repeatable. If you are preparing a prototype package, [send the files for engineering review](/contact) before quotation.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### What should overseas buyers check before ordering prototype PCB assembly in China?\n\nCheck that the supplier can review Gerber, BOM, pick-and-place data, assembly drawings, component availability, DFM/DFA risks, and test requirements before production. The supplier should clarify open questions before SMT assembly starts.\n\n### Can I start with a small quantity?\n\nYes. Prototype PCBA is meant for small engineering builds used for validation. Huitai can review small prototype quantities and then discuss how the project may move into low-volume production later.\n\n### Can Huitai quote from Gerber and BOM only?\n\nGerber and BOM are enough to start an engineering review, but pick-and-place data, assembly drawings, quantity, and test requirements improve quote accuracy. If files are incomplete, the review can identify what is still needed.\n\n### Why is DFM/DFA review important before prototype assembly?\n\nDFM/DFA review helps catch footprint, polarity, spacing, panelization, soldering, and assembly-note issues before boards are built. Finding these issues before production is less risky than discovering them after SMT assembly.\n\n### Can a prototype PCBA project move to low-volume production later?\n\nYes. Prototype feedback can support low-volume production when the PCB revision, BOM, approved alternatives, assembly notes, and test requirements are stable enough for repeatable small-batch builds.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'pcb-assembly-file-preparation-guide',
+    category: 'Getting Started',
+    categoryColor: 'bg-cc-copper/15 text-cc-ink border-cc-copper/30',
+    title: 'Gerber, BOM and Pick-and-Place Files: What a PCBA Supplier Needs',
+    excerpt:
+      'A practical guide to the files a PCBA supplier reviews before quotation and SMT assembly, including Gerber, BOM, placement data, drawings, and test notes.',
+    image: '/factory/knowledge-covers/pcb-assembly-file-preparation-cover.webp',
+    readTime: '7 min read',
+    metaDescription:
+      'Prepare Gerber, BOM, pick-and-place, drawings, and test notes for PCBA supplier review before SMT assembly.',
+    sections: [
+      {
+        heading: 'Quick answer',
+        body: [
+          'A PCBA supplier needs files that define the PCB, the parts, the component positions, assembly notes, and testing scope. Gerber files control PCB fabrication, the BOM controls component sourcing, pick-and-place data controls SMT placement, and assembly drawings clarify polarity, connectors, and special instructions before production.',
+        ],
+      },
+      {
+        heading: 'Core PCBA files at a glance',
+        body: [
+          '| File type | What it controls | Why it matters | Common issue |\n| --- | --- | --- | --- |\n| Gerber and drill files | PCB layers, copper, mask, silkscreen, holes | Defines PCB fabrication | Missing drill or outdated revision |\n| BOM | Components, quantities, MPNs, designators | Drives sourcing and kitting | Generic part descriptions or missing MPNs |\n| Pick-and-place / centroid | Component coordinates, side, rotation | Supports SMT programming | Rotation or side mismatch |\n| Assembly drawing | Polarity, connectors, manual assembly notes | Reduces build ambiguity | No polarity mark or unclear connector direction |\n| PCB specifications | Finish, thickness, copper, color, panel notes | Confirms fabrication requirements | Specification differs from Gerber notes |\n| Test requirements | Firmware, fixture, acceptance criteria | Defines functional test scope | Test expected but not documented |',
+        ],
+      },
+      {
+        heading: 'Gerber defines PCB fabrication data',
+        body: [
+          'Gerber and drill files describe the physical PCB: copper layers, solder mask, silkscreen, board outline, holes, slots, and related fabrication data. For [turnkey PCB assembly](/turnkey-pcb-assembly), this data is reviewed together with assembly and sourcing information so the whole PCBA scope is clear.',
+          'Common delays happen when the Gerber package is missing a drill file, conflicts with the drawing, or does not match the latest revision. Clear revision control helps both the buyer and supplier avoid quoting or building the wrong board.',
+        ],
+      },
+      {
+        heading: 'BOM and placement data define assembly preparation',
+        body: [
+          'The BOM defines which components must be purchased and mounted. It should include reference designators, quantity, manufacturer part number, manufacturer name, package, value, rating, and approved alternatives where available.',
+          'The pick-and-place or centroid file defines component coordinates and rotation. Without it, SMT preparation may need manual reconstruction from design data, which adds review time and increases the chance of orientation errors. For overseas buyers comparing [China PCB assembly](/china-pcb-assembly) suppliers, complete BOM and placement data make quotes easier to compare.',
+        ],
+      },
+      {
+        heading: 'Assembly drawings and test notes reduce ambiguity',
+        body: [
+          'Assembly drawings help clarify polarity, connector direction, board side, mechanical restrictions, hand-soldered parts, labels, and special instructions. They are especially useful when the silkscreen is crowded or when a connector can be installed in more than one direction.',
+          'Test notes should explain what must be checked after assembly. Functional testing depends on customer-provided firmware, fixtures, procedures, or acceptance criteria. If testing is not defined before quotation, the supplier cannot accurately include it in the production scope.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### What is the difference between Gerber and BOM?\n\nGerber files define the bare PCB fabrication data, while the BOM defines the components that must be sourced and mounted on the board. A turnkey PCBA quote needs both.\n\n### Why does a PCBA supplier need pick-and-place data?\n\nPick-and-place data tells the SMT process where each component is located, which side it is on, and how it is rotated. This helps machine programming and review before assembly.\n\n### Can assembly start without centroid data?\n\nSometimes the supplier can review the project without centroid data, but SMT preparation may be delayed or require extra engineering work. Providing it early reduces ambiguity.\n\n### What should be included in a BOM?\n\nInclude designator, quantity, manufacturer part number, manufacturer name, package, value, tolerance or rating where relevant, and approved alternatives if available.\n\n### How can overseas buyers reduce file review delays?\n\nSend the latest Gerber, BOM, pick-and-place file, assembly drawing, quantity, and test requirements together. If something is missing, note it clearly when you [send the files for review](/contact).',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'pcba-testing-before-shipment',
+    category: 'Quality',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'AOI and Functional Testing Before PCBA Shipment',
+    excerpt:
+      'How AOI, visual inspection, functional testing, and packaging checks reduce PCBA delivery risk before finished boards leave the supplier.',
+    image: '/factory/knowledge-covers/pcba-testing-before-shipment-cover.webp',
+    readTime: '7 min read',
+    metaDescription:
+      'Learn how AOI, visual inspection, functional testing, and packaging checks reduce PCBA delivery risk before shipment.',
+    sections: [
+      {
+        heading: 'Quick answer',
+        body: [
+          'AOI and functional testing reduce PCBA delivery risk by checking different problems before shipment. AOI checks visible assembly quality such as solder joints, component presence, polarity, and placement. Functional testing checks whether the assembled board behaves as expected, but it depends on the customer providing the test method, fixture, firmware, or acceptance criteria.',
+        ],
+      },
+      {
+        heading: 'AOI is not the same as functional testing',
+        body: [
+          'AOI inspection uses optical comparison to find assembly defects such as missing parts, misalignment, polarity issues, solder bridges, and visible solder problems. It is useful after SMT assembly because it can quickly screen many visible placement and soldering issues.',
+          'Functional testing is different. It checks board behavior against an agreed test method, such as power-on behavior, programmed firmware, signal output, communication, sensor response, or customer-defined acceptance criteria. A board can pass AOI and still need functional testing if the product requires electrical validation.',
+        ],
+      },
+      {
+        heading: 'What customers should provide for functional testing',
+        body: [
+          'Functional testing requires clear inputs from the customer. Useful information includes firmware, programming instructions, test fixture details, power requirements, expected signals, pass/fail criteria, connector interfaces, and any safety or handling notes.',
+          'If the test method is not available, the supplier can still discuss visual inspection, AOI, continuity checks, or simple power-on checks where appropriate. The exact [quality and testing scope](/quality) should be agreed before production.',
+        ],
+      },
+      {
+        heading: 'How inspection reduces delivery risk',
+        body: [
+          'Inspection before shipment reduces avoidable delivery risk by catching assembly problems while the boards are still at the supplier. That can prevent shipping boards with wrong polarity, missing parts, solder bridges, unclear labels, or packaging issues.',
+          'For [turnkey PCBA](/turnkey-pcb-assembly), inspection and testing should be part of the quote discussion along with PCB fabrication, component sourcing, SMT/DIP assembly, packaging, and delivery requirements.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### What does AOI check in PCB assembly?\n\nAOI checks visible assembly details such as component presence, placement, polarity, solder bridges, insufficient solder, and other optical defects after SMT assembly.\n\n### Is AOI the same as functional testing?\n\nNo. AOI checks visible assembly quality. Functional testing checks whether the board works according to a customer-provided method, firmware, fixture, or acceptance criteria.\n\n### Can Huitai perform functional testing?\n\nHuitai can discuss functional testing support when the customer provides the test method, firmware, fixture, or acceptance criteria needed to define the scope.\n\n### What test information should customers provide?\n\nProvide firmware, programming steps, fixture requirements, power input, expected outputs, pass/fail criteria, and any special handling instructions.\n\n### How does inspection reduce PCBA delivery risk?\n\nInspection helps catch visible assembly defects, test-scope issues, and packaging problems before boards are shipped. To discuss a project-specific inspection plan, [send your files and test requirements](/contact).',
         ],
       },
     ],

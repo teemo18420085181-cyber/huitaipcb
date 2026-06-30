@@ -74,7 +74,20 @@ const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
     image: '/factory/knowledge-covers/prototype-vs-batch-pcba-cover.webp',
     alt: 'Prototype PCBA samples compared with low-volume batch assembly trays',
   },
+  'prototype-pcb-assembly-china-buyer-checklist': {
+    image: '/factory/knowledge-covers/prototype-vs-batch-pcba-cover.webp',
+    alt: 'Prototype PCB assembly file review for overseas buyers',
+  },
 };
+
+const STATIC_CONTENT_OVERRIDE_SLUGS = new Set([
+  'what-files-required-pcba-quote',
+  'pcb-assembly-file-preparation-guide',
+  'bom-risk-alternative-component-sourcing',
+  'prototype-vs-batch-pcb-assembly',
+  'pcba-testing-before-shipment',
+  'prototype-pcb-assembly-china-buyer-checklist',
+]);
 
 function getArticleVisual(slug: string, customCover?: string | null) {
   const mapped = ARTICLE_VISUALS[slug];
@@ -163,8 +176,14 @@ export async function getPublishedCmsArticles() {
 
 export async function getKnowledgeIndexArticles() {
   const cmsArticles = await getPublishedCmsArticles();
-  const cmsSlugs = new Set(cmsArticles.map((article) => article.slug));
-  const cms = cmsArticles.map(mapCmsArticle);
+  const cmsSlugs = new Set(
+    cmsArticles
+      .map((article) => article.slug)
+      .filter((slug) => !STATIC_CONTENT_OVERRIDE_SLUGS.has(slug))
+  );
+  const cms = cmsArticles
+    .filter((article) => !STATIC_CONTENT_OVERRIDE_SLUGS.has(article.slug))
+    .map(mapCmsArticle);
   const fallback = knowledgeArticles
     .filter((article) => !cmsSlugs.has(article.slug))
     .map(mapStaticArticle);
@@ -173,6 +192,11 @@ export async function getKnowledgeIndexArticles() {
 }
 
 export async function getKnowledgeDisplayArticle(slug: string) {
+  if (STATIC_CONTENT_OVERRIDE_SLUGS.has(slug)) {
+    const staticArticle = getKnowledgeArticle(slug);
+    if (staticArticle) return mapStaticArticle(staticArticle);
+  }
+
   const supabase = getServiceClient();
   if (supabase) {
     const { data, error } = await supabase
