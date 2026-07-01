@@ -38,14 +38,15 @@ export default function ContactPage() {
                   Upload Gerber & BOM for PCBA Quote Review
                 </h1>
                 <p className="mb-6 max-w-[520px] text-[15px] leading-relaxed text-cc-ink-mute">
-                  Send Gerber files, BOM, drawings, sample photos, or project notes for
-                  engineering review before quotation. Huitai Electronics checks turnkey PCBA
-                  scope, BOM sourcing risk, testing needs, and low-volume build details.
+                  Request a PCB assembly quote in China by sending Gerber files, BOM,
+                  pick-and-place data, assembly drawings, testing requirements, sample board
+                  photos, or project notes. Huitai Electronics handles Gerber and BOM quote
+                  review before preparing a turnkey PCB assembly quote based on confirmed scope.
                 </p>
                 <div className="hidden gap-3 lg:grid">
                   {[
                     ['01', 'Engineering review before quotation'],
-                    ['02', 'Gerber and BOM review'],
+                    ['02', 'Gerber and BOM quote review'],
                     ['03', 'Reply target within 24 hours'],
                   ].map(([number, text]) => (
                     <div key={number} className="flex items-center gap-3 rounded-xl border border-cc-line bg-cc-carbon-2/60 p-3.5">
@@ -70,7 +71,7 @@ export default function ContactPage() {
                   {[
                     'Gerber files and BOM',
                     'Pick-and-place file or assembly drawing',
-                    'Quantity, prototype, or low-volume target',
+                    'PCB assembly RFQ notes and quantity target',
                     'Testing requirements or sample photos',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2">
