@@ -11,8 +11,6 @@ export default function FloatingWhatsApp() {
   const pathname = usePathname();
   // Hide on internal admin pages.
   if (pathname?.startsWith('/admin')) return null;
-  // Keep the homepage focused on the quote path; WhatsApp remains available on contact and inner pages.
-  if (pathname === '/') return null;
 
   return (
     <TrackedAnchor
