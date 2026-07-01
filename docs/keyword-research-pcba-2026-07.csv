@@ -1,0 +1,121 @@
+keyword,intent,priority,recommended_page,recommended_usage,competition_impression,huitai_fit,reason,notes
+turnkey pcb assembly china,commercial,S,/turnkey-pcb-assembly,title;H1;FAQ,high,high,Matches one-stop China PCBA service,Core service-page main keyword
+turnkey pcba china,commercial,S,/turnkey-pcb-assembly,H1;H2;FAQ,medium,high,Professional PCBA buyer wording,Use as secondary main phrase
+turnkey pcba supplier china,commercial,S,/turnkey-pcb-assembly,H2;FAQ;internal link,medium,high,Supplier search intent and China fit,Good for overseas buyers
+turnkey pcb assembly supplier,commercial,A,/turnkey-pcb-assembly,H2;FAQ,high,high,Buyer wants a supplier not just information,Use naturally
+one-stop pcb assembly china,commercial,S,/turnkey-pcb-assembly,H2;FAQ,medium,high,Directly matches Huitai one-stop positioning,Avoid overusing one-stop
+one-stop pcba service china,commercial,A,/turnkey-pcb-assembly,H2;internal link,medium,high,Good service scope phrase,Use with turnkey workflow
+one-stop pcb assembly,commercial,A,/turnkey-pcb-assembly,H2;body,high,high,Useful synonym for turnkey,May be broad without China
+pcb fabrication and assembly china,commercial,A,/pcb-fabrication-and-assembly,title;H1,medium,high,Matches combined fabrication plus assembly service,Keep distinct from turnkey page
+pcb manufacturing and assembly china,commercial,A,/pcb-fabrication-and-assembly,H2;FAQ,high,medium,Commercial but may lean bare PCB,Use carefully
+pcb fabrication assembly service,commercial,B,/pcb-fabrication-and-assembly,H2;internal link,medium,medium,Useful paired-process phrase,Secondary only
+china pcb assembly,commercial,S,/china-pcb-assembly,title;H1,high,high,Core China supplier search phrase,High competition
+pcb assembly service china,commercial,S,/china-pcb-assembly,title;H2;FAQ,high,high,Strong buyer service intent,Use in metadata and FAQ
+pcb assembly manufacturer china,commercial,A,/china-pcb-assembly,H2;FAQ,high,medium,Commercial but may imply large factory claims,Use conservative supplier wording
+pcba manufacturer china,commercial,A,/china-pcb-assembly,H2;FAQ,high,medium,Relevant but broad,Do not overclaim manufacturer scale
+pcb assembly supplier china,commercial,S,/china-pcb-assembly,H2;FAQ,medium,high,Supplier evaluation intent,Good fit for overseas buyers
+pcba supplier china,commercial,A,/china-pcb-assembly,H2;internal link,medium,high,Concise supplier phrase,Use in body copy
+electronics assembly china,commercial,C,/china-pcb-assembly,body,high,medium,Broader than PCBA,Use only naturally
+china pcba service,commercial,A,/china-pcb-assembly,H2;FAQ,medium,high,Good shorthand for PCBA service,Useful for internal links
+china pcb assembly quote,transactional,S,/china-pcb-assembly,CTA;FAQ;internal link,medium,high,Quote intent with China service fit,Route to contact
+china pcb assembly online quote,transactional,A,/china-pcb-assembly,FAQ;article,high,medium,Buyer expects online quote comparison,Huitai should frame as engineering review
+pcb assembly quote china,transactional,S,/contact,title;H1;CTA,high,high,Strong RFQ intent,Best mapped to contact
+pcba quote china,transactional,A,/contact,H2;CTA;FAQ,medium,high,Short transactional phrase,Use in contact intro
+turnkey pcb assembly quote,transactional,S,/contact,CTA;FAQ;internal link,medium,high,Matches turnkey RFQ process,Good for contact and quote article
+turnkey pcba quote,transactional,A,/contact,CTA;FAQ,medium,high,Professional RFQ phrase,Use naturally
+pcb assembly quote gerber bom,transactional,S,/knowledge/what-files-required-pcba-quote,title;H2;FAQ,low,high,File-ready buyer intent,Strong article to contact path
+gerber bom pcb assembly quote,transactional,S,/contact,H1;CTA;article,low,high,High-intent file upload query,Use in RFQ copy
+pcb assembly gerber bom quote,transactional,S,/knowledge/what-files-required-pcba-quote,H2;FAQ,low,high,Matches file-prep and quote workflow,AI Search friendly
+gerber and bom pcb assembly quote,transactional,A,/knowledge/what-files-required-pcba-quote,H2;FAQ,low,high,Natural file phrase,Use in visible FAQ
+pcb assembly rfq,transactional,A,/contact,H2;CTA,medium,high,RFQ intent and contact fit,Use sparingly
+pcba rfq,transactional,A,/contact,H2;CTA,low,high,Professional procurement shorthand,Useful in contact copy
+pcba quotation checklist,informational,B,/knowledge/what-files-required-pcba-quote,article;FAQ,low,high,Good long-tail article topic,Already partly covered
+pcb assembly quotation checklist,informational,B,/knowledge/what-files-required-pcba-quote,article;FAQ,low,high,File-prep intent,Use as H2 or related article phrase
+what files are needed for pcb assembly,informational,B,/knowledge/pcb-assembly-file-preparation-guide,title;FAQ,medium,high,Question with RFQ path,Good AI answer target
+what files are needed for pcba quote,informational,B,/knowledge/what-files-required-pcba-quote,H1;FAQ,low,high,Direct quote-file question,Good direct answer block
+what files are needed for turnkey pcba quote,informational,B,/knowledge/what-files-required-pcba-quote,H2;FAQ,low,high,Exact Huitai service fit,Good AI Search long-tail
+pcb assembly files required,informational,B,/knowledge/pcb-assembly-file-preparation-guide,H2;FAQ,medium,high,Buyer preparing RFQ,Use in file table
+gerber bom pick and place pcb assembly,informational,B,/knowledge/pcb-assembly-file-preparation-guide,title;H2;FAQ,low,high,Specific file requirement query,Good AI Search phrase
+pick and place file pcb assembly,informational,B,/knowledge/pcb-assembly-file-preparation-guide,H2;FAQ,medium,high,File-prep long-tail,Use in FAQ
+centroid file pcb assembly,informational,B,/knowledge/pcb-assembly-file-preparation-guide,H2;FAQ,medium,medium,Technical file term,Good supporting keyword
+assembly drawing pcb assembly,informational,B,/knowledge/pcb-assembly-file-preparation-guide,H2;FAQ,low,high,Clarifies production file need,Use in file table
+bom sourcing pcb assembly,commercial,S,/bom-sourcing-pcb-assembly,title;H1;CTA,medium,high,Excellent Huitai service fit,Core BOM page keyword
+pcba bom sourcing,commercial,S,/bom-sourcing-pcb-assembly,H2;FAQ,low,high,Professional PCBA wording,Use as secondary phrase
+pcb assembly bom sourcing,commercial,A,/bom-sourcing-pcb-assembly,H2;FAQ,medium,high,Close variant with service intent,Use naturally
+pcb assembly component sourcing,commercial,S,/bom-sourcing-pcb-assembly,H2;FAQ,medium,high,Component procurement within PCBA scope,Core secondary keyword
+component sourcing pcb assembly,commercial,S,/bom-sourcing-pcb-assembly,H2;FAQ,medium,high,High fit for sourcing support,Good for metadata if space allows
+component procurement pcb assembly,commercial,A,/bom-sourcing-pcb-assembly,H2;body,medium,high,Procurement buyer language,Use in body
+bom review before pcb assembly,problem-solving,A,/bom-sourcing-pcb-assembly,H2;FAQ,low,high,Matches engineering review before production,Good AI answer target
+bom risk review pcba,problem-solving,A,/bom-sourcing-pcb-assembly,H2;CTA,low,high,Distinct Huitai angle,Good CTA phrase
+obsolete components pcb assembly,problem-solving,A,/knowledge/bom-risk-alternative-component-sourcing,title;H2;FAQ,low,high,Problem-solving sourcing query,Good knowledge article target
+alternative components pcb assembly,problem-solving,A,/bom-sourcing-pcb-assembly,H2;FAQ,low,high,High-fit shortage substitution topic,Clarify customer approval
+hard to find components pcba,problem-solving,B,/knowledge/bom-risk-alternative-component-sourcing,H2;FAQ,low,high,Long-tail problem query,Good article phrase
+missing mpn bom pcb assembly,problem-solving,B,/knowledge/bom-risk-alternative-component-sourcing,FAQ,low,high,Specific BOM issue,Use in FAQ
+bom shortage pcb assembly,problem-solving,B,/knowledge/bom-risk-alternative-component-sourcing,H2;FAQ,low,high,Good AI Search and sourcing topic,Use carefully without panic language
+prototype pcb assembly china,commercial,S,/prototype-pcb-assembly,title;H1,medium,high,Core prototype service keyword,High Huitai fit
+prototype pcba china,commercial,S,/prototype-pcb-assembly,H2;FAQ,low,high,Professional variant,Good secondary phrase
+prototype pcb assembly services,commercial,A,/prototype-pcb-assembly,title;H2,high,high,Service-seeking intent,Use in metadata if natural
+prototype pcba assembly,commercial,A,/prototype-pcb-assembly,H2;FAQ,medium,high,Relevant broad service term,Good internal link anchor
+pcb prototype assembly china,commercial,A,/prototype-pcb-assembly,H2;FAQ,medium,high,Common alternative ordering,Use naturally
+small quantity pcb assembly,commercial,A,/prototype-pcb-assembly,FAQ;body,medium,high,Matches prototype and low-volume,Good FAQ keyword
+5 pcs pcb assembly,transactional,B,/prototype-pcb-assembly,FAQ,low,high,Quantity long-tail with small-order intent,Use without fixed MOQ claims
+10 pcs pcb assembly,transactional,B,/prototype-pcb-assembly,FAQ,low,high,Prototype quantity query,Use in FAQ
+prototype pcb assembly for startups,commercial,B,/prototype-pcb-assembly,body;article,low,medium,Good buyer segment but narrower,Use in content not title
+prototype pcb assembly buyer checklist,informational,B,/knowledge/prototype-pcb-assembly-china-buyer-checklist,title;H2,low,high,Strong AI Search article topic,Already created
+overseas buyers prototype pcb assembly china,informational,B,/knowledge/prototype-pcb-assembly-china-buyer-checklist,H2;FAQ,low,high,Very specific Huitai buyer profile,Use in article
+sample board review pcba,problem-solving,B,/knowledge/prototype-pcb-assembly-china-buyer-checklist,H2;FAQ,low,high,Matches sample-only scenario,Good future expansion
+sample board to pcba production,problem-solving,B,/knowledge/prototype-pcb-assembly-china-buyer-checklist,article;FAQ,low,high,High-fit incomplete-files intent,Future article candidate
+pcb assembly from sample board,problem-solving,B,/knowledge/prototype-pcb-assembly-china-buyer-checklist,article;FAQ,low,high,Matches sample board evaluation,Do not overpromise reverse engineering
+pcb assembly without bom,problem-solving,B,/knowledge/what-files-required-pcba-quote,FAQ;article,low,medium,Relevant incomplete file query,Need careful expectations
+pcb assembly with gerber only,problem-solving,B,/knowledge/what-files-required-pcba-quote,FAQ;article,low,medium,Good lead-in to engineering review,Do not imply final quote from Gerber only
+low volume pcb assembly china,commercial,S,/low-volume-pcba-assembly,title;H1,medium,high,Core low-volume service keyword,High fit
+low volume pcba assembly,commercial,S,/low-volume-pcba-assembly,title;H2,medium,high,Professional PCBA variant,Good service-page phrase
+low volume pcba china,commercial,A,/low-volume-pcba-assembly,H2;FAQ,low,high,China low-volume service intent,Use in FAQ
+small batch pcb assembly china,commercial,S,/low-volume-pcba-assembly,title;H2,medium,high,Strong small-batch buyer intent,Good for page subheading
+small batch pcba,commercial,A,/low-volume-pcba-assembly,H2;FAQ,medium,high,Concise variant,Use naturally
+small batch pcba china,commercial,A,/low-volume-pcba-assembly,H2;FAQ,low,high,Good long-tail with China intent,Use in FAQ
+100 pcs pcb assembly,transactional,B,/low-volume-pcba-assembly,FAQ,low,high,Quantity-specific small batch query,Use without fixed price claims
+500 pcs pcb assembly,transactional,B,/low-volume-pcba-assembly,FAQ,low,high,Quantity-specific low-volume query,Good FAQ term
+1000 pcs pcb assembly,transactional,B,/low-volume-pcba-assembly,FAQ,low,medium,Can fit low-volume but maybe larger batch,Use as example only
+prototype to production pcb assembly,commercial,A,/knowledge/prototype-vs-batch-pcb-assembly,title;H2,medium,high,Matches prototype-to-low-volume path,Good article and internal link
+prototype to low volume pcba,commercial,B,/knowledge/prototype-vs-batch-pcb-assembly,H2;FAQ,low,high,Specific Huitai path,Good AI question topic
+small batch pcb assembly service,commercial,A,/low-volume-pcba-assembly,H2;FAQ,medium,high,Buyer service intent,Good secondary phrase
+pcba functional testing,commercial,A,/quality,H2;FAQ,medium,high,Testing support trust keyword,Use with scope caveat
+pcb assembly functional testing,commercial,A,/quality,H2;FAQ,medium,high,Matches quality/testing page,Needs customer test method caveat
+aoi inspection pcb assembly,commercial,A,/quality,H2;FAQ,medium,high,Real inspection process keyword,Good quality page target
+aoi inspection pcba,commercial,A,/quality,H2;FAQ,low,high,PCBA-specific variant,Use naturally
+pcb assembly testing requirements,informational,B,/quality,FAQ;article,medium,high,Buyer question with conversion value,Good content candidate
+pcba inspection before shipment,informational,B,/knowledge/pcba-testing-before-shipment,title;H2;FAQ,low,high,Existing article fit,Good AI answer target
+pcb assembly quality control china,commercial,B,/quality,H2;FAQ,medium,medium,Relevant but could imply certifications,Use cautiously
+aoi vs functional testing pcba,informational,B,/knowledge/pcba-testing-before-shipment,H2;FAQ,low,high,Clear AI Search question,Excellent FAQ term
+functional test fixture pcba,informational,B,/quality,FAQ;article,medium,medium,Technical but useful,Use if visible content explains scope
+pcb final inspection before packaging,informational,B,/knowledge/pcba-testing-before-shipment,H2;FAQ,low,high,Matches shipment risk content,Good long-tail
+pcba testing before shipment,informational,B,/knowledge/pcba-testing-before-shipment,title;FAQ,low,high,High-fit quality article term,Use as article phrase
+pcb assembly cost,informational,C,/knowledge/how-much-does-pcba-assembly-cost,article,high,medium,Broad but commercially adjacent,Use not core service target
+how much does pcb assembly cost,informational,C,/knowledge/how-much-does-pcba-assembly-cost,article;FAQ,high,medium,Buyer research but competitive,Good supporting content
+pcb assembly online quote,transactional,C,/contact,FAQ;CTA,high,medium,Buyer expects instant quote,Huitai should frame reviewed quote
+instant pcb assembly quote,transactional,C,/contact,not recommended,high,low,Huitai does engineering review not instant fixed quote,Avoid promising instant pricing
+quick turn pcb assembly,commercial,C,/prototype-pcb-assembly,body,high,medium,Can fit prototype but may imply fast guarantee,Use cautiously
+rapid pcb assembly,commercial,C,/prototype-pcb-assembly,body,high,medium,Speed-oriented and competitive,Avoid lead-time claims
+circuit board assembly china,commercial,C,/china-pcb-assembly,body,medium,medium,Layperson variant,Use naturally
+electronics manufacturing services china,commercial,D,none,not recommended,high,low,Too broad EMS intent and high competition,Not current focus
+contract electronics manufacturer china,commercial,D,none,not recommended,high,low,Implies full EMS/contract manufacturing beyond PCBA focus,Do not target now
+bare pcb manufacturer,commercial,D,none,not recommended,high,low,Single bare PCB intent conflicts with one-stop PCBA,Avoid
+printed circuit board manufacturer,commercial,D,none,not recommended,high,low,Mostly bare PCB and broad manufacturing,Do not target
+pcb manufacturer china,commercial,D,none,not recommended,high,low,Bare PCB dominated and very competitive,Not Huitai focus
+what is pcb,informational,D,none,not recommended,high,low,Generic encyclopedia intent,Low inquiry value
+pcb meaning,informational,D,none,not recommended,high,low,Generic definition and AI-answer dominated,Skip
+what is smt,informational,D,none,not recommended,high,low,Basic definition not procurement intent,Skip
+smt process,informational,D,none,not recommended,high,low,Generic process education and low RFQ value,Skip
+pcb design,informational,D,none,not recommended,high,low,Design-side not production-side,Skip
+pcb layout,informational,D,none,not recommended,high,low,Design-side keyword,Skip
+mass production pcb assembly,commercial,D,none,not recommended,high,low,Huitai currently emphasizes prototype and low-volume,Not current focus
+consigned pcb assembly only,commercial,D,none,not recommended,medium,low,Huitai does not主打来料代工 only,Do not target
+standalone smt assembly,commercial,D,none,not recommended,medium,low,Conflicts with turnkey positioning,Do not target
+smt assembly only,commercial,D,none,not recommended,medium,low,Single-service SMT intent,Do not target
+component distributor,commercial,D,none,not recommended,high,low,Would misposition Huitai as distributor,Do not target
+electronic component supplier,commercial,D,none,not recommended,high,low,Standalone component sales intent,Do not target
+pcb assembly india,commercial,D,none,not recommended,high,low,India market excluded by strategy,Do not target
+pcba manufacturer india,commercial,D,none,not recommended,high,low,India market excluded,Do not target
+cheapest pcb assembly,transactional,D,none,not recommended,high,low,Low-price intent conflicts with B2B engineering positioning,Skip
+lowest price pcb assembly,transactional,D,none,not recommended,high,low,Low-value and risky promise language,Skip
