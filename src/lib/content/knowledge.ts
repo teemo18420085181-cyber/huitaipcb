@@ -571,6 +571,76 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     ],
   },
   {
+    slug: 'pcba-from-sample-board-what-files-are-needed',
+    category: 'Getting Started',
+    categoryColor: 'bg-cc-copper/15 text-cc-ink border-cc-copper/30',
+    title: 'PCBA From a Sample Board: What Files Are Needed?',
+    excerpt:
+      'How to start a PCBA review when you only have a sample board, photos, or incomplete files, and what information is still needed before prototype or low-volume production.',
+    image: '/factory/knowledge-covers/pcba-project-review-before-quote-cover.webp',
+    readTime: '7 min read',
+    metaDescription:
+      'Learn what to send for PCBA from a sample board, including photos, dimensions, Gerber, BOM, part markings, quantity, function, revision notes, and testing requirements.',
+    sections: [
+      {
+        heading: 'Quick Answer',
+        body: [
+          'If you only have a PCBA sample board, photos, or incomplete files, a supplier can usually start with a sample board review and preliminary RFQ evaluation. The sample helps explain layout, connectors, part markings, function, and possible test direction. Stable prototype or low-volume production still needs confirmed Gerber files, BOM, placement data, quantity, and testing requirements whenever available.',
+        ],
+      },
+      {
+        heading: 'What a sample board can help a supplier evaluate',
+        body: [
+          'A physical sample board or clear photos can help a PCBA supplier understand the assembly target before every production file is ready. It shows component layout, connector orientation, board size, part markings, interface style, mechanical constraints, visible workmanship, and possible functional test direction.',
+          'That makes a sample useful for early discussion, especially when the buyer is trying to move from a previous board, an engineering sample, or incomplete documentation toward a manufacturable RFQ package. It does not replace the production data needed for stable builds. For repeatable [turnkey PCBA review](/turnkey-pcb-assembly), the supplier should still confirm Gerber files, BOM, pick-and-place data, drawings, quantity, revision notes, and test requirements as far as possible.',
+        ],
+      },
+      {
+        heading: 'What to send with the sample board request',
+        body: [
+          'The stronger the starting package, the more useful the review will be. Send the available sample board information together, and mark clearly which files are final, which are draft, and which are missing.',
+          '- [ ] Sample board photos\n- [ ] Clear photos of both sides\n- [ ] Board dimensions and thickness if known\n- [ ] Gerber files if available\n- [ ] BOM if available\n- [ ] Close-up photos of part markings\n- [ ] Target quantity for prototype or low-volume PCBA\n- [ ] Target function and application context\n- [ ] Known issues, failure symptoms, or revision notes\n- [ ] Testing requirements, firmware, fixture notes, or pass/fail criteria',
+        ],
+      },
+      {
+        heading: 'Sample board RFQ table',
+        body: [
+          '| Item | Why it matters | Buyer note |\n| --- | --- | --- |\n| Sample board photos | Show the assembly target, component layout, connectors, and visible build details | Use clear lighting and avoid angled photos when possible |\n| Clear photos of both sides | Help identify top-side and bottom-side components, polarity marks, and hand-soldered areas | Include close-ups for dense sections and connectors |\n| Board dimensions | Support early PCB fabrication and enclosure-fit discussion | Include length, width, thickness, and any unusual shape notes |\n| Gerber files if available | Define the PCB copper, solder mask, drill, outline, and fabrication data | Send the latest revision and note if files may be outdated |\n| BOM if available | Drives component sourcing, availability review, and quote accuracy | Include manufacturer part numbers where possible |\n| Part markings | Help identify components when the BOM is missing or partial | Markings may not be enough for final sourcing, but they are useful for evaluation |\n| Quantity | Changes setup cost, sourcing plan, and production approach | Separate prototype quantity from expected low-volume quantity |\n| Target function | Helps the supplier understand what the board should do after assembly | Describe interfaces, power input, signals, and expected behavior |\n| Known issues or revision notes | Prevents repeating a known problem in the next build | Tell the supplier what failed, changed, or needs attention |\n| Testing requirements | Defines whether visual inspection, AOI, power-on, or functional test discussion is needed | Provide firmware, fixture, procedure, and acceptance criteria if available |',
+        ],
+      },
+      {
+        heading: 'Review path from sample board to production',
+        body: [
+          '**Sample board review:** The first step is to understand the board purpose, visible component layout, interface direction, dimensions, part markings, and known issues. The output is usually a list of available information, missing data, and questions before quotation.',
+          '**Incomplete file evaluation:** If Gerber, BOM, placement, or test data is missing or inconsistent, the supplier can still evaluate what is available and separate preliminary assumptions from requirements that must be confirmed before production.',
+          '**File reconstruction when feasible:** Sometimes missing production files can be reconstructed from available data, sample board references, or customer-provided design information. This is evaluated case by case and should not be treated as automatic or complete until the reconstructed files are checked and approved.',
+          '**Prototype PCBA build:** Once the build scope is clear enough, the project can move into [prototype PCB assembly in China](/prototype-pcb-assembly) to validate function, assembly approach, sourcing choices, and test requirements before a larger order.',
+          '**Low-volume PCBA production:** After the prototype is validated, stable low-volume production needs controlled revisions, confirmed BOM, approved alternatives, repeatable assembly notes, and agreed inspection or functional test scope.',
+        ],
+      },
+      {
+        heading: 'How sample board review affects quote accuracy',
+        body: [
+          'A sample board can make the first RFQ conversation faster because it gives the supplier a real target. It can reveal connector direction, component height, assembly side, silkscreen notes, manual soldering needs, and test points that may not be obvious from a partial file package.',
+          'The quote becomes firmer as more production data is confirmed. Gerber files reduce PCB fabrication assumptions. A BOM with manufacturer part numbers improves component sourcing accuracy. Pick-and-place data reduces SMT setup ambiguity. Testing requirements define whether the quote includes only visual inspection and AOI discussion or a project-specific functional test scope.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### Can I get a PCBA quote from a sample board only?\n\nYou can usually start a preliminary review from a sample board, photos, quantity, and target function. A firm PCBA quote still depends on how much production information can be confirmed, especially Gerber files, BOM, placement data, and testing requirements.\n\n### What photos should I send for sample board review?\n\nSend clear photos of both sides of the board, close-ups of dense component areas, connectors, part markings, labels, and any damaged or revised areas. Include a ruler or dimensions if board size is not documented.\n\n### Can Huitai reconstruct missing files from a sample board?\n\nHuitai can evaluate file reconstruction when feasible, based on the sample board, photos, existing files, and customer-provided design information. The result must be checked and approved before it is used for quotation or production.\n\n### Is a sample board enough for prototype PCBA from sample board?\n\nA sample board can help define the target, but prototype PCBA still needs enough confirmed data to build safely: PCB fabrication files, sourcing information, placement direction, quantity, and test expectations. Missing items should be listed before the build starts.\n\n### What is the difference between sample board review and incomplete file evaluation?\n\nSample board review uses the physical board or photos to understand the assembly target. Incomplete file evaluation reviews whatever Gerber, BOM, placement, drawings, photos, or notes are available and identifies what is still missing for quotation or production.\n\n### What is needed before low-volume PCBA production?\n\nLow-volume production needs stable files, confirmed BOM, customer-approved alternatives where needed, controlled revisions, assembly notes, quantity plan, and agreed inspection or testing requirements. A sample board can guide the review, but production requirements must be confirmed.',
+        ],
+      },
+      {
+        heading: 'Send the sample board package for review',
+        body: [
+          'If you are starting from a sample board, photos, or incomplete files, do not wait until every document is perfect. A practical first review can identify what is usable, what is missing, and what must be confirmed before prototype or low-volume PCBA.',
+          'You can [send sample board photos and project files for review](/contact), including any Gerber, BOM, part markings, quantity, target function, known issues, revision notes, and testing requirements you already have.',
+        ],
+      },
+    ],
+  },
+  {
     slug: 'top-low-volume-turnkey-pcba-suppliers-china',
     category: 'Decision Guide',
     categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',

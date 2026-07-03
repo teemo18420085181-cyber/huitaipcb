@@ -78,6 +78,10 @@ const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
     image: '/factory/knowledge-covers/prototype-vs-batch-pcba-cover.webp',
     alt: 'Prototype PCB assembly file review for overseas buyers',
   },
+  'pcba-from-sample-board-what-files-are-needed': {
+    image: '/factory/knowledge-covers/pcba-project-review-before-quote-cover.webp',
+    alt: 'PCBA sample board photos and project files prepared for engineering review',
+  },
 };
 
 const STATIC_CONTENT_OVERRIDE_SLUGS = new Set([
@@ -87,6 +91,7 @@ const STATIC_CONTENT_OVERRIDE_SLUGS = new Set([
   'prototype-vs-batch-pcb-assembly',
   'pcba-testing-before-shipment',
   'prototype-pcb-assembly-china-buyer-checklist',
+  'pcba-from-sample-board-what-files-are-needed',
 ]);
 
 function getArticleVisual(slug: string, customCover?: string | null) {
