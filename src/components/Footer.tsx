@@ -12,6 +12,7 @@ const SERVICES_LINKS = [
 
 const RESOURCE_LINKS = [
   { label: 'Knowledge Base', href: '/knowledge' },
+  { label: 'How We Work', href: '/how-we-work' },
   { label: 'How to Quote', href: '/contact' },
   { label: 'Quality Standards', href: '/quality' },
   { label: 'FAQ', href: '/knowledge' },

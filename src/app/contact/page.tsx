@@ -14,6 +14,7 @@
 };
 
 import Image from 'next/image';
+import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import InquiryForm from '@/components/InquiryForm';
@@ -43,6 +44,12 @@ export default function ContactPage() {
                   photos, or project notes. Huitai Electronics handles Gerber and BOM quote
                   review before preparing a turnkey PCB assembly quote based on confirmed scope.
                 </p>
+                <Link
+                  href="/how-we-work"
+                  className="mb-6 inline-flex w-fit rounded-lg border border-cc-copper/30 px-4 py-2.5 text-sm font-semibold text-cc-copper-soft transition-colors hover:border-cc-copper/60"
+                >
+                  How We Work
+                </Link>
                 <div className="hidden gap-3 lg:grid">
                   {[
                     ['01', 'Engineering review before quotation'],
