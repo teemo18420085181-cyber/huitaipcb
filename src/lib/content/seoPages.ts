@@ -352,16 +352,16 @@ export const seoPages: Record<string, SeoLandingPage> = {
     slug: 'turnkey-pcb-assembly',
     title: 'Turnkey PCB Assembly Service in China',
     seoTitle: 'Turnkey PCB Assembly Service China | Gerber & BOM Review',
-    metaDescription: 'Upload Gerber and BOM for turnkey PCBA review in China. Huitai coordinates PCB fabrication, component sourcing, SMT/DIP assembly, inspection/testing support, and delivery.',
+    metaDescription: 'Supplier support in China for turnkey PCB assembly: PCB fabrication, BOM sourcing, SMT/DIP assembly, testing support, and delivery for overseas buyers.',
     eyebrow: 'TURNKEY PCBA MANUFACTURING',
     primaryKeyword: 'Turnkey PCB Assembly Service in China',
     serviceName: 'Turnkey PCB Assembly Service in China',
     serviceType: 'Turnkey PCB assembly service',
     quickAnswer: 'Turnkey PCB assembly means one supplier manages PCB fabrication, component sourcing, SMT/DIP assembly, inspection, functional testing support, packaging, and delivery. Huitai reviews Gerber, BOM, pick-and-place data, drawings, quantity, sourcing risk, DFM/DFA questions, and test requirements before production so engineers and hardware startups avoid fragmented supplier communication.',
-    intro: 'Upload Gerber and BOM for engineering review before quotation. Huitai coordinates one-stop turnkey PCBA in China, including PCB fabrication, BOM/component sourcing, SMT/DIP assembly, inspection/testing support, packaging, and delivery for prototype and low-volume projects.',
+    intro: 'Upload Gerber and BOM for engineering review before quotation. Huitai is a turnkey PCB assembly supplier in China for overseas buyers who need PCB fabrication, BOM sourcing, SMT/DIP assembly, testing support, and finished PCBA delivery in one coordinated workflow.',
     sections: [
       {
-        heading: 'One-stop PCBA Supplier in China',
+        heading: 'Turnkey PCB Assembly Supplier in China',
         body: 'Huitai works as a turnkey PCBA supplier in China for projects that need PCB fabrication, BOM sourcing, component procurement, SMT/DIP assembly, testing, and delivery. This one-stop PCB assembly support in China keeps the main production steps connected before quotation and build planning.',
       },
       {
