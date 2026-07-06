@@ -77,14 +77,14 @@ export default async function KnowledgePage() {
               KNOWLEDGE BASE
             </div>
             <h1 className="mb-5 text-4xl font-semibold leading-tight tracking-tight md:text-5xl lg:text-[52px]">
-              Guides written by engineers,
+              PCB Assembly Knowledge Base
               <br />
-              <em className="not-italic text-cc-copper-soft">not marketers.</em>
+              <em className="not-italic text-cc-copper-soft">PCBA guides for real RFQ work.</em>
             </h1>
             <p className="mx-auto max-w-[620px] text-base leading-relaxed text-white/70 md:text-lg">
-              Practical articles covering everything from your first Gerber file
-              submission to managing volume production. New guides are based on
-              the questions overseas PCBA buyers ask before quotation.
+              PCBA guides for Gerber files, BOM sourcing, prototype assembly,
+              sample board review, and turnkey PCB assembly in China. New guides
+              are based on the questions overseas PCBA buyers ask before quotation.
             </p>
           </div>
         </section>

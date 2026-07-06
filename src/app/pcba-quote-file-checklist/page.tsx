@@ -128,6 +128,7 @@ const faqs = [
 const relatedLinks = [
   { href: '/knowledge/how-much-does-pcba-assembly-cost', label: 'How much does PCBA assembly cost?' },
   { href: '/knowledge/what-files-required-pcba-quote', label: 'What files are required for a PCBA quote?' },
+  { href: '/knowledge/pcba-from-sample-board-what-files-are-needed', label: 'Starting from a sample board?' },
   { href: '/bom-sourcing-pcb-assembly', label: 'BOM sourcing and PCB assembly' },
   { href: '/contact', label: 'Send files for review' },
   { href: '/turnkey-pcb-assembly', label: 'Turnkey PCB assembly' },

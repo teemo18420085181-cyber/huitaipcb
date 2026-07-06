@@ -537,7 +537,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         heading: 'What "incomplete files" usually means',
         body: [
           'In practice, "incomplete" covers a range of situations: a Gerber without drill data, a BOM missing manufacturer part numbers, no pick-and-place (CPL) file, no assembly drawing, or only a schematic and a few photos of your own board. Each gap affects a different part of the quote — fabrication, sourcing, or placement — but rarely blocks a preliminary estimate.',
-          'See [how to prepare files for a PCB assembly quote](/knowledge/pcb-assembly-file-preparation-guide) for the full file list and what each one is used for.',
+          'See [how to prepare files for a PCB assembly quote](/knowledge/pcb-assembly-file-preparation-guide) for the full file list and what each one is used for. If you only have a physical sample board, use this [sample-board PCBA checklist](/knowledge/pcba-from-sample-board-what-files-are-needed) before requesting a quote.',
         ],
       },
       {
@@ -988,7 +988,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         heading: 'DFM/DFA and sample board review',
         body: [
           'DFM and DFA review look for practical issues before the build starts: unclear footprints, missing drill data, tight component spacing, insufficient polarity marks, hand-soldered parts that need DIP handling, panelization concerns, or components that may be difficult to source in the required package.',
-          'If a sample board exists, it can help the supplier understand orientation, connector height, mechanical constraints, and expected finished appearance. A sample board does not replace Gerber or BOM data, but it can reveal details that drawings do not show clearly.',
+          'If a sample board exists, it can help the supplier understand orientation, connector height, mechanical constraints, and expected finished appearance. A sample board does not replace Gerber or BOM data, but it can reveal details that drawings do not show clearly. If you only have a physical reference, review the [sample-board PCBA checklist](/knowledge/pcba-from-sample-board-what-files-are-needed) before requesting a quote.',
         ],
       },
       {
