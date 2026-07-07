@@ -136,6 +136,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     filesNeeded: commonFiles,
     answerLinks: [
       { label: 'Review a one-stop turnkey PCBA scope', href: '/turnkey-pcb-assembly' },
+      { label: 'China PCBA manufacturer workflow', href: '/china-pcba-manufacturer' },
       { label: 'Prepare prototype PCB assembly files', href: '/prototype-pcb-assembly' },
       { label: 'Plan low-volume PCBA after validation', href: '/low-volume-pcba-assembly' },
       { label: 'Check BOM sourcing risk before assembly', href: '/bom-sourcing-pcb-assembly' },
@@ -402,6 +403,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     filesNeeded: commonFiles,
     answerLinks: [
       { label: 'Review BOM sourcing risk before purchasing', href: '/bom-sourcing-pcb-assembly' },
+      { label: 'PCBA manufacturing partner in China', href: '/china-pcba-manufacturer' },
       { label: 'Prepare prototype PCB assembly files', href: '/prototype-pcb-assembly' },
       { label: 'Discuss PCBA inspection and testing scope', href: '/quality' },
       { label: 'Upload Gerber and BOM for engineering review', href: '/contact#project-files' },

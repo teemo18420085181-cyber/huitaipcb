@@ -336,6 +336,11 @@ export default function HowWeWorkPage() {
                 <Link href="/turnkey-pcb-assembly" className="text-cc-copper-soft underline underline-offset-4">
                   turnkey PCB assembly review
                 </Link>
+                , or compare the broader{' '}
+                <Link href="/china-pcba-manufacturer" className="text-cc-copper-soft underline underline-offset-4">
+                  prototype and low-volume PCBA manufacturer in China
+                </Link>{' '}
+                workflow
                 .
               </p>
             </div>

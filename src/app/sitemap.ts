@@ -19,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/pcb-assembly-services',
     '/pcb-fabrication-and-assembly',
     '/china-pcb-assembly',
+    '/china-pcba-manufacturer',
     '/pcb-assembly-company',
     '/prototype-pcb-assembly',
     '/low-volume-pcba-assembly',

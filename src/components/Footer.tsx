@@ -3,6 +3,7 @@ import TrackedLink from '@/components/TrackedLink';
 import TrackedAnchor from '@/components/TrackedAnchor';
 
 const SERVICES_LINKS = [
+  { label: 'China PCBA Manufacturer', href: '/china-pcba-manufacturer' },
   { label: 'Turnkey PCBA Manufacturing', href: '/turnkey-pcb-assembly' },
   { label: 'PCB Fabrication and Assembly', href: '/pcb-fabrication-and-assembly' },
   { label: 'Low-Volume PCBA Assembly', href: '/low-volume-pcba-assembly' },
