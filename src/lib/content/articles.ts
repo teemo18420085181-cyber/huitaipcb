@@ -8,6 +8,7 @@ export type { CmsArticle };
 export type KnowledgeDisplayArticle = {
   slug: string;
   title: string;
+  seoTitle: string;
   excerpt: string;
   metaDescription: string;
   image: string;
@@ -24,6 +25,12 @@ export type KnowledgeDisplayArticle = {
 const DEFAULT_IMAGE = '/factory/flow-01.png';
 const DEFAULT_IMAGE_ALT = 'PCBA engineer reviewing BOM files and assembled circuit boards';
 const DEFAULT_CATEGORY_COLOR = 'bg-cc-copper/10 text-cc-ink border-cc-copper/30';
+
+const ARTICLE_SEO_TITLES: Record<string, string> = {
+  'pcba-quotation-checklist': 'PCBA Quotation Checklist | Huitai Electronics',
+  'prototype-pcb-assembly-china-buyer-checklist': 'Prototype PCB Assembly China | Huitai Electronics',
+  'what-is-turnkey-pcba': 'What Is Turnkey PCBA? | PCB Assembly Guide',
+};
 
 const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
   'how-much-does-pcba-assembly-cost': {
@@ -106,6 +113,10 @@ function getArticleVisual(slug: string, customCover?: string | null) {
   };
 }
 
+function getArticleSeoTitle(slug: string, title: string) {
+  return ARTICLE_SEO_TITLES[slug] || title;
+}
+
 export function staticArticleToMarkdown(article: KnowledgeArticle) {
   return article.sections
     .map((section) => {
@@ -121,6 +132,7 @@ export function mapStaticArticle(article: KnowledgeArticle): KnowledgeDisplayArt
   return {
     slug: article.slug,
     title: article.title,
+    seoTitle: getArticleSeoTitle(article.slug, article.title),
     excerpt: article.excerpt,
     metaDescription: article.metaDescription,
     image: visual.image,
@@ -142,6 +154,7 @@ export function mapCmsArticle(article: CmsArticle): KnowledgeDisplayArticle {
   return {
     slug: article.slug,
     title: article.title,
+    seoTitle: getArticleSeoTitle(article.slug, article.title),
     excerpt: description,
     metaDescription: description,
     image: visual.image,

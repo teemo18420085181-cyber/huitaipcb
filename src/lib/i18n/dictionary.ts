@@ -77,7 +77,7 @@ export const dictionaries = {
     },
     home: {
       metadata: {
-        title: 'Leiterplattenbestückung & Turnkey PCBA aus China | Huitai Electronics',
+        title: 'Leiterplattenbestückung China | Huitai Electronics',
         description:
           'Turnkey PCBA aus China für B2B-Hardwareprojekte: Gerber- und BOM-Prüfung, PCB-Herstellung, Bauteilbeschaffung, SMT-/DIP-Bestückung, Prüfunterstützung und Lieferung.',
       },

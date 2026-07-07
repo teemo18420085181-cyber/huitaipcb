@@ -19,12 +19,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
+  const metadataTitle = article.seoTitle;
+
   return {
-    title: article.title,
+    title: metadataTitle,
     description: article.metaDescription,
     alternates: { canonical: `https://huitaipcb.com/knowledge/${article.slug}` },
     openGraph: {
-      title: article.title,
+      title: metadataTitle,
       description: article.metaDescription,
       url: `https://huitaipcb.com/knowledge/${article.slug}`,
       images: [{ url: imageUrl(article.image), alt: article.imageAlt }],

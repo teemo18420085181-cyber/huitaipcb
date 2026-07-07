@@ -455,7 +455,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
   'pcb-fabrication-and-assembly': {
     slug: 'pcb-fabrication-and-assembly',
     title: 'PCB Fabrication and Assembly Service',
-    seoTitle: 'PCB Fabrication and Assembly Service in China | Huitai Electronics',
+    seoTitle: 'PCB Fabrication & Assembly China | Huitai Electronics',
     metaDescription: 'PCB fabrication and assembly in China under one PCBA workflow: board fabrication coordination, component sourcing, SMT/DIP assembly, inspection, testing support, and finished-board delivery.',
     eyebrow: 'FABRICATION + ASSEMBLY',
     primaryKeyword: 'PCB Fabrication and Assembly Service in China',
@@ -492,7 +492,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
   'low-volume-pcba-assembly': {
     slug: 'low-volume-pcba-assembly',
     title: 'Low-Volume PCBA Assembly in China',
-    seoTitle: 'Low-Volume PCBA Assembly in China | Prototype to Small Batch Builds',
+    seoTitle: 'Low-Volume PCBA Assembly China | Huitai Electronics',
     metaDescription: 'For 5 to 1,000 pcs type PCBA projects, Huitai reviews Gerber, BOM, quantity, testing needs, and sourcing risks before prototype-to-low-volume production.',
     eyebrow: 'LOW-VOLUME PCBA',
     primaryKeyword: 'Low-Volume PCBA Assembly in China',
