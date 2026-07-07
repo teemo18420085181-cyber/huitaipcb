@@ -54,7 +54,7 @@ export default function ContactPage() {
                   {[
                     ['01', 'Engineering review before quotation'],
                     ['02', 'Gerber and BOM quote review'],
-                    ['03', 'Reply target within 24 hours'],
+                    ['03', 'Reply target: within 24 hours on business days after file receipt'],
                   ].map(([number, text]) => (
                     <div key={number} className="flex items-center gap-3 rounded-xl border border-cc-line bg-cc-carbon-2/60 p-3.5">
                       <span className="cc-copper-fill font-mono-cc flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-[10px] font-bold">

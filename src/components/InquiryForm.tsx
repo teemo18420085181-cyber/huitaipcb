@@ -24,8 +24,8 @@ const FORM_COPY = {
   en: {
     pagePath: '/contact',
     successTitle: 'Thank you!',
-    successBody: "We've received your inquiry and a confirmation email is on its way. Our engineering team will review your files and respond within",
-    successTime: '24 hours',
+    successBody: "We've received your inquiry and a confirmation email is on its way. Our reply target is within",
+    successTime: '24 hours on business days after we receive your RFQ details and available files',
     networkError: 'Network error. Please try again.',
     errorFallback: 'Something went wrong. Please try again.',
     eyebrow: 'QUICK RFQ',
@@ -54,7 +54,7 @@ const FORM_COPY = {
     privacy: 'Privacy Policy',
     submitting: 'Submitting...',
     submit: 'Upload Gerber & BOM for Engineering Review',
-    footer: 'Reply target within 24 hours / NDA available on request',
+    footer: 'Reply target: within 24 hours on business days after RFQ file receipt / NDA available on request',
   },
   de: {
     pagePath: '/de/contact',

@@ -116,7 +116,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
       },
       {
         heading: 'For Overseas PCB Assembly Buyers',
-        body: 'For overseas buyers comparing a PCB assembly service in China, Huitai focuses on engineering review, BOM confirmation, SMT/DIP assembly, testing requirements, and delivery preparation. This page is for engineers, hardware teams, and purchasing teams that want one China-based PCBA supplier to coordinate prototype or low-volume PCBA projects.',
+        body: 'For overseas buyers, the key point is not only the unit price. A useful China PCB assembly quote should make the scope clear: PCB fabrication, component sourcing, SMT/DIP assembly, inspection, testing requirements, packing, and shipment. This helps both sides confirm what is included before production starts.',
       },
     ],
     bullets: ['PCB fabrication coordinated as part of PCBA delivery', 'BOM sourcing and customer-approved alternatives', 'SMT assembly and through-hole (DIP) assembly', 'Inspection and functional testing based on confirmed requirements', 'Prototype and low-volume project review', 'Packaging and delivery preparation'],
@@ -358,11 +358,11 @@ export const seoPages: Record<string, SeoLandingPage> = {
     serviceName: 'Turnkey PCB Assembly Service in China',
     serviceType: 'Turnkey PCB assembly service',
     quickAnswer: 'Turnkey PCB assembly means one supplier manages PCB fabrication, component sourcing, SMT/DIP assembly, inspection, functional testing support, packaging, and delivery. Huitai reviews Gerber, BOM, pick-and-place data, drawings, quantity, sourcing risk, DFM/DFA questions, and test requirements before production so engineers and hardware startups avoid fragmented supplier communication.',
-    intro: 'Upload Gerber and BOM for engineering review before quotation. Huitai is a turnkey PCB assembly supplier in China for overseas buyers who need PCB fabrication, BOM sourcing, SMT/DIP assembly, testing support, and finished PCBA delivery in one coordinated workflow.',
+    intro: 'Huitai supports overseas buyers who need PCB fabrication, BOM sourcing, SMT/DIP assembly, inspection, testing discussion, and finished PCBA delivery in one coordinated workflow. Before quotation, we review the available files, BOM risk, assembly scope, and testing requirements so the project can move from RFQ to production with fewer unclear items.',
     sections: [
       {
         heading: 'Turnkey PCB Assembly Supplier in China',
-        body: 'Huitai works as a turnkey PCBA supplier in China for projects that need PCB fabrication, BOM sourcing, component procurement, SMT/DIP assembly, testing, and delivery. This one-stop PCB assembly support in China keeps the main production steps connected before quotation and build planning.',
+        body: 'Huitai is a turnkey PCB assembly supplier in China for buyers who need engineering review before production, not only a price list. The review connects fabrication data, BOM sourcing, SMT/DIP requirements, inspection points, testing discussion, and delivery preparation before build planning.',
       },
       {
         heading: 'Quote Factors to Confirm',
@@ -592,7 +592,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     serviceName: 'BOM Sourcing Review for PCB Assembly',
     serviceType: 'BOM sourcing and PCBA assembly service',
     quickAnswer: 'BOM sourcing for PCB assembly means checking whether each component is clear, available, compatible with the PCB footprint, and suitable for customer-approved purchasing before SMT starts. Huitai reviews obsolete, hard-to-find, long-lead-time, package-risk, and lifecycle issues, then discusses alternatives without replacing any part before customer confirmation.',
-    intro: 'Send your BOM for sourcing risk review before PCB assembly quotation. Huitai provides PCBA BOM sourcing review and component sourcing for PCB assembly by checking BOM completeness, MPN clarity, obsolete or unavailable parts, package compatibility, sourcing alternatives, and customer approval requirements together with Gerber and assembly files when available.',
+    intro: 'Send your BOM for sourcing risk review before PCB assembly quotation. Before components are purchased, the BOM should be checked line by line for MPN accuracy, package match, lifecycle status, stock availability, customer-approved alternatives, and assembly risk. This keeps component sourcing tied to the PCBA build and helps reduce sourcing surprises before SMT and DIP production starts.',
     sections: [
       {
         heading: 'PCBA BOM Sourcing and MPN Clarity',

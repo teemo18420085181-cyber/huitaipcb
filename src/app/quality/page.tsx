@@ -63,7 +63,7 @@ const qualityFaq = [
   {
     question: 'Can Huitai support functional testing?',
     answer:
-      'Yes. Functional testing can be discussed when the customer provides a test method, firmware, fixture requirements, communication steps, pass/fail criteria, or acceptance notes.',
+      'Yes. Functional testing can be arranged based on customer-provided or confirmed test requirements, including the test method, firmware, fixture, power requirements, communication steps, and pass/fail criteria.',
   },
   {
     question: 'What test information should customers provide?',
@@ -103,18 +103,18 @@ const QC = [
   },
   {
     n: '03', tag: 'X-RAY INSPECTION',
-    title: 'Hidden solder joints can be inspected with X-Ray.',
-    desc: 'BGAs, QFNs, LGAs, and other bottom-terminated components cannot be fully inspected visually. X-Ray inspection can be planned for hidden joints when required by the package, risk level, and agreed inspection scope.',
-    specs: ['BGA ball array verification', 'Void review when required', 'Hidden joint inspection', 'QFN / LGA / CSP support', 'Defect review options', 'Images or reports by agreed scope'],
+    title: 'X-Ray inspection can be arranged when required and agreed in scope.',
+    desc: 'X-Ray inspection for hidden solder joints can be arranged when required and agreed in the project scope, especially for packages where visual or AOI inspection is not enough.',
+    specs: ['Arranged when required', 'Scope agreed before production', 'Hidden joint review', 'BGA / QFN / LGA / CSP packages', 'Visual/AOI limitation review', 'Customer approval by scope'],
     image: '/factory/qua-01.png',
     alt: 'X-Ray inspection review for hidden solder joints on PCBA boards',
     badge: 'X-Ray', badgeColor: 'bg-cc-signal text-white',
   },
   {
     n: '04', tag: 'FUNCTIONAL TESTING',
-    title: 'Boards can be powered on and verified against your spec.',
-    desc: 'We perform functional testing using your test specification, test fixture, or firmware. Boards are powered up and tested for signal integrity, peripheral communication, power consumption, and custom pass/fail criteria. A test report can be provided based on project requirements.',
-    specs: ['Power-on verification', 'Signal integrity check', 'Oscilloscope measurement', 'Custom test fixtures', 'Firmware loading', 'Pass/fail logged per unit'],
+    title: 'Functional testing scope is confirmed before production.',
+    desc: 'Functional testing is arranged based on the customer-confirmed test method, firmware, fixture, power requirements, communication steps and pass/fail criteria. AOI and visual inspection do not replace functional testing, and the final test scope should be confirmed before production.',
+    specs: ['Customer-confirmed method', 'Firmware or programming steps', 'Fixture or connector access', 'Power requirements', 'Communication steps', 'Pass/fail criteria'],
     image: '/factory/qua-02.png',
     alt: 'Functional testing setup for assembled PCBA boards with customer test method',
     badge: 'Test Plan', badgeColor: 'bg-cc-copper text-cc-ink',

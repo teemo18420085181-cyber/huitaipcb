@@ -366,8 +366,9 @@ export default function HowWeWorkPage() {
                 Practical updates while the order moves forward.
               </h2>
               <p className="mb-6 text-sm leading-7 text-cc-ink-mute">
-                For overseas buyers, clear communication during production is important. Huitai can
-                provide practical order updates so buyers understand the project status before shipment.
+                For overseas orders, buyers usually need practical status updates before shipment:
+                component purchasing status, SMT assembly photos when applicable, finished PCBA photos,
+                inspection notes, packing photos and tracking information after dispatch.
               </p>
               <Checklist items={productionUpdates} />
             </div>
