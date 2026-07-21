@@ -744,13 +744,13 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     slug: 'jlcpcb-alternatives-turnkey-pcba',
     category: 'Decision Guide',
     categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
-    title: 'JLCPCB Alternatives for Turnkey PCBA Assembly (2026)',
+    title: 'JLCPCB Alternatives for Custom BOM & Low-Volume PCBA (2026)',
     excerpt:
-      'JLCPCB is excellent at what it is built for — but its model has limits. The signs you have outgrown it, and which turnkey PCBA alternatives fit custom BOMs, low-volume production, and engineering support.',
+      'Compare JLCPCB alternatives for custom BOM sourcing, repeat low-volume PCBA, project-specific testing, and direct engineering support — including when staying with JLCPCB is still the better choice.',
     image: '/factory/jlcpcb-alternatives.jpg',
     readTime: '7 min read',
     metaDescription:
-      'Looking for JLCPCB alternatives for turnkey PCBA? When to stay with JLCPCB, the 5 signs you have outgrown it, and how alternatives like Huitai Electronics, PCBWay, NextPCB, and Viasion compare for custom BOMs and low-volume production.',
+      'Compare JLCPCB alternatives for custom BOM sourcing and low-volume PCBA. See when JLCPCB still wins and when an engineer-led turnkey supplier fits better.',
     sections: [
       {
         heading: 'Quick answer',
@@ -779,8 +779,16 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       {
         heading: 'The alternatives, by what you actually need',
         body: [
-          '| Need | Alternative | Why |\n| --- | --- | --- |\n| More capability, still platform-style | PCBWay | Higher layer counts, special processes, more human support |\n| Industrial boards with DFM checks | NextPCB | Platform flow plus stronger automated DFM feedback |\n| Quick-turn small batches, quote-based | PCBGOGO | Established quick-turn shop with sales support |\n| Small-to-medium EMS without MOQ pressure | Viasion | 15+ years traditional EMS, welcomes small orders |\n| Engineer-supported low-volume turnkey | Huitai Electronics | Engineering review before every quote, open-market sourcing, direct engineer contact |',
+          '| Project fit | Option to evaluate | Main trade-off to confirm |\n| --- | --- | --- |\n| More capability with a platform-style flow | PCBWay | Confirm manual review, sourcing, and test scope for your exact build |\n| Online ordering with automated DFM tools | NextPCB | Confirm support for non-catalog parts and project-specific testing |\n| Quote-based quick-turn assembly | PCBGOGO | Confirm the engineer contact and repeat-build process |\n| Traditional EMS for small-to-medium runs | Viasion | Confirm minimum practical order and setup cost for your board |\n| Engineer-supported low-volume turnkey | Huitai Electronics | Compare the reviewed quote and response quality against the other options |',
           'For a fuller comparison of these suppliers, see our [China low-volume turnkey PCBA supplier comparison guide](/knowledge/top-low-volume-turnkey-pcba-suppliers-china).',
+        ],
+      },
+      {
+        heading: 'Decision checklist for custom BOM projects',
+        body: [
+          'Before switching, send the same real project package to the suppliers you are comparing and check four things:',
+          '- **BOM fit:** Can the supplier quote your specified manufacturer part numbers, flag lifecycle or availability risks, and document any alternative that needs your approval?\n- **Build continuity:** Can the approved sourcing decisions, assembly notes, and test scope carry from a pilot run into repeat low-volume batches?\n- **Testing ownership:** Will the quote state what is inspected or tested, what inputs you must provide, and who owns fixtures, firmware, and pass/fail criteria?\n- **Engineering response:** Does the first reply identify concrete file or manufacturability questions before asking you to commit?',
+          'Use the answers to compare scope and project risk, not only the first unit price shown on a quote.',
         ],
       },
       {
@@ -800,7 +808,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         heading: 'Ready when your project is',
         body: [
           'If one of the five signs above describes your project, the switch costs you one email to find out.',
-          '[Send your Gerber and BOM for an engineering review](/contact) — we will flag sourcing and manufacturability risks and reply with a clear quote scope within 24 hours. You can also read more about [low-volume PCBA assembly](/low-volume-pcba-assembly).',
+          '[Send your Gerber and BOM for an engineering review](/contact#project-files) — we will flag sourcing and manufacturability risks and reply with a clear quote scope within 24 hours. You can also read more about [low-volume PCBA assembly](/low-volume-pcba-assembly).',
         ],
       },
     ],
