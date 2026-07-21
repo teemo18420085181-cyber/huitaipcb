@@ -85,7 +85,7 @@ export default function Hero() {
             className="cc-rise font-display mb-6 text-[40px] font-extrabold leading-[1.02] tracking-[-0.02em] md:text-6xl lg:text-[68px]"
             style={{ animationDelay: '0.28s' }}
           >
-            From Gerber
+            From Gerber{' '}
             <br />
             to <span className="cc-copper-text">finished PCBA.</span>
           </h1>
