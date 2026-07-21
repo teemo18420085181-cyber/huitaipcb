@@ -99,6 +99,7 @@ const STATIC_CONTENT_OVERRIDE_SLUGS = new Set([
   'pcba-testing-before-shipment',
   'prototype-pcb-assembly-china-buyer-checklist',
   'pcba-from-sample-board-what-files-are-needed',
+  'jlcpcb-alternatives-turnkey-pcba',
 ]);
 
 function getArticleVisual(slug: string, customCover?: string | null) {
