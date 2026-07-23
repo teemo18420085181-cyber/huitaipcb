@@ -1071,19 +1071,27 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     slug: 'pcba-testing-before-shipment',
     category: 'Quality',
     categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
-    title: 'PCBA Testing Before Shipment: AOI and Functional Test Requirements',
+    title: 'PCBA Testing Before Shipment in a Turnkey Manufacturing Workflow',
     excerpt:
-      'A practical buyer guide to AOI, functional test inputs, pass/fail criteria, failure handling, and the testing scope to confirm before a PCBA quote.',
+      'How testing fits into Huitai Electronics’ one-stop PCBA workflow, from PCB fabrication and BOM sourcing through SMT/DIP assembly, inspection, packaging, and delivery.',
     image: '/factory/knowledge-covers/pcba-testing-before-shipment-cover.webp',
     readTime: '9 min read',
     metaDescription:
-      'PCBA testing before shipment explained: compare AOI and functional testing requirements, define pass/fail criteria, and prepare a practical test plan.',
+      'See how PCBA testing fits into turnkey manufacturing, from PCB fabrication and BOM sourcing to SMT/DIP assembly, functional testing, and delivery.',
     sections: [
       {
         heading: 'Quick answer',
         body: [
-          'PCBA testing before shipment normally combines checks that answer different questions. Visual inspection and AOI look for visible assembly problems such as missing or misaligned components, polarity errors, solder bridges, and other optical defects. Functional testing checks whether the assembled board behaves as expected under a customer-defined test method.',
-          'AOI cannot prove that firmware, communications, sensors, or the complete product function correctly. Functional testing requires defined firmware, fixtures, operating conditions, and pass/fail criteria. Agree the inspection and test scope before production rather than adding assumptions at shipment.',
+          'PCBA testing before shipment is a quality-control stage inside a turnkey manufacturing workflow, not a standalone description of Huitai Electronics’ service. The complete one-stop scope can coordinate PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, inspection and functional testing to confirmed requirements, packaging, and finished PCBA delivery.',
+          'Within that workflow, visual inspection and AOI look for visible assembly problems such as missing or misaligned components, polarity errors, solder bridges, and other optical defects. Functional testing checks customer-defined board behavior using confirmed firmware, fixtures, operating conditions, and pass/fail criteria.',
+        ],
+      },
+      {
+        heading: 'Where testing fits in turnkey PCBA',
+        body: [
+          'Testing is one quality gate in a connected manufacturing path. Reviewing it together with fabrication, sourcing, and assembly helps prevent a test requirement from appearing only after boards have already been built.',
+          '| Turnkey stage | Coordinated scope | Buyer input or approval | Result |\n| --- | --- | --- | --- |\n| Engineering review | Review Gerber, BOM, pick-and-place data, drawings, quantity, testing, and delivery needs | Latest file revisions and answers to open engineering questions | Confirmed quotation scope and identified risks |\n| PCB fabrication | Coordinate bare-board production to the confirmed PCB specifications | Stack-up, material, thickness, copper, finish, dimensions, and special notes | Fabricated PCBs ready for assembly |\n| BOM sourcing | Review part availability, lifecycle risk, and customer-approved alternatives | Manufacturer part numbers, no-substitute parts, and alternative approvals | Components purchased for the build |\n| SMT and DIP assembly | Coordinate stencil, placement, reflow, and through-hole assembly requirements | Pick-and-place data, assembly drawings, polarity, and mechanical notes | Assembled PCBA boards |\n| Inspection and testing | Apply agreed visual inspection, AOI, and customer-defined functional testing | Firmware, fixture, interfaces, test steps, and acceptance criteria | Boards checked to the confirmed quality scope |\n| Packaging and delivery | Prepare labels, packaging, handling, and shipment requirements | Label format, packaging notes, destination, and delivery instructions | Finished PCBA delivery |',
+          'This is the role of testing in a [turnkey PCB assembly](/turnkey-pcb-assembly) project: it supports the delivery of finished boards after the earlier fabrication, sourcing, and assembly stages have been coordinated.',
         ],
       },
       {
@@ -1101,9 +1109,10 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         ],
       },
       {
-        heading: 'What customers should provide for functional testing',
+        heading: 'What customers should provide for a turnkey PCBA review',
         body: [
-          'Gerber and BOM files do not define a functional test. Buyers should provide the conditions for powering, programming, exercising, measuring, and accepting the board.',
+          'Start with one complete RFQ package: Gerber and drill files, a BOM with manufacturer part numbers, pick-and-place data, assembly drawings, PCB specifications, quantity, delivery requirements, and any packaging or labeling notes. These inputs define the fabrication, sourcing, assembly, and finished-delivery scope before testing is added.',
+          'When functional testing is required, also provide the conditions for powering, programming, exercising, measuring, and accepting the board:',
           '- **Firmware:** approved revision, programming file, steps, and configuration requirements.\n- **Power:** voltage, current limit, polarity, startup sequence, and prohibited conditions.\n- **Fixture and interfaces:** fixture, connectors, cables, adapters, protocols, and instruments.\n- **Test sequence:** actions, inputs, delays, measurements, and reset conditions.\n- **Expected results:** target readings, tolerances, messages, indicators, or waveforms.\n- **Reference evidence:** golden sample, approved log, screenshot, or known-good measurement.\n- **Records and handling:** required traceability plus relevant electrical, thermal, or mechanical precautions.',
           'If some inputs are unavailable, the project can still define a narrower inspection or basic check where appropriate, but it should not be described as complete functional validation. The exact [quality and testing scope](/quality) must be confirmed for the project.',
         ],
@@ -1119,7 +1128,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       {
         heading: 'Confirm the testing scope before quotation',
         body: [
-          'Testing affects quote scope because fixtures, programming, connection time, software setup, data retention, and retesting add project-specific work.',
+          'A turnkey PCBA quote should define the complete path from PCB fabrication and BOM sourcing through assembly, inspection, testing, packaging, and delivery. Within that scope, fixtures, programming, connection time, software setup, data retention, and retesting add project-specific work.',
           'Confirm the methods, coverage, fixture and software owner, controlling revision, required records, and failure process. Coverage must be explicit; never infer it from the word "tested." Prototype builds may validate the method, while repeat builds need controlled firmware and test revisions.',
           'For [turnkey PCB assembly](/turnkey-pcb-assembly), review testing with fabrication, sourcing, assembly, packaging, and delivery. The [PCBA testing and quality control service](/pcba-testing-quality-control) page explains how project-specific scope is coordinated.',
         ],
@@ -1136,21 +1145,21 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         heading: 'Pre-shipment PCBA testing checklist',
         body: [
           'Before the build is released, confirm the following items:',
-          '- Production files and quantities use the intended revision.\n- Firmware and programming instructions have an approved version.\n- Power limits, interfaces, and handling precautions are documented.\n- Fixture, equipment, software, and ownership are confirmed.\n- Each mandatory step has an expected result and pass/fail limit.\n- Coverage, records, failure handling, rework, and retest rules are agreed.\n- Labeling, packaging, and final visual checks are included.',
+          '- Gerber, BOM, pick-and-place data, drawings, specifications, and quantities use the intended revision.\n- Component availability, no-substitute parts, and approved alternatives are confirmed.\n- Firmware and programming instructions have an approved version.\n- Power limits, interfaces, and handling precautions are documented.\n- Fixture, equipment, software, and ownership are confirmed.\n- Each mandatory test step has an expected result and pass/fail limit.\n- Coverage, records, failure handling, rework, and retest rules are agreed.\n- Labeling, packaging, delivery details, and final visual checks are included.',
           'Use this checklist as a shared starting point, then adapt it to the board and project risk.',
         ],
       },
       {
         heading: 'FAQ',
         body: [
-          '### Is AOI the same as functional testing?\n\nNo. AOI checks visible assembly conditions. Functional testing checks defined board behavior using confirmed firmware, fixtures, inputs, outputs, and limits.\n\n### Can AOI confirm that a PCBA works?\n\nNo. A board can pass AOI and still have a firmware, communication, power, sensor, or interface problem.\n\n### What information is needed for PCBA functional testing?\n\nProvide firmware, programming steps, power conditions, fixture and interface details, test sequence, expected results, tolerances, pass/fail criteria, and record requirements.\n\n### Does every assembled board need functional testing?\n\nCoverage depends on product risk, project stage, buyer requirements, and the agreed quality plan. The quote should state whether every board or an agreed sample is tested.\n\n### Can Huitai help with a functional test fixture?\n\nFixture requirements can be discussed. Responsibility, cost, lead time, interfaces, maintenance, and acceptance must be confirmed before production.\n\n### What test records should a buyer request?\n\nRequest the evidence the project needs, such as serial numbers, firmware revisions, values, pass/fail logs, failure codes, retest results, or a summary report.',
+          '### Is AOI the same as functional testing?\n\nNo. AOI checks visible assembly conditions. Functional testing checks defined board behavior using confirmed firmware, fixtures, inputs, outputs, and limits.\n\n### Can AOI confirm that a PCBA works?\n\nNo. A board can pass AOI and still have a firmware, communication, power, sensor, or interface problem.\n\n### What information is needed for PCBA functional testing?\n\nProvide firmware, programming steps, power conditions, fixture and interface details, test sequence, expected results, tolerances, pass/fail criteria, and record requirements.\n\n### Does every assembled board need functional testing?\n\nCoverage depends on product risk, project stage, buyer requirements, and the agreed quality plan. The quote should state whether every board or an agreed sample is tested.\n\n### Can Huitai help with a functional test fixture?\n\nFixture requirements can be discussed. Responsibility, cost, lead time, interfaces, maintenance, and acceptance must be confirmed before production.\n\n### What test records should a buyer request?\n\nRequest the evidence the project needs, such as serial numbers, firmware revisions, values, pass/fail logs, failure codes, retest results, or a summary report.\n\n### What does Huitai coordinate in a turnkey PCBA project?\n\nHuitai Electronics coordinates PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, inspection and functional testing to confirmed requirements, packaging, and finished PCBA delivery as one managed project scope.',
         ],
       },
       {
-        heading: 'Send your testing requirements for review',
+        heading: 'Send your complete turnkey PCBA package for review',
         body: [
-          'A useful review package combines the production files with the information needed to define the test. Include Gerber data, BOM, pick-and-place data, assembly drawings, firmware, fixture or interface notes, test steps, expected results, and acceptance criteria.',
-          '[Send your Gerber, BOM, firmware, fixture notes, and acceptance criteria for an engineering review](/contact#project-files). Huitai Electronics can review the requested inspection and functional test scope with the rest of the PCBA quotation requirements before production conditions are confirmed.',
+          'A useful one-stop review package combines production files, sourcing requirements, assembly notes, testing inputs, packaging, and delivery needs. Include Gerber and drill data, BOM, pick-and-place data, assembly drawings, PCB specifications, quantity, firmware, fixture or interface notes, test steps, acceptance criteria, and delivery requirements.',
+          '[Send your complete turnkey PCBA package for an engineering review](/contact#project-files). Huitai Electronics reviews PCB fabrication, BOM sourcing, SMT/DIP assembly, inspection and functional testing, packaging, and finished PCBA delivery as one coordinated quotation scope.',
         ],
       },
     ],

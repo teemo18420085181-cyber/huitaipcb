@@ -27,7 +27,7 @@ const DEFAULT_IMAGE_ALT = 'PCBA engineer reviewing BOM files and assembled circu
 const DEFAULT_CATEGORY_COLOR = 'bg-cc-copper/10 text-cc-ink border-cc-copper/30';
 
 const ARTICLE_SEO_TITLES: Record<string, string> = {
-  'pcba-testing-before-shipment': 'PCBA Testing Before Shipment: AOI vs Functional Test',
+  'pcba-testing-before-shipment': 'PCBA Testing Before Shipment | Turnkey PCBA Guide',
   'pcba-quotation-checklist': 'PCBA Quotation Checklist | Huitai Electronics',
   'prototype-pcb-assembly-china-buyer-checklist': 'Prototype PCB Assembly China | Huitai Electronics',
   'what-is-turnkey-pcba': 'What Is Turnkey PCBA? | PCB Assembly Guide',
