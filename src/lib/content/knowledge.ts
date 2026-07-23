@@ -1071,45 +1071,86 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     slug: 'pcba-testing-before-shipment',
     category: 'Quality',
     categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
-    title: 'AOI and Functional Testing Before PCBA Shipment',
+    title: 'PCBA Testing Before Shipment: AOI and Functional Test Requirements',
     excerpt:
-      'How AOI, visual inspection, functional testing, and packaging checks reduce PCBA delivery risk before finished boards leave the supplier.',
+      'A practical buyer guide to AOI, functional test inputs, pass/fail criteria, failure handling, and the testing scope to confirm before a PCBA quote.',
     image: '/factory/knowledge-covers/pcba-testing-before-shipment-cover.webp',
-    readTime: '7 min read',
+    readTime: '9 min read',
     metaDescription:
-      'Learn how AOI, visual inspection, functional testing, and packaging checks reduce PCBA delivery risk before shipment.',
+      'PCBA testing before shipment explained: compare AOI and functional testing requirements, define pass/fail criteria, and prepare a practical test plan.',
     sections: [
       {
         heading: 'Quick answer',
         body: [
-          'AOI and functional testing reduce PCBA delivery risk by checking different problems before shipment. AOI checks visible assembly quality such as solder joints, component presence, polarity, and placement. Functional testing checks whether the assembled board behaves as expected, but it depends on the customer providing the test method, fixture, firmware, or acceptance criteria.',
+          'PCBA testing before shipment normally combines checks that answer different questions. Visual inspection and AOI look for visible assembly problems such as missing or misaligned components, polarity errors, solder bridges, and other optical defects. Functional testing checks whether the assembled board behaves as expected under a customer-defined test method.',
+          'AOI cannot prove that firmware, communications, sensors, or the complete product function correctly. Functional testing requires defined firmware, fixtures, operating conditions, and pass/fail criteria. Agree the inspection and test scope before production rather than adding assumptions at shipment.',
         ],
       },
       {
-        heading: 'AOI is not the same as functional testing',
+        heading: 'AOI, visual inspection, and functional testing compared',
         body: [
-          'AOI inspection uses optical comparison to find assembly defects such as missing parts, misalignment, polarity issues, solder bridges, and visible solder problems. It is useful after SMT assembly because it can quickly screen many visible placement and soldering issues.',
-          'Functional testing is different. It checks board behavior against an agreed test method, such as power-on behavior, programmed firmware, signal output, communication, sensor response, or customer-defined acceptance criteria. A board can pass AOI and still need functional testing if the product requires electrical validation.',
+          '| Inspection or test | What it can find | What it does not confirm | Buyer input needed |\n| --- | --- | --- | --- |\n| Visual inspection | Damage, contamination, labels, polarity, orientation, and visible solder issues | Repeatable electrical or product function | Assembly drawing, reference photos, and workmanship notes |\n| AOI | Missing, shifted, rotated, or wrong-polarity parts and visible solder defects | Firmware, signal performance, hidden connections, or complete product behavior | Component data, polarity references, and inspection scope |\n| Basic power-on or continuity check | Shorts, unexpected current draw, or a defined basic response | Full feature or performance coverage | Power limits, connection method, expected readings, and safety notes |\n| Functional testing | Defined power, communications, inputs, outputs, sensors, or controls | Any function outside the approved sequence | Firmware, fixture, interfaces, test steps, expected results, and limits |',
+          'The right combination depends on board complexity, project stage, failure risk, and the evidence required before shipment.',
+        ],
+      },
+      {
+        heading: 'What AOI can and cannot check',
+        body: [
+          'AOI provides repeatable optical screening after SMT placement and reflow. It compares component presence, position, polarity markings, and visible solder conditions against programmed criteria.',
+          'AOI only evaluates visible conditions included in its program. It cannot prove that a microcontroller starts, a port communicates, a sensor responds, or a power rail stays within tolerance under load. Critical hidden connections may need another agreed method. See [common PCBA defects and how to prevent them](/knowledge/common-pcba-defects-and-prevention) for a broader risk overview.',
         ],
       },
       {
         heading: 'What customers should provide for functional testing',
         body: [
-          'Functional testing requires clear inputs from the customer. Useful information includes firmware, programming instructions, test fixture details, power requirements, expected signals, pass/fail criteria, connector interfaces, and any safety or handling notes.',
-          'If the test method is not available, the supplier can still discuss visual inspection, AOI, continuity checks, or simple power-on checks where appropriate. The exact [quality and testing scope](/quality) should be agreed before production.',
+          'Gerber and BOM files do not define a functional test. Buyers should provide the conditions for powering, programming, exercising, measuring, and accepting the board.',
+          '- **Firmware:** approved revision, programming file, steps, and configuration requirements.\n- **Power:** voltage, current limit, polarity, startup sequence, and prohibited conditions.\n- **Fixture and interfaces:** fixture, connectors, cables, adapters, protocols, and instruments.\n- **Test sequence:** actions, inputs, delays, measurements, and reset conditions.\n- **Expected results:** target readings, tolerances, messages, indicators, or waveforms.\n- **Reference evidence:** golden sample, approved log, screenshot, or known-good measurement.\n- **Records and handling:** required traceability plus relevant electrical, thermal, or mechanical precautions.',
+          'If some inputs are unavailable, the project can still define a narrower inspection or basic check where appropriate, but it should not be described as complete functional validation. The exact [quality and testing scope](/quality) must be confirmed for the project.',
         ],
       },
       {
-        heading: 'How inspection reduces delivery risk',
+        heading: 'Functional test specification template',
         body: [
-          'Inspection before shipment reduces avoidable delivery risk by catching assembly problems while the boards are still at the supplier. That can prevent shipping boards with wrong polarity, missing parts, solder bridges, unclear labels, or packaging issues.',
-          'For [turnkey PCBA](/turnkey-pcb-assembly), inspection and testing should be part of the quote discussion along with PCB fabrication, component sourcing, SMT/DIP assembly, packaging, and delivery requirements.',
+          'A controlled specification is more useful than an instruction such as "test the board." These fields make the method repeatable and quotation assumptions visible.',
+          '| Field | What to define | Example |\n| --- | --- | --- |\n| Test ID and revision | Stable step name and document version | FCT-03, revision B |\n| Preconditions | Firmware, board state, or setup | Approved firmware loaded |\n| Fixture and equipment | Required fixture, cable, instrument, or software | Customer fixture and cable set |\n| Input or action | Operator or station action | Apply input and send the command |\n| Expected result | Response to observe | Specified status and output state |\n| Tolerance | Permitted numerical or timing range | Approved engineering limit |\n| Pass/fail rule | Exact acceptance condition | All mandatory steps within limits |\n| Data to record | Values, logs, serial numbers, or failure codes | Serial, firmware, value, and result |\n| Failure and retest rule | Action after failure | Isolate and follow approved disposition |',
+          'Replace these examples with real product conditions and control the revision so both parties use the same definition.',
+        ],
+      },
+      {
+        heading: 'Confirm the testing scope before quotation',
+        body: [
+          'Testing affects quote scope because fixtures, programming, connection time, software setup, data retention, and retesting add project-specific work.',
+          'Confirm the methods, coverage, fixture and software owner, controlling revision, required records, and failure process. Coverage must be explicit; never infer it from the word "tested." Prototype builds may validate the method, while repeat builds need controlled firmware and test revisions.',
+          'For [turnkey PCB assembly](/turnkey-pcb-assembly), review testing with fabrication, sourcing, assembly, packaging, and delivery. The [PCBA testing and quality control service](/pcba-testing-quality-control) page explains how project-specific scope is coordinated.',
+        ],
+      },
+      {
+        heading: 'Define failure handling and retesting',
+        body: [
+          'Define what happens after a failure so troubleshooting, rework, and retesting do not introduce uncontrolled decisions.',
+          '- Identify and isolate the failed board.\n- Record the failed test ID and required reading, message, photo, or log.\n- Define diagnosis scope and changes that require customer approval.\n- State the rework instruction or approval path.\n- Retest under the same controlled conditions.\n- Define the disposition for unresolved failures.',
+          'Name required reports, serial-number logs, failure summaries, or retained data in the quotation instead of assuming they are included.',
+        ],
+      },
+      {
+        heading: 'Pre-shipment PCBA testing checklist',
+        body: [
+          'Before the build is released, confirm the following items:',
+          '- Production files and quantities use the intended revision.\n- Firmware and programming instructions have an approved version.\n- Power limits, interfaces, and handling precautions are documented.\n- Fixture, equipment, software, and ownership are confirmed.\n- Each mandatory step has an expected result and pass/fail limit.\n- Coverage, records, failure handling, rework, and retest rules are agreed.\n- Labeling, packaging, and final visual checks are included.',
+          'Use this checklist as a shared starting point, then adapt it to the board and project risk.',
         ],
       },
       {
         heading: 'FAQ',
         body: [
-          '### What does AOI check in PCB assembly?\n\nAOI checks visible assembly details such as component presence, placement, polarity, solder bridges, insufficient solder, and other optical defects after SMT assembly.\n\n### Is AOI the same as functional testing?\n\nNo. AOI checks visible assembly quality. Functional testing checks whether the board works according to a customer-provided method, firmware, fixture, or acceptance criteria.\n\n### Can Huitai perform functional testing?\n\nHuitai can discuss functional testing support when the customer provides the test method, firmware, fixture, or acceptance criteria needed to define the scope.\n\n### What test information should customers provide?\n\nProvide firmware, programming steps, fixture requirements, power input, expected outputs, pass/fail criteria, and any special handling instructions.\n\n### How does inspection reduce PCBA delivery risk?\n\nInspection helps catch visible assembly defects, test-scope issues, and packaging problems before boards are shipped. To discuss a project-specific inspection plan, [send your files and test requirements](/contact).',
+          '### Is AOI the same as functional testing?\n\nNo. AOI checks visible assembly conditions. Functional testing checks defined board behavior using confirmed firmware, fixtures, inputs, outputs, and limits.\n\n### Can AOI confirm that a PCBA works?\n\nNo. A board can pass AOI and still have a firmware, communication, power, sensor, or interface problem.\n\n### What information is needed for PCBA functional testing?\n\nProvide firmware, programming steps, power conditions, fixture and interface details, test sequence, expected results, tolerances, pass/fail criteria, and record requirements.\n\n### Does every assembled board need functional testing?\n\nCoverage depends on product risk, project stage, buyer requirements, and the agreed quality plan. The quote should state whether every board or an agreed sample is tested.\n\n### Can Huitai help with a functional test fixture?\n\nFixture requirements can be discussed. Responsibility, cost, lead time, interfaces, maintenance, and acceptance must be confirmed before production.\n\n### What test records should a buyer request?\n\nRequest the evidence the project needs, such as serial numbers, firmware revisions, values, pass/fail logs, failure codes, retest results, or a summary report.',
+        ],
+      },
+      {
+        heading: 'Send your testing requirements for review',
+        body: [
+          'A useful review package combines the production files with the information needed to define the test. Include Gerber data, BOM, pick-and-place data, assembly drawings, firmware, fixture or interface notes, test steps, expected results, and acceptance criteria.',
+          '[Send your Gerber, BOM, firmware, fixture notes, and acceptance criteria for an engineering review](/contact#project-files). Huitai Electronics can review the requested inspection and functional test scope with the rest of the PCBA quotation requirements before production conditions are confirmed.',
         ],
       },
     ],

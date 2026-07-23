@@ -22,7 +22,6 @@ export const metadata = {
 };
 
 const COMING_SOON = [
-  'How to write a functional test specification for your CM',
   'Understanding IPC Class II vs Class III: when does it matter?',
   'Surface finish comparison: HASL vs ENIG vs OSP',
   'How to manage component obsolescence in a long-run product',
