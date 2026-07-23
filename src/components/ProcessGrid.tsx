@@ -1,99 +1,88 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const PROCESS = [
   {
     n: '01',
-    name: 'Files & DFM Review',
-    desc: 'Gerber, BOM, and assembly notes reviewed by our engineering team. Manufacturability issues flagged before production.',
-    image: '/factory/flow-01.png',
-    href: '/services',
+    name: 'Review Gerber & BOM',
+    desc: 'Check available files, quantity, component information, assembly notes, and test requirements.',
+    href: '/pcba-quote-file-checklist',
   },
   {
     n: '02',
-    name: 'BOM Sourcing',
-    desc: 'Authorized and franchised sourcing channels are prioritized. Other sourcing options require customer approval, with incoming checks planned by project.',
-    image: '/factory/flow-02.png',
-    href: '/services',
+    name: 'Confirm build scope',
+    desc: 'Align PCB specifications, BOM sourcing, approved alternatives, assembly method, and inspection plan.',
+    href: '/how-we-work',
   },
   {
     n: '03',
-    name: 'PCB Fabrication',
-    desc: 'Fabrication coordinated to your stackup, material, finish, and impedance requirements.',
-    image: '/factory/flow-03.png',
-    href: '/capabilities',
+    name: 'Fabricate the PCB',
+    desc: 'Coordinate the bare board build to the confirmed material, stack-up, finish, and drawing requirements.',
+    href: '/pcb-fabrication-and-assembly',
   },
   {
     n: '04',
-    name: 'SMT & Through-Hole Assembly',
-    desc: 'Pick-and-place, reflow, DIP, wave soldering, and hand soldering coordinated as one build.',
-    image: '/factory/flow-04.png',
-    href: '/services',
+    name: 'Assemble SMT & DIP',
+    desc: 'Move the approved materials through SMT placement and any required through-hole assembly.',
+    href: '/pcb-assembly-services',
   },
   {
     n: '05',
-    name: 'Inspection, Testing & Box Build',
-    desc: 'AOI, X-ray, electrical or functional testing, plus final integration when required.',
-    image: '/factory/flow-06.png',
-    href: '/quality',
+    name: 'Inspect & test',
+    desc: 'Apply the inspection and test steps agreed for the project before final release.',
+    href: '/pcba-testing-quality-control',
   },
   {
     n: '06',
-    name: 'Packaging & Shipping',
-    desc: 'Anti-static packaging, project documentation, and DHL/FedEx or customer-specified delivery.',
-    image: '/factory/flow-08.png',
+    name: 'Pack & deliver',
+    desc: 'Prepare the finished PCBA, project documents, anti-static packing, and shipment details.',
     href: '/contact',
   },
 ];
 
 export default function ProcessGrid() {
   return (
-    <section className="font-body-cc px-[5vw] py-20">
+    <section id="pcba-process" className="font-body-cc bg-cc-mist px-[5vw] py-20 text-cc-heading md:py-24">
       <div className="mx-auto max-w-[1280px]">
-        <div className="mb-12 max-w-[680px]">
-          <div className="font-mono-cc mb-3.5 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.18em] text-cc-copper-soft">
-            <span className="h-px w-[18px] bg-cc-copper" />
-            THE TURNKEY WORKFLOW
+        <div className="mb-10 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-[760px]">
+            <div className="font-mono-cc mb-3 text-[11px] font-semibold tracking-[0.18em] text-cc-copper-ink">
+              GERBER &amp; BOM TO FINISHED PCBA
+            </div>
+            <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-[44px]">
+              A six-stage workflow with clear review points.
+            </h2>
+            <p className="mt-4 max-w-[680px] text-[15px] leading-7 text-cc-body">
+              The quotation starts with the files and decisions that affect the real build,
+              then keeps fabrication, sourcing, assembly, and testing connected.
+            </p>
           </div>
-          <h2 className="font-display mb-3.5 text-3xl font-bold leading-tight tracking-tight text-cc-ink md:text-4xl lg:text-[44px]">
-            Six coordinated stages, <span className="cc-copper-text">one accountable team.</span>
-          </h2>
-          <p className="text-[15px] leading-relaxed text-cc-ink-mute">
-            From file review to delivery, Huitai Electronics keeps sourcing, fabrication,
-            assembly, testing, and communication in one managed workflow.
-          </p>
+          <Link
+            href="/how-we-work"
+            className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-cc-heading underline decoration-cc-copper/50 underline-offset-4 hover:text-cc-copper-ink"
+          >
+            See how we work
+            <ArrowRight size={15} />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {PROCESS.map((p) => (
-            <Link
-              key={p.n}
-              href={p.href}
-              className="group overflow-hidden rounded-[14px] border border-cc-line bg-cc-carbon-2 transition-all duration-200 hover:-translate-y-1 hover:border-cc-copper/40"
-            >
-              <div className="relative h-40 overflow-hidden bg-cc-carbon-3">
-                <Image
-                  src={p.image}
-                  alt={p.name}
-                  fill
-                  className="object-cover opacity-75 transition-transform duration-500 group-hover:scale-105 group-hover:opacity-90"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-cc-carbon via-cc-carbon/40 to-transparent" />
-                <div className="cc-copper-fill font-mono-cc absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-lg text-[11px] font-bold">
-                  {p.n}
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="mb-1.5 text-sm font-semibold text-cc-ink transition-colors group-hover:text-cc-copper-soft">
-                  {p.name}
-                </h3>
-                <p className="line-clamp-3 text-xs leading-relaxed text-cc-ink-mute">{p.desc}</p>
-              </div>
-              <div className="-mt-px h-[3px] bg-gradient-to-r from-cc-copper to-cc-signal opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </Link>
+        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {PROCESS.map((step) => (
+            <li key={step.n}>
+              <Link
+                href={step.href}
+                className="group flex h-full min-h-[190px] flex-col rounded-2xl border border-cc-line-light bg-cc-card p-6 transition-transform hover:-translate-y-0.5"
+              >
+                <div className="font-mono-cc mb-8 text-sm font-bold text-cc-copper-ink">{step.n}</div>
+                <h3 className="font-display text-lg font-bold text-cc-heading">{step.name}</h3>
+                <p className="mt-2 flex-1 text-sm leading-6 text-cc-body">{step.desc}</p>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-cc-heading transition-colors group-hover:text-cc-copper-ink">
+                  Review details <ArrowRight size={13} />
+                </span>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

@@ -3,6 +3,11 @@ import { readFileSync } from 'node:fs';
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 
 const hero = read('src/components/Hero.tsx');
+const homePage = read('src/app/page.tsx');
+const inquiryForm = read('src/components/InquiryForm.tsx');
+const layout = read('src/app/layout.tsx');
+const robots = read('src/app/robots.ts');
+const sitemap = read('src/app/sitemap.ts');
 const seoPages = read('src/lib/content/seoPages.ts');
 const knowledge = read('src/lib/content/knowledge.ts');
 const articles = read('src/lib/content/articles.ts');
@@ -27,7 +32,65 @@ const jlcpcbArticle = between(
 );
 
 const checks = [
-  [hero.includes("From Gerber{' '}"), 'Homepage H1 must preserve the space before “to”.'],
+  [
+    /<h1[^>]*>\s*Turnkey PCBA Manufacturer in Shenzhen, China\s*<\/h1>/.test(hero),
+    'Homepage H1 must state the Shenzhen turnkey PCBA manufacturer positioning.',
+  ],
+  [
+    hero.includes(
+      'PCB fabrication, BOM sourcing, SMT and through-hole assembly, testing and',
+    ) && hero.includes('finished PCBA delivery—from prototype to production.'),
+    'Homepage hero must describe the complete prototype-to-production service range.',
+  ],
+  [
+    hero.includes('Prototype orders from 5 sets'),
+    'Homepage hero must state the confirmed 5-set prototype starting quantity.',
+  ],
+  [
+    hero.includes('href="/contact#quote-form"') &&
+      hero.includes('Request a PCBA Quote') &&
+      hero.includes('href="/contact#project-files"') &&
+      hero.includes('Send Gerber &amp; BOM') &&
+      hero.includes('href="/capabilities"'),
+    'Homepage CTAs must keep real quote, file, and capabilities destinations.',
+  ],
+  [
+    homePage.includes("title: 'Turnkey PCBA Manufacturer in China | HuitaiPCB'"),
+    'Homepage metadata title must match the approved turnkey PCBA positioning.',
+  ],
+  [
+    !homePage.includes('<FeedbackBoard />'),
+    'Homepage must not load the interactive feedback board in the conversion path.',
+  ],
+  [
+    inquiryForm.includes("email: 'Work Email *'") &&
+      inquiryForm.includes("projectType: 'Project Stage'") &&
+      inquiryForm.includes('name="email"') &&
+      inquiryForm.includes('name="company"') &&
+      inquiryForm.includes('name="quantity"') &&
+      inquiryForm.includes('name="project_type"') &&
+      inquiryForm.includes('name="message"') &&
+      inquiryForm.includes('type="file"') &&
+      inquiryForm.includes("formData.append('files', f)"),
+    'RFQ form must surface work email and project stage fields.',
+  ],
+  [
+    homePage.includes("canonical: absoluteUrl('/')") &&
+      homePage.includes("languages: getLanguageAlternates('/')"),
+    'Homepage must preserve canonical and language alternates.',
+  ],
+  [
+    layout.includes('<Analytics />') &&
+      layout.includes('<JsonLd />') &&
+      inquiryForm.includes("trackEvent('contact_form_submit'"),
+    'Analytics, structured data, and successful form tracking must remain wired.',
+  ],
+  [
+    robots.includes("sitemap: 'https://huitaipcb.com/sitemap.xml'") &&
+      sitemap.includes("'/contact'") &&
+      sitemap.includes("'/turnkey-pcb-assembly'"),
+    'Robots and sitemap infrastructure must preserve important public routes.',
+  ],
   [
     prototypePage.includes("seoTitle: 'Prototype PCB Assembly China | 5-Piece Builds & BOM Review'"),
     'Prototype SEO title must lead with the 5-piece differentiator.',

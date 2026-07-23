@@ -30,11 +30,14 @@ const FORM_COPY = {
     errorFallback: 'Something went wrong. Please try again.',
     eyebrow: 'QUICK RFQ',
     title: 'Upload Gerber & BOM for Engineering Review',
-    intro: 'Name, email, quantity, a short project note, and any available files are enough to begin a PCBA quote review.',
+    intro: 'Name, work email, company, quantity, project stage, a short project note, and any available files are enough to begin a PCBA quote review.',
     name: 'Your Name *',
-    email: 'Email *',
+    email: 'Work Email *',
+    company: 'Company',
     quantity: 'Quantity',
     quantityPlaceholder: '50 pcs, 500 pcs, pilot run...',
+    projectType: 'Project Stage',
+    projectTypePlaceholder: 'Prototype, pilot run, low-volume, production...',
     brief: 'Project Brief *',
     briefPlaceholder: 'What are you building, what quantity do you need, and what should we review first?',
     files: 'Project Files',
@@ -42,18 +45,15 @@ const FORM_COPY = {
     uploadAria: 'Upload project files',
     uploadTitle: 'Upload Gerber, BOM, drawings, or photos',
     uploadHint: 'Drop files here or click to browse. Up to 10 files, 25MB each.',
-    detailsSummary: 'Add company, phone, project type, or testing details',
-    company: 'Company',
+    detailsSummary: 'Add country, phone, or testing details',
     country: 'Country',
     phone: 'Phone / WhatsApp',
-    projectType: 'Project Type',
-    projectTypePlaceholder: 'Prototype, low-volume, turnkey PCBA...',
     testing: 'Testing Requirements',
     testingPlaceholder: 'Functional test, ICT, firmware flashing, inspection report, sample approval requirements...',
     consentPrefix: 'I agree to be contacted regarding this inquiry. My information will be used solely for quotation and project communication. See our',
     privacy: 'Privacy Policy',
     submitting: 'Submitting...',
-    submit: 'Upload Gerber & BOM for Engineering Review',
+    submit: 'Request a PCBA Quote',
     footer: 'Reply target: within 24 hours on business days after RFQ file receipt / NDA available on request',
   },
   de: {
@@ -67,9 +67,12 @@ const FORM_COPY = {
     title: 'Gerber & BOM für technische PCBA-Prüfung hochladen',
     intro: 'Name, E-Mail, Stückzahl, kurze Projektnotiz und verfügbare Dateien reichen aus, um eine PCBA-Angebotsprüfung zu starten.',
     name: 'Ihr Name *',
-    email: 'E-Mail *',
+    email: 'Geschäftliche E-Mail *',
+    company: 'Firma',
     quantity: 'Stückzahl',
     quantityPlaceholder: '50 Stück, 500 Stück, Pilotserie...',
+    projectType: 'Projektphase',
+    projectTypePlaceholder: 'Prototyp, Pilotserie, Kleinserie, Produktion...',
     brief: 'Projektbeschreibung *',
     briefPlaceholder: 'Was entwickeln Sie, welche Stückzahl benötigen Sie, und was soll zuerst geprüft werden?',
     files: 'Projektdaten',
@@ -77,18 +80,15 @@ const FORM_COPY = {
     uploadAria: 'Projektdaten hochladen',
     uploadTitle: 'Gerber, BOM, Zeichnungen oder Fotos hochladen',
     uploadHint: 'Dateien hier ablegen oder zum Auswählen klicken. Bis zu 10 Dateien, je 25 MB.',
-    detailsSummary: 'Firma, Telefon, Projekttyp oder Prüfdetails ergänzen',
-    company: 'Firma',
+    detailsSummary: 'Land, Telefon oder Prüfdetails ergänzen',
     country: 'Land',
     phone: 'Telefon / WhatsApp',
-    projectType: 'Projekttyp',
-    projectTypePlaceholder: 'Prototyp, Kleinserie, Turnkey-PCBA...',
     testing: 'Prüfanforderungen',
     testingPlaceholder: 'Funktionstest, ICT, Firmware, Inspektionsbericht, Musterfreigabe...',
     consentPrefix: 'Ich bin damit einverstanden, zu dieser Anfrage kontaktiert zu werden. Meine Angaben werden nur für Angebot und Projektkommunikation verwendet. Siehe',
     privacy: 'Datenschutzerklärung',
     submitting: 'Wird gesendet...',
-    submit: 'Gerber & BOM zur Prüfung senden',
+    submit: 'PCBA-Angebot anfragen',
     footer: 'NDA auf Anfrage möglich / Rückfragen per E-Mail',
   },
 } as const;
@@ -238,8 +238,14 @@ export default function InquiryForm({ locale = 'en' }: { locale?: InquiryFormLoc
       <div className="grid gap-5 md:grid-cols-2">
         <FormField label={copy.name} name="name" required />
         <FormField label={copy.email} name="email" type="email" required />
+        <FormField label={copy.company} name="company" />
+        <FormField label={copy.quantity} name="quantity" placeholder={copy.quantityPlaceholder} />
         <div className="md:col-span-2">
-          <FormField label={copy.quantity} name="quantity" placeholder={copy.quantityPlaceholder} />
+          <FormField
+            label={copy.projectType}
+            name="project_type"
+            placeholder={copy.projectTypePlaceholder}
+          />
         </div>
       </div>
 
@@ -338,10 +344,8 @@ export default function InquiryForm({ locale = 'en' }: { locale?: InquiryFormLoc
           </span>
         </summary>
         <div className="grid gap-5 border-t border-cc-line p-4 md:grid-cols-2">
-          <FormField label={copy.company} name="company" />
           <FormField label={copy.country} name="country" />
           <FormField label={copy.phone} name="phone" type="tel" />
-          <FormField label={copy.projectType} name="project_type" placeholder={copy.projectTypePlaceholder} />
           <div className="md:col-span-2">
             <label htmlFor="testing_requirements" className="mb-2 block text-xs font-medium tracking-wide text-cc-ink">
               {copy.testing}

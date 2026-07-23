@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Menu, Upload, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import TrackedLink from '@/components/TrackedLink';
 import { getLocaleFromPathname, getLocalizedPathname, type Locale } from '@/lib/i18n/routes';
 
@@ -25,19 +25,17 @@ const NAV_ITEMS: Record<Locale, { name: string; href: string }[]> = {
   ],
 };
 
-const NAV_COPY: Record<Locale, { quote: string; uploadMobile: string; uploadDesktop: string; mobileQuote: string; tagline: string }> = {
+const NAV_COPY: Record<Locale, { quote: string; upload: string; mobileQuote: string; tagline: string }> = {
   en: {
-    quote: 'Start a Quote',
-    uploadMobile: 'Upload Files',
-    uploadDesktop: 'Upload Gerber & BOM',
-    mobileQuote: 'Start a PCB Assembly Quote',
+    quote: 'Request a Quote',
+    upload: 'Send Gerber & BOM',
+    mobileQuote: 'Request a PCBA Quote',
     tagline: 'TURNKEY PCBA MANUFACTURING',
   },
   de: {
-    quote: 'Anfrage starten',
-    uploadMobile: 'Dateien',
-    uploadDesktop: 'Gerber & BOM senden',
-    mobileQuote: 'PCBA-Anfrage starten',
+    quote: 'Anfrage',
+    upload: 'Gerber & BOM senden',
+    mobileQuote: 'PCBA-Anfrage',
     tagline: 'TURNKEY PCBA-FERTIGUNG',
   },
 };
@@ -72,7 +70,8 @@ export default function Nav() {
           </span>
           <div className="min-w-0 leading-none">
             <strong className="block whitespace-nowrap text-[11px] font-semibold tracking-[0.05em] text-cc-ink sm:text-sm sm:tracking-[0.08em]">
-              HUITAI ELECTRONICS
+              <span className="min-[440px]:hidden">HUITAI</span>
+              <span className="hidden min-[440px]:inline">HUITAI ELECTRONICS</span>
             </strong>
             <span className="font-mono-cc mt-1 hidden text-[8px] font-medium tracking-[0.14em] text-cc-ink-mute sm:block">
               {copy.tagline}
@@ -80,7 +79,7 @@ export default function Nav() {
           </div>
         </Link>
 
-        <div className="hidden h-full items-center gap-7 lg:flex">
+        <div className="hidden h-full items-center gap-7 xl:flex">
           {navItems.map((item) => {
             const active = isActive(item.href);
             return (
@@ -116,26 +115,16 @@ export default function Nav() {
             href={quoteHref}
             eventName="quote_click"
             eventParams={{ location: 'nav', destination: quoteHref }}
-            className="hidden rounded-lg border border-cc-copper/30 px-4 py-2 text-xs font-medium text-cc-ink transition-all hover:border-cc-copper/60 hover:text-cc-copper-soft md:inline-block"
+            className="cc-copper-fill inline-flex min-h-11 items-center justify-center rounded-lg px-3 py-2 text-[11px] font-semibold transition-transform hover:-translate-y-0.5 sm:px-4 sm:text-xs"
           >
             {copy.quote}
-          </TrackedLink>
-          <TrackedLink
-            href={uploadHref}
-            eventName="upload_gerber_bom_click"
-            eventParams={{ location: 'nav', destination: uploadHref }}
-            className="cc-copper-fill inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-[11px] font-semibold transition-all hover:-translate-y-0.5 sm:px-4 sm:text-xs"
-          >
-            <Upload size={13} strokeWidth={2.5} />
-            <span className="sm:hidden">{copy.uploadMobile}</span>
-            <span className="hidden sm:inline">{copy.uploadDesktop}</span>
           </TrackedLink>
           <button
             type="button"
             aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
-            className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg border border-cc-line text-cc-ink transition-colors hover:border-cc-copper/50 lg:hidden"
+            className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg border border-cc-line text-cc-ink transition-colors hover:border-cc-copper/50 xl:hidden"
           >
             {menuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -143,7 +132,7 @@ export default function Nav() {
       </div>
 
       {menuOpen && (
-        <div className="border-t border-cc-line py-3 lg:hidden">
+        <div className="border-t border-cc-line py-3 xl:hidden">
           <div className="mx-auto grid max-w-[1440px] gap-1">
             {navItems.map((item) => (
               <Link
@@ -166,11 +155,20 @@ export default function Nav() {
               </Link>
             </div>
             <TrackedLink
+              href={uploadHref}
+              eventName="upload_gerber_bom_click"
+              eventParams={{ location: 'mobile_nav', destination: uploadHref }}
+              onClick={() => setMenuOpen(false)}
+              className="mt-1 rounded-lg border border-cc-copper/30 px-3 py-3 text-sm font-semibold text-cc-ink"
+            >
+              {copy.upload}
+            </TrackedLink>
+            <TrackedLink
               href={quoteHref}
               eventName="quote_click"
               eventParams={{ location: 'mobile_nav', destination: quoteHref }}
               onClick={() => setMenuOpen(false)}
-              className="mt-1 rounded-lg border border-cc-copper/30 px-3 py-3 text-sm font-semibold text-cc-ink"
+              className="cc-copper-fill mt-1 rounded-lg px-3 py-3 text-center text-sm font-semibold"
             >
               {copy.mobileQuote}
             </TrackedLink>

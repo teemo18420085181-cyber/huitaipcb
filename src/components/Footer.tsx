@@ -39,8 +39,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-xs leading-relaxed text-cc-ink">
-              China-based turnkey PCBA partner for PCB fabrication, BOM sourcing, assembly,
-              testing, and finished PCBA delivery.
+              Turnkey PCBA manufacturer in Shenzhen, China for PCB fabrication, BOM sourcing,
+              SMT and through-hole assembly, testing, and finished delivery.
             </p>
             <p className="text-xs leading-loose text-cc-ink-mute">
               Shenzhen Huitai Electronics Technology Co., Ltd.

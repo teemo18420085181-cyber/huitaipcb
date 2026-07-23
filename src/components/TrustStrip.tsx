@@ -1,46 +1,77 @@
-const STATS = [
+import {
+  Cable,
+  CircuitBoard,
+  ClipboardCheck,
+  Cpu,
+  PackageCheck,
+  PackageSearch,
+} from 'lucide-react';
+
+const SERVICES = [
   {
-    n: '24h',
-    label: 'Email response',
-    desc: 'Project emails and RFQ messages are replied to within 24 hours.',
+    title: 'PCB fabrication',
+    description: 'Bare boards coordinated to the confirmed stack-up, material, finish, and project requirements.',
+    icon: CircuitBoard,
   },
   {
-    n: 'BOM',
-    label: 'Sourcing risk check',
-    desc: 'Obsolete, long-lead, and alternative components reviewed with customer approval.',
+    title: 'BOM sourcing',
+    description: 'MPNs, availability, packages, and customer-approved alternatives reviewed with the assembly scope.',
+    icon: PackageSearch,
   },
   {
-    n: 'NDA',
-    label: 'Available on request',
-    desc: 'Confidential project data can be shared under an agreed NDA before review.',
+    title: 'SMT assembly',
+    description: 'Component placement and reflow planning for prototype, low-volume, and repeat builds.',
+    icon: Cpu,
   },
   {
-    n: 'TEST',
-    label: 'Project-based scope',
-    desc: 'Inspection and functional test requirements are discussed before quotation.',
+    title: 'Through-hole assembly',
+    description: 'DIP, wave soldering, and hand-soldering requirements coordinated with the complete build.',
+    icon: Cable,
+  },
+  {
+    title: 'Inspection & testing',
+    description: 'AOI, X-ray, electrical, and functional test needs discussed according to the project scope.',
+    icon: ClipboardCheck,
+  },
+  {
+    title: 'Finished PCBA delivery',
+    description: 'Final review, anti-static packing, documentation, and delivery preparation in one workflow.',
+    icon: PackageCheck,
   },
 ];
 
 export default function TrustStrip() {
   return (
-    <section className="cc-carbon-bg font-body-cc border-y border-cc-line px-[5vw] py-8">
-      <div className="mx-auto grid max-w-[1280px] gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        {STATS.map((s) => (
-          <div
-            key={s.label}
-            className="group relative overflow-hidden rounded-2xl border border-cc-line bg-cc-carbon-2/70 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-cc-copper/35"
-          >
-            <div className="pointer-events-none absolute -right-10 -top-12 h-28 w-28 rounded-full bg-cc-copper/10 blur-3xl transition-opacity group-hover:opacity-100" />
-            <div className="relative mb-3 flex items-center justify-between">
-              <div className="font-display text-3xl font-bold leading-none text-cc-ink">{s.n}</div>
-              <span className="h-1.5 w-1.5 rounded-full bg-cc-signal shadow-[0_0_16px_rgba(158,227,79,0.45)]" />
-            </div>
-            <div className="relative font-mono-cc text-[11px] font-semibold tracking-wide text-cc-copper-soft">
-              {s.label}
-            </div>
-            <p className="relative mt-2 text-xs leading-5 text-cc-ink-mute">{s.desc}</p>
+    <section id="services-overview" className="font-body-cc bg-cc-paper px-[5vw] py-20 text-cc-heading md:py-24">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="mb-10 max-w-[760px]">
+          <div className="font-mono-cc mb-3 text-[11px] font-semibold tracking-[0.18em] text-cc-copper-ink">
+            TURNKEY PCBA SERVICES
           </div>
-        ))}
+          <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-[44px]">
+            One connected scope from bare PCB to finished assembly.
+          </h2>
+          <p className="mt-4 max-w-[680px] text-[15px] leading-7 text-cc-body">
+            Hardware engineers and procurement teams can review the complete build with one
+            project contact instead of coordinating fabrication, sourcing, assembly, and test
+            suppliers separately.
+          </p>
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICES.map(({ title, description, icon: Icon }) => (
+            <article
+              key={title}
+              className="rounded-2xl border border-cc-line-light bg-cc-card p-6 shadow-[0_12px_32px_rgba(17,22,28,0.04)]"
+            >
+              <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-cc-copper/[0.12] text-cc-copper-ink">
+                <Icon size={21} strokeWidth={1.9} />
+              </div>
+              <h3 className="font-display text-lg font-bold text-cc-heading">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-cc-body">{description}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

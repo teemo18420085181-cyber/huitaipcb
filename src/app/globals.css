@@ -3,17 +3,35 @@
 @tailwind utilities;
 
 :root {
-  --c-primary: #27215B;
-  --c-primary-dark: #1A1640;
-  --c-primary-light: #3A3270;
-  --c-yellow: #FCEA0B;
-  --c-yellow-soft: #FFF4A8;
-  --c-green: #93C249;
-  --c-green-dark: #5E8C1F;
-  --c-bg: #FAFAF8;
-  --c-text: #1A1640;
-  --c-text-mute: #6B6783;
-  --c-border: #E8E6F0;
+  --c-primary: #27215b;
+  --c-primary-dark: #1a1640;
+  --c-primary-light: #3a3270;
+  --c-yellow: #fcea0b;
+  --c-yellow-soft: #fff4a8;
+  --c-green: #93c249;
+  --c-green-dark: #5e8c1f;
+  --c-bg: #fafaf8;
+  --c-text: #1a1640;
+  --c-text-mute: #6b6783;
+  --c-border: #e8e6f0;
+
+  --cc-carbon: #0a0b0d;
+  --cc-carbon-2: #111419;
+  --cc-carbon-3: #181b21;
+  --cc-paper: #f5f6f3;
+  --cc-mist: #ecefeb;
+  --cc-card: #ffffff;
+  --cc-heading: #11161c;
+  --cc-body: #4b5563;
+  --cc-line: rgba(217, 154, 67, 0.18);
+  --cc-line-light: #dce1dc;
+  --cc-copper: #d99a43;
+  --cc-copper-bright: #e4ac61;
+  --cc-copper-soft: #f0c98a;
+  --cc-copper-ink: #985a0b;
+  --cc-signal: #7baa4a;
+  --cc-ink: #f4efe6;
+  --cc-ink-mute: #c4bfb5;
 }
 
 * {
@@ -38,24 +56,15 @@ body {
 }
 
 ::selection {
-  background: rgba(201, 139, 58, 0.35);
-  color: var(--cc-ink);
+  background: var(--cc-copper-ink);
+  color: #ffffff;
 }
 
-/* Splash-specific keyframes */
-@keyframes splashPulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.4;
-  }
-  50% {
-    transform: scale(2.5);
-    opacity: 0;
-  }
+:focus-visible {
+  outline: 2px solid var(--cc-copper-ink);
+  outline-offset: 3px;
 }
 
-/* Reveal on scroll */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -67,157 +76,73 @@ body {
   transform: translateY(0);
 }
 
-/* Hero grid background pattern */
 .hero-grid-bg {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
   background-size: 40px 40px;
-}
-
-/* ============================================================
-   COPPER & CARBON — redesign design system
-   Carbon (black solder-mask) base + ENIG copper/gold accent.
-   ============================================================ */
-:root {
-  --cc-carbon: #0a0b0d;
-  --cc-carbon-2: #101216;
-  --cc-carbon-3: #181b21;
-  --cc-line: rgba(199, 138, 70, 0.14);
-  --cc-copper: #c98b3a;
-  --cc-copper-bright: #e6a85a;
-  --cc-copper-soft: #f0c98a;
-  --cc-signal: #9ee34f; /* "powered / live" trace */
-  --cc-ink: #f4efe6;
-  --cc-ink-mute: #9b958a;
 }
 
 .font-display {
   font-family: var(--font-bricolage-grotesque), system-ui, sans-serif;
 }
+
 .font-mono-cc {
   font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
+
 .font-body-cc {
   font-family: var(--font-hanken-grotesk), system-ui, sans-serif;
 }
 
-/* Carbon substrate: fine PCB grid + faint copper glow */
 .cc-carbon-bg {
   background-color: var(--cc-carbon);
   background-image:
-    radial-gradient(1100px 600px at 78% -10%, rgba(201, 139, 58, 0.16), transparent 60%),
-    radial-gradient(900px 500px at 8% 110%, rgba(158, 227, 79, 0.07), transparent 60%),
-    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
-  background-size: auto, auto, 46px 46px, 46px 46px;
+    radial-gradient(900px 520px at 82% -10%, rgba(217, 154, 67, 0.12), transparent 62%),
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: auto, 54px 54px, 54px 54px;
 }
 
-/* Copper text gradient */
 .cc-copper-text {
-  background: linear-gradient(120deg, var(--cc-copper-soft), var(--cc-copper-bright) 45%, var(--cc-copper) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--cc-copper);
 }
 
-/* Brushed-copper fill for the primary button */
 .cc-copper-fill {
-  background: linear-gradient(135deg, #f0c98a 0%, #d9943f 42%, #b9762b 100%);
-  color: #1a1206;
+  background: var(--cc-copper);
+  color: #171108;
 }
+
 .cc-copper-fill:hover {
-  background: linear-gradient(135deg, #f6d49a 0%, #e2a049 42%, #c8802f 100%);
+  background: var(--cc-copper-bright);
 }
 
-/* Animated solder/via dot */
 .cc-via {
-  box-shadow: 0 0 0 1px rgba(201, 139, 58, 0.5), 0 0 14px rgba(230, 168, 90, 0.55);
-}
-
-/* Power-up reveal: traces draw in, then content rises */
-@keyframes ccTraceDraw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes ccCurrent {
-  0% {
-    offset-distance: 0%;
-    opacity: 0;
-  }
-  12% {
-    opacity: 1;
-  }
-  88% {
-    opacity: 1;
-  }
-  100% {
-    offset-distance: 100%;
-    opacity: 0;
-  }
-}
-@keyframes ccRise {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes ccBlink {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.25;
-  }
-}
-
-.cc-rise {
-  animation: ccRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.cc-trace path,
-.cc-trace line {
-  stroke-dasharray: var(--len, 1400);
-  stroke-dashoffset: var(--len, 1400);
-  animation: ccTraceDraw 1.6s cubic-bezier(0.45, 0, 0.2, 1) forwards;
-}
-.cc-blink {
-  animation: ccBlink 1.4s steps(1) infinite;
+  box-shadow:
+    0 0 0 1px rgba(217, 154, 67, 0.5),
+    0 0 14px rgba(217, 154, 67, 0.4);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cc-rise,
-  .cc-trace path,
-  .cc-trace line {
-    animation: none;
-    opacity: 1;
-    stroke-dashoffset: 0;
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
 @media (max-width: 767px) {
   .cc-carbon-bg {
     background-image:
-      radial-gradient(620px 360px at 80% -8%, rgba(201, 139, 58, 0.12), transparent 60%),
-      linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
-    background-size: auto, 54px 54px, 54px 54px;
-  }
-
-  .cc-rise {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-
-  .cc-trace {
-    display: none;
-  }
-
-  .cc-blink {
-    animation: none;
+      radial-gradient(620px 360px at 80% -8%, rgba(217, 154, 67, 0.1), transparent 60%),
+      linear-gradient(rgba(255, 255, 255, 0.016) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.016) 1px, transparent 1px);
+    background-size: auto, 58px 58px, 58px 58px;
   }
 }
