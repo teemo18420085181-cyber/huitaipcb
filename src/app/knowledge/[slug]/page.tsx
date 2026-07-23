@@ -218,17 +218,22 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
               </div>
 
               <aside className="h-fit rounded-2xl border border-cc-line bg-cc-carbon-2 p-6 lg:sticky lg:top-24">
-                <h2 className="mb-3 text-lg font-semibold text-cc-ink">Need a PCB assembly quote?</h2>
+                <h2 className="mb-3 text-lg font-semibold text-cc-ink">Need a turnkey PCBA quote?</h2>
                 <p className="mb-5 text-sm leading-6 text-cc-ink-mute">
-                  Upload Gerber, BOM, drawings, sample photos, or testing requirements for engineering review.
+                  Send Gerber, BOM, pick-and-place data, drawings, quantity, and testing or delivery requirements for
+                  one coordinated engineering review.
                 </p>
                 <TrackedLink
-                  href="/contact"
+                  href="/contact#project-files"
                   eventName="upload_gerber_bom_click"
-                  eventParams={{ location: 'knowledge_article_sidebar', article_slug: article.slug, destination: '/contact' }}
+                  eventParams={{
+                    location: 'knowledge_article_sidebar',
+                    article_slug: article.slug,
+                    destination: '/contact#project-files',
+                  }}
                   className="inline-flex w-full justify-center rounded-lg bg-cc-copper px-5 py-3 text-sm font-semibold text-cc-ink transition-all hover:-translate-y-0.5"
                 >
-                  Upload Gerber & BOM
+                  Start Turnkey PCBA Review
                 </TrackedLink>
               </aside>
             </div>

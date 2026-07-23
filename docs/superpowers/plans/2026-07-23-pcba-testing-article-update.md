@@ -113,10 +113,32 @@
 
   Run `npm run lint`, `npm run test:seo`, `npm run build`, and `git diff --check`. Expected result: zero lint errors, 11 SEO checks passed, successful Next.js production build, and no whitespace errors.
 
-- [ ] **Step 2: Publish only the correction files**
+- [x] **Step 2: Publish only the correction files**
 
   Stage `src/lib/content/knowledge.ts`, `src/lib/content/articles.ts`, and this plan; commit with `content: clarify turnkey PCBA testing workflow`; push `main` to `origin`.
 
-- [ ] **Step 3: Verify production**
+- [x] **Step 3: Verify production**
 
   Wait for both Vercel commit statuses to report `success`, then confirm the public article returns HTTP 200 and contains the new turnkey title, workflow heading, full process wording, and revised CTA.
+
+### Task 5: Align the article sidebar CTA with turnkey PCBA
+
+**Files:**
+- Modify: `src/app/knowledge/[slug]/page.tsx:220`
+- Modify: `docs/superpowers/plans/2026-07-23-pcba-testing-article-update.md`
+
+**Interfaces:**
+- Consumes: the shared knowledge-article sidebar CTA and its existing analytics event.
+- Produces: a turnkey-focused CTA that sends visitors directly to the project-files section without changing the layout or breaking analytics continuity.
+
+- [x] **Step 1: Update CTA copy and destination**
+
+  Change the heading to `Need a turnkey PCBA quote?`, describe the complete engineering-review package, set the button label to `Start Turnkey PCBA Review`, and link to `/contact#project-files`.
+
+- [x] **Step 2: Preserve presentation and analytics continuity**
+
+  Keep the existing sidebar markup, classes, and `upload_gerber_bom_click` event name. Update only the event destination parameter to `/contact#project-files`.
+
+- [x] **Step 3: Validate the shared CTA change**
+
+  Run `npm run lint`, `npm run test:seo`, `npm run build`, and `git diff --check`; confirm the anchor exists, the original event name is preserved, and no layout classes changed.
