@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import TrackedAnchor from '@/components/TrackedAnchor';
 
 const WA_NUMBER = '8618420085181';
-const WA_TEXT = encodeURIComponent("Hi Huitai Electronics, I'd like a PCB assembly quote.");
+const WA_TEXT = encodeURIComponent("Hi Huitai Electronics, I'd like a turnkey PCBA quote.");
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`;
 
 export default function FloatingWhatsApp() {

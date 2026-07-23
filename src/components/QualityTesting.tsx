@@ -15,11 +15,12 @@ export default function QualityTesting() {
       <div className="mx-auto grid max-w-[1280px] items-center gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-14">
         <div className="relative min-h-[360px] overflow-hidden rounded-2xl bg-cc-card sm:min-h-[470px]">
           <Image
-            src="/images/china-pcba-manufacturer/pcba-inspection-testing-real.jpg"
-            alt="Technician inspecting PCBA boards during the testing workflow"
-            fill
+            src="/images/homepage/manufacturing/microscope-pcba-inspection.webp"
+            alt="Technician examining an assembled PCBA under a microscope"
+            width={1200}
+            height={1538}
             quality={78}
-            className="object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
             sizes="(max-width: 1024px) 90vw, 44vw"
           />
         </div>

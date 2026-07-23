@@ -2,39 +2,70 @@ import Image from 'next/image';
 
 const IMAGES = [
   {
-    src: '/factory/real-smt-1.jpg',
-    alt: 'SMT production line for printed circuit board assembly',
+    src: '/images/homepage/manufacturing/smt-assembly-line.webp',
+    alt: 'Operators working beside an SMT placement line for PCBA assembly',
+    width: 1272,
+    height: 494,
     tag: 'SMT ASSEMBLY',
-    title: 'Production equipment and line setup',
+    title: 'SMT placement and line operation',
     span: 'lg:col-span-7 lg:row-span-2',
+    sizes: '(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 57vw',
+    position: 'object-center',
   },
   {
-    src: '/factory/real-aoi-op.jpg',
-    alt: 'Operator reviewing assembled boards at an AOI inspection station',
+    src: '/images/homepage/manufacturing/manual-through-hole-assembly.webp',
+    alt: 'Operator soldering through-hole components on a PCBA production line',
+    width: 1200,
+    height: 1721,
+    tag: 'THROUGH-HOLE ASSEMBLY',
+    title: 'Manual soldering and DIP workmanship',
+    span: 'lg:col-span-5',
+    sizes: '(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 41vw',
+    position: 'object-[center_62%]',
+  },
+  {
+    src: '/images/homepage/manufacturing/aoi-inspection-review.webp',
+    alt: 'Operator reviewing an assembled board at an AOI inspection workstation',
+    width: 1272,
+    height: 920,
     tag: 'AOI INSPECTION',
     title: 'Operator-led inspection review',
     span: 'lg:col-span-5',
+    sizes: '(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 41vw',
+    position: 'object-center',
   },
   {
-    src: '/factory/real-reels.jpg',
-    alt: 'Electronic component reels stored for PCBA assembly projects',
-    tag: 'COMPONENT KITTING',
-    title: 'Component storage and project kitting',
-    span: 'lg:col-span-5',
+    src: '/images/homepage/manufacturing/x-ray-pcba-inspection.webp',
+    alt: 'Technician operating X-ray inspection equipment for PCBA review',
+    width: 1272,
+    height: 912,
+    tag: 'X-RAY INSPECTION',
+    title: 'Inspection for assemblies that require X-ray review',
+    span: 'lg:col-span-4',
+    sizes: '(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 32vw',
+    position: 'object-center',
   },
   {
-    src: '/images/china-pcba-manufacturer/pcba-board-batch-real.jpg',
-    alt: 'Batch of assembled green PCBA boards ready for inspection',
-    tag: 'ASSEMBLED BOARDS',
-    title: 'Finished PCBA from a production batch',
-    span: 'lg:col-span-6',
+    src: '/images/homepage/manufacturing/finished-pcba-batch.webp',
+    alt: 'Batches of assembled PCBA boards arranged in protective trays',
+    width: 1400,
+    height: 876,
+    tag: 'FINISHED PCBA',
+    title: 'Assembled boards organized by production batch',
+    span: 'lg:col-span-4',
+    sizes: '(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 32vw',
+    position: 'object-center',
   },
   {
-    src: '/factory/real-ship-1.jpg',
-    alt: 'Finished PCBA boards prepared for anti-static packing and delivery',
+    src: '/images/homepage/manufacturing/anti-static-packing.webp',
+    alt: 'Operator packing finished PCBA boards into anti-static bags',
+    width: 1400,
+    height: 876,
     tag: 'PACKING',
-    title: 'Finished boards prepared for delivery',
-    span: 'lg:col-span-6',
+    title: 'Anti-static protection before finished delivery',
+    span: 'lg:col-span-4',
+    sizes: '(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 32vw',
+    position: 'object-center',
   },
 ];
 
@@ -64,10 +95,11 @@ export default function FactoryGrid() {
               <Image
                 src={image.src}
                 alt={image.alt}
-                fill
+                width={image.width}
+                height={image.height}
                 quality={78}
-                className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
-                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 50vw"
+                className={`absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025] ${image.position}`}
+                sizes={image.sizes}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 p-5 text-white">

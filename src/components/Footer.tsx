@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import BrandLogo from '@/components/BrandLogo';
 import TrackedLink from '@/components/TrackedLink';
 import TrackedAnchor from '@/components/TrackedAnchor';
 
@@ -27,10 +28,10 @@ export default function Footer() {
       <div className="mx-auto max-w-[1280px]">
         <div className="grid grid-cols-2 gap-8 border-b border-cc-line pb-8 md:grid-cols-[2fr_1fr_1fr_1fr]">
           <div className="col-span-2 flex flex-col gap-2 md:col-span-1">
-            <div className="mb-3 flex items-center gap-2.5">
-              <div className="cc-copper-fill flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold">
-                HT
-              </div>
+            <div className="mb-3 flex w-fit items-center gap-2.5">
+              <span className="flex h-11 w-[58px] items-center justify-center">
+                <BrandLogo className="h-10" />
+              </span>
               <div>
                 <strong className="block text-sm font-semibold tracking-wide text-cc-ink">HUITAI ELECTRONICS</strong>
                 <span className="font-mono-cc text-[9px] font-medium tracking-[0.16em] text-cc-ink-mute">
@@ -95,7 +96,7 @@ export default function Footer() {
               sales@huitaipcb.com
             </TrackedAnchor>
             <TrackedAnchor
-              href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20a%20PCB%20assembly%20quote."
+              href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20a%20turnkey%20PCBA%20quote."
               target="_blank"
               rel="noopener noreferrer"
               eventName="whatsapp_click"
@@ -111,7 +112,7 @@ export default function Footer() {
               eventParams={{ location: 'footer', destination: '/contact#quote-form' }}
               className="mt-1 block text-xs leading-loose text-cc-copper-soft transition-colors hover:text-cc-copper-bright"
             >
-              Get a PCB Assembly Quote
+              Request a Turnkey PCBA Quote
             </TrackedLink>
           </div>
         </div>

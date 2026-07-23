@@ -1,13 +1,13 @@
 ﻿export const metadata = {
-  title: 'Request a PCBA Quote | Upload Gerber, BOM & Project Files',
-  description: 'Upload Gerber, BOM, drawings, sample photos, or project notes for engineering review. Huitai checks PCBA scope, sourcing risks, testing needs, and quotation details.',
+  title: 'Request a Turnkey PCBA Quote | Upload Gerber & BOM',
+  description: 'Upload Gerber, BOM, drawings, sample photos, or project notes for a turnkey PCBA quote covering PCB fabrication, sourcing, assembly, testing, and delivery.',
   alternates: {
     canonical: absoluteUrl('/contact'),
     languages: getLanguageAlternates('/contact'),
   },
   openGraph: {
-    title: 'Request a PCBA Quote | Upload Gerber, BOM & Project Files',
-    description: 'Upload Gerber, BOM, drawings, sample photos, or project notes for engineering review. Huitai checks PCBA scope, sourcing risks, testing needs, and quotation details.',
+    title: 'Request a Turnkey PCBA Quote | Upload Gerber & BOM',
+    description: 'Upload Gerber, BOM, drawings, sample photos, or project notes for a turnkey PCBA quote covering PCB fabrication, sourcing, assembly, testing, and delivery.',
     url: absoluteUrl('/contact'),
     images: OG_IMAGES,
   },
@@ -36,13 +36,13 @@ export default function ContactPage() {
                   ENGINEER-REVIEWED RFQ
                 </div>
                 <h1 className="font-display mb-4 text-4xl font-bold leading-tight tracking-tight text-cc-ink md:text-5xl">
-                  Upload Gerber & BOM for PCBA Quote Review
+                  Request a Turnkey PCBA Quote
                 </h1>
                 <p className="mb-6 max-w-[520px] text-[15px] leading-relaxed text-cc-ink-mute">
-                  Request a PCB assembly quote in China by sending Gerber files, BOM,
-                  pick-and-place data, assembly drawings, testing requirements, sample board
-                  photos, or project notes. Huitai Electronics handles Gerber and BOM quote
-                  review before preparing a turnkey PCB assembly quote based on confirmed scope.
+                  Send Gerber files, BOM, pick-and-place data, assembly drawings, testing
+                  requirements, sample board photos, or project notes. Huitai reviews the
+                  confirmed scope across PCB fabrication, BOM sourcing, SMT and through-hole
+                  assembly, testing, and finished PCBA delivery.
                 </p>
                 <Link
                   href="/how-we-work"
@@ -96,7 +96,7 @@ export default function ContactPage() {
                   {[
                     'We review files and clarify missing details',
                     'We align BOM sourcing, assembly, and test scope',
-                    'You receive a quotation and lead-time plan',
+                    'You receive a quotation based on the confirmed scope',
                     'NDA is available on request',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2">
@@ -119,7 +119,7 @@ export default function ContactPage() {
                   WeChat code to add us.
                 </p>
                 <TrackedAnchor
-                  href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20a%20PCB%20assembly%20quote."
+                  href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20a%20turnkey%20PCBA%20quote."
                   target="_blank"
                   rel="noopener noreferrer"
                   eventName="whatsapp_click"

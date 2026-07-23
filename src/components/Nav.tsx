@@ -1,10 +1,10 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import BrandLogo from '@/components/BrandLogo';
 import TrackedLink from '@/components/TrackedLink';
 import { getLocaleFromPathname, getLocalizedPathname, type Locale } from '@/lib/i18n/routes';
 
@@ -27,7 +27,7 @@ const NAV_ITEMS: Record<Locale, { name: string; href: string }[]> = {
 
 const NAV_COPY: Record<Locale, { quote: string; upload: string; mobileQuote: string; tagline: string }> = {
   en: {
-    quote: 'Request a Quote',
+    quote: 'Request a PCBA Quote',
     upload: 'Send Gerber & BOM',
     mobileQuote: 'Request a PCBA Quote',
     tagline: 'TURNKEY PCBA MANUFACTURING',
@@ -65,8 +65,8 @@ export default function Nav() {
     <nav className="font-body-cc fixed left-0 right-0 top-0 z-50 border-b border-cc-line bg-cc-carbon/90 px-[5vw] backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between">
         <Link href={homeHref} className="group flex min-w-0 items-center gap-2.5">
-          <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center overflow-hidden rounded-[9px] bg-cc-carbon-2 ring-1 ring-cc-copper/30 transition-transform group-hover:-rotate-6">
-            <Image src="/logo.svg" alt="Huitai Electronics logo" width={36} height={36} className="h-7 w-7 object-contain" />
+          <span className="flex h-10 w-[54px] flex-shrink-0 items-center justify-center transition-transform group-hover:-rotate-3">
+            <BrandLogo className="h-9" />
           </span>
           <div className="min-w-0 leading-none">
             <strong className="block whitespace-nowrap text-[11px] font-semibold tracking-[0.05em] text-cc-ink sm:text-sm sm:tracking-[0.08em]">

@@ -1,10 +1,22 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
+const exists = (path) => existsSync(new URL(`../${path}`, import.meta.url));
+const readOptional = (path) => (exists(path) ? read(path) : '');
 
 const hero = read('src/components/Hero.tsx');
 const homePage = read('src/app/page.tsx');
 const inquiryForm = read('src/components/InquiryForm.tsx');
+const brandLogo = read('src/components/BrandLogo.tsx');
+const nav = read('src/components/Nav.tsx');
+const footer = read('src/components/Footer.tsx');
+const contactPage = read('src/app/contact/page.tsx');
+const homeApplications = read('src/components/HomeApplications.tsx');
+const factoryGrid = read('src/components/FactoryGrid.tsx');
+const qualityTesting = read('src/components/QualityTesting.tsx');
+const floatingWhatsApp = read('src/components/FloatingWhatsApp.tsx');
+const standardLogo = readOptional('public/logo.svg');
+const darkLogo = readOptional('public/logo-dark.svg');
 const layout = read('src/app/layout.tsx');
 const robots = read('src/app/robots.ts');
 const sitemap = read('src/app/sitemap.ts');
@@ -53,6 +65,53 @@ const checks = [
       hero.includes('Send Gerber &amp; BOM') &&
       hero.includes('href="/capabilities"'),
     'Homepage CTAs must keep real quote, file, and capabilities destinations.',
+  ],
+  [
+    nav.includes("import BrandLogo from '@/components/BrandLogo'") &&
+      footer.includes("import BrandLogo from '@/components/BrandLogo'") &&
+      nav.includes('<BrandLogo') &&
+      footer.includes('<BrandLogo') &&
+      brandLogo.includes('src="/logo-dark.svg"') &&
+      standardLogo.includes('fill="#27215b"') &&
+      darkLogo.includes('fill="#f4efe6"') &&
+      !standardLogo.includes('class="background"') &&
+      !darkLogo.includes('class="background"') &&
+      !footer.includes('>\n                HT\n              <'),
+    'Header and footer must share the transparent dark-background logo while the standard logo remains suitable for structured data.',
+  ],
+  [
+    footer.includes('Request a Turnkey PCBA Quote') &&
+      contactPage.includes('Request a Turnkey PCBA Quote') &&
+      inquiryForm.includes("submit: 'Request a Turnkey PCBA Quote'") &&
+      floatingWhatsApp.includes("I'd like a turnkey PCBA quote."),
+    'Shared full-scope RFQ entry points must use turnkey PCBA quote wording.',
+  ],
+  [
+    [
+      '/images/homepage/applications/industrial-control.webp',
+      '/images/homepage/applications/iot-connected-devices.webp',
+      '/images/homepage/applications/power-electronics.webp',
+      '/images/homepage/applications/consumer-electronics.webp',
+      '/images/homepage/applications/medical-monitoring.webp',
+      '/images/homepage/applications/test-measurement.webp',
+    ].every((path) => homeApplications.includes(path) && exists(`public${path}`)) &&
+      homeApplications.includes('sm:grid-cols-2 xl:grid-cols-3'),
+    'Homepage application cards must use the reviewed images and the 1/2/3-column responsive layout.',
+  ],
+  [
+    [
+      '/images/homepage/manufacturing/smt-assembly-line.webp',
+      '/images/homepage/manufacturing/manual-through-hole-assembly.webp',
+      '/images/homepage/manufacturing/aoi-inspection-review.webp',
+      '/images/homepage/manufacturing/x-ray-pcba-inspection.webp',
+      '/images/homepage/manufacturing/finished-pcba-batch.webp',
+      '/images/homepage/manufacturing/anti-static-packing.webp',
+    ].every((path) => factoryGrid.includes(path) && exists(`public${path}`)) &&
+      hero.includes('/images/homepage/manufacturing/hero-inspection-line.webp') &&
+      exists('public/images/homepage/manufacturing/hero-inspection-line.webp') &&
+      qualityTesting.includes('/images/homepage/manufacturing/microscope-pcba-inspection.webp') &&
+      exists('public/images/homepage/manufacturing/microscope-pcba-inspection.webp'),
+    'Homepage production imagery must cover the reviewed one-stop PCBA manufacturing scope without repeats.',
   ],
   [
     homePage.includes("title: 'Turnkey PCBA Manufacturer in China | HuitaiPCB'"),

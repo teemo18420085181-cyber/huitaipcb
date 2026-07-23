@@ -71,12 +71,13 @@ export default function Hero() {
 
         <div className="relative min-h-[360px] overflow-hidden rounded-2xl border border-white/10 bg-cc-carbon-2 shadow-2xl shadow-black/30 sm:min-h-[460px] lg:min-h-[590px]">
           <Image
-            src="/factory/real-smt-1.jpg"
-            alt="SMT production line used for PCBA assembly in Shenzhen"
-            fill
+            src="/images/homepage/manufacturing/hero-inspection-line.webp"
+            alt="Operator inspecting PCBA assemblies on a production line"
+            width={1272}
+            height={1812}
             priority
             quality={82}
-            className="object-cover"
+            className="absolute inset-0 h-full w-full object-cover"
             sizes="(max-width: 1024px) 90vw, 46vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/10" />

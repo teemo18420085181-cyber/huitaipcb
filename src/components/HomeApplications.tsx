@@ -1,21 +1,44 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import {
-  Activity,
-  ArrowRight,
-  BatteryCharging,
-  Factory,
-  Gauge,
-  HousePlug,
-  RadioTower,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const APPLICATIONS = [
-  { title: 'Industrial control', description: 'Controllers, gateways, motor drivers, and automation boards.', icon: Factory },
-  { title: 'IoT & connected devices', description: 'Sensor nodes, wireless modules, and connected product boards.', icon: RadioTower },
-  { title: 'Power electronics', description: 'Power conversion, BMS, charging, and motor-control assemblies.', icon: BatteryCharging },
-  { title: 'Consumer electronics', description: 'Smart-home, audio, wearable, and connected product assemblies.', icon: HousePlug },
-  { title: 'Medical & wearable', description: 'Non-implantable monitoring and portable instrument sub-assemblies.', icon: Activity },
-  { title: 'Test & measurement', description: 'Data acquisition, signal, control, and instrument boards.', icon: Gauge },
+  {
+    title: 'Industrial control',
+    description: 'Control cabinets, automation controllers, gateways, and field interfaces.',
+    image: '/images/homepage/applications/industrial-control.webp',
+    alt: 'Industrial control cabinet with an installed controller PCBA',
+  },
+  {
+    title: 'IoT & connected devices',
+    description: 'Network gateways, wireless controllers, and connected hardware platforms.',
+    image: '/images/homepage/applications/iot-connected-devices.webp',
+    alt: 'Connected network gateway with its internal PCBA visible',
+  },
+  {
+    title: 'Power electronics',
+    description: 'Power conversion, drive, charging, and energy-control assemblies.',
+    image: '/images/homepage/applications/power-electronics.webp',
+    alt: 'Power electronics assembly with transformers, capacitors, and heat sinks',
+  },
+  {
+    title: 'Consumer electronics',
+    description: 'Smart-home controllers and other connected consumer hardware.',
+    image: '/images/homepage/applications/consumer-electronics.webp',
+    alt: 'Smart-home devices opened to show their internal PCB assemblies',
+  },
+  {
+    title: 'Medical & wearable',
+    description: 'Portable monitoring and non-implantable electronic sub-assemblies.',
+    image: '/images/homepage/applications/medical-monitoring.webp',
+    alt: 'Portable patient monitor opened to show its internal PCBA',
+  },
+  {
+    title: 'Test & measurement',
+    description: 'Instrument control, data acquisition, and bench-tested assemblies.',
+    image: '/images/homepage/applications/test-measurement.webp',
+    alt: 'Technician testing an assembled circuit board on an instrument bench',
+  },
 ];
 
 export default function HomeApplications() {
@@ -44,12 +67,27 @@ export default function HomeApplications() {
           </Link>
         </div>
 
-        <div className="grid gap-px overflow-hidden rounded-2xl border border-cc-line-light bg-cc-line-light sm:grid-cols-2 lg:grid-cols-3">
-          {APPLICATIONS.map(({ title, description, icon: Icon }) => (
-            <article key={title} className="bg-cc-paper p-6 md:p-7">
-              <Icon size={22} strokeWidth={1.8} className="text-cc-copper-ink" />
-              <h3 className="font-display mt-5 text-lg font-bold text-cc-heading">{title}</h3>
-              <p className="mt-2 text-sm leading-6 text-cc-body">{description}</p>
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+          {APPLICATIONS.map(({ title, description, image, alt }) => (
+            <article
+              key={title}
+              className="group overflow-hidden rounded-2xl border border-cc-line-light bg-cc-paper transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5"
+            >
+              <div className="overflow-hidden bg-cc-mist">
+                <Image
+                  src={image}
+                  alt={alt}
+                  width={1200}
+                  height={751}
+                  quality={82}
+                  className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-[1.015]"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1279px) 45vw, 30vw"
+                />
+              </div>
+              <div className="p-6 md:p-7">
+                <h3 className="font-display text-lg font-bold text-cc-heading">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-cc-body">{description}</p>
+              </div>
             </article>
           ))}
         </div>
