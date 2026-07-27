@@ -40,7 +40,7 @@ export default function FinalCTA() {
             href="/contact#quote-form"
             eventName="quote_click"
             eventParams={{ location: 'final_cta', destination: '/contact#quote-form' }}
-            className="cc-copper-fill inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold transition-transform hover:-translate-y-0.5"
+            className="cc-copper-fill motion-press-lift inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold"
           >
             Request a Turnkey PCBA Quote
             <ArrowRight size={16} strokeWidth={2.4} />

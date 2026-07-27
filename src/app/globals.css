@@ -113,8 +113,60 @@ body {
   color: #171108;
 }
 
-.cc-copper-fill:hover {
+.cc-copper-fill:active {
   background: var(--cc-copper-bright);
+}
+
+.motion-press,
+.motion-press-lift {
+  transition-duration: 160ms;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.motion-press {
+  transition-property: transform;
+}
+
+.motion-press-lift {
+  transition-property: transform, background-color, border-color, opacity, box-shadow;
+}
+
+.motion-press:active,
+.motion-press-lift:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+.whatsapp-tooltip {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cc-copper-fill:hover {
+    background: var(--cc-copper-bright);
+  }
+
+  .group:hover .nav-link-underline {
+    transform: scaleX(1);
+  }
+
+  .motion-press-lift:not(:disabled):hover {
+    transform: translateY(-2px);
+  }
+
+  .whatsapp-tooltip {
+    display: block;
+    opacity: 0;
+    transform: translate(4px, -50%);
+    transition:
+      opacity 160ms cubic-bezier(0.23, 1, 0.32, 1),
+      transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .floating-whatsapp:hover .whatsapp-tooltip,
+  .floating-whatsapp:focus-visible .whatsapp-tooltip {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
 }
 
 .cc-via {
@@ -128,16 +180,52 @@ body {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  .motion-press {
+    transition-property: opacity;
+  }
+
+  .motion-press-lift {
+    transition-property: background-color, border-color, opacity, box-shadow;
+  }
+
+  .motion-press:active,
+  .motion-press-lift:not(:disabled):hover,
+  .motion-press-lift:not(:disabled):active {
+    transform: none;
+  }
+
+  .whatsapp-tooltip,
+  .floating-whatsapp:hover .whatsapp-tooltip,
+  .floating-whatsapp:focus-visible .whatsapp-tooltip {
+    transform: translateY(-50%);
+    transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .nav-link-underline {
+    transition-duration: 0s;
+  }
+
+  .reveal,
+  .reveal.in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animate-spin,
+  .animate-pulse,
+  .animate-pulse-soft,
+  .animate-ping,
+  .animate-bounce {
+    animation: none;
   }
 }
 
 @media (max-width: 767px) {
+  .floating-whatsapp-contact {
+    display: none;
+  }
+
   .cc-carbon-bg {
     background-image:
       radial-gradient(620px 360px at 80% -8%, rgba(217, 154, 67, 0.1), transparent 60%),

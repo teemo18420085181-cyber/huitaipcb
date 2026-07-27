@@ -71,7 +71,7 @@ export default function ProcessGrid() {
             <li key={step.n}>
               <Link
                 href={step.href}
-                className="group flex h-full min-h-[190px] flex-col rounded-2xl border border-cc-line-light bg-cc-card p-6 transition-transform hover:-translate-y-0.5"
+                className="group motion-press-lift flex h-full min-h-[190px] flex-col rounded-2xl border border-cc-line-light bg-cc-card p-6"
               >
                 <div className="font-mono-cc mb-8 text-sm font-bold text-cc-copper-ink">{step.n}</div>
                 <h3 className="font-display text-lg font-bold text-cc-heading">{step.name}</h3>

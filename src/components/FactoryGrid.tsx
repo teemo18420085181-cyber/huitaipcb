@@ -98,7 +98,7 @@ export default function FactoryGrid() {
                 width={image.width}
                 height={image.height}
                 quality={78}
-                className={`absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.025] ${image.position}`}
+                className={`absolute inset-0 h-full w-full object-cover ${image.position}`}
                 sizes={image.sizes}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />

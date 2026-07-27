@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import BrandLogo from '@/components/BrandLogo';
 import TrackedLink from '@/components/TrackedLink';
@@ -43,6 +43,7 @@ const NAV_COPY: Record<Locale, { quote: string; upload: string; mobileQuote: str
 export default function Nav() {
   const pathname = usePathname() || '/';
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const locale = getLocaleFromPathname(pathname);
   const navItems = NAV_ITEMS[locale];
   const copy = NAV_COPY[locale];
@@ -56,6 +57,19 @@ export default function Nav() {
     setMenuOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      setMenuOpen(false);
+      menuButtonRef.current?.focus();
+    };
+
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [menuOpen]);
+
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
     return pathname === href || pathname?.startsWith(href + '/');
@@ -64,8 +78,8 @@ export default function Nav() {
   return (
     <nav className="font-body-cc fixed left-0 right-0 top-0 z-50 border-b border-cc-line bg-cc-carbon/90 px-[5vw] backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between">
-        <Link href={homeHref} className="group flex min-w-0 items-center gap-2.5">
-          <span className="flex h-10 w-[54px] flex-shrink-0 items-center justify-center transition-transform group-hover:-rotate-3">
+        <Link href={homeHref} className="flex min-w-0 items-center gap-2.5">
+          <span className="flex h-10 w-[54px] flex-shrink-0 items-center justify-center">
             <BrandLogo className="h-9" />
           </span>
           <div className="min-w-0 leading-none">
@@ -92,8 +106,8 @@ export default function Nav() {
               >
                 <span>{item.name}</span>
                 <span
-                  className={`absolute bottom-[18px] left-0 right-0 h-px origin-center bg-cc-copper transition-transform duration-200 ${
-                    active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  className={`nav-link-underline absolute bottom-[18px] left-0 right-0 h-px origin-center bg-cc-copper transition-transform duration-200 ${
+                    active ? 'scale-x-100' : 'scale-x-0'
                   }`}
                 />
               </Link>
@@ -115,14 +129,16 @@ export default function Nav() {
             href={quoteHref}
             eventName="quote_click"
             eventParams={{ location: 'nav', destination: quoteHref }}
-            className="cc-copper-fill inline-flex min-h-11 items-center justify-center rounded-lg px-3 py-2 text-[11px] font-semibold transition-transform hover:-translate-y-0.5 sm:px-4 sm:text-xs"
+            className="cc-copper-fill motion-press-lift inline-flex min-h-11 items-center justify-center rounded-lg px-3 py-2 text-[11px] font-semibold sm:px-4 sm:text-xs"
           >
             {copy.quote}
           </TrackedLink>
           <button
+            ref={menuButtonRef}
             type="button"
             aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={menuOpen}
+            aria-controls="mobile-navigation-menu"
             onClick={() => setMenuOpen((open) => !open)}
             className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg border border-cc-line text-cc-ink transition-colors hover:border-cc-copper/50 xl:hidden"
           >
@@ -132,12 +148,13 @@ export default function Nav() {
       </div>
 
       {menuOpen && (
-        <div className="border-t border-cc-line py-3 xl:hidden">
+        <div id="mobile-navigation-menu" className="border-t border-cc-line py-3 xl:hidden">
           <div className="mx-auto grid max-w-[1440px] gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={() => setMenuOpen(false)}
                 className={`rounded-lg px-3 py-3 text-sm transition-colors ${
                   isActive(item.href) ? 'bg-cc-copper/10 text-cc-copper-soft' : 'text-cc-ink-mute hover:bg-white/[0.03] hover:text-cc-ink'
                 }`}
@@ -146,11 +163,11 @@ export default function Nav() {
               </Link>
             ))}
             <div className="my-1 flex w-fit items-center gap-2 rounded-full border border-cc-line bg-cc-carbon-2/60 px-3 py-2 text-xs font-semibold text-cc-ink-mute">
-              <Link href={enHref} hrefLang="en" className={locale === 'en' ? 'text-cc-copper-soft' : 'transition-colors hover:text-cc-ink'}>
+              <Link href={enHref} hrefLang="en" onClick={() => setMenuOpen(false)} className={locale === 'en' ? 'text-cc-copper-soft' : 'transition-colors hover:text-cc-ink'}>
                 EN
               </Link>
               <span className="text-cc-line">|</span>
-              <Link href={deHref} hrefLang="de" className={locale === 'de' ? 'text-cc-copper-soft' : 'transition-colors hover:text-cc-ink'}>
+              <Link href={deHref} hrefLang="de" onClick={() => setMenuOpen(false)} className={locale === 'de' ? 'text-cc-copper-soft' : 'transition-colors hover:text-cc-ink'}>
                 DE
               </Link>
             </div>

@@ -71,7 +71,7 @@ export default function HomeApplications() {
           {APPLICATIONS.map(({ title, description, image, alt }) => (
             <article
               key={title}
-              className="group overflow-hidden rounded-2xl border border-cc-line-light bg-cc-paper transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5"
+              className="overflow-hidden rounded-2xl border border-cc-line-light bg-cc-paper"
             >
               <div className="overflow-hidden bg-cc-mist">
                 <Image
@@ -80,7 +80,7 @@ export default function HomeApplications() {
                   width={1200}
                   height={751}
                   quality={82}
-                  className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-[1.015]"
+                  className="h-48 w-full object-cover"
                   sizes="(max-width: 640px) 90vw, (max-width: 1279px) 45vw, 30vw"
                 />
               </div>

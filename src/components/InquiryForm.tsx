@@ -381,7 +381,7 @@ export default function InquiryForm({ locale = 'en' }: { locale?: InquiryFormLoc
       <button
         type="submit"
         disabled={submitting}
-        className="cc-copper-fill flex w-full items-center justify-center gap-2 rounded-lg py-3.5 font-semibold transition-all hover:-translate-y-0.5 disabled:opacity-60"
+        className="cc-copper-fill motion-press-lift flex w-full items-center justify-center gap-2 rounded-lg py-3.5 font-semibold disabled:opacity-60"
       >
         {submitting ? (
           <>
