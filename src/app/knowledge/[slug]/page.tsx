@@ -31,6 +31,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `https://huitaipcb.com/knowledge/${article.slug}`,
       images: [{ url: imageUrl(article.image), alt: article.imageAlt }],
       type: 'article',
+      publishedTime: article.publishedAt || undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: metadataTitle,
+      description: article.metaDescription,
+      images: [{ url: imageUrl(article.image), alt: article.imageAlt }],
     },
   };
 }

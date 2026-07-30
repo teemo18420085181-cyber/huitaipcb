@@ -7,10 +7,117 @@ export type KnowledgeArticle = {
   image: string;
   readTime: string;
   metaDescription: string;
+  publishedAt?: string;
   sections: { heading: string; body: string[] }[];
 };
 
 export const knowledgeArticles: KnowledgeArticle[] = [
+  {
+    slug: 'pcba-component-shortage-2026',
+    category: 'Sourcing',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: '2026 Electronic Component Shortage: What PCBA Buyers Should Know',
+    excerpt:
+      'A buyer-focused guide to PCBA component shortage conditions in 2026, covering lead-time uncertainty, component availability, BOM risk, and sourcing decisions.',
+    image: '/factory/bom-risk-sourcing.jpg',
+    readTime: '12 min read',
+    metaDescription: 'How 2026 electronic component shortages affect PCBA BOM sourcing, lead times and pricing, and what buyers can do about unavailable or long-lead parts.',
+    publishedAt: '2026-07-30',
+    sections: [
+      {
+        heading: 'Quick answer',
+        body: [
+          'Electronic component shortages in 2026 can affect Printed Circuit Board Assembly (PCBA) lead times, Bill of Materials (BOM) cost, and part availability. Buyers should identify unavailable and long-lead items before assembly, provide an exact Manufacturer Part Number (MPN) for each controlled part, mark no-substitute items, and approve technically reviewed alternatives before purchasing. Availability is part-specific, so the BOM should be checked against the required package, quantity, region, and purchasing date.',
+        ],
+      },
+      {
+        heading: 'What is happening to electronic component supply in 2026?',
+        body: [
+          'The 2026 market is not a blanket shortage of every electronic component. Pressure is concentrated in selected semiconductor and memory markets, while many passives, standard logic parts, and other catalog items may remain readily available. The practical issue for a PCBA buyer is that one constrained memory device, microcontroller, power-management IC, or connector can still control the schedule for the whole assembly.',
+          'AI infrastructure is one important demand driver. In June 2026, [Micron reported strong demand and tight industry supply](https://investors.micron.com/node/50671), while a July 2026 [TrendForce NAND market update](https://www.trendforce.com/presscenter/news/20260721-13148.html) described NAND Flash as undersupplied during 2026. These sources support a precise conclusion: some memory and semiconductor categories are tight, but availability must still be checked by manufacturer, MPN, package, quantity, purchasing region, and date.',
+          'Lead-time and price signals can change between quotation and purchase. For that reason, a quote should identify any time-sensitive component assumptions instead of treating an inventory snapshot as a permanent commitment.',
+        ],
+      },
+      {
+        heading: 'Why AI demand can affect electronics supply',
+        body: [
+          'AI servers use advanced processors, high-bandwidth memory, conventional DRAM, NAND storage, power-management devices, networking silicon, and supporting components. When data-center customers reserve more capacity or suppliers prioritize high-demand product families, pressure can move through shared wafer capacity, packaging, test, materials, and distribution channels.',
+          'That does not mean every PCBA uses the same parts as an AI server. It means a buyer may see indirect effects such as longer lead times, price changes, allocation, revised minimum order quantities (MOQs), or a request to discuss substitute parts. The effect on a specific assembly depends on its actual BOM rather than the general market headline.',
+        ],
+      },
+      {
+        heading: 'How component shortages affect PCBA projects',
+        body: [
+          '### Prototype orders: commonly 5–20 pieces\n\nA prototype quantity is small, but the assembly still needs every critical part. If one microcontroller, sensor, or power IC is unavailable, five otherwise complete boards may remain unbuildable. For [prototype PCB assembly](/prototype-pcb-assembly), availability and fast technical validation usually matter more than volume pricing.',
+          '### Low-volume production: commonly 50–500 pieces\n\nAt this stage, sourcing stability matters more because the buyer expects repeatable batches. A one-time broker purchase may solve the first build but create traceability, cost, or continuity problems for the next order. A [low-volume PCBA assembly](/low-volume-pcba-assembly) plan should confirm the BOM revision, supply channel, approved alternatives, and test scope.',
+          '### Production orders: commonly 500–1,000+ pieces\n\nProduction purchasing adds lot consistency, second-source planning, product lifecycle, and staged procurement questions. The supplier may need to compare an immediate spot purchase with scheduled buying or partial deliveries. These quantity ranges are planning examples, not fixed rules for every product or customer.',
+        ],
+      },
+      {
+        heading: 'BOM problems that commonly delay PCB assembly',
+        body: [
+          'A sourcing delay often begins with incomplete or inconsistent data rather than a market-wide shortage. Common BOM problems include:',
+          '- An incomplete or generic manufacturer part number\n- An obsolete or End-of-Life (EOL) component\n- An unavailable IC or a long-lead connector\n- A package that does not match the PCB footprint\n- A pinout or footprint mismatch between the named part and the design\n- Insufficient manufacturer, value, tolerance, or rating information\n- No customer-approved substitute for a risky part\n- Customer-specified supplier or country-of-origin restrictions\n- Conflicting quantities, designators, DNI/DNP status, or BOM revisions',
+          'A line-by-line [BOM risk and alternative sourcing review](/knowledge/bom-risk-alternative-component-sourcing) should separate data-quality problems from genuine supply constraints before component purchasing begins.',
+        ],
+      },
+      {
+        heading: 'What happens when one BOM item is unavailable?',
+        body: [
+          'One unavailable critical item can delay an entire PCBA order. If 99 of 100 BOM lines are ready but the missing line is the main processor, a unique connector, or another part required for function or assembly, production may not be technically useful.',
+          'The usual response paths are:\n\n1. Wait for the original component when the schedule permits.\n2. Search authorized or otherwise trusted supply channels and confirm traceability.\n3. Review an approved alternative against the design.\n4. Redesign the circuit or PCB when no practical compatible part exists.\n5. Procure or assemble a partial quantity only when the project remains technically and commercially useful.',
+          'A PCBA manufacturer should not replace a critical component without customer approval. Purchasing urgency does not remove the need to confirm function, fit, lifecycle, firmware impact, and test requirements.',
+        ],
+      },
+      {
+        heading: 'Original part vs alternative component',
+        body: [
+          'During 2026 supply uncertainty, an alternative should be considered only after the buyer and engineering team confirm electrical ratings, package, footprint, pinout, firmware or interface impact, lifecycle, and required testing. A cross-reference or matching package name is not approval. Keep the decision tied to the current BOM revision, and use the detailed [BOM alternatives guide](/knowledge/bom-alternatives-pcba-sourcing) for the full substitution review.',
+        ],
+      },
+      {
+        heading: 'What buyers should include in a BOM in 2026',
+        body: [
+          'For a shortage-focused review, provide each reference designator, quantity, manufacturer, exact Manufacturer Part Number (MPN), package, and DNI/DNP status, then mark no-substitute items and any already-approved alternatives. Generic descriptions such as “10k resistor” or “STM32” are not enough for controlled purchasing. The detailed [BOM best practices guide](/knowledge/bom-best-practices) covers the full data set, while the [PCBA quote file checklist](/pcba-quote-file-checklist) explains how the BOM aligns with Gerber, placement, drawing, and test data.',
+        ],
+      },
+      {
+        heading: 'Should you approve alternative components before production?',
+        body: [
+          'Yes—especially for parts with known sourcing risk. Pre-approval gives purchasing a defined second path when the original part becomes unavailable, but approval should be conditional on electrical compatibility, mechanical compatibility, firmware impact, qualification requirements, and the end-product application.',
+          'For a low-risk passive, review may be straightforward. For a microcontroller, radio, safety-related part, precision analog device, or unique connector, engineering samples and functional testing may be necessary. Huitai recommends documenting each approved alternative in the controlled BOM rather than relying on an email that can become separated from the production revision.',
+        ],
+      },
+      {
+        heading: 'Prototype vs 100 / 500 / 1,000 PCBA sourcing strategy',
+        body: [
+          'The appropriate purchasing strategy changes as the cost of a sourcing mistake and the need for continuity increase. The quantities below are practical planning examples rather than promises of price or delivery time.',
+          '| Project stage | Main sourcing concern | Useful buyer action |\n| --- | --- | --- |\n| Prototype | Availability and fast validation | Confirm critical parts before assembly and test any proposed alternative |\n| 100 pieces | Stable sourcing and BOM confirmation | Freeze the revision and document approved supply channels |\n| 500 pieces | Price, availability, and lot planning | Review lot consistency, purchasing timing, and second-source options |\n| 1,000+ pieces | Supply continuity and purchasing strategy | Plan lifecycle risk, staged purchases, alternatives, and forecast updates |',
+        ],
+      },
+      {
+        heading: 'How Huitai handles BOM sourcing risk',
+        body: [
+          'Huitai Electronics provides [turnkey PCB assembly](/turnkey-pcb-assembly) covering PCB fabrication, BOM review, component sourcing, Surface-Mount Technology (SMT) assembly, through-hole/DIP assembly, testing to confirmed customer requirements, packaging, and delivery.',
+          'The working sequence is: customer Gerber and BOM → engineering and DFM review → BOM sourcing review → identify unavailable or long-lead parts → discuss alternatives where needed → customer approval → component purchasing → PCB fabrication → assembly → agreed testing → packaging and delivery.',
+          'Availability is confirmed for the quoted MPN, package, quantity, and purchasing window. Huitai does not assume that every component is always available and does not make an unapproved critical-part substitution. Buyers should provide any approved-vendor restrictions, no-substitute items, lifecycle concerns, and test or qualification requirements with the RFQ.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### Is there an electronic component shortage in 2026?\n\nYes, selected electronic component categories—especially parts of the memory and semiconductor markets—are experiencing tight supply, allocation, or price pressure in 2026. It is not a universal shortage of every component. Availability varies by manufacturer, exact MPN, package, quantity, region, and purchase date, so buyers should review the actual PCBA BOM instead of relying on a general market headline.\n\n### Will component shortages delay my PCB assembly order?\n\nThey can. PCB assembly may be delayed when a required component is unavailable, has a lead time beyond the production schedule, or needs an alternative that has not been approved. A BOM sourcing review before purchasing can identify schedule-controlling parts early and separate genuine supply issues from missing MPN, package, or revision information.\n\n### Can a PCBA manufacturer replace an unavailable component?\n\nA PCBA manufacturer can propose and source an alternative, but a critical part should not be replaced without customer approval. Engineering should compare electrical ratings, package, footprint, pinout, temperature range, timing, interface, firmware impact, lifecycle, and test requirements. The approved MPN should then be recorded against the correct BOM revision.\n\n### What should I include in my PCBA BOM?\n\nInclude Reference Designator, Quantity, Manufacturer, exact Manufacturer Part Number, Description, Package, and DNI/DNP status. Add an approved alternative, no-substitute note, ratings, tolerance, preferred supplier restrictions, or lifecycle requirements when relevant. Generic labels such as “10k resistor” or “STM32” do not provide enough information for controlled purchasing.\n\n### What is a long-lead-time component?\n\nA long-lead-time component is a part whose confirmed procurement time is longer than the project can normally absorb. Lead time can include manufacturing, allocation, distribution, and transport—not only shipping. The status is not permanent: it can change by MPN, package, order quantity, region, supplier inventory, and the date a purchase order is placed.\n\n### Should I approve alternative components before PCB assembly?\n\nYes, pre-approve alternatives for parts with meaningful sourcing risk when the technical review supports them. Approval should cover electrical and mechanical compatibility, firmware impact, qualification requirements, and the end application. Pre-approval reduces purchasing delay, but it does not mean any nominally similar component can be substituted without checking the controlled BOM and test plan.\n\n### Can one missing component delay an entire PCBA order?\n\nYes. If one missing part is required for assembly, programming, or functional testing, the entire order may be unable to proceed even when every other BOM item is ready. The best response depends on the part: wait, search trusted channels, approve an alternative, redesign, or use partial procurement only when the remaining build is technically useful.\n\n### How can I reduce BOM sourcing risk?\n\nProvide exact MPNs, verify packages and footprints, flag no-substitute parts, check lifecycle status, and identify approved alternatives before purchasing. Keep the BOM revision aligned with Gerber and placement data. For repeat orders, review critical-part availability again rather than assuming the previous source, price, and lead time still apply.\n\n### Does component availability affect prototype PCB assembly?\n\nYes. A prototype may use only 5–20 boards, but each board still needs every critical IC, connector, and unique device. Small quantity does not eliminate sourcing risk. Confirming availability early helps the team decide whether to wait for the original part, validate an alternative, or change the prototype schedule before assembly setup begins.\n\n### When should components be purchased for a PCBA project?\n\nPurchase after the production BOM, quantity, approved alternatives, and commercial terms are confirmed, but early enough to protect the required assembly window. Long-lead or allocated items may need earlier action than common passives. The buyer and manufacturer should also agree who carries cancellation, excess inventory, revision-change, and partial-delivery risk before purchasing.',
+        ],
+      },
+      {
+        heading: 'Need a PCBA BOM review?',
+        body: [
+          'If you already have Gerber files and a BOM, Huitai can review your project for PCB fabrication, component sourcing, assembly, and testing requirements.',
+          '**[Send Gerber & BOM for Review](/contact#project-files)**',
+        ],
+      },
+    ],
+  },
   {
     slug: 'what-files-required-pcba-quote',
     category: 'Getting Started',

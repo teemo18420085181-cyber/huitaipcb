@@ -20,6 +20,7 @@ const darkLogo = readOptional('public/logo-dark.svg');
 const layout = read('src/app/layout.tsx');
 const robots = read('src/app/robots.ts');
 const sitemap = read('src/app/sitemap.ts');
+const knowledgeArticlePage = read('src/app/knowledge/[slug]/page.tsx');
 const seoPages = read('src/lib/content/seoPages.ts');
 const knowledge = read('src/lib/content/knowledge.ts');
 const articles = read('src/lib/content/articles.ts');
@@ -190,6 +191,42 @@ const checks = [
   [
     articles.includes("'jlcpcb-alternatives-turnkey-pcba',"),
     'Optimized JLCPCB static content must override any stale CMS copy.',
+  ],
+  [
+    knowledge.includes("slug: 'pcba-component-shortage-2026'") &&
+      knowledge.includes("title: '2026 Electronic Component Shortage: What PCBA Buyers Should Know'") &&
+      knowledge.includes("publishedAt: '2026-07-30'") &&
+      knowledge.includes(
+        "metaDescription: 'How 2026 electronic component shortages affect PCBA BOM sourcing, lead times and pricing, and what buyers can do about unavailable or long-lead parts.'",
+      ),
+    'The 2026 PCBA component-shortage guide must preserve its approved URL, H1, publication date, and description.',
+  ],
+  [
+    knowledge.includes("heading: 'What is happening to electronic component supply in 2026?'") &&
+      knowledge.includes("heading: 'How Huitai handles BOM sourcing risk'") &&
+      knowledge.includes('### Is there an electronic component shortage in 2026?') &&
+      knowledge.includes('### When should components be purchased for a PCBA project?') &&
+      knowledge.includes('](/knowledge/bom-alternatives-pcba-sourcing)') &&
+      knowledge.includes('](/knowledge/bom-risk-alternative-component-sourcing)') &&
+      knowledge.includes('](/contact#project-files)'),
+    'The 2026 shortage guide must keep its buyer-focused sections, GEO FAQ, topic-cluster links, and file-review CTA.',
+  ],
+  [
+    articles.includes(
+      "'pcba-component-shortage-2026': '2026 PCBA Component Shortage: Lead Times, Supply & BOM Risk'",
+    ) &&
+      knowledge.includes('PCBA component shortage conditions in 2026') &&
+      articles.includes("'pcba-component-shortage-2026',") &&
+      articles.includes('publishedAt: article.publishedAt || null') &&
+      articles.includes('entries.set(article.slug, article.publishedAt || null)'),
+    'The 2026 shortage guide must preserve its distinct shortage intent, static-content override, Article date, and sitemap last-modified date.',
+  ],
+  [
+    knowledgeArticlePage.includes('twitter: {') &&
+      knowledgeArticlePage.includes("'@type': 'Article'") &&
+      knowledgeArticlePage.includes("'@type': 'FAQPage'") &&
+      knowledgeArticlePage.includes('datePublished: article.publishedAt || undefined'),
+    'Knowledge articles must expose page-specific Twitter metadata plus visible-content Article and FAQ schema.',
   ],
 ];
 

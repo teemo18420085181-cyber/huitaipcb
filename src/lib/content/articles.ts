@@ -27,6 +27,7 @@ const DEFAULT_IMAGE_ALT = 'PCBA engineer reviewing BOM files and assembled circu
 const DEFAULT_CATEGORY_COLOR = 'bg-cc-copper/10 text-cc-ink border-cc-copper/30';
 
 const ARTICLE_SEO_TITLES: Record<string, string> = {
+  'pcba-component-shortage-2026': '2026 PCBA Component Shortage: Lead Times, Supply & BOM Risk',
   'pcba-testing-before-shipment': 'PCBA Testing Before Shipment | Turnkey PCBA Guide',
   'pcba-quotation-checklist': 'PCBA Quotation Checklist | Huitai Electronics',
   'prototype-pcb-assembly-china-buyer-checklist': 'Prototype PCB Assembly China | Huitai Electronics',
@@ -34,6 +35,10 @@ const ARTICLE_SEO_TITLES: Record<string, string> = {
 };
 
 const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
+  'pcba-component-shortage-2026': {
+    image: '/factory/bom-risk-sourcing.jpg',
+    alt: 'PCBA component sourcing review with a BOM, electronic parts, and an assembled circuit board',
+  },
   'how-much-does-pcba-assembly-cost': {
     image: '/factory/knowledge-covers/pcba-assembly-cost-cover.webp',
     alt: 'PCBA assembly cost review with BOM, components, testing tools, and assembled boards',
@@ -93,6 +98,7 @@ const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
 };
 
 const STATIC_CONTENT_OVERRIDE_SLUGS = new Set([
+  'pcba-component-shortage-2026',
   'what-files-required-pcba-quote',
   'pcb-assembly-file-preparation-guide',
   'bom-risk-alternative-component-sourcing',
@@ -144,7 +150,7 @@ export function mapStaticArticle(article: KnowledgeArticle): KnowledgeDisplayArt
     categoryColor: article.categoryColor,
     content: staticArticleToMarkdown(article),
     author: 'Huitai Engineering Team',
-    publishedAt: null,
+    publishedAt: article.publishedAt || null,
     source: 'static',
   };
 }
@@ -238,7 +244,7 @@ export async function getSitemapArticleEntries() {
   const entries = new Map<string, string | null>();
 
   for (const article of knowledgeArticles) {
-    entries.set(article.slug, null);
+    entries.set(article.slug, article.publishedAt || null);
   }
   for (const article of cmsArticles) {
     entries.set(article.slug, article.published_at || article.updated_at || article.created_at);
