@@ -23,7 +23,6 @@ export const metadata = {
 
 const COMING_SOON = [
   'Understanding IPC Class II vs Class III: when does it matter?',
-  'Surface finish comparison: HASL vs ENIG vs OSP',
   'How to manage component obsolescence in a long-run product',
   'First article inspection (FAI): what to check and when to require it',
   'Rigid-flex design rules your CM actually wants you to follow',

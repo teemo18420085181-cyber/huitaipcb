@@ -5,13 +5,137 @@ export type KnowledgeArticle = {
   title: string;
   excerpt: string;
   image: string;
+  imageCaption?: string;
   readTime: string;
   metaDescription: string;
   publishedAt?: string;
+  cta?: {
+    primary: { label: string; href: string };
+    secondary: { label: string; href: string };
+  };
   sections: { heading: string; body: string[] }[];
 };
 
 export const knowledgeArticles: KnowledgeArticle[] = [
+  {
+    slug: 'edge-ai-device-pcba-manufacturing',
+    category: 'Applications',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'Edge AI PCB Assembly: A Prototype-to-Low-Volume Manufacturing Checklist',
+    excerpt:
+      'A manufacturing-readiness guide for edge AI hardware teams planning BOM sourcing, BGA assembly, power and thermal validation, programming, testing, and repeatable low-volume builds.',
+    image: '/images/knowledge/edge-ai-device-pcba-manufacturing/edge-ai-pcb-assembly-manufacturing.webp',
+    imageCaption: 'Illustrative edge AI hardware assembly.',
+    readTime: '17 min read',
+    metaDescription:
+      'A practical edge AI PCB assembly checklist covering BOM risk, power design, thermal management, BGA assembly, programming, testing, and low-volume production.',
+    publishedAt: '2026-08-04',
+    cta: {
+      primary: { label: 'Upload Gerber and BOM', href: '/contact#project-files' },
+      secondary: { label: 'Request a PCBA Review', href: '/contact#quote-form' },
+    },
+    sections: [
+      {
+        heading: 'Quick Answer',
+        body: [
+          'Edge AI PCB assembly often places more manufacturing pressure on a board than a basic IoT design because the processor, memory, storage, high-speed interfaces, and power rails must work together under changing compute loads. Before requesting a prototype or low-volume production quote, prepare the fabrication files, BOM, component placement data, assembly drawings, PCB specifications, firmware and programming method, and a functional testing procedure with measurable pass/fail criteria. A complete package lets the manufacturer review what can be built, purchased, assembled, programmed, and tested without guessing.',
+          'Power delivery and thermal preparation deserve early attention because an accelerator or processor may draw short current peaks and generate concentrated heat. Fine-pitch BGA packages may require tighter process controls and, depending on the design, X-ray inspection. LPDDR, eMMC, NVMe storage, PMICs, camera modules, and specialized connectors may also create lifecycle or lead-time risk. The goal is not to specify every advanced process by default. It is to identify the risks that apply to this board, document customer-controlled decisions, and establish a repeatable path from engineering samples to stable batches.',
+          '**In this guide:** [development path](#development-board-som-or-custom-pcb), [BOM risk](#bom-and-component-sourcing-risks), [PCB and BGA requirements](#pcb-stackup-and-assembly-requirements), [power and thermal preparation](#power-integrity-and-thermal-preparation), [testing](#inspection-programming-and-functional-testing), and the [RFQ checklist](#edge-ai-pcba-rfq-checklist).',
+        ],
+      },
+      {
+        heading: 'What Makes an Edge AI PCBA Different?',
+        body: [
+          'An edge AI board processes data locally, often close to a camera, sensor, machine, or gateway. That does not automatically make every design difficult to manufacture, but it may combine dense computing, memory, power conversion, and fast interfaces in less space than an ordinary connected sensor node. The table below describes common differences, not universal rules.',
+          '| Area | Ordinary IoT PCB | Edge AI PCB |\n| --- | --- | --- |\n| Processor | Often a microcontroller or modest application processor | May use an application processor, AI accelerator, NPU, GPU, or high-performance SoM |\n| Power demand | Often low and relatively steady, depending on radio duty cycle and loads | Often higher and more dynamic, with startup and inference-related current changes |\n| Memory and storage | May use internal memory plus limited external flash | Often uses external LPDDR and eMMC, and in some projects NVMe storage |\n| High-speed interfaces | Commonly UART, SPI, I2C, USB, Ethernet, or wireless | May add MIPI camera links, PCIe, USB 3.x, Gigabit Ethernet, high-speed memory, or display interfaces |\n| Thermal requirements | Frequently manageable through normal copper and enclosure design | Often needs deliberate heat spreading, thermal vias, interface materials, heat sinks, or airflow |\n| Inspection and testing | AOI and a basic functional sequence may be sufficient | Fine-pitch BGA inspection, programming, interface tests, load behavior, and extended runtime checks may be required |',
+          'Manufacturing complexity depends on the actual layout, package types, stackup, materials, interfaces, operating environment, and acceptance plan. A small SoM carrier can be straightforward, while a compact board with directly mounted processing and memory can require more detailed fabrication, assembly, and test preparation.',
+        ],
+      },
+      {
+        heading: 'Development Board, SoM, or Custom PCB?',
+        body: [
+          'The hardware architecture determines how much design risk remains when the project reaches a PCBA manufacturer. Teams typically move through one of three paths, and the correct path depends on schedule, volume, size, cost, performance, and the engineering resources available.',
+          '### 1. Development board\n\nA development board is useful for evaluating a processor, software stack, camera, sensor, and early model performance. It shortens the learning cycle but may include unused connectors, oversized power circuitry, or features that do not fit the final product. Treat it as a reference platform, not automatically as production documentation.',
+          '### 2. SoM with a custom carrier board\n\nA system-on-module can keep the processor, memory, and some power functions on a proven module while the carrier provides product-specific connectors, power input, networking, cameras, sensors, and mechanical interfaces. This often reduces routing and BGA integration risk, although module availability, lifecycle, connector choice, and carrier-board testing still need review.',
+          '### 3. Processor integrated directly on a custom PCB\n\nDirect integration can reduce size and recurring module cost or provide tighter control over interfaces. It also moves memory routing, processor power sequencing, BGA escape, signal integrity, boot configuration, and thermal implementation into the customer design. This path often needs the most complete design verification before manufacturing release.',
+          '![Development board, system-on-module carrier board, and custom embedded PCBA prototype](/images/knowledge/edge-ai-device-pcba-manufacturing/development-board-to-custom-pcba.webp "Illustration of the transition from a development platform to custom embedded hardware.")',
+          'A PCBA manufacturer can review manufacturing files, footprints, component data, assembly constraints, inspection needs, programming inputs, and the agreed test scope. That review can identify missing or conflicting information. It does not replace the customer hardware team, algorithm developers, certification specialists, or product-validation process, and it cannot prove that the system architecture or AI model meets the product requirement.',
+        ],
+      },
+      {
+        heading: 'BOM and Component Sourcing Risks',
+        body: [
+          'The BOM is both a purchasing document and a technical control record. Edge AI projects often concentrate risk in a few expensive or single-source items: the AI processor or SoM, PMIC, DC-DC regulators, LPDDR, eMMC or NVMe storage, high-capacitance MLCCs, high-speed connectors, camera and sensor modules, and wireless modules. Check exact manufacturer part numbers, packages, temperature grades, moisture sensitivity where relevant, lifecycle status, authorized supply options, and required quantities before committing the build schedule.',
+          '![BOM review and component sourcing preparation for an edge AI PCBA project](/images/knowledge/edge-ai-device-pcba-manufacturing/edge-ai-pcba-bom-component-sourcing.webp "Illustrative BOM and component sourcing review.")',
+          'Long-lead and single-source components should be identified during the prototype phase, not after the design is released for repeat production. The 2026 [component shortage guide](/knowledge/pcba-component-shortage-2026) explains why availability must be checked by exact part and date. Use consistent [BOM best practices](/knowledge/bom-best-practices), an approved vendor list (AVL), and a documented sourcing route for critical parts. The [BOM sourcing service](/bom-sourcing-pcb-assembly) can be scoped around those controlled inputs.',
+          'Critical components must never be silently replaced. Every alternative needs customer approval and should be tied to the controlled BOM revision. An alternative review cannot rely on a similar part name or package description; it should compare footprint, pinout, electrical ratings, timing, power behavior, interfaces, firmware impact, temperature range, qualification needs, lifecycle, and test coverage. The [alternative-component guide](/knowledge/bom-alternatives-pcba-sourcing) covers this decision process in more detail.',
+          'For an early quote, state which lines are no-substitute, which substitutions are already approved, whether customer-supplied parts will be used, and whether traceability or country-of-origin restrictions apply. That makes purchasing assumptions visible before orders are placed.',
+        ],
+      },
+      {
+        heading: 'PCB Stackup and Assembly Requirements',
+        body: [
+          'Start with fabrication data that matches the electrical and mechanical design: layer count, proposed or controlled stackup, board thickness, copper weight, surface finish, dimensions, tolerances, and any impedance requirements. Identify controlled single-ended nets and differential pairs, including the relevant target impedance and reference layers. High-speed memory, PCIe, USB, Ethernet, MIPI, or display links may need tighter stackup coordination than low-speed control signals.',
+          'Package and routing choices drive assembly requirements. BGA and fine-pitch devices may affect stencil design, paste deposition, placement accuracy, reflow profiling, pad finish, handling, and inspection. Via-in-pad should identify whether vias are filled and capped. HDI structures, blind or buried vias, and small laser-drilled features must be completely defined in the fabrication notes rather than inferred from Gerber data.',
+          '![Illustrative X-ray inspection image showing the solder ball array beneath a BGA package](/images/knowledge/edge-ai-device-pcba-manufacturing/bga-xray-inspection.webp "Illustrative BGA X-ray inspection image.")',
+          'Not every edge AI board requires HDI, advanced materials, or X-ray inspection. These capabilities should be reviewed or coordinated according to package geometry, hidden solder joints, board design, reliability needs, and the agreed inspection plan. A SoM carrier with conventional packages may use a standard multilayer process, while a directly integrated processor and memory design may justify more advanced controls.',
+          'Panelization should include practical tooling rails, global and local fiducials where needed, board support, routing or V-score rules, and separation clearance. Confirm component-to-edge spacing, tall-component restrictions, underside clearance, connector overhang, heat-sink access, selective or manual assembly areas, and any mechanical keep-outs. The current [capabilities overview](/capabilities) is a useful starting point, but the actual stackup, panel, BGA, and inspection scope should be confirmed for the project.',
+        ],
+      },
+      {
+        heading: 'Power Integrity and Thermal Preparation',
+        body: [
+          'Edge compute hardware can pass a basic power-on check yet fail during boot, camera startup, networking bursts, or sustained inference. The RFQ and test package should therefore describe both steady operation and meaningful load changes.',
+          '### Power\n\nDocument the input-voltage range, connector polarity, expected steady current, peak current, transient current, and startup current. List the required rails, PMIC or regulator configuration, sequencing dependencies, reset behavior, and any enable or power-good signals. If power modes vary, explain the conditions that trigger each mode and the acceptable voltage limits.',
+          'Decoupling selection and placement remain customer design responsibilities, but manufacturing data must correctly identify values, packages, dielectric or voltage ratings where controlled, and do-not-substitute parts. High-capacitance MLCC behavior can change with DC bias, so nominal capacitance alone may not describe the design intent. Provide accessible test points for critical rails, voltage monitoring points, current-limit conditions, and any measurements required during load changes.',
+          '### Thermal\n\nIdentify the main heat sources: processor or accelerator, memory, storage, PMIC, high-current regulators, radios, and interface devices. Define how the product is expected to move heat through copper spreading, thermal vias, thermal pads, a heat spreader or heat sink, enclosure contact, and airflow. Mechanical drawings should show contact surfaces, compression requirements, keep-outs, and the installed enclosure condition when it affects cooling.',
+          'Specify ambient-temperature limits, continuous-operation duration, duty cycle, orientation, airflow assumptions, and temperature-monitoring points. If the customer requires thermocouple locations, on-board sensor readings, surface-temperature limits, or an extended runtime sequence, include them in the test procedure. A PCBA review can coordinate build and measurement requirements; product thermal simulation and final system qualification remain with the customer unless separately defined by a qualified provider.',
+          '![Power delivery and thermal management validation on an embedded edge AI PCB assembly](/images/knowledge/edge-ai-device-pcba-manufacturing/edge-ai-pcba-power-thermal-management.webp "Illustrative power and thermal validation setup.")',
+        ],
+      },
+      {
+        heading: 'Inspection, Programming, and Functional Testing',
+        body: [
+          'A practical quality plan starts with incoming inspection of controlled PCB and component attributes, then applies solder-paste inspection (SPI) where applicable, automated optical inspection (AOI), and X-ray when package geometry or project risk requires it. Each method has limits: AOI sees visible conditions, while X-ray can examine selected hidden joints but does not prove firmware or product function.',
+          'Programming should define the approved firmware revision, file format, programming interface, tool or adapter, security or key-handling responsibility, configuration steps, serialization, and the evidence to record. Functional testing then exercises defined board behavior. An AI camera might check power rails, image capture, a network link, and selected I/O. An edge gateway might check boot, Ethernet, USB, storage, and communications. A robotics controller might check communications and controlled I/O, while a smart sensor may check readings, calibration status, wireless communication, and power modes.',
+          '![Firmware programming and functional testing of an embedded edge AI PCBA prototype](/images/knowledge/edge-ai-device-pcba-manufacturing/edge-ai-pcba-programming-functional-testing.webp "Illustrative programming and functional testing setup.")',
+          'The customer should define the firmware, programming method, fixture, expected outputs, pass/fail criteria, and any model-specific validation requirements. A manufacturer can execute and record an agreed sequence, but should not be assumed to validate AI model accuracy, algorithm quality, dataset coverage, or end-product performance outside that sequence. Use the detailed [PCBA testing guide](/knowledge/pcba-testing-before-shipment) to prepare inputs and align the scope with the [testing and quality-control service](/pcba-testing-quality-control).',
+          'Extended runtime or burn-in can be added when the customer defines duration, load, environment, monitoring, limits, failure handling, and data-retention requirements. It is not an automatic substitute for system qualification, and it should be quoted as a controlled, project-specific operation.',
+        ],
+      },
+      {
+        heading: 'From Five Prototypes to Repeat Production',
+        body: [
+          'A typical program may begin with 5-10 prototypes, continue through engineering validation testing (EVT) and design validation testing (DVT), then move to a pilot build, low-volume production, and repeat production. These quantities and stage names are planning examples, not mandatory standards. The right sequence depends on product risk, design maturity, certification, tooling, firmware, supply, and the customer validation plan.',
+          '![PCB manufacturing stages from bare boards and tested prototypes to low-volume PCBA production](/images/knowledge/edge-ai-device-pcba-manufacturing/prototype-to-low-volume-pcba.webp "Illustration of the prototype-to-low-volume PCBA manufacturing process.")',
+          'Prototype feedback should become controlled manufacturing data. Correct BOM errors, update footprints or assembly notes, freeze the approved PCB revision, and record firmware versions. A golden sample can help communicate expected assembly and functional behavior, but it should be accompanied by controlled files and measurable acceptance criteria rather than used as the only specification.',
+          'Before a pilot or repeat build, prepare the test fixture and programming station, define fixture ownership and maintenance, and verify that the procedure is repeatable. Track first-pass yield and meaningful failure categories so recurring problems can be distinguished from isolated rework. Batch traceability may include PCB revision, BOM revision, firmware, component lots where required, serial numbers, test results, and disposition records.',
+          'Approved substitution control is especially important across batches. A part accepted for one revision or validation lot should not automatically carry into another product state without checking the approval conditions. The [prototype-versus-low-volume guide](/knowledge/prototype-vs-batch-pcb-assembly) explains the transition, while the [prototype PCB assembly](/prototype-pcb-assembly) and [low-volume PCBA assembly](/low-volume-pcba-assembly) pages describe the existing service paths.',
+        ],
+      },
+      {
+        heading: 'Edge AI PCBA RFQ Checklist',
+        body: [
+          'Use this copyable checklist to make quotation assumptions and customer decisions visible. Mark unavailable items clearly instead of leaving the supplier to infer them.',
+          '- [ ] Gerber files and drill data for the intended revision\n- [ ] BOM with exact manufacturer part numbers and reference designators\n- [ ] CPL / pick-and-place file with side, coordinates, and rotation\n- [ ] Assembly drawings with polarity and special instructions\n- [ ] PCB specification covering material, thickness, copper weight, finish, color, dimensions, and tolerances\n- [ ] Stackup requirements and reference-layer information\n- [ ] Controlled impedance requirements and identified nets or differential pairs\n- [ ] Prototype quantity and requested delivery schedule\n- [ ] Forecast quantity for pilot, low-volume, or repeat builds\n- [ ] Approved substitutions, AVL, and no-substitute parts\n- [ ] Approved firmware files and version\n- [ ] Programming instructions, tools, interfaces, and configuration steps\n- [ ] Functional test procedure and expected outputs\n- [ ] Test fixture information, ownership, cables, adapters, and software\n- [ ] Pass/fail criteria, tolerances, records, and failure handling\n- [ ] Mechanical drawings for board outline, connectors, enclosure, heat sink, and keep-outs\n- [ ] Thermal requirements, ambient conditions, runtime, airflow, and monitoring points\n- [ ] Packaging and ESD requirements\n- [ ] Label content, location, format, and revision\n- [ ] Serial-number format, programming relationship, and traceability needs\n- [ ] Required inspection reports, test logs, certificates, photos, or sample records',
+          'The [Gerber, BOM, and CPL preparation guide](/knowledge/pcb-assembly-file-preparation-guide) explains the core package. If some data is not ready, use the [incomplete manufacturing files guide](/knowledge/pcba-quote-with-incomplete-files) to label assumptions and determine what can be reviewed without creating false certainty.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### What files are required for an edge AI PCB assembly quote?\n\nProvide Gerber and drill data, a BOM with exact manufacturer part numbers, CPL or pick-and-place data, assembly drawings, PCB and stackup requirements, quantities, firmware and programming instructions, functional test inputs, mechanical and thermal requirements, and packaging or traceability needs.\n\n### Does every edge AI board require HDI?\n\nNo. HDI depends on package pitch, routing density, layer strategy, board size, and escape requirements. A SoM carrier may use conventional multilayer construction, while a directly integrated processor and memory design may need blind vias, via-in-pad, or other advanced features.\n\n### When is X-ray inspection needed for an AI PCBA?\n\nX-ray may be requested for BGA, bottom-terminated, or other packages with hidden solder joints, depending on design risk and the inspection plan. It is not automatically required for every edge AI board and does not replace electrical or functional testing.\n\n### Can a PCBA manufacturer program and test an edge AI device?\n\nYes, when the scope is defined. The customer should provide approved firmware, the programming method, fixtures and interfaces, test steps, expected outputs, limits, and pass/fail criteria. Model accuracy and algorithm validation remain customer responsibilities unless separately assigned.\n\n### How many prototypes should be built before low-volume production?\n\nA project may start with 5-10 boards, but there is no universal minimum validation quantity. Build enough samples to validate the design, assembly process, sourcing decisions, firmware, fixture, and acceptance method before increasing quantity.\n\n### What are the main BOM risks in edge AI hardware?\n\nTypical risks include single-source processors or SoMs, PMICs, memory and storage, high-capacitance MLCCs, specialized connectors, camera or sensor modules, wireless modules, lifecycle changes, long lead times, and alternatives that have not been technically approved.\n\n### What should be tested on an AI camera or edge gateway?\n\nDefine power-up and current behavior, firmware and boot, storage, camera or sensor response, Ethernet, USB or wireless links, required I/O, temperatures or runtime conditions, and exact acceptance limits. The test should cover agreed hardware behavior, not assume full algorithm validation.\n\n### Can a project start from a development board or SoM?\n\nYes. A development board can validate the compute platform and software, while a SoM plus carrier often shortens custom hardware development. Manufacturing still needs controlled carrier-board files, sourcing data, assembly requirements, programming inputs, and a test plan.',
+        ],
+      },
+      {
+        heading: 'Conclusion: Prepare the Manufacturing Package Before the Build',
+        body: [
+          'Edge AI hardware becomes easier to quote and repeat when architecture, component approvals, stackup, power conditions, thermal interfaces, firmware, and acceptance criteria are documented before purchasing begins. Review the current [PCBA capabilities](/capabilities), then identify which requirements need project-specific confirmation.',
+          'Preparing an edge AI hardware prototype? Send your Gerber files, BOM, quantity, programming instructions, and test requirements for a manufacturing review and quotation.',
+        ],
+      },
+    ],
+  },
   {
     slug: 'pcba-component-shortage-2026',
     category: 'Sourcing',
@@ -43,6 +167,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         body: [
           'AI servers use advanced processors, high-bandwidth memory, conventional DRAM, NAND storage, power-management devices, networking silicon, and supporting components. When data-center customers reserve more capacity or suppliers prioritize high-demand product families, pressure can move through shared wafer capacity, packaging, test, materials, and distribution channels.',
           'That does not mean every PCBA uses the same parts as an AI server. It means a buyer may see indirect effects such as longer lead times, price changes, allocation, revised minimum order quantities (MOQs), or a request to discuss substitute parts. The effect on a specific assembly depends on its actual BOM rather than the general market headline.',
+          'Teams sourcing processors, memory, PMICs, and camera interfaces can use the [edge AI PCB assembly checklist](/knowledge/edge-ai-device-pcba-manufacturing) to connect these supply risks with power, assembly, programming, and test preparation.',
         ],
       },
       {
@@ -263,6 +388,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         body: [
           'Before ordering a small batch, confirm the production Gerber files, drill data, BOM, pick-and-place file, assembly drawing, revision number, and any customer-approved component alternatives. A stable BOM is especially important because a last-minute part change can affect footprint, firmware behavior, testing, or cost.',
           'The same supplier can often carry context from prototype into low-volume production. That reduces repeated file review, keeps sourcing decisions visible, and helps the test scope remain consistent from the first samples to the next batch.',
+          'Compute-intensive products also need the power, thermal, BGA, programming, and traceability controls described in the [edge AI prototype-to-low-volume checklist](/knowledge/edge-ai-device-pcba-manufacturing).',
         ],
       },
       {
@@ -389,6 +515,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         body: [
           'IoT product boards add a few constraints over a basic PCBA: a wireless module or RF section, an antenna, power management for battery or always-on operation, and connectors or sensors. These choices affect layout, sourcing, and testing, so they are worth reviewing before the board goes to assembly.',
           'For [turnkey IoT PCBA](/turnkey-pcb-assembly), the goal is to coordinate fabrication, component sourcing, assembly, and testing while keeping these wireless and power details in view.',
+          'If the design adds local AI processing, external memory, cameras, or higher dynamic power, continue with the [edge AI PCB assembly manufacturing checklist](/knowledge/edge-ai-device-pcba-manufacturing).',
         ],
       },
       {
@@ -1164,6 +1291,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         body: [
           'Assembly drawings help clarify polarity, connector direction, board side, mechanical restrictions, hand-soldered parts, labels, and special instructions. They are especially useful when the silkscreen is crowded or when a connector can be installed in more than one direction.',
           'Test notes should explain what must be checked after assembly. Functional testing depends on customer-provided firmware, fixtures, procedures, or acceptance criteria. If testing is not defined before quotation, the supplier cannot accurately include it in the production scope.',
+          'For compute-heavy designs, the [edge AI PCBA RFQ checklist](/knowledge/edge-ai-device-pcba-manufacturing#edge-ai-pcba-rfq-checklist) adds stackup, controlled impedance, power, thermal, programming, and traceability inputs to this core file package.',
         ],
       },
       {
@@ -1206,6 +1334,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         body: [
           '| Inspection or test | What it can find | What it does not confirm | Buyer input needed |\n| --- | --- | --- | --- |\n| Visual inspection | Damage, contamination, labels, polarity, orientation, and visible solder issues | Repeatable electrical or product function | Assembly drawing, reference photos, and workmanship notes |\n| AOI | Missing, shifted, rotated, or wrong-polarity parts and visible solder defects | Firmware, signal performance, hidden connections, or complete product behavior | Component data, polarity references, and inspection scope |\n| Basic power-on or continuity check | Shorts, unexpected current draw, or a defined basic response | Full feature or performance coverage | Power limits, connection method, expected readings, and safety notes |\n| Functional testing | Defined power, communications, inputs, outputs, sensors, or controls | Any function outside the approved sequence | Firmware, fixture, interfaces, test steps, expected results, and limits |',
           'The right combination depends on board complexity, project stage, failure risk, and the evidence required before shipment.',
+          'An AI camera, edge gateway, robotics controller, or smart sensor may need additional programming, load, interface, and runtime checks; see the [edge AI PCB assembly guide](/knowledge/edge-ai-device-pcba-manufacturing#inspection-programming-and-functional-testing) for a scoped example.',
         ],
       },
       {

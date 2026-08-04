@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import type { ReactNode } from 'react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import TrackedLink from '@/components/TrackedLink';
@@ -46,9 +47,9 @@ function imageUrl(src: string) {
   return src.startsWith('http') ? src : `https://huitaipcb.com${src}`;
 }
 
-function ArticleImage({ src, alt }: { src: string; alt: string }) {
+function ArticleImage({ src, alt, priority = false }: { src: string; alt: string; priority?: boolean }) {
   if (src.startsWith('http')) {
-    return <img src={src} alt={alt} className="h-full w-full object-cover" />;
+    return <img src={src} alt={alt} className="h-full w-full object-cover" loading={priority ? 'eager' : 'lazy'} />;
   }
 
   return (
@@ -56,9 +57,44 @@ function ArticleImage({ src, alt }: { src: string; alt: string }) {
       src={src}
       alt={alt}
       fill
+      priority={priority}
       className="object-cover"
       sizes="(max-width: 1024px) 100vw, 700px"
     />
+  );
+}
+
+function headingId(children: ReactNode) {
+  return String(children)
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function MarkdownImage({ src, alt = '', title }: { src?: string; alt?: string; title?: string }) {
+  if (!src) return null;
+
+  const image = src.startsWith('http') ? (
+    // CMS articles can reference approved remote hosts that are not known at build time.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={alt} className="h-auto w-full" loading="lazy" decoding="async" />
+  ) : (
+    <Image
+      src={src}
+      alt={alt}
+      width={1600}
+      height={900}
+      className="h-auto w-full"
+      sizes="(max-width: 1024px) 90vw, 650px"
+    />
+  );
+
+  return (
+    <figure className="my-8 overflow-hidden rounded-xl border border-cc-line bg-cc-carbon">
+      {image}
+      {title && <figcaption className="px-4 py-3 text-xs leading-5 text-cc-ink-mute">{title}</figcaption>}
+    </figure>
   );
 }
 
@@ -176,21 +212,49 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
           <section className="px-[5vw] py-12">
             <div className="mx-auto grid max-w-[980px] gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
               <div className="overflow-hidden rounded-2xl border border-cc-line bg-cc-carbon-2">
-                <div className="relative h-64 bg-cc-carbon">
-                  <ArticleImage src={article.image} alt={article.imageAlt} />
-                </div>
+                <figure>
+                  <div className="relative aspect-video bg-cc-carbon">
+                    <ArticleImage src={article.image} alt={article.imageAlt} priority />
+                  </div>
+                  {article.imageCaption && (
+                    <figcaption className="border-b border-cc-line px-5 py-3 text-xs leading-5 text-cc-ink-mute">
+                      {article.imageCaption}
+                    </figcaption>
+                  )}
+                </figure>
                 <div className="p-7 md:p-9">
                   <div className="space-y-5 text-sm leading-7 text-cc-ink-mute">
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       components={{
                         h2: ({ children }) => (
-                          <h2 className="pt-4 text-2xl font-semibold leading-tight text-cc-ink">{children}</h2>
+                          <h2
+                            id={headingId(children)}
+                            className="scroll-mt-24 pt-4 text-2xl font-semibold leading-tight text-cc-ink"
+                          >
+                            {children}
+                          </h2>
                         ),
                         h3: ({ children }) => (
-                          <h3 className="pt-3 text-lg font-semibold leading-tight text-cc-ink">{children}</h3>
+                          <h3
+                            id={headingId(children)}
+                            className="scroll-mt-24 pt-3 text-lg font-semibold leading-tight text-cc-ink"
+                          >
+                            {children}
+                          </h3>
                         ),
-                        p: ({ children }) => <p>{children}</p>,
+                        p: ({ children, node }) => {
+                          const onlyChild = node?.children.length === 1 ? node.children[0] : null;
+
+                          return onlyChild?.type === 'element' && onlyChild.tagName === 'img' ? (
+                            <>{children}</>
+                          ) : (
+                            <p>{children}</p>
+                          );
+                        },
+                        img: ({ src, alt, title }) => (
+                          <MarkdownImage src={src} alt={alt || ''} title={title || undefined} />
+                        ),
                         ul: ({ children }) => <ul className="list-disc space-y-2 pl-5">{children}</ul>,
                         ol: ({ children }) => <ol className="list-decimal space-y-2 pl-5">{children}</ol>,
                         li: ({ children }) => <li>{children}</li>,
@@ -220,6 +284,36 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
                     >
                       {article.content}
                     </ReactMarkdown>
+                    {article.cta && (
+                      <div className="mt-10 rounded-xl border border-cc-copper/30 bg-cc-copper/10 p-5">
+                        <div className="flex flex-col gap-3 sm:flex-row">
+                          <TrackedLink
+                            href={article.cta.primary.href}
+                            eventName="upload_gerber_bom_click"
+                            eventParams={{
+                              location: 'knowledge_article_conclusion',
+                              article_slug: article.slug,
+                              destination: article.cta.primary.href,
+                            }}
+                            className="inline-flex justify-center rounded-lg bg-cc-copper px-5 py-3 text-sm font-semibold text-cc-ink transition-all hover:-translate-y-0.5"
+                          >
+                            {article.cta.primary.label}
+                          </TrackedLink>
+                          <TrackedLink
+                            href={article.cta.secondary.href}
+                            eventName="request_pcba_review_click"
+                            eventParams={{
+                              location: 'knowledge_article_conclusion',
+                              article_slug: article.slug,
+                              destination: article.cta.secondary.href,
+                            }}
+                            className="inline-flex justify-center rounded-lg border border-cc-line px-5 py-3 text-sm font-semibold text-cc-ink transition-colors hover:border-cc-copper"
+                          >
+                            {article.cta.secondary.label}
+                          </TrackedLink>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

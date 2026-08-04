@@ -21,9 +21,13 @@ const layout = read('src/app/layout.tsx');
 const robots = read('src/app/robots.ts');
 const sitemap = read('src/app/sitemap.ts');
 const knowledgeArticlePage = read('src/app/knowledge/[slug]/page.tsx');
+const knowledgeIndexPage = read('src/app/knowledge/page.tsx');
 const seoPages = read('src/lib/content/seoPages.ts');
 const knowledge = read('src/lib/content/knowledge.ts');
 const articles = read('src/lib/content/articles.ts');
+const edgeAiSources = read(
+  'public/images/knowledge/edge-ai-device-pcba-manufacturing/SOURCES.md',
+);
 
 const between = (source, start, end) => {
   const startIndex = source.indexOf(start);
@@ -227,6 +231,44 @@ const checks = [
       knowledgeArticlePage.includes("'@type': 'FAQPage'") &&
       knowledgeArticlePage.includes('datePublished: article.publishedAt || undefined'),
     'Knowledge articles must expose page-specific Twitter metadata plus visible-content Article and FAQ schema.',
+  ],
+  [
+    knowledge.includes("slug: 'edge-ai-device-pcba-manufacturing'") &&
+      knowledge.includes(
+        "title: 'Edge AI PCB Assembly: A Prototype-to-Low-Volume Manufacturing Checklist'",
+      ) &&
+      knowledge.includes("publishedAt: '2026-08-04'") &&
+      knowledge.includes(
+        "metaDescription:\n      'A practical edge AI PCB assembly checklist covering BOM risk, power design, thermal management, BGA assembly, programming, testing, and low-volume production.'",
+      ),
+    'The edge AI guide must preserve its approved slug, H1, publication date, and meta description.',
+  ],
+  [
+    [
+      '/images/knowledge/edge-ai-device-pcba-manufacturing/edge-ai-pcb-assembly-manufacturing.webp',
+      '/images/knowledge/edge-ai-device-pcba-manufacturing/development-board-to-custom-pcba.webp',
+      '/images/knowledge/edge-ai-device-pcba-manufacturing/edge-ai-pcba-bom-component-sourcing.webp',
+      '/images/knowledge/edge-ai-device-pcba-manufacturing/bga-xray-inspection.webp',
+      '/images/knowledge/edge-ai-device-pcba-manufacturing/edge-ai-pcba-power-thermal-management.webp',
+      '/images/knowledge/edge-ai-device-pcba-manufacturing/edge-ai-pcba-programming-functional-testing.webp',
+      '/images/knowledge/edge-ai-device-pcba-manufacturing/prototype-to-low-volume-pcba.webp',
+    ].every((path) => exists(`public${path}`) && (knowledge.includes(path) || articles.includes(path))) &&
+      edgeAiSources.includes('All seven AI-generated files require their illustrative captions when used.'),
+    'The edge AI article must reference all seven reviewed illustrations and retain the internal source guardrails.',
+  ],
+  [
+    articles.includes(
+      "'edge-ai-device-pcba-manufacturing': 'Edge AI PCB Assembly: Prototype Manufacturing Checklist'",
+    ) &&
+      articles.includes("'edge-ai-device-pcba-manufacturing',") &&
+      knowledgeArticlePage.includes('priority={priority}') &&
+      knowledgeArticlePage.includes('width={1600}') &&
+      knowledgeArticlePage.includes('article.cta.primary.label'),
+    'The edge AI guide must use the approved SEO title, static override, responsive images, priority cover, and article CTA.',
+  ],
+  [
+    !knowledgeIndexPage.includes('Surface finish comparison: HASL vs ENIG vs OSP'),
+    'Published surface-finish content must not remain in the Knowledge Base coming-soon list.',
   ],
 ];
 

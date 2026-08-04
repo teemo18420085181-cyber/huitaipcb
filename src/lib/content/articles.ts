@@ -13,12 +13,14 @@ export type KnowledgeDisplayArticle = {
   metaDescription: string;
   image: string;
   imageAlt: string;
+  imageCaption: string | null;
   readTime: string;
   category: string;
   categoryColor: string;
   content: string;
   author: string;
   publishedAt: string | null;
+  cta: KnowledgeArticle['cta'] | null;
   source: 'cms' | 'static';
 };
 
@@ -27,6 +29,7 @@ const DEFAULT_IMAGE_ALT = 'PCBA engineer reviewing BOM files and assembled circu
 const DEFAULT_CATEGORY_COLOR = 'bg-cc-copper/10 text-cc-ink border-cc-copper/30';
 
 const ARTICLE_SEO_TITLES: Record<string, string> = {
+  'edge-ai-device-pcba-manufacturing': 'Edge AI PCB Assembly: Prototype Manufacturing Checklist',
   'pcba-component-shortage-2026': '2026 PCBA Component Shortage: Lead Times, Supply & BOM Risk',
   'pcba-testing-before-shipment': 'PCBA Testing Before Shipment | Turnkey PCBA Guide',
   'pcba-quotation-checklist': 'PCBA Quotation Checklist | Huitai Electronics',
@@ -35,6 +38,10 @@ const ARTICLE_SEO_TITLES: Record<string, string> = {
 };
 
 const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
+  'edge-ai-device-pcba-manufacturing': {
+    image: '/images/knowledge/edge-ai-device-pcba-manufacturing/edge-ai-pcb-assembly-manufacturing.webp',
+    alt: 'Edge AI PCB assembly with a camera module, embedded compute board, memory, power circuits, and high-speed connectors',
+  },
   'pcba-component-shortage-2026': {
     image: '/factory/bom-risk-sourcing.jpg',
     alt: 'PCBA component sourcing review with a BOM, electronic parts, and an assembled circuit board',
@@ -98,6 +105,7 @@ const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
 };
 
 const STATIC_CONTENT_OVERRIDE_SLUGS = new Set([
+  'edge-ai-device-pcba-manufacturing',
   'pcba-component-shortage-2026',
   'what-files-required-pcba-quote',
   'pcb-assembly-file-preparation-guide',
@@ -145,12 +153,14 @@ export function mapStaticArticle(article: KnowledgeArticle): KnowledgeDisplayArt
     metaDescription: article.metaDescription,
     image: visual.image,
     imageAlt: visual.alt,
+    imageCaption: article.imageCaption || null,
     readTime: article.readTime,
     category: article.category,
     categoryColor: article.categoryColor,
     content: staticArticleToMarkdown(article),
     author: 'Huitai Engineering Team',
     publishedAt: article.publishedAt || null,
+    cta: article.cta || null,
     source: 'static',
   };
 }
@@ -167,12 +177,14 @@ export function mapCmsArticle(article: CmsArticle): KnowledgeDisplayArticle {
     metaDescription: description,
     image: visual.image,
     imageAlt: visual.alt,
+    imageCaption: null,
     readTime: `${article.read_time || 5} min read`,
     category: 'Knowledge Base',
     categoryColor: DEFAULT_CATEGORY_COLOR,
     content: article.content || '',
     author: article.author || 'Huitai Engineering Team',
     publishedAt: article.published_at,
+    cta: null,
     source: 'cms',
   };
 }
