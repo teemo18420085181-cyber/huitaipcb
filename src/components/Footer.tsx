@@ -2,6 +2,8 @@ import Link from 'next/link';
 import BrandLogo from '@/components/BrandLogo';
 import TrackedLink from '@/components/TrackedLink';
 import TrackedAnchor from '@/components/TrackedAnchor';
+import type { Locale } from '@/lib/i18n/routes';
+import { SITE } from '@/lib/site';
 
 const SERVICES_LINKS = [
   { label: 'China PCBA Manufacturer', href: '/china-pcba-manufacturer' },
@@ -14,14 +16,60 @@ const SERVICES_LINKS = [
 
 const RESOURCE_LINKS = [
   { label: 'Knowledge Base', href: '/knowledge' },
+  { label: 'About Huitai PCB', href: '/about' },
+  { label: 'Case Studies', href: '/case-study' },
+  { label: 'FAQ', href: '/faq' },
   { label: 'How We Work', href: '/how-we-work' },
-  { label: 'How to Quote', href: '/contact' },
   { label: 'Quality Standards', href: '/quality' },
-  { label: 'FAQ', href: '/knowledge' },
-  { label: 'Contact', href: '/contact' },
 ];
 
-export default function Footer() {
+const DE_SERVICES_LINKS = [
+  { label: 'Turnkey-PCBA-Fertigung', href: '/de/turnkey-pcb-assembly' },
+  { label: 'Leiterplattenbestückung China', href: '/de/china-pcb-assembly' },
+  { label: 'BOM-Beschaffung', href: '/de/bom-sourcing-pcb-assembly' },
+  { label: 'PCBA-Prototypen', href: '/de/prototype-pcb-assembly' },
+];
+
+const DE_RESOURCE_LINKS = [
+  { label: 'Über Huitai PCB', href: '/about' },
+  { label: 'Fallstudien', href: '/case-study' },
+  { label: 'Häufige Fragen', href: '/faq' },
+  { label: 'Kontakt', href: '/de/contact' },
+];
+
+const FOOTER_COPY = {
+  en: {
+    tagline: 'PCBA MANUFACTURING',
+    description: 'PCBA manufacturing supplier in Shenzhen, China for PCB assembly, BOM sourcing, SMT and through-hole assembly, testing, and production delivery.',
+    services: 'SERVICES',
+    resources: 'RESOURCES',
+    contact: 'CONTACT',
+    hours: 'Mon-Sat, 09:00-18:00 CST',
+    quote: 'Get a PCBA Manufacturing Quote',
+    privacy: 'Privacy',
+    terms: 'Terms',
+    nda: 'NDA Available',
+  },
+  de: {
+    tagline: 'PCBA-FERTIGUNG',
+    description: 'PCBA-Fertigung in Shenzhen, China: Leiterplattenbestückung, BOM-Beschaffung, SMT-/THT-Montage, Prüfung und Produktionslieferung.',
+    services: 'LEISTUNGEN',
+    resources: 'INFORMATIONEN',
+    contact: 'KONTAKT',
+    hours: 'Mo-Sa, 09:00-18:00 CST',
+    quote: 'PCBA-Fertigungsanfrage senden',
+    privacy: 'Datenschutz',
+    terms: 'Nutzungsbedingungen',
+    nda: 'NDA verfügbar',
+  },
+} as const;
+
+export default function Footer({ locale = 'en' }: { locale?: Locale }) {
+  const copy = FOOTER_COPY[locale];
+  const services = locale === 'de' ? DE_SERVICES_LINKS : SERVICES_LINKS;
+  const resources = locale === 'de' ? DE_RESOURCE_LINKS : RESOURCE_LINKS;
+  const contactHref = locale === 'de' ? '/de/contact#quote-form' : '/contact#quote-form';
+
   return (
     <footer className="font-body-cc relative border-t border-cc-line bg-cc-carbon-2 px-[5vw] py-12 pb-8 text-cc-ink">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cc-copper/30 to-transparent" />
@@ -33,15 +81,14 @@ export default function Footer() {
                 <BrandLogo className="h-10" />
               </span>
               <div>
-                <strong className="block text-sm font-semibold tracking-wide text-cc-ink">HUITAI ELECTRONICS</strong>
+                <strong className="block text-sm font-semibold tracking-wide text-cc-ink">HUITAI PCB</strong>
                 <span className="font-mono-cc text-[9px] font-medium tracking-[0.16em] text-cc-ink-mute">
-                  TURNKEY PCBA MANUFACTURING
+                  {copy.tagline}
                 </span>
               </div>
             </div>
             <p className="text-xs leading-relaxed text-cc-ink">
-              Turnkey PCBA manufacturer in Shenzhen, China for PCB fabrication, BOM sourcing,
-              SMT and through-hole assembly, testing, and finished delivery.
+              {copy.description}
             </p>
             <p className="text-xs leading-loose text-cc-ink-mute">
               Shenzhen Huitai Electronics Technology Co., Ltd.
@@ -55,9 +102,9 @@ export default function Footer() {
 
           <div>
             <h5 className="font-mono-cc mb-3.5 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
-              SERVICES
+              {copy.services}
             </h5>
-            {SERVICES_LINKS.map((link) => (
+            {services.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -70,9 +117,9 @@ export default function Footer() {
 
           <div>
             <h5 className="font-mono-cc mb-3.5 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
-              RESOURCES
+              {copy.resources}
             </h5>
-            {RESOURCE_LINKS.map((link) => (
+            {resources.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
@@ -85,46 +132,46 @@ export default function Footer() {
 
           <div>
             <h5 className="font-mono-cc mb-3.5 text-[11px] font-semibold tracking-[0.16em] text-cc-copper-soft">
-              CONTACT
+              {copy.contact}
             </h5>
             <TrackedAnchor
-              href="mailto:sales@huitaipcb.com"
+              href={`mailto:${SITE.email}`}
               eventName="email_click"
               eventParams={{ location: 'footer', contact_method: 'email' }}
               className="block text-xs leading-loose text-cc-ink-mute transition-colors hover:text-cc-ink"
             >
-              sales@huitaipcb.com
+              {SITE.email}
             </TrackedAnchor>
             <TrackedAnchor
-              href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20a%20turnkey%20PCBA%20quote."
+              href="https://wa.me/8618420085181?text=Hi%20Huitai%20PCB%2C%20I%27d%20like%20a%20PCBA%20manufacturing%20quote."
               target="_blank"
               rel="noopener noreferrer"
               eventName="whatsapp_click"
               eventParams={{ location: 'footer', contact_method: 'whatsapp' }}
               className="block text-xs leading-loose text-cc-signal transition-colors hover:text-cc-ink"
             >
-              WhatsApp: +86 184 2008 5181
+              WhatsApp: {SITE.phone}
             </TrackedAnchor>
-            <span className="block text-xs leading-loose text-cc-ink-mute">Mon-Sat, 09:00-18:00 CST</span>
+            <span className="block text-xs leading-loose text-cc-ink-mute">{copy.hours}</span>
             <TrackedLink
-              href="/contact#quote-form"
+              href={contactHref}
               eventName="quote_click"
-              eventParams={{ location: 'footer', destination: '/contact#quote-form' }}
+              eventParams={{ location: 'footer', destination: contactHref }}
               className="mt-1 block text-xs leading-loose text-cc-copper-soft transition-colors hover:text-cc-copper-bright"
             >
-              Request a Turnkey PCBA Quote
+              {copy.quote}
             </TrackedLink>
           </div>
         </div>
 
         <div className="font-mono-cc flex flex-wrap items-center justify-between gap-2 pt-6 text-[11px] text-cc-ink-mute">
-          <span>© 2026 Huitai Electronics Technology Co., Ltd.</span>
+          <span>© 2026 {SITE.legalName}</span>
           <span className="flex gap-3">
-            <Link href="/privacy" className="transition-colors hover:text-cc-ink">Privacy</Link>
+            <Link href="/privacy" className="transition-colors hover:text-cc-ink">{copy.privacy}</Link>
             <span className="text-cc-copper/40">/</span>
-            <Link href="/terms" className="transition-colors hover:text-cc-ink">Terms</Link>
+            <Link href="/terms" className="transition-colors hover:text-cc-ink">{copy.terms}</Link>
             <span className="text-cc-copper/40">/</span>
-            <span>NDA Available</span>
+            <span>{copy.nda}</span>
           </span>
         </div>
       </div>

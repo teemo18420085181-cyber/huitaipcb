@@ -19,7 +19,11 @@ export type KnowledgeDisplayArticle = {
   categoryColor: string;
   content: string;
   author: string;
+  authorUrl: string;
   publishedAt: string | null;
+  updatedAt: string | null;
+  reviewedBy: string;
+  reviewerUrl: string;
   cta: KnowledgeArticle['cta'] | null;
   source: 'cms' | 'static';
 };
@@ -32,8 +36,8 @@ const ARTICLE_SEO_TITLES: Record<string, string> = {
   'edge-ai-device-pcba-manufacturing': 'Edge AI PCB Assembly: Prototype Manufacturing Checklist',
   'pcba-component-shortage-2026': '2026 PCBA Component Shortage: Lead Times, Supply & BOM Risk',
   'pcba-testing-before-shipment': 'PCBA Testing Before Shipment | Turnkey PCBA Guide',
-  'pcba-quotation-checklist': 'PCBA Quotation Checklist | Huitai Electronics',
-  'prototype-pcb-assembly-china-buyer-checklist': 'Prototype PCB Assembly China | Huitai Electronics',
+  'pcba-quotation-checklist': 'PCBA Quotation Checklist | Huitai PCB',
+  'prototype-pcb-assembly-china-buyer-checklist': 'Prototype PCB Assembly China | Huitai PCB',
   'what-is-turnkey-pcba': 'What Is Turnkey PCBA? | PCB Assembly Guide',
 };
 
@@ -133,6 +137,18 @@ function getArticleSeoTitle(slug: string, title: string) {
   return ARTICLE_SEO_TITLES[slug] || title;
 }
 
+function getVerifiedUpdatedAt(publishedAt: string | null, updatedAt: string | null) {
+  if (!updatedAt) return null;
+  if (!publishedAt) return updatedAt;
+
+  const publishedTime = Date.parse(publishedAt);
+  const updatedTime = Date.parse(updatedAt);
+
+  if (Number.isNaN(updatedTime)) return null;
+  if (Number.isNaN(publishedTime)) return updatedAt;
+  return updatedTime > publishedTime ? updatedAt : null;
+}
+
 export function staticArticleToMarkdown(article: KnowledgeArticle) {
   return article.sections
     .map((section) => {
@@ -158,8 +174,12 @@ export function mapStaticArticle(article: KnowledgeArticle): KnowledgeDisplayArt
     category: article.category,
     categoryColor: article.categoryColor,
     content: staticArticleToMarkdown(article),
-    author: 'Huitai Engineering Team',
+    author: 'Huitai PCB',
+    authorUrl: '/about#engineering-support',
     publishedAt: article.publishedAt || null,
+    updatedAt: article.updatedAt || null,
+    reviewedBy: 'Huitai Engineering Team',
+    reviewerUrl: '/about#engineering-support',
     cta: article.cta || null,
     source: 'static',
   };
@@ -182,8 +202,12 @@ export function mapCmsArticle(article: CmsArticle): KnowledgeDisplayArticle {
     category: 'Knowledge Base',
     categoryColor: DEFAULT_CATEGORY_COLOR,
     content: article.content || '',
-    author: article.author || 'Huitai Engineering Team',
+    author: article.author || 'Huitai PCB',
+    authorUrl: '/about#engineering-support',
     publishedAt: article.published_at,
+    updatedAt: getVerifiedUpdatedAt(article.published_at, article.updated_at),
+    reviewedBy: 'Huitai Engineering Team',
+    reviewerUrl: '/about#engineering-support',
     cta: null,
     source: 'cms',
   };
@@ -256,7 +280,7 @@ export async function getSitemapArticleEntries() {
   const entries = new Map<string, string | null>();
 
   for (const article of knowledgeArticles) {
-    entries.set(article.slug, article.publishedAt || null);
+    entries.set(article.slug, article.updatedAt || article.publishedAt || null);
   }
   for (const article of cmsArticles) {
     entries.set(article.slug, article.published_at || article.updated_at || article.created_at);

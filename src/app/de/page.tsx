@@ -22,7 +22,7 @@ export const metadata = {
     description: home.metadata.description,
     url: absoluteUrl('/de'),
     locale: 'de_DE',
-    siteName: 'Huitai Electronics',
+    siteName: 'Huitai PCB',
     images: OG_IMAGES,
   },
 };
@@ -57,7 +57,7 @@ export default function GermanHomePage() {
                   {home.primaryCta}
                 </TrackedLink>
                 <TrackedAnchor
-                  href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20to%20discuss%20a%20PCBA%20project."
+                  href="https://wa.me/8618420085181?text=Hi%20Huitai%20PCB%2C%20I%27d%20like%20to%20discuss%20a%20PCBA%20project."
                   target="_blank"
                   rel="noopener noreferrer"
                   eventName="whatsapp_click"
@@ -174,7 +174,7 @@ export default function GermanHomePage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer locale="de" />
     </>
   );
 }

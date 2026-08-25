@@ -3,8 +3,8 @@ import Footer from '@/components/Footer';
 import { OG_IMAGES } from '@/lib/seo/og';
 
 export const metadata = {
-  title: 'Privacy Policy | Huitai Electronics',
-  description: 'Privacy Policy for Huitai Electronics PCB assembly inquiry and RFQ handling.',
+  title: 'Privacy Policy | Huitai PCB',
+  description: 'Privacy Policy for Huitai PCB assembly inquiries and RFQ handling.',
   alternates: { canonical: 'https://huitaipcb.com/privacy' },
   openGraph: { url: 'https://huitaipcb.com/privacy', images: OG_IMAGES },
 };
@@ -19,7 +19,7 @@ export default function PrivacyPage() {
           <h1 className="text-3xl font-semibold text-cc-ink mb-5">Privacy Policy</h1>
           <div className="space-y-5 text-sm text-cc-ink-mute leading-7">
             <p>
-              Huitai Electronics collects the information you submit through our RFQ and contact forms so our engineering and sales team can review your PCB assembly project and respond to your request.
+              Huitai PCB collects the information you submit through our RFQ and contact forms so our engineering and sales team can review your PCB assembly project and respond to your request.
             </p>
             <h2 className="text-lg font-semibold text-cc-ink">Information We Collect</h2>
             <p>

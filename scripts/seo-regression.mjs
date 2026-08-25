@@ -3,25 +3,37 @@ import { existsSync, readFileSync } from 'node:fs';
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 const exists = (path) => existsSync(new URL(`../${path}`, import.meta.url));
 const readOptional = (path) => (exists(path) ? read(path) : '');
+const readEnglishRoute = (path) =>
+  readOptional(`src/app/(en)/${path}`) || read(`src/app/${path}`);
 
 const hero = read('src/components/Hero.tsx');
-const homePage = read('src/app/page.tsx');
+const homeFaq = read('src/components/HomeFaq.tsx');
+const homePage = readEnglishRoute('page.tsx');
 const inquiryForm = read('src/components/InquiryForm.tsx');
 const brandLogo = read('src/components/BrandLogo.tsx');
 const nav = read('src/components/Nav.tsx');
 const footer = read('src/components/Footer.tsx');
-const contactPage = read('src/app/contact/page.tsx');
+const contactPage = readEnglishRoute('contact/page.tsx');
 const homeApplications = read('src/components/HomeApplications.tsx');
 const factoryGrid = read('src/components/FactoryGrid.tsx');
 const qualityTesting = read('src/components/QualityTesting.tsx');
 const floatingWhatsApp = read('src/components/FloatingWhatsApp.tsx');
 const standardLogo = readOptional('public/logo.svg');
 const darkLogo = readOptional('public/logo-dark.svg');
-const layout = read('src/app/layout.tsx');
+const layout = readOptional('src/app/(en)/layout.tsx') || read('src/app/layout.tsx');
+const germanLayout = readOptional('src/app/de/layout.tsx');
 const robots = read('src/app/robots.ts');
 const sitemap = read('src/app/sitemap.ts');
-const knowledgeArticlePage = read('src/app/knowledge/[slug]/page.tsx');
-const knowledgeIndexPage = read('src/app/knowledge/page.tsx');
+const knowledgeArticlePage = readEnglishRoute('knowledge/[slug]/page.tsx');
+const knowledgeIndexPage = readEnglishRoute('knowledge/page.tsx');
+const siteConfig = readOptional('src/lib/site.ts');
+const entityJsonLd = readOptional('src/components/JsonLd.tsx');
+const serviceLandingPage = read('src/components/SeoLandingPage.tsx');
+const aboutPage = readOptional('src/app/(en)/about/page.tsx') || readOptional('src/app/about/page.tsx');
+const faqPage = readOptional('src/app/(en)/faq/page.tsx') || readOptional('src/app/faq/page.tsx');
+const caseStudyPage =
+  readOptional('src/app/(en)/case-study/page.tsx') || readOptional('src/app/case-study/page.tsx');
+const articleMapper = read('src/lib/content/articles.ts');
 const seoPages = read('src/lib/content/seoPages.ts');
 const knowledge = read('src/lib/content/knowledge.ts');
 const articles = read('src/lib/content/articles.ts');
@@ -41,6 +53,11 @@ const between = (source, start, end) => {
 };
 
 const prototypePage = between(seoPages, "'prototype-pcb-assembly': {", "'turnkey-pcb-assembly': {");
+const pcbAssemblyCompanyPage = between(
+  seoPages,
+  "'pcb-assembly-company': {",
+  "'prototype-pcb-assembly': {",
+);
 const turnkeyPage = between(seoPages, "'turnkey-pcb-assembly': {", "'pcb-fabrication-and-assembly': {");
 const jlcpcbArticle = between(
   knowledge,
@@ -65,11 +82,20 @@ const checks = [
   ],
   [
     hero.includes('href="/contact#quote-form"') &&
-      hero.includes('Request a PCBA Quote') &&
+      hero.includes('Get PCBA Manufacturing Quote') &&
+      hero.includes('Need Engineering Support?') &&
       hero.includes('href="/contact#project-files"') &&
-      hero.includes('Send Gerber &amp; BOM') &&
-      hero.includes('href="/capabilities"'),
-    'Homepage CTAs must keep real quote, file, and capabilities destinations.',
+      hero.includes('Send Gerber &amp; BOM'),
+    'Homepage must lead with the manufacturing quote CTA, keep engineering support secondary, and preserve the Gerber/BOM path.',
+  ],
+  [
+    homeFaq.includes('Prepare Your PCBA RFQ') &&
+      homeFaq.includes('href="/contact#project-files"') &&
+      ['Gerber', 'BOM', 'pick-and-place', 'assembly drawing', 'quantity'].every((term) =>
+        homeFaq.toLowerCase().includes(term.toLowerCase()),
+      ) &&
+      !homeFaq.includes('Ask about your project'),
+    'Homepage FAQ must route buyers to a manufacturing RFQ built around the required production files and quantity.',
   ],
   [
     nav.includes("import BrandLogo from '@/components/BrandLogo'") &&
@@ -85,11 +111,11 @@ const checks = [
     'Header and footer must share the transparent dark-background logo while the standard logo remains suitable for structured data.',
   ],
   [
-    footer.includes('Request a Turnkey PCBA Quote') &&
-      contactPage.includes('Request a Turnkey PCBA Quote') &&
-      inquiryForm.includes("submit: 'Request a Turnkey PCBA Quote'") &&
-      floatingWhatsApp.includes("I'd like a turnkey PCBA quote."),
-    'Shared full-scope RFQ entry points must use turnkey PCBA quote wording.',
+    footer.includes('Get a PCBA Manufacturing Quote') &&
+      contactPage.includes('Request a PCBA Manufacturing Quote') &&
+      inquiryForm.includes("submit: 'Get PCBA Manufacturing Quote'") &&
+      floatingWhatsApp.includes("I'd like a PCBA manufacturing quote."),
+    'Shared RFQ entry points must use manufacturing-first quote wording.',
   ],
   [
     [
@@ -119,8 +145,9 @@ const checks = [
     'Homepage production imagery must cover the reviewed one-stop PCBA manufacturing scope without repeats.',
   ],
   [
-    homePage.includes("title: 'Turnkey PCBA Manufacturer in China | HuitaiPCB'"),
-    'Homepage metadata title must match the approved turnkey PCBA positioning.',
+    homePage.includes("title: 'Custom PCBA Manufacturer in China | Huitai PCB'") &&
+      homePage.includes('prototype and small-batch production'),
+    'Homepage metadata must use the approved Huitai PCB title and manufacturing description.',
   ],
   [
     !homePage.includes('<FeedbackBoard />'),
@@ -145,9 +172,10 @@ const checks = [
   ],
   [
     layout.includes('<Analytics />') &&
-      layout.includes('<JsonLd />') &&
+      !layout.includes('<JsonLd />') &&
+      homePage.includes('<JsonLd />') &&
       inquiryForm.includes("trackEvent('contact_form_submit'"),
-    'Analytics, structured data, and successful form tracking must remain wired.',
+    'Analytics and form tracking must remain wired while entity schema moves from the global layout to the homepage.',
   ],
   [
     robots.includes("sitemap: 'https://huitaipcb.com/sitemap.xml'") &&
@@ -158,6 +186,11 @@ const checks = [
   [
     prototypePage.includes("seoTitle: 'Prototype PCB Assembly China | 5-Piece Builds & BOM Review'"),
     'Prototype SEO title must lead with the 5-piece differentiator.',
+  ],
+  [
+    pcbAssemblyCompanyPage.includes("heading: 'PCB Assembly Manufacturer Evaluation Checklist'") &&
+      pcbAssemblyCompanyPage.includes('A PCB assembly manufacturer should review'),
+    'The most relevant service page must cover PCB Assembly Manufacturer naturally in an H2 and supporting copy.',
   ],
   [
     prototypePage.includes('starting from 5 assembled boards'),
@@ -222,15 +255,18 @@ const checks = [
       knowledge.includes('PCBA component shortage conditions in 2026') &&
       articles.includes("'pcba-component-shortage-2026',") &&
       articles.includes('publishedAt: article.publishedAt || null') &&
-      articles.includes('entries.set(article.slug, article.publishedAt || null)'),
+      articles.includes('entries.set(article.slug, article.updatedAt || article.publishedAt || null)'),
     'The 2026 shortage guide must preserve its distinct shortage intent, static-content override, Article date, and sitemap last-modified date.',
   ],
   [
     knowledgeArticlePage.includes('twitter: {') &&
       knowledgeArticlePage.includes("'@type': 'Article'") &&
       knowledgeArticlePage.includes("'@type': 'FAQPage'") &&
-      knowledgeArticlePage.includes('datePublished: article.publishedAt || undefined'),
-    'Knowledge articles must expose page-specific Twitter metadata plus visible-content Article and FAQ schema.',
+      knowledgeArticlePage.includes('datePublished: article.publishedAt || undefined') &&
+      knowledgeArticlePage.includes('dateModified: article.updatedAt || undefined') &&
+      knowledgeArticlePage.includes('Published') &&
+      knowledgeArticlePage.includes('Updated'),
+    'Knowledge articles must expose metadata, visible-content schema, and independent real publication/update dates.',
   ],
   [
     knowledge.includes("slug: 'edge-ai-device-pcba-manufacturing'") &&
@@ -269,6 +305,75 @@ const checks = [
   [
     !knowledgeIndexPage.includes('Surface finish comparison: HASL vs ENIG vs OSP'),
     'Published surface-finish content must not remain in the Knowledge Base coming-soon list.',
+  ],
+  [
+    siteConfig.includes("brandName: 'Huitai PCB'") &&
+      siteConfig.includes("shortName: 'Huitai'") &&
+      siteConfig.includes("legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.'") &&
+      siteConfig.includes("organizationId: 'https://huitaipcb.com/#organization'"),
+    'Brand, legal name, and canonical organization ID must come from one site entity configuration.',
+  ],
+  [
+    entityJsonLd.includes("'@type': 'Organization'") &&
+      entityJsonLd.includes("'@type': 'WebSite'") &&
+      !entityJsonLd.includes("'@type': 'LocalBusiness'") &&
+      !entityJsonLd.includes("serviceSchema"),
+    'Homepage entity schema must contain only the verified Organization and WebSite entities.',
+  ],
+  [
+    serviceLandingPage.includes("provider: { '@id': SITE.organizationId }") &&
+      !serviceLandingPage.includes("provider: {\n      '@type': 'Organization'"),
+    'Service schema must reference the single organization ID instead of redefining the company entity.',
+  ],
+  [
+    aboutPage.includes('About Huitai PCB') &&
+      aboutPage.includes('{SITE.legalName}') &&
+      aboutPage.includes('PCB Assembly') &&
+      aboutPage.includes('SMT Assembly') &&
+      aboutPage.includes('BOM Sourcing') &&
+      aboutPage.includes('aria-label="About Huitai PCB trust navigation"') &&
+      aboutPage.includes("href: '/how-we-work'") &&
+      aboutPage.includes("href: '/quality'") &&
+      aboutPage.includes("href: '/contact'") &&
+      !aboutPage.includes('ISO 9001') &&
+      !aboutPage.includes('founded in'),
+    'About must provide manufacturing trust navigation without unsupported certifications or founding claims.',
+  ],
+  [
+    faqPage.includes("'@type': 'FAQPage'") &&
+      faqPage.includes('Gerber files') &&
+      faqPage.includes('BOM') &&
+      faqPage.includes('pick-and-place') &&
+      faqPage.includes('assembly drawing') &&
+      faqPage.includes('sample') &&
+      !faqPage.includes('Tell us your idea'),
+    'Procurement FAQ must qualify projects through manufacturing files and samples, not idea-led product development.',
+  ],
+  [
+    caseStudyPage.includes('PCBA Manufacturing Case Studies') &&
+      caseStudyPage.includes('Verified manufacturing cases will be added progressively.') &&
+      caseStudyPage.includes('Project Overview') &&
+      caseStudyPage.includes('Manufacturing Process') &&
+      !caseStudyPage.includes('Smart Pill Bottle'),
+    'Case Study must use the manufacturing-case positioning while publishing no unconfirmed customer project.',
+  ],
+  [
+    articleMapper.includes('updatedAt: string | null') &&
+      articleMapper.includes('updatedAt: getVerifiedUpdatedAt(article.published_at, article.updated_at)') &&
+      articleMapper.includes("authorUrl: '/about#engineering-support'") &&
+      articleMapper.includes("reviewedBy: 'Huitai Engineering Team'"),
+    'Knowledge mapping must preserve CMS update timestamps and expose accountable author/reviewer links.',
+  ],
+  [
+    germanLayout.includes('<html') &&
+      germanLayout.includes('lang="de"') &&
+      germanLayout.includes('<Footer') === false,
+    'German routes must render from a true German root document with lang="de".',
+  ],
+  [
+    sitemap.includes("'/about'") && sitemap.includes("'/faq'") && sitemap.includes("'/case-study'") &&
+      footer.includes("href: '/about'") && footer.includes("href: '/faq'") && footer.includes("href: '/case-study'"),
+    'About, FAQ, and Case Study hubs must be discoverable through the sitemap and footer.',
   ],
 ];
 

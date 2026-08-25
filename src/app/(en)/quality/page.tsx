@@ -4,13 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import TrackedLink from '@/components/TrackedLink';
 import { OG_IMAGES } from '@/lib/seo/og';
+import { SITE } from '@/lib/site';
 
 export const metadata = {
-  title: 'PCBA Inspection and Testing Process | Huitai Electronics',
+  title: 'PCBA Inspection and Testing Process | Huitai PCB',
   description: 'PCBA inspection and testing support for turnkey builds: incoming component checks, SMT process review, AOI, visual inspection, functional testing when provided, and packaging check.',
   alternates: { canonical: 'https://huitaipcb.com/quality' },
   openGraph: {
-    title: 'PCBA Inspection and Testing Process | Huitai Electronics',
+    title: 'PCBA Inspection and Testing Process | Huitai PCB',
     description: 'Incoming component checks, SMT process review, AOI, visual inspection, functional testing support, and packaging checks for turnkey PCBA projects.',
     url: 'https://huitaipcb.com/quality',
     images: OG_IMAGES,
@@ -137,7 +138,7 @@ function QualityJsonLd() {
     description: qualityQuickAnswer,
     url: pageUrl,
     provider: {
-      '@id': 'https://huitaipcb.com/#organization',
+      '@id': SITE.organizationId,
     },
     areaServed: {
       '@type': 'Place',

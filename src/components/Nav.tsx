@@ -27,10 +27,10 @@ const NAV_ITEMS: Record<Locale, { name: string; href: string }[]> = {
 
 const NAV_COPY: Record<Locale, { quote: string; upload: string; mobileQuote: string; tagline: string }> = {
   en: {
-    quote: 'Request a PCBA Quote',
+    quote: 'Get PCBA Quote',
     upload: 'Send Gerber & BOM',
-    mobileQuote: 'Request a PCBA Quote',
-    tagline: 'TURNKEY PCBA MANUFACTURING',
+    mobileQuote: 'Get PCBA Quote',
+    tagline: 'PCBA MANUFACTURING',
   },
   de: {
     quote: 'Anfrage',
@@ -85,7 +85,7 @@ export default function Nav() {
           <div className="min-w-0 leading-none">
             <strong className="block whitespace-nowrap text-[11px] font-semibold tracking-[0.05em] text-cc-ink sm:text-sm sm:tracking-[0.08em]">
               <span className="min-[440px]:hidden">HUITAI</span>
-              <span className="hidden min-[440px]:inline">HUITAI ELECTRONICS</span>
+              <span className="hidden min-[440px]:inline">HUITAI PCB</span>
             </strong>
             <span className="font-mono-cc mt-1 hidden text-[8px] font-medium tracking-[0.14em] text-cc-ink-mute sm:block">
               {copy.tagline}

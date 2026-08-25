@@ -9,6 +9,7 @@ export type KnowledgeArticle = {
   readTime: string;
   metaDescription: string;
   publishedAt?: string;
+  updatedAt?: string;
   cta?: {
     primary: { label: string; href: string };
     secondary: { label: string; href: string };
@@ -223,7 +224,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       {
         heading: 'How Huitai handles BOM sourcing risk',
         body: [
-          'Huitai Electronics provides [turnkey PCB assembly](/turnkey-pcb-assembly) covering PCB fabrication, BOM review, component sourcing, Surface-Mount Technology (SMT) assembly, through-hole/DIP assembly, testing to confirmed customer requirements, packaging, and delivery.',
+          'Huitai PCB provides [turnkey PCB assembly](/turnkey-pcb-assembly) covering PCB fabrication, BOM review, component sourcing, Surface-Mount Technology (SMT) assembly, through-hole/DIP assembly, testing to confirmed customer requirements, packaging, and delivery.',
           'The working sequence is: customer Gerber and BOM → engineering and DFM review → BOM sourcing review → identify unavailable or long-lead parts → discuss alternatives where needed → customer approval → component purchasing → PCB fabrication → assembly → agreed testing → packaging and delivery.',
           'Availability is confirmed for the quoted MPN, package, quantity, and purchasing window. Huitai does not assume that every component is always available and does not make an unapproved critical-part substitution. Buyers should provide any approved-vendor restrictions, no-substitute items, lifecycle concerns, and test or qualification requirements with the RFQ.',
         ],
@@ -892,13 +893,13 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         body: [
           'For low-volume turnkey PCBA in China — small batches, pilot runs, and prototype-to-production projects where one supplier coordinates PCB fabrication, component sourcing, assembly, and testing — buyers often compare online platforms and service-led suppliers. Platform-style services may suit catalog-part prototypes, while service-led suppliers may suit custom BOMs, sourcing review, or projects that need engineering dialogue before quotation.',
           'Use this guide as a starting point for supplier comparison, not as a fixed ranking. Buyers should verify capabilities, certifications, lead time, engineering support, and project fit directly with each supplier.',
-          'Disclosure: this guide is published by Huitai Electronics. Huitai is included to explain its own turnkey PCBA positioning, not to claim an independent or objective ranking.',
+          'Disclosure: this guide is published by Huitai PCB. Huitai is included to explain its own turnkey PCBA positioning, not to claim an independent or objective ranking.',
         ],
       },
       {
         heading: 'Supplier examples at a glance',
         body: [
-          '| Supplier | Possible fit to evaluate | Service model |\n| --- | --- | --- |\n| JLCPCB | Catalog-part prototypes and standardized online ordering | Online instant-quote platform |\n| PCBWay | Prototypes requiring broader custom-process options | Online platform with custom quoting options |\n| NextPCB | Industrial prototype projects seeking DFM-oriented review | Online platform plus engineering checks |\n| PCBGOGO | Quote-based prototype and small-batch assembly | Quote-based service with sales support |\n| Viasion | Small-to-medium batch EMS projects | Traditional quote-based EMS service |\n| RayMing | RF, high-frequency, and special-material project review | Project-based engineering service |\n| Huitai Electronics | Engineer-reviewed low-volume turnkey with BOM sourcing coordination | Service-led turnkey PCBA workflow |',
+          '| Supplier | Possible fit to evaluate | Service model |\n| --- | --- | --- |\n| JLCPCB | Catalog-part prototypes and standardized online ordering | Online instant-quote platform |\n| PCBWay | Prototypes requiring broader custom-process options | Online platform with custom quoting options |\n| NextPCB | Industrial prototype projects seeking DFM-oriented review | Online platform plus engineering checks |\n| PCBGOGO | Quote-based prototype and small-batch assembly | Quote-based service with sales support |\n| Viasion | Small-to-medium batch EMS projects | Traditional quote-based EMS service |\n| RayMing | RF, high-frequency, and special-material project review | Project-based engineering service |\n| Huitai PCB | Engineer-reviewed low-volume turnkey with BOM sourcing coordination | Service-led turnkey PCBA workflow |',
         ],
       },
       {
@@ -944,9 +945,9 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         ],
       },
       {
-        heading: 'Huitai Electronics — service-led low-volume turnkey',
+        heading: 'Huitai PCB — service-led low-volume turnkey',
         body: [
-          'Huitai Electronics is a Shenzhen-based [China PCB assembly service](/china-pcb-assembly) for overseas B2B customers. Its stated focus is prototypes, pilot runs, and low-volume batches that need one coordinated workflow for [PCB fabrication, BOM sourcing, SMT/DIP assembly, testing support, and finished PCBA delivery](/turnkey-pcb-assembly).',
+          'Huitai PCB is a Shenzhen-based [China PCB assembly service](/china-pcb-assembly) for overseas B2B customers. Its stated focus is prototypes, pilot runs, and low-volume batches that need one coordinated workflow for [PCB fabrication, BOM sourcing, SMT/DIP assembly, testing support, and finished PCBA delivery](/turnkey-pcb-assembly).',
           'The working model starts with engineering review before quotation, including available-file review, [BOM availability and alternatives review](/bom-sourcing-pcb-assembly), and manufacturability questions. Scope, lead time, sourcing channels, inspection, and testing requirements are confirmed project by project. Quotes can begin [even when files are incomplete](/knowledge/pcba-quote-with-incomplete-files).',
           'Huitai is included here to explain the service model offered by the publisher of this guide. Buyers should compare it with other suppliers and verify project fit directly.',
         ],
@@ -989,8 +990,8 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       {
         heading: 'Quick answer',
         body: [
-          'JLCPCB is the right choice for cheap, fast prototypes built from common catalog parts — nothing on this page changes that. People look for JLCPCB alternatives when their project stops fitting that model: parts outside the platform library, a BOM that needs sourcing judgment, repeat low-volume production, functional testing against custom criteria, or the need to talk to an engineer before money is spent. The realistic alternatives split by need: PCBWay or NextPCB for more capable platform-style service, and service-led turnkey suppliers such as Huitai Electronics, PCBGOGO, or Viasion when you need open-market BOM sourcing and a person who owns your project.',
-          'Disclosure: this guide is published by Huitai Electronics, one of the alternatives discussed below. We say plainly when JLCPCB or another option is the better choice.',
+          'JLCPCB is the right choice for cheap, fast prototypes built from common catalog parts — nothing on this page changes that. People look for JLCPCB alternatives when their project stops fitting that model: parts outside the platform library, a BOM that needs sourcing judgment, repeat low-volume production, functional testing against custom criteria, or the need to talk to an engineer before money is spent. The realistic alternatives split by need: PCBWay or NextPCB for more capable platform-style service, and service-led turnkey suppliers such as Huitai PCB, PCBGOGO, or Viasion when you need open-market BOM sourcing and a person who owns your project.',
+          'Disclosure: this guide is published by Huitai PCB, one of the alternatives discussed below. We say plainly when JLCPCB or another option is the better choice.',
         ],
       },
       {
@@ -1013,7 +1014,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       {
         heading: 'The alternatives, by what you actually need',
         body: [
-          '| Project fit | Option to evaluate | Main trade-off to confirm |\n| --- | --- | --- |\n| More capability with a platform-style flow | PCBWay | Confirm manual review, sourcing, and test scope for your exact build |\n| Online ordering with automated DFM tools | NextPCB | Confirm support for non-catalog parts and project-specific testing |\n| Quote-based quick-turn assembly | PCBGOGO | Confirm the engineer contact and repeat-build process |\n| Traditional EMS for small-to-medium runs | Viasion | Confirm minimum practical order and setup cost for your board |\n| Engineer-supported low-volume turnkey | Huitai Electronics | Compare the reviewed quote and response quality against the other options |',
+          '| Project fit | Option to evaluate | Main trade-off to confirm |\n| --- | --- | --- |\n| More capability with a platform-style flow | PCBWay | Confirm manual review, sourcing, and test scope for your exact build |\n| Online ordering with automated DFM tools | NextPCB | Confirm support for non-catalog parts and project-specific testing |\n| Quote-based quick-turn assembly | PCBGOGO | Confirm the engineer contact and repeat-build process |\n| Traditional EMS for small-to-medium runs | Viasion | Confirm minimum practical order and setup cost for your board |\n| Engineer-supported low-volume turnkey | Huitai PCB | Compare the reviewed quote and response quality against the other options |',
           'For a fuller comparison of these suppliers, see our [China low-volume turnkey PCBA supplier comparison guide](/knowledge/top-low-volume-turnkey-pcba-suppliers-china).',
         ],
       },
@@ -1063,7 +1064,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
         heading: 'Quick answer',
         body: [
           'An instant online PCB assembly quote is accurate when your board is simple, every component is a common catalog part, your files are final, and you need no custom testing. In that case the algorithm has everything it needs and the number is reliable. It becomes inaccurate the moment your project has a custom BOM, hard-to-source or end-of-life parts, special processes, incomplete files, or undefined testing — because an online quote prices the board, not your actual project. For anything beyond a standard prototype, an engineer-reviewed quote is the one you can plan a budget and a launch date around.',
-          'Disclosure: this guide is published by Huitai Electronics, which provides engineer-reviewed quotes. We say plainly below when an instant online quote is the right tool.',
+          'Disclosure: this guide is published by Huitai PCB, which provides engineer-reviewed quotes. We say plainly below when an instant online quote is the right tool.',
         ],
       },
       {
@@ -1308,7 +1309,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
     title: 'PCBA Testing Before Shipment in a Turnkey Manufacturing Workflow',
     excerpt:
-      'How testing fits into Huitai Electronics’ one-stop PCBA workflow, from PCB fabrication and BOM sourcing through SMT/DIP assembly, inspection, packaging, and delivery.',
+      'How testing fits into Huitai PCB’s one-stop PCBA workflow, from PCB fabrication and BOM sourcing through SMT/DIP assembly, inspection, packaging, and delivery.',
     image: '/factory/knowledge-covers/pcba-testing-before-shipment-cover.webp',
     readTime: '9 min read',
     metaDescription:
@@ -1317,7 +1318,7 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       {
         heading: 'Quick answer',
         body: [
-          'PCBA testing before shipment is a quality-control stage inside a turnkey manufacturing workflow, not a standalone description of Huitai Electronics’ service. The complete one-stop scope can coordinate PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, inspection and functional testing to confirmed requirements, packaging, and finished PCBA delivery.',
+          'PCBA testing before shipment is a quality-control stage inside a turnkey manufacturing workflow, not a standalone description of Huitai PCB’s service. The complete one-stop scope can coordinate PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, inspection and functional testing to confirmed requirements, packaging, and finished PCBA delivery.',
           'Within that workflow, visual inspection and AOI look for visible assembly problems such as missing or misaligned components, polarity errors, solder bridges, and other optical defects. Functional testing checks customer-defined board behavior using confirmed firmware, fixtures, operating conditions, and pass/fail criteria.',
         ],
       },
@@ -1388,14 +1389,14 @@ export const knowledgeArticles: KnowledgeArticle[] = [
       {
         heading: 'FAQ',
         body: [
-          '### Is AOI the same as functional testing?\n\nNo. AOI checks visible assembly conditions. Functional testing checks defined board behavior using confirmed firmware, fixtures, inputs, outputs, and limits.\n\n### Can AOI confirm that a PCBA works?\n\nNo. A board can pass AOI and still have a firmware, communication, power, sensor, or interface problem.\n\n### What information is needed for PCBA functional testing?\n\nProvide firmware, programming steps, power conditions, fixture and interface details, test sequence, expected results, tolerances, pass/fail criteria, and record requirements.\n\n### Does every assembled board need functional testing?\n\nCoverage depends on product risk, project stage, buyer requirements, and the agreed quality plan. The quote should state whether every board or an agreed sample is tested.\n\n### Can Huitai help with a functional test fixture?\n\nFixture requirements can be discussed. Responsibility, cost, lead time, interfaces, maintenance, and acceptance must be confirmed before production.\n\n### What test records should a buyer request?\n\nRequest the evidence the project needs, such as serial numbers, firmware revisions, values, pass/fail logs, failure codes, retest results, or a summary report.\n\n### What does Huitai coordinate in a turnkey PCBA project?\n\nHuitai Electronics coordinates PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, inspection and functional testing to confirmed requirements, packaging, and finished PCBA delivery as one managed project scope.',
+          '### Is AOI the same as functional testing?\n\nNo. AOI checks visible assembly conditions. Functional testing checks defined board behavior using confirmed firmware, fixtures, inputs, outputs, and limits.\n\n### Can AOI confirm that a PCBA works?\n\nNo. A board can pass AOI and still have a firmware, communication, power, sensor, or interface problem.\n\n### What information is needed for PCBA functional testing?\n\nProvide firmware, programming steps, power conditions, fixture and interface details, test sequence, expected results, tolerances, pass/fail criteria, and record requirements.\n\n### Does every assembled board need functional testing?\n\nCoverage depends on product risk, project stage, buyer requirements, and the agreed quality plan. The quote should state whether every board or an agreed sample is tested.\n\n### Can Huitai help with a functional test fixture?\n\nFixture requirements can be discussed. Responsibility, cost, lead time, interfaces, maintenance, and acceptance must be confirmed before production.\n\n### What test records should a buyer request?\n\nRequest the evidence the project needs, such as serial numbers, firmware revisions, values, pass/fail logs, failure codes, retest results, or a summary report.\n\n### What does Huitai coordinate in a turnkey PCBA project?\n\nHuitai PCB coordinates PCB fabrication, BOM sourcing, SMT and through-hole (DIP) assembly, inspection and functional testing to confirmed requirements, packaging, and finished PCBA delivery as one managed project scope.',
         ],
       },
       {
         heading: 'Send your complete turnkey PCBA package for review',
         body: [
           'A useful one-stop review package combines production files, sourcing requirements, assembly notes, testing inputs, packaging, and delivery needs. Include Gerber and drill data, BOM, pick-and-place data, assembly drawings, PCB specifications, quantity, firmware, fixture or interface notes, test steps, acceptance criteria, and delivery requirements.',
-          '[Send your complete turnkey PCBA package for an engineering review](/contact#project-files). Huitai Electronics reviews PCB fabrication, BOM sourcing, SMT/DIP assembly, inspection and functional testing, packaging, and finished PCBA delivery as one coordinated quotation scope.',
+          '[Send your complete turnkey PCBA package for a manufacturing review](/contact#project-files). Huitai PCB reviews PCB fabrication, BOM sourcing, SMT/DIP assembly, inspection and functional testing, packaging, and finished PCBA delivery as one coordinated quotation scope.',
         ],
       },
     ],

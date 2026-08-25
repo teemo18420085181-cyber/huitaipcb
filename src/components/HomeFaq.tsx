@@ -5,7 +5,7 @@ const FAQS = [
   {
     question: 'What files help you prepare a PCBA quote?',
     answer:
-      'Send the Gerber files, BOM with MPNs and quantities, target build quantity, and any assembly drawings or testing requirements you have. If something is missing, note it in the project brief so it can be reviewed before quotation.',
+      'Send the Gerber files, BOM with MPNs, pick-and-place or CPL data, assembly drawing, target production quantity, and testing requirements. If something is missing, identify it in the project brief so it can be reviewed before quotation.',
   },
   {
     question: 'What is the minimum prototype order?',
@@ -46,14 +46,14 @@ export default function HomeFaq() {
             What buyers usually need to confirm first.
           </h2>
           <p className="mt-4 text-[15px] leading-7 text-cc-body">
-            A useful quotation starts with the real project files and the decisions that
-            affect sourcing, assembly, testing, and delivery.
+            Prepare the Gerber files, BOM, pick-and-place data, assembly drawing, and
+            quantity needed to review sourcing, assembly, testing, and delivery scope.
           </p>
           <Link
-            href="/contact#quote-form"
+            href="/contact#project-files"
             className="mt-6 inline-flex text-sm font-semibold text-cc-heading underline decoration-cc-copper/50 underline-offset-4 hover:text-cc-copper-ink"
           >
-            Ask about your project
+            Prepare Your PCBA RFQ
           </Link>
         </div>
 

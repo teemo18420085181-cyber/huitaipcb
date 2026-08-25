@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps) {
       description: page.metaDescription,
       url: absoluteUrl(germanPath),
       locale: 'de_DE',
-      siteName: 'Huitai Electronics',
+      siteName: 'Huitai PCB',
     },
   };
 }

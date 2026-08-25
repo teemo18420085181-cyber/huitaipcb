@@ -1,13 +1,13 @@
 ﻿export const metadata = {
-  title: 'Request a Turnkey PCBA Quote | Upload Gerber & BOM',
-  description: 'Upload Gerber, BOM, drawings, sample photos, or project notes for a turnkey PCBA quote covering PCB fabrication, sourcing, assembly, testing, and delivery.',
+  title: 'Request a PCBA Manufacturing Quote | Upload Gerber & BOM',
+  description: 'Upload Gerber, BOM, pick-and-place data, assembly drawings, sample photos, or test requirements for a PCBA manufacturing quote.',
   alternates: {
     canonical: absoluteUrl('/contact'),
     languages: getLanguageAlternates('/contact'),
   },
   openGraph: {
-    title: 'Request a Turnkey PCBA Quote | Upload Gerber & BOM',
-    description: 'Upload Gerber, BOM, drawings, sample photos, or project notes for a turnkey PCBA quote covering PCB fabrication, sourcing, assembly, testing, and delivery.',
+    title: 'Request a PCBA Manufacturing Quote | Upload Gerber & BOM',
+    description: 'Upload Gerber, BOM, pick-and-place data, assembly drawings, sample photos, or test requirements for a PCBA manufacturing quote.',
     url: absoluteUrl('/contact'),
     images: OG_IMAGES,
   },
@@ -36,7 +36,7 @@ export default function ContactPage() {
                   ENGINEER-REVIEWED RFQ
                 </div>
                 <h1 className="font-display mb-4 text-4xl font-bold leading-tight tracking-tight text-cc-ink md:text-5xl">
-                  Request a Turnkey PCBA Quote
+                  Request a PCBA Manufacturing Quote
                 </h1>
                 <p className="mb-6 max-w-[520px] text-[15px] leading-relaxed text-cc-ink-mute">
                   Send Gerber files, BOM, pick-and-place data, assembly drawings, testing
@@ -119,7 +119,7 @@ export default function ContactPage() {
                   WeChat code to add us.
                 </p>
                 <TrackedAnchor
-                  href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20a%20turnkey%20PCBA%20quote."
+                  href="https://wa.me/8618420085181?text=Hi%20Huitai%20PCB%2C%20I%27d%20like%20a%20PCBA%20manufacturing%20quote."
                   target="_blank"
                   rel="noopener noreferrer"
                   eventName="whatsapp_click"
@@ -137,7 +137,7 @@ export default function ContactPage() {
                 <div className="rounded-xl bg-white p-2.5">
                   <Image
                     src="/factory/wechat-qr.png"
-                    alt="WeChat QR code - scan to add Huitai Electronics"
+                    alt="WeChat QR code - scan to add Huitai PCB"
                     width={150}
                     height={150}
                     className="h-[150px] w-[150px]"
@@ -171,7 +171,7 @@ export default function ContactPage() {
                 </a>
               </div>
               <iframe
-                title="Huitai Electronics location in Shajing, Bao'an, Shenzhen, China"
+                title="Huitai PCB location in Shajing, Bao'an, Shenzhen, China"
                 src={'https://maps.google.com/maps?q=22.752083,113.798848&hl=en&z=17&output=embed'}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

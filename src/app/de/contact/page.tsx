@@ -21,7 +21,7 @@ export const metadata = {
     description: contact.metadata.description,
     url: absoluteUrl('/de/contact'),
     locale: 'de_DE',
-    siteName: 'Huitai Electronics',
+    siteName: 'Huitai PCB',
     images: OG_IMAGES,
   },
 };
@@ -99,7 +99,7 @@ export default function GermanContactPage() {
                   {contact.chatBody}
                 </p>
                 <TrackedAnchor
-                  href="https://wa.me/8618420085181?text=Hi%20Huitai%20Electronics%2C%20I%27d%20like%20a%20PCB%20assembly%20quote."
+                  href="https://wa.me/8618420085181?text=Hi%20Huitai%20PCB%2C%20I%27d%20like%20a%20PCB%20assembly%20quote."
                   target="_blank"
                   rel="noopener noreferrer"
                   eventName="whatsapp_click"
@@ -114,7 +114,7 @@ export default function GermanContactPage() {
                 <div className="rounded-xl bg-white p-2.5">
                   <Image
                     src="/factory/wechat-qr.png"
-                    alt="WeChat QR code - scan to add Huitai Electronics"
+                    alt="WeChat QR code - scan to add Huitai PCB"
                     width={150}
                     height={150}
                     className="h-[150px] w-[150px]"
@@ -147,7 +147,7 @@ export default function GermanContactPage() {
                 </a>
               </div>
               <iframe
-                title="Huitai Electronics location in Shajing, Bao'an, Shenzhen, China"
+                title="Huitai PCB location in Shajing, Bao'an, Shenzhen, China"
                 src="https://maps.google.com/maps?q=22.752083,113.798848&hl=de&z=17&output=embed"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -157,7 +157,7 @@ export default function GermanContactPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer locale="de" />
     </>
   );
 }

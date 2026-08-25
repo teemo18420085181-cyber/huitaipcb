@@ -30,7 +30,7 @@ const FORM_COPY = {
     errorFallback: 'Something went wrong. Please try again.',
     eyebrow: 'QUICK RFQ',
     title: 'Upload Gerber & BOM for a Turnkey PCBA Quote',
-    intro: 'Name, work email, company, quantity, project stage, a short project note, and any available files are enough to begin a turnkey PCBA quote review.',
+    intro: 'Name, work email, company, quantity, project stage, manufacturing requirements, and any available files are enough to begin a PCBA quote review.',
     name: 'Your Name *',
     email: 'Work Email *',
     company: 'Company',
@@ -53,7 +53,7 @@ const FORM_COPY = {
     consentPrefix: 'I agree to be contacted regarding this inquiry. My information will be used solely for quotation and project communication. See our',
     privacy: 'Privacy Policy',
     submitting: 'Submitting...',
-    submit: 'Request a Turnkey PCBA Quote',
+    submit: 'Get PCBA Manufacturing Quote',
     footer: 'Reply target: within 24 hours on business days after RFQ file receipt / NDA available on request',
   },
   de: {

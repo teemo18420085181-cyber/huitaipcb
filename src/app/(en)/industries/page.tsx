@@ -5,7 +5,7 @@ import TrackedLink from '@/components/TrackedLink';
 import { OG_IMAGES } from '@/lib/seo/og';
 
 export const metadata = {
-  title: 'Industries We Serve | Huitai Electronics',
+  title: 'Industries We Serve | Huitai PCB',
   description: 'Turnkey PCBA for industrial control, IoT, power electronics, LED, consumer electronics, automotive aftermarket, medical wearable, and test equipment.',
   alternates: { canonical: 'https://huitaipcb.com/industries' },
   openGraph: { url: 'https://huitaipcb.com/industries', images: OG_IMAGES },

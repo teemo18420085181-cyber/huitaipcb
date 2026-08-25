@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import Nav from '@/components/Nav';
 import TrackedLink from '@/components/TrackedLink';
 import { OG_IMAGES } from '@/lib/seo/og';
+import { SITE } from '@/lib/site';
 
 const pageUrl = 'https://huitaipcb.com/pcba-quote-file-checklist';
 
@@ -111,12 +112,12 @@ const faqs = [
   {
     question: 'Can Huitai help with BOM sourcing?',
     answer:
-      'Yes. Huitai Electronics can review BOM data for sourcing coordination, part availability, package clarity, and acceptable alternatives. Do not send confidential credentials or sensitive project information through public channels.',
+      'Yes. Huitai PCB can review BOM data for sourcing coordination, part availability, package clarity, and acceptable alternatives. Do not send confidential credentials or sensitive project information through public channels.',
   },
   {
     question: 'Can Huitai review files before production?',
     answer:
-      'Yes. Huitai Electronics can review available Gerber, BOM, assembly, quantity, and testing information before production planning. Engineering review helps identify missing quotation details and manufacturing questions early.',
+      'Yes. Huitai PCB can review available Gerber, BOM, assembly, quantity, and testing information before production planning. Engineering review helps identify missing quotation details and manufacturing questions early.',
   },
   {
     question: 'What should I send for turnkey PCBA manufacturing?',
@@ -149,23 +150,14 @@ export const metadata: Metadata = {
 };
 
 function JsonLdScripts() {
-  const articleSchema = {
+  const webPageSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: 'PCBA Quote File Checklist',
+    '@type': 'WebPage',
+    name: 'PCBA Quote File Checklist',
     description: metadata.description,
     url: pageUrl,
-    mainEntityOfPage: pageUrl,
-    author: {
-      '@type': 'Organization',
-      name: 'Huitai Electronics',
-      url: 'https://huitaipcb.com',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Huitai Electronics',
-      url: 'https://huitaipcb.com',
-    },
+    isPartOf: { '@id': SITE.websiteId },
+    publisher: { '@id': SITE.organizationId },
   };
 
   const faqSchema = {
@@ -202,7 +194,7 @@ function JsonLdScripts() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     </>
@@ -259,7 +251,7 @@ export default function PcbaQuoteFileChecklistPage() {
                 <p className="text-sm leading-7 text-cc-ink-mute">
                   For a PCBA quote, prepare Gerber files, a BOM with MPNs and quantities, Pick and Place data if
                   available, PCB specifications, testing requirements, delivery information, and any special
-                  assembly notes. Complete files help Huitai Electronics review fabrication, component sourcing,
+                  assembly notes. Complete files help Huitai PCB review fabrication, component sourcing,
                   SMT assembly, DIP assembly, testing, and finished PCBA delivery requirements.
                 </p>
               </section>
@@ -321,7 +313,7 @@ export default function PcbaQuoteFileChecklistPage() {
               <section className="rounded-xl border border-cc-copper/15 bg-cc-carbon-2 p-7 text-white">
                 <h2 className="mb-3 text-2xl font-semibold">Send Gerber, BOM, quantity, and testing requirements for review.</h2>
                 <p className="mb-5 max-w-[720px] text-sm leading-7 text-white/70">
-                  Huitai Electronics can review available RFQ files before turnkey PCBA quotation and production planning.
+                  Huitai PCB can review available RFQ files before turnkey PCBA quotation and production planning.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <TrackedLink

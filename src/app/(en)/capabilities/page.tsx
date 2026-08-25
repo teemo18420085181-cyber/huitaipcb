@@ -5,7 +5,7 @@ import TrackedLink from '@/components/TrackedLink';
 import { OG_IMAGES } from '@/lib/seo/og';
 
 export const metadata = {
-  title: 'PCB & PCBA Capability Review | Huitai Electronics',
+  title: 'PCB & PCBA Capability Review | Huitai PCB',
   description: 'PCB and PCBA capabilities are reviewed case by case based on board complexity, materials, BOM availability, assembly process, inspection, and testing requirements.',
   alternates: { canonical: 'https://huitaipcb.com/capabilities' },
   openGraph: { url: 'https://huitaipcb.com/capabilities', images: OG_IMAGES },

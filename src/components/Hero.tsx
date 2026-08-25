@@ -35,29 +35,39 @@ export default function Hero() {
               eventParams={{ location: 'home_hero', destination: '/contact#quote-form' }}
               className="cc-copper-fill motion-press-lift inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold"
             >
-              Request a PCBA Quote
+              Get PCBA Manufacturing Quote
               <ArrowRight size={16} strokeWidth={2.4} />
             </TrackedLink>
+            <TrackedLink
+              href="/about#engineering-support"
+              eventName="engineering_support_click"
+              eventParams={{ location: 'home_hero', destination: '/about#engineering-support' }}
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-cc-ink transition-colors hover:border-cc-copper/60 hover:bg-white/[0.06]"
+            >
+              Need Engineering Support?
+            </TrackedLink>
+          </div>
+
+          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
             <TrackedLink
               href="/contact#project-files"
               eventName="upload_gerber_bom_click"
               eventParams={{ location: 'home_hero', destination: '/contact#project-files' }}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-cc-ink transition-colors hover:border-cc-copper/60 hover:bg-white/[0.06]"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-cc-copper-soft underline decoration-cc-copper/40 underline-offset-4 transition-colors hover:text-cc-ink"
             >
-              <FileUp size={16} strokeWidth={2.4} />
+              <FileUp size={14} strokeWidth={2.4} />
               Send Gerber &amp; BOM
             </TrackedLink>
+            <TrackedLink
+              href="/capabilities"
+              eventName="capabilities_click"
+              eventParams={{ location: 'home_hero', destination: '/capabilities' }}
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-cc-ink-mute transition-colors hover:text-cc-ink"
+            >
+              View Capabilities
+              <ArrowRight size={14} />
+            </TrackedLink>
           </div>
-
-          <TrackedLink
-            href="/capabilities"
-            eventName="capabilities_click"
-            eventParams={{ location: 'home_hero', destination: '/capabilities' }}
-            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-cc-copper-soft underline decoration-cc-copper/40 underline-offset-4 transition-colors hover:text-cc-ink"
-          >
-            View Capabilities
-            <ArrowRight size={14} />
-          </TrackedLink>
 
           <div className="mt-8 grid gap-3 border-t border-white/10 pt-6 sm:grid-cols-3">
             {PROJECT_SIGNALS.map((item) => (

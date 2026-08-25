@@ -110,7 +110,7 @@ export const deSeoPages: Record<string, SeoLandingPage> = {
     serviceName: 'Anfrageprüfung für Leiterplattenbestückung aus China',
     serviceType: 'Turnkey-PCBA-Service aus China',
     quickAnswer:
-      'Huitai Electronics ist ein Turnkey-PCBA-Lieferant in Shenzhen für internationale B2B-Projekte, bei denen PCB-Herstellung, Bauteilbeschaffung, SMT-/DIP-Bestückung, Inspektion, Prüfunterstützung, Verpackung und Lieferung zusammen betrachtet werden.',
+      'Huitai PCB ist ein PCBA-Fertigungspartner in Shenzhen für internationale B2B-Projekte, bei denen PCB-Herstellung, Bauteilbeschaffung, SMT-/DIP-Bestückung, Inspektion, Prüfunterstützung, Verpackung und Lieferung zusammen betrachtet werden.',
     intro:
       'Senden Sie Gerber-Daten, BOM, Stückzahl, Zeichnungen, Musterfotos und Prüfanforderungen für eine technische Prüfung vor dem Angebot. Huitai prüft den Turnkey-PCBA-Umfang in China von PCB-Herstellung und Bauteilbeschaffung bis SMT-/DIP-Bestückung, Inspektion, Prüfunterstützung, Verpackung und Lieferung.',
     sections: [

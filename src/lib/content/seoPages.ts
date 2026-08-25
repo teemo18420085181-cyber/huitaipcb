@@ -62,14 +62,14 @@ export const seoPages: Record<string, SeoLandingPage> = {
   'pcb-assembly-services': {
     slug: 'pcb-assembly-services',
     title: 'PCB Assembly Services in China',
-    seoTitle: 'PCB Assembly Services in China | Huitai Electronics',
+    seoTitle: 'PCB Assembly Services in China | Huitai PCB',
     metaDescription: 'PCB assembly services in China for overseas teams — engineer-reviewed Gerber & BOM, component sourcing, SMT & DIP assembly, testing support, and delivery preparation.',
     eyebrow: 'PCB ASSEMBLY SERVICES',
     primaryKeyword: 'PCB Assembly Services',
     serviceName: 'PCB Assembly Services in China',
     serviceType: 'PCB assembly services',
     quickAnswer: 'PCB assembly services turn bare PCB files and component lists into assembled PCBA boards. Huitai focuses on complete PCBA delivery, including PCB fabrication coordination, BOM review, component sourcing, SMT assembly, optional DIP assembly, inspection, testing, and shipment preparation.',
-    intro: 'Huitai Electronics supports PCB assembly services for overseas hardware teams that need engineering review, component sourcing, SMT assembly, functional testing, and coordinated delivery from China.',
+    intro: 'Huitai PCB supports PCB assembly services for overseas hardware teams that need component sourcing, SMT assembly, functional testing, manufacturing review, and coordinated delivery from China.',
     sections: [
       {
         heading: 'From Files to Finished PCBA',
@@ -99,7 +99,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
     primaryKeyword: 'China PCB Assembly Quote',
     serviceName: 'China PCB Assembly Quote Review',
     serviceType: 'China turnkey PCBA assembly service',
-    quickAnswer: 'Huitai Electronics is a Shenzhen-based turnkey PCBA supplier for overseas hardware teams comparing PCB assembly in China. Buyers can send Gerber files, BOM, pick-and-place data, assembly drawings, quantity, and test requirements for engineering review before quotation. The scope connects PCB fabrication, component sourcing, SMT/DIP assembly, inspection, functional testing support, packaging, and delivery.',
+    quickAnswer: 'Huitai PCB is a Shenzhen-based PCBA manufacturing supplier for overseas hardware teams comparing PCB assembly in China. Buyers can send Gerber files, BOM, pick-and-place data, assembly drawings, quantity, and test requirements for manufacturing review before quotation. The scope connects PCB fabrication, component sourcing, SMT/DIP assembly, inspection, functional testing support, packaging, and delivery.',
     intro: 'Send Gerber files, BOM, quantity, drawings, sample photos, and testing requirements for engineering review before quotation. Huitai reviews the complete turnkey PCBA scope in China, from PCB fabrication and BOM sourcing to SMT/DIP assembly, inspection/testing support, packaging, and delivery.',
     sections: [
       {
@@ -196,8 +196,8 @@ export const seoPages: Record<string, SeoLandingPage> = {
     intro: 'Use this page to evaluate whether Huitai fits your PCBA project. Send Gerber, BOM, drawings, quantity, sourcing notes, testing information, and delivery requirements for a practical project fit review before quotation.',
     sections: [
       {
-        heading: 'Supplier Evaluation Checklist',
-        body: 'Before choosing a PCB assembly company, confirm whether the supplier reviews Gerber and BOM files together, flags missing information, handles BOM shortage risk, defines customer approval boundaries, and explains assembly, testing, packaging, and delivery scope.',
+        heading: 'PCB Assembly Manufacturer Evaluation Checklist',
+        body: 'A PCB assembly manufacturer should review Gerber and BOM files together, flag missing information, handle BOM shortage risk, define customer approval boundaries, and explain assembly, testing, packaging, and delivery scope before quotation.',
       },
       {
         heading: 'Project Fit Review Before Quote',
@@ -457,7 +457,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
   'pcb-fabrication-and-assembly': {
     slug: 'pcb-fabrication-and-assembly',
     title: 'PCB Fabrication and Assembly Service',
-    seoTitle: 'PCB Fabrication & Assembly China | Huitai Electronics',
+    seoTitle: 'PCB Fabrication & Assembly China | Huitai PCB',
     metaDescription: 'PCB fabrication and assembly in China under one PCBA workflow: board fabrication coordination, component sourcing, SMT/DIP assembly, inspection, testing support, and finished-board delivery.',
     eyebrow: 'FABRICATION + ASSEMBLY',
     primaryKeyword: 'PCB Fabrication and Assembly Service in China',
@@ -494,7 +494,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
   'low-volume-pcba-assembly': {
     slug: 'low-volume-pcba-assembly',
     title: 'Low-Volume PCBA Assembly in China',
-    seoTitle: 'Low-Volume PCBA Assembly China | Huitai Electronics',
+    seoTitle: 'Low-Volume PCBA Assembly China | Huitai PCB',
     metaDescription: 'For 5 to 1,000 pcs type PCBA projects, Huitai reviews Gerber, BOM, quantity, testing needs, and sourcing risks before prototype-to-low-volume production.',
     eyebrow: 'LOW-VOLUME PCBA',
     primaryKeyword: 'Low-Volume PCBA Assembly in China',
@@ -684,7 +684,7 @@ export const seoPages: Record<string, SeoLandingPage> = {
   'pcba-testing-quality-control': {
     slug: 'pcba-testing-quality-control',
     title: 'PCBA Testing and Quality Control',
-    seoTitle: 'PCBA Testing and Quality Control | Huitai Electronics',
+    seoTitle: 'PCBA Testing and Quality Control | Huitai PCB',
     metaDescription: 'PCBA testing and quality control: visual inspection, AOI, functional testing to your spec, fixture discussion, and pre-shipment checks with documentation by agreed scope.',
     eyebrow: 'PCBA TESTING + QC',
     primaryKeyword: 'PCBA Testing and Quality Control',

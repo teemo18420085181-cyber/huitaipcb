@@ -7,6 +7,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://huitaipcb.com';
   const pages = [
     '',
+    '/about',
+    '/faq',
+    '/case-study',
     '/services',
     '/capabilities',
     '/quality',

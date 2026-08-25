@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import TrackedLink from '@/components/TrackedLink';
 import { getKnowledgeDisplayArticle } from '@/lib/content/articles';
 import { extractFaqItemsFromMarkdown } from '@/lib/content/faq';
+import { SITE } from '@/lib/site';
 
 export const dynamic = 'force-dynamic';
 
@@ -33,6 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       images: [{ url: imageUrl(article.image), alt: article.imageAlt }],
       type: 'article',
       publishedTime: article.publishedAt || undefined,
+      modifiedTime: article.updatedAt || undefined,
     },
     twitter: {
       card: 'summary_large_image',
@@ -62,6 +64,13 @@ function ArticleImage({ src, alt, priority = false }: { src: string; alt: string
       sizes="(max-width: 1024px) 100vw, 700px"
     />
   );
+}
+
+function formatArticleDate(value: string) {
+  return new Intl.DateTimeFormat('en-US', {
+    dateStyle: 'medium',
+    timeZone: 'UTC',
+  }).format(new Date(value));
 }
 
 function headingId(children: ReactNode) {
@@ -108,6 +117,9 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
 
   const articleUrl = `https://huitaipcb.com/knowledge/${article.slug}`;
   const faqItems = extractFaqItemsFromMarkdown(article.content);
+  const schemaAuthor = article.author === SITE.brandName
+    ? { '@id': SITE.organizationId, name: SITE.brandName, url: `${SITE.url}${article.authorUrl}` }
+    : { '@type': 'Person', name: article.author, url: `${SITE.url}${article.authorUrl}` };
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -116,20 +128,11 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
     image: imageUrl(article.image),
     url: articleUrl,
     mainEntityOfPage: articleUrl,
-    author: {
-      '@type': 'Organization',
-      name: article.author,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Huitai Electronics',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://huitaipcb.com/logo.svg',
-      },
-    },
+    author: schemaAuthor,
+    publisher: { '@id': SITE.organizationId },
+    reviewedBy: { '@id': SITE.organizationId },
     datePublished: article.publishedAt || undefined,
-    dateModified: article.publishedAt || undefined,
+    dateModified: article.updatedAt || undefined,
   };
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -202,10 +205,30 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
                 {article.excerpt}
               </p>
               <div className="mt-5 flex flex-wrap items-center gap-3 text-xs text-white/55">
-                <span>{article.author}</span>
+                <Link href={article.authorUrl} className="transition-colors hover:text-white">
+                  {article.author}
+                </Link>
                 <span>/</span>
                 <span>{article.readTime}</span>
+                {article.publishedAt && (
+                  <>
+                    <span>/</span>
+                    <span>Published {formatArticleDate(article.publishedAt)}</span>
+                  </>
+                )}
+                {article.updatedAt && (
+                  <>
+                    <span>/</span>
+                    <span>Updated {formatArticleDate(article.updatedAt)}</span>
+                  </>
+                )}
               </div>
+              <p className="mt-3 text-xs text-white/55">
+                Engineering review by{' '}
+                <Link href={article.reviewerUrl} className="underline underline-offset-4 transition-colors hover:text-white">
+                  {article.reviewedBy}
+                </Link>
+              </p>
             </div>
           </section>
 

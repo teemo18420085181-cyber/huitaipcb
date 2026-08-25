@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Nav from '@/components/Nav';
 import TrackedLink from '@/components/TrackedLink';
 import { OG_IMAGES } from '@/lib/seo/og';
+import { SITE } from '@/lib/site';
 
 const pageTitle = 'China PCBA Manufacturer for Prototype and Low-Volume Turnkey Assembly';
 const pageDescription =
@@ -143,10 +144,10 @@ function JsonLdScripts() {
     url: pageUrl,
     inLanguage: 'en-US',
     isPartOf: {
-      '@id': 'https://huitaipcb.com/#website',
+      '@id': SITE.websiteId,
     },
     publisher: {
-      '@id': 'https://huitaipcb.com/#organization',
+      '@id': SITE.organizationId,
     },
   };
 

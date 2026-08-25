@@ -9,23 +9,24 @@ import HomeApplications from '@/components/HomeApplications';
 import HomeFaq from '@/components/HomeFaq';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
+import JsonLd from '@/components/JsonLd';
 import { OG_IMAGES } from '@/lib/seo/og';
 import { absoluteUrl, getLanguageAlternates } from '@/lib/i18n/routes';
 
 export const metadata = {
-  title: 'Turnkey PCBA Manufacturer in China | HuitaiPCB',
+  title: 'Custom PCBA Manufacturer in China | Huitai PCB',
   description:
-    'Turnkey PCBA manufacturing in Shenzhen, including PCB fabrication, BOM sourcing, SMT and through-hole assembly, testing and prototype-to-production support.',
+    'PCBA manufacturing in China for PCB assembly, SMT, BOM sourcing, prototype and small-batch production, testing, and scalable production delivery.',
   alternates: {
     canonical: absoluteUrl('/'),
     languages: getLanguageAlternates('/'),
   },
   openGraph: {
-    title: 'Turnkey PCBA Manufacturer in China | HuitaiPCB',
+    title: 'Custom PCBA Manufacturer in China | Huitai PCB',
     description:
-      'Turnkey PCBA manufacturing in Shenzhen, including PCB fabrication, BOM sourcing, SMT and through-hole assembly, testing and prototype-to-production support.',
+      'PCBA manufacturing in China for PCB assembly, SMT, BOM sourcing, prototype and small-batch production, testing, and scalable production delivery.',
     url: absoluteUrl('/'),
-    siteName: 'Huitai Electronics',
+    siteName: 'Huitai PCB',
     images: OG_IMAGES,
   },
 };
@@ -33,6 +34,7 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
+      <JsonLd />
       <Nav />
       <main>
         <Hero />

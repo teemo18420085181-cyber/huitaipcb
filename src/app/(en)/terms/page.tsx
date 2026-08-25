@@ -3,8 +3,8 @@ import Footer from '@/components/Footer';
 import { OG_IMAGES } from '@/lib/seo/og';
 
 export const metadata = {
-  title: 'Terms of Use | Huitai Electronics',
-  description: 'Terms of Use for Huitai Electronics PCB assembly services, RFQ review, and project communication.',
+  title: 'Terms of Use | Huitai PCB',
+  description: 'Terms of Use for Huitai PCB assembly services, RFQ review, and project communication.',
   alternates: { canonical: 'https://huitaipcb.com/terms' },
   openGraph: { url: 'https://huitaipcb.com/terms', images: OG_IMAGES },
 };
@@ -19,7 +19,7 @@ export default function TermsPage() {
           <h1 className="text-3xl font-semibold text-cc-ink mb-5">Terms of Use</h1>
           <div className="space-y-5 text-sm text-cc-ink-mute leading-7">
             <p>
-              This website provides information about Huitai Electronics PCB assembly services and allows customers to submit RFQ information for engineering review.
+              This website provides information about Huitai PCB assembly services and allows customers to submit RFQ information for engineering review.
             </p>
             <h2 className="text-lg font-semibold text-cc-ink">Quotation Scope</h2>
             <p>

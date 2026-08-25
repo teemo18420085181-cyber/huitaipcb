@@ -77,14 +77,14 @@ export const dictionaries = {
     },
     home: {
       metadata: {
-        title: 'Leiterplattenbestückung China | Huitai Electronics',
+        title: 'Leiterplattenbestückung China | Huitai PCB',
         description:
           'Turnkey PCBA aus China für B2B-Hardwareprojekte: Gerber- und BOM-Prüfung, PCB-Herstellung, Bauteilbeschaffung, SMT-/DIP-Bestückung, Prüfunterstützung und Lieferung.',
       },
       eyebrow: 'TURNKEY PCBA / SHENZHEN, CHINA',
       title: 'Von Gerber-Daten zur fertigen PCBA.',
       intro:
-        'Huitai Electronics unterstützt internationale Hardwareteams bei Turnkey-PCBA-Projekten: technische Prüfung von Gerber und BOM, PCB-Herstellung, Bauteilbeschaffung, SMT-/DIP-Bestückung, Prüfunterstützung, Verpackung und Lieferung.',
+        'Huitai PCB unterstützt internationale Hardwareteams bei PCBA-Fertigungsprojekten: technische Prüfung von Gerber und BOM, PCB-Herstellung, Bauteilbeschaffung, SMT-/DIP-Bestückung, Prüfunterstützung, Verpackung und Lieferung.',
       primaryCta: 'Gerber & BOM zur Prüfung senden',
       secondaryCta: 'BOM-Risiken besprechen',
       keyPagesLabel: 'WICHTIGE PCBA-SEITEN',

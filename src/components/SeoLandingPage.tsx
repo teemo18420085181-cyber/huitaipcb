@@ -6,6 +6,7 @@ import TrackedLink from '@/components/TrackedLink';
 import type { SeoLandingPage as SeoLandingPageData } from '@/lib/content/seoPages';
 import { dictionaries } from '@/lib/i18n/dictionary';
 import { absoluteUrl, type Locale } from '@/lib/i18n/routes';
+import { SITE } from '@/lib/site';
 
 const HERO_IMAGES: Record<string, string> = {
   'pcb-assembly-services': '/factory/real-smt-1.jpg',
@@ -46,12 +47,7 @@ function buildServiceSchema(page: SeoLandingPageData, locale: Locale) {
     url,
     inLanguage: locale === 'de' ? 'de-DE' : 'en-US',
     ...(schemaImage ? { image: `https://huitaipcb.com${schemaImage}` } : {}),
-    provider: {
-      '@type': 'Organization',
-      name: 'Huitai Electronics',
-      legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.',
-      url: 'https://huitaipcb.com',
-    },
+    provider: { '@id': SITE.organizationId },
     areaServed: {
       '@type': 'Place',
       name: 'Global overseas B2B customers',
@@ -405,7 +401,7 @@ export default function SeoLandingPage({ page, locale = 'en' }: { page: SeoLandi
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer locale={locale} />
     </>
   );
 }
