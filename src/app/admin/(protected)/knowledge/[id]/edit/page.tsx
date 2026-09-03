@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ArticleForm from '../../ArticleForm';
 import { updateArticle } from '../../actions';
-import { createClient } from '@/lib/supabase/server';
+import { requireAdminPage } from '@/lib/admin/require-admin-page';
 import type { CmsArticle } from '@/lib/content/articles';
 
 export default async function EditKnowledgeArticlePage({
@@ -10,7 +10,7 @@ export default async function EditKnowledgeArticlePage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const supabase = await createClient();
+  const { supabase } = await requireAdminPage();
   const { data: article } = await supabase.from('articles').select('*').eq('id', id).maybeSingle();
 
   if (!article) {

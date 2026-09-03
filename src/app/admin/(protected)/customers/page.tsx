@@ -1,16 +1,6 @@
-﻿import { createClient } from '@/lib/supabase/server';
-import { revalidatePath } from 'next/cache';
 import ConfirmSubmitButton from '../../components/ConfirmSubmitButton';
-
-async function deleteCustomer(formData: FormData) {
-  'use server';
-  const supabase = await createClient();
-  const id = String(formData.get('id') || '');
-  if (id) {
-    await supabase.from('customers').delete().eq('id', id);
-    revalidatePath('/admin/customers');
-  }
-}
+import { deleteCustomer } from './actions';
+import { requireAdminPage } from '@/lib/admin/require-admin-page';
 
 const tierMap: Record<string, { label: string; color: string }> = {
   prospect: { label: '潜在客户', color: 'bg-gray-100 text-gray-600' },
@@ -21,7 +11,7 @@ const tierMap: Record<string, { label: string; color: string }> = {
 };
 
 export default async function CustomersPage() {
-  const supabase = await createClient();
+  const { supabase } = await requireAdminPage();
   const { data: customers } = await supabase.from('customers').select('*').order('created_at', { ascending: false });
 
   return (

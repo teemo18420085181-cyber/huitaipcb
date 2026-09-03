@@ -1,4 +1,4 @@
-﻿import { createClient } from '@/lib/supabase/server';
+import { requireAdminPage } from '@/lib/admin/require-admin-page';
 
 const statusMap: Record<string, { label: string; color: string }> = {
   new: { label: '新询盘', color: 'bg-blue-100 text-blue-700' },
@@ -11,7 +11,7 @@ const statusMap: Record<string, { label: string; color: string }> = {
 };
 
 export default async function AdminDashboard() {
-  const supabase = await createClient();
+  const { supabase } = await requireAdminPage();
   const [inquiries, customers, feedback, newInq, recent] = await Promise.all([
     supabase.from('inquiries').select('id', { count: 'exact', head: true }),
     supabase.from('customers').select('id', { count: 'exact', head: true }),

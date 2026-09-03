@@ -1,5 +1,5 @@
-﻿import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import { requireAdminPage } from '@/lib/admin/require-admin-page';
 
 const statusMap: Record<string, { label: string; color: string }> = {
   pending: { label: '待处理', color: 'bg-yellow-100 text-yellow-700' },
@@ -10,7 +10,7 @@ const statusMap: Record<string, { label: string; color: string }> = {
 };
 
 export default async function OrdersPage() {
-  const supabase = await createClient();
+  const { supabase } = await requireAdminPage();
   const { data: orders } = await supabase
     .from('orders')
     .select('*')

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/server';
+import { requireAdminPage } from '@/lib/admin/require-admin-page';
 import ConfirmSubmitButton from '@/app/admin/components/ConfirmSubmitButton';
 import { deleteArticle } from './actions';
 import type { CmsArticle } from '@/lib/content/articles';
@@ -27,7 +27,7 @@ export default async function KnowledgePage({
 }) {
   const { status } = await searchParams;
   const activeStatus = status === 'draft' || status === 'published' ? status : 'all';
-  const supabase = await createClient();
+  const { supabase } = await requireAdminPage();
   let query = supabase.from('articles').select('*').order('created_at', { ascending: false });
 
   if (activeStatus !== 'all') {

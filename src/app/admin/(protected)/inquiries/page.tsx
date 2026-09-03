@@ -1,5 +1,5 @@
-﻿import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
+import { requireAdminPage } from '@/lib/admin/require-admin-page';
 import {
   getInquiryStatusColor,
   getInquiryStatusLabel,
@@ -9,7 +9,7 @@ import {
 } from '@/lib/admin/inquiries';
 
 export default async function InquiriesPage({ searchParams }: { searchParams: Promise<{ status?: string }> }) {
-  const supabase = await createClient();
+  const { supabase } = await requireAdminPage();
   const resolvedSearchParams = await searchParams;
   const activeStatus = resolvedSearchParams.status ? normalizeInquiryStatus(resolvedSearchParams.status) : 'all';
   let query = supabase.from('inquiries').select('*').order('created_at', { ascending: false });

@@ -2,53 +2,71 @@
 
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { createClient } from '@/lib/supabase/server';
-import { slugifyTitle, type ArticleStatus } from '@/lib/content/article-utils';
+import { z } from 'zod';
+import { AdminActionError, requireAdmin } from '@/lib/admin/require-admin';
+import {
+  assertMutationSucceeded,
+  databaseUuid,
+  formString,
+  parseAdminInput,
+} from '@/lib/admin/action-validation';
+import { slugifyTitle } from '@/lib/content/article-utils';
 
-function cleanStatus(value: FormDataEntryValue | null): ArticleStatus {
-  return value === 'published' ? 'published' : 'draft';
-}
-
-function cleanReadTime(value: FormDataEntryValue | null) {
-  const readTime = Number(value || 5);
-  if (!Number.isFinite(readTime) || readTime <= 0) return 5;
-  return Math.round(readTime);
-}
+const articleInputSchema = z.object({
+  title: z.string().trim().min(1).max(200),
+  slugInput: z.string().trim().max(200),
+  description: z.string().trim().max(160),
+  content: z.string().trim().max(500_000),
+  coverImage: z.string().trim().max(2_048),
+  author: z.string().trim().max(120),
+  readTime: z.coerce.number().finite().int().min(1).max(240),
+  status: z.enum(['draft', 'published']),
+  publishedAt: z.string().trim().max(64),
+});
+const articleIdSchema = z.object({ id: databaseUuid });
 
 function getArticlePayload(formData: FormData) {
-  const title = String(formData.get('title') || '').trim();
-  const slug = slugifyTitle(String(formData.get('slug') || title));
-  const status = cleanStatus(formData.get('status'));
+  const input = parseAdminInput(articleInputSchema.safeParse({
+    title: formString(formData, 'title'),
+    slugInput: formString(formData, 'slug'),
+    description: formString(formData, 'description'),
+    content: formString(formData, 'content'),
+    coverImage: formString(formData, 'cover_image'),
+    author: formString(formData, 'author'),
+    readTime: formString(formData, 'read_time'),
+    status: formString(formData, 'status'),
+    publishedAt: formString(formData, 'published_at'),
+  }));
+  const slug = slugifyTitle(input.slugInput || input.title);
+  if (!slug) {
+    throw new AdminActionError('INVALID_INPUT');
+  }
   const now = new Date().toISOString();
-  const publishedAtInput = String(formData.get('published_at') || '').trim();
 
   return {
-    title,
+    title: input.title,
     slug,
-    description: String(formData.get('description') || '').trim() || null,
-    content: String(formData.get('content') || '').trim() || null,
-    cover_image: String(formData.get('cover_image') || '').trim() || null,
-    author: String(formData.get('author') || '').trim() || 'Huitai Engineering Team',
-    read_time: cleanReadTime(formData.get('read_time')),
-    status,
-    published_at: status === 'published' ? (publishedAtInput || now) : null,
+    description: input.description || null,
+    content: input.content || null,
+    cover_image: input.coverImage || null,
+    author: input.author || 'Huitai Engineering Team',
+    read_time: input.readTime,
+    status: input.status,
+    published_at: input.status === 'published' ? (input.publishedAt || now) : null,
   };
 }
 
 export async function createArticle(formData: FormData) {
+  const { supabase } = await requireAdmin();
   const payload = getArticlePayload(formData);
-  if (!payload.title || !payload.slug) return;
-
-  const supabase = await createClient();
   const { data, error } = await supabase
     .from('articles')
     .insert(payload)
     .select('id')
     .single();
 
-  if (error) {
-    throw new Error(error.message);
-  }
+  assertMutationSucceeded(error);
+  if (!data?.id) throw new AdminActionError('MUTATION_FAILED');
 
   revalidatePath('/admin/knowledge');
   revalidatePath('/knowledge');
@@ -57,21 +75,15 @@ export async function createArticle(formData: FormData) {
 }
 
 export async function updateArticle(formData: FormData) {
-  const id = String(formData.get('id') || '');
-  if (!id) return;
-
+  const { supabase } = await requireAdmin();
+  const { id } = parseAdminInput(articleIdSchema.safeParse({ id: formString(formData, 'id') }));
   const payload = getArticlePayload(formData);
-  if (!payload.title || !payload.slug) return;
-
-  const supabase = await createClient();
   const { error } = await supabase
     .from('articles')
     .update(payload)
     .eq('id', id);
 
-  if (error) {
-    throw new Error(error.message);
-  }
+  assertMutationSucceeded(error);
 
   revalidatePath('/admin/knowledge');
   revalidatePath(`/admin/knowledge/${id}/edit`);
@@ -82,15 +94,10 @@ export async function updateArticle(formData: FormData) {
 }
 
 export async function deleteArticle(formData: FormData) {
-  const id = String(formData.get('id') || '');
-  if (!id) return;
-
-  const supabase = await createClient();
+  const { supabase } = await requireAdmin();
+  const { id } = parseAdminInput(articleIdSchema.safeParse({ id: formString(formData, 'id') }));
   const { error } = await supabase.from('articles').delete().eq('id', id);
-
-  if (error) {
-    throw new Error(error.message);
-  }
+  assertMutationSucceeded(error);
 
   revalidatePath('/admin/knowledge');
   revalidatePath('/knowledge');

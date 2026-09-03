@@ -1,34 +1,9 @@
-﻿import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
 import ConfirmSubmitButton from '../../components/ConfirmSubmitButton';
-
-async function togglePublish(formData: FormData) {
-  'use server';
-  const supabase = await createClient();
-  const id = formData.get('id') as string;
-  const is_published = formData.get('is_published') === 'true';
-  const admin_response = formData.get('admin_response') as string;
-  await supabase.from('feedback_messages').update({
-    is_published: !is_published,
-    admin_response: admin_response || null,
-    published_at: !is_published ? new Date().toISOString() : null,
-  }).eq('id', id);
-  redirect('/admin/feedback');
-}
-
-async function deleteFeedback(formData: FormData) {
-  'use server';
-  const supabase = await createClient();
-  const id = String(formData.get('id') || '');
-  if (id) {
-    await supabase.from('feedback_messages').delete().eq('id', id);
-    revalidatePath('/admin/feedback');
-  }
-}
+import { deleteFeedback, togglePublish } from './actions';
+import { requireAdminPage } from '@/lib/admin/require-admin-page';
 
 export default async function FeedbackPage() {
-  const supabase = await createClient();
+  const { supabase } = await requireAdminPage();
   const { data: messages } = await supabase.from('feedback_messages').select('*').order('created_at', { ascending: false });
 
   return (

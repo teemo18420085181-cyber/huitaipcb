@@ -1,6 +1,8 @@
-﻿import { createClient } from '@/lib/supabase/server';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { updateOrder } from '../actions';
+import { requireAdminPage } from '@/lib/admin/require-admin-page';
+import { getOrderImageDisplayUrls } from '@/lib/admin/order-images';
 
 const statusMap: Record<string, { label: string; color: string }> = {
   pending: { label: '待处理', color: 'bg-yellow-100 text-yellow-700' },
@@ -10,29 +12,12 @@ const statusMap: Record<string, { label: string; color: string }> = {
   cancelled: { label: '已取消', color: 'bg-red-100 text-red-600' },
 };
 
-async function updateOrder(formData: FormData) {
-  'use server';
-  const supabase = await createClient();
-  const id = formData.get('id') as string;
-  await supabase.from('orders').update({
-    status: formData.get('status'),
-    product_name: formData.get('product_name'),
-    quantity: parseInt(formData.get('quantity') as string) || 0,
-    board_amount: parseFloat(formData.get('board_amount') as string) || 0,
-    bom_amount: parseFloat(formData.get('bom_amount') as string) || 0,
-    unit_price: parseFloat(formData.get('unit_price') as string) || 0,
-    total_amount: parseFloat(formData.get('total_amount') as string) || 0,
-    notes: formData.get('notes'),
-  }).eq('id', id);
-  redirect(`/admin/orders/${id}`);
-}
-
 export default async function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const supabase = await createClient();
+  const { supabase } = await requireAdminPage();
   const { data: o } = await supabase.from('orders').select('*').eq('id', id).single();
   if (!o) notFound();
-  const images = [o.image_1, o.image_2, o.image_3].filter(Boolean);
+  const images = await getOrderImageDisplayUrls([o.image_1, o.image_2, o.image_3]);
 
   return (
     <div className="p-8 max-w-5xl">

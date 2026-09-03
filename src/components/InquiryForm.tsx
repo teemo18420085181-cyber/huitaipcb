@@ -3,6 +3,20 @@
 import { useState, useRef } from 'react';
 import { Upload, X, FileText, CheckCircle, Loader2 } from 'lucide-react';
 import { trackEvent } from '@/components/Analytics';
+import {
+  clearIdempotencyKey,
+  getOrCaptureAttribution,
+  getOrCreateIdempotencyKey,
+  resolveGaIdentifiers,
+  type GtagGetter,
+} from '@/lib/analytics/attribution';
+import {
+  getInquirySuccessCopy,
+  isSuccessfulInquiryResponse,
+  shouldClearIdempotencyKey,
+  type InquiryFormLocale,
+  type SuccessfulInquiry,
+} from '@/lib/inquiry/client-response';
 
 function getQuantityRange(quantity: FormDataEntryValue | null) {
   const value = typeof quantity === 'string' ? quantity : '';
@@ -18,14 +32,14 @@ function getQuantityRange(quantity: FormDataEntryValue | null) {
   return '1000+';
 }
 
-type InquiryFormLocale = 'en' | 'de';
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || process.env.NEXT_PUBLIC_GA_ID;
 
 const FORM_COPY = {
   en: {
     pagePath: '/contact',
     successTitle: 'Thank you!',
-    successBody: "We've received your inquiry and a confirmation email is on its way. Our reply target is within",
-    successTime: '24 hours on business days after we receive your RFQ details and available files',
+    successBody: "We've received your inquiry and a confirmation email is on its way. We typically respond within 1 business day.",
+    successTime: '',
     networkError: 'Network error. Please try again.',
     errorFallback: 'Something went wrong. Please try again.',
     eyebrow: 'QUICK RFQ',
@@ -97,7 +111,7 @@ export default function InquiryForm({ locale = 'en' }: { locale?: InquiryFormLoc
   const copy = FORM_COPY[locale];
   const [files, setFiles] = useState<File[]>([]);
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [submissionResult, setSubmissionResult] = useState<SuccessfulInquiry | null>(null);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formStartedRef = useRef(false);
@@ -106,7 +120,12 @@ export default function InquiryForm({ locale = 'en' }: { locale?: InquiryFormLoc
   const handleFormFocus = () => {
     if (formStartedRef.current) return;
     formStartedRef.current = true;
-    trackEvent('form_start', { page_path: copy.pagePath, form_name: 'rfq_contact_form' });
+    getOrCreateIdempotencyKey(window.sessionStorage);
+    getOrCaptureAttribution(
+      window.sessionStorage,
+      window.location.href,
+      document.referrer
+    );
     trackEvent('rfq_form_start', { page_path: copy.pagePath, form_name: 'rfq_contact_form' });
   };
 
@@ -145,6 +164,20 @@ export default function InquiryForm({ locale = 'en' }: { locale?: InquiryFormLoc
 
     const formData = new FormData(e.currentTarget);
     files.forEach((f) => formData.append('files', f));
+    const idempotencyKey = getOrCreateIdempotencyKey(window.sessionStorage);
+    const acquisition = getOrCaptureAttribution(
+      window.sessionStorage,
+      window.location.href,
+      document.referrer
+    );
+    const gaIdentifiers = await resolveGaIdentifiers(
+      GA_ID,
+      window.gtag as GtagGetter | undefined
+    );
+    formData.set('idempotency_key', idempotencyKey);
+    for (const [key, value] of Object.entries({ ...acquisition, ...gaIdentifiers })) {
+      if (value) formData.set(key, value);
+    }
     const projectType = formData.get('project_type');
     const quantity = formData.get('quantity');
     const projectTypeParam = typeof projectType === 'string' && projectType.trim() ? projectType.trim().slice(0, 80) : 'unspecified';
@@ -163,56 +196,53 @@ export default function InquiryForm({ locale = 'en' }: { locale?: InquiryFormLoc
         method: 'POST',
         body: formData,
       });
-      const data = await res.json();
+      const data: unknown = await res.json().catch(() => ({}));
       if (!res.ok) {
-        setError(data.error || copy.errorFallback);
+        const message = data && typeof data === 'object' && 'error' in data
+          && typeof data.error === 'string'
+          ? data.error
+          : copy.errorFallback;
+        setError(message);
         setSubmitting(false);
         return;
       }
-      setSubmitted(true);
-      void trackEvent('contact_form_submit', {
-        page_path: copy.pagePath,
-        form_name: 'rfq_contact_form',
-        project_type: projectTypeParam,
-        quantity_range: quantityRange,
-        has_attachment: files.length > 0,
-      });
-      void trackEvent('rfq_submit_success', {
-        page_path: copy.pagePath,
-        form_name: 'rfq_contact_form',
-        project_type: projectTypeParam,
-        quantity_range: quantityRange,
-        has_attachment: files.length > 0,
-      });
-      void trackEvent('generate_lead', {
-        page_path: copy.pagePath,
-        form_name: 'rfq_contact_form',
-        lead_type: 'pcba_quote',
-      });
-    } catch (err) {
+      if (!isSuccessfulInquiryResponse(data)) {
+        setError(copy.errorFallback);
+        setSubmitting(false);
+        return;
+      }
+      if (shouldClearIdempotencyKey(data)) {
+        clearIdempotencyKey(window.sessionStorage);
+      }
+      setSubmissionResult(data);
+    } catch {
       setError(copy.networkError);
       setSubmitting(false);
     }
   };
 
-  if (submitted) {
+  if (submissionResult) {
+    const successCopy = getInquirySuccessCopy(submissionResult, locale);
     return (
       <div className="bg-cc-carbon-2 border border-cc-line rounded-2xl p-12 text-center" translate="no">
         <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-cc-signal/20 flex items-center justify-center">
           <CheckCircle size={32} className="text-cc-signal" strokeWidth={2.5} />
         </div>
         <h2 className="text-2xl font-semibold text-cc-ink mb-2">
-          {copy.successTitle}
+          {successCopy.title}
         </h2>
         <p className="text-cc-ink-mute leading-relaxed max-w-[480px] mx-auto">
-          {copy.successBody}
-          {copy.successTime && (
-            <>
-              {' '}
-              <strong>{copy.successTime}</strong>.
-            </>
-          )}
+          {successCopy.body}
         </p>
+        {successCopy.warnings.length > 0 && (
+          <ul className="mt-5 space-y-2 text-left text-sm text-amber-200" role="alert">
+            {successCopy.warnings.map((item) => (
+              <li key={item} className="rounded-lg border border-amber-400/30 bg-amber-400/10 px-4 py-3">
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     );
   }

@@ -19,7 +19,11 @@ returns boolean as $$
   select exists (
     select 1 from public.admin_users where user_id = auth.uid()
   );
-$$ language sql security definer stable;
+$$ language sql security definer stable
+set search_path = public;
+
+revoke all on function public.is_admin() from public;
+grant execute on function public.is_admin() to anon, authenticated, service_role;
 
 -- ────────────────────────────────────────────────────
 --  inquiries — 只有管理员能读写

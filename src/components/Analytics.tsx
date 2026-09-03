@@ -3,6 +3,7 @@
 import Script from 'next/script';
 import { useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
+import { getOrCaptureAttribution } from '@/lib/analytics/attribution';
 
 type EventParamValue = string | number | boolean;
 export type EventParams = Record<string, EventParamValue>;
@@ -20,11 +21,6 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || process.env.NEXT_PUBL
 function getPagePath() {
   if (typeof window === 'undefined') return '';
   return `${window.location.pathname}${window.location.search}`;
-}
-
-function getPageTitle() {
-  if (typeof document === 'undefined') return '';
-  return document.title || '';
 }
 
 function isDebugModeEnabled() {
@@ -87,6 +83,14 @@ export default function Analytics() {
   const initialPathRef = useRef<string | null>(null);
 
   useEffect(() => {
+    getOrCaptureAttribution(
+      window.sessionStorage,
+      window.location.href,
+      document.referrer
+    );
+  }, [pathname]);
+
+  useEffect(() => {
     if (!gaId) return;
     const query = window.location.search.replace(/^\?/, '');
     const pagePath = query ? `${pathname}?${query}` : pathname;
@@ -99,17 +103,6 @@ export default function Analytics() {
     window.gtag?.('config', gaId, {
       page_path: pagePath,
       ...(isDebugModeEnabled() ? { debug_mode: true } : {}),
-    });
-  }, [gaId, pathname]);
-
-  useEffect(() => {
-    if (!gaId) return;
-
-    if (pathname !== '/contact') return;
-
-    void trackEvent('contact_page_view', {
-      page_path: '/contact',
-      page_title: getPageTitle(),
     });
   }, [gaId, pathname]);
 

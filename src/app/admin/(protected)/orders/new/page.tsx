@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { createBrowserClient } from '@supabase/ssr';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { createOrder } from '../actions';
+import { uploadOrderImage } from '@/lib/admin/order-image-model';
 
 const statusMap = [
   { value: 'pending', label: '待处理' },
@@ -32,12 +34,7 @@ export default function NewOrderPage() {
   }
 
   async function uploadImage(file: File) {
-    const ext = file.name.split('.').pop();
-    const path = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-    const { error } = await supabase.storage.from('order-images').upload(path, file);
-    if (error) throw error;
-    const { data } = supabase.storage.from('order-images').getPublicUrl(path);
-    return data.publicUrl;
+    return uploadOrderImage(supabase, file, crypto.randomUUID());
   }
 
   async function handleSubmit() {
@@ -47,19 +44,15 @@ export default function NewOrderPage() {
       const imageUrls = await Promise.all(
         images.map(img => img ? uploadImage(img) : Promise.resolve(null))
       );
-      const { error } = await supabase.from('orders').insert({
-        ...form,
-        quantity: form.quantity ? parseInt(form.quantity) : 0,
-        board_amount: form.board_amount ? parseFloat(form.board_amount) : 0,
-        bom_amount: form.bom_amount ? parseFloat(form.bom_amount) : 0,
-        unit_price: form.unit_price ? parseFloat(form.unit_price) : 0,
-        total_amount: form.total_amount ? parseFloat(form.total_amount) : 0,
-        image_1: imageUrls[0], image_2: imageUrls[1], image_3: imageUrls[2],
-      });
-      if (error) throw error;
+      const formData = new FormData();
+      for (const [key, value] of Object.entries(form)) formData.set(key, value);
+      formData.set('image_1', imageUrls[0] || '');
+      formData.set('image_2', imageUrls[1] || '');
+      formData.set('image_3', imageUrls[2] || '');
+      await createOrder(formData);
       router.push('/admin/orders');
-    } catch (e: any) {
-      alert('保存失败：' + e.message);
+    } catch {
+      alert('保存失败，请检查输入后重试。');
     } finally {
       setSaving(false);
     }
@@ -167,7 +160,7 @@ export default function NewOrderPage() {
                   <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-200 rounded-lg cursor-pointer hover:border-blue-400 transition">
                     <span className="text-2xl mb-1">📷</span>
                     <span className="text-xs text-gray-400">点击上传</span>
-                    <input type="file" accept="image/*" className="hidden"
+                    <input type="file" accept="image/jpeg,image/png,image/webp" className="hidden"
                       onChange={e => { const arr = [...images]; arr[i] = e.target.files?.[0] || null; setImages(arr); }} />
                   </label>
                 )}

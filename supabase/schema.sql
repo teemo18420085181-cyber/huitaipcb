@@ -26,6 +26,42 @@ create table if not exists public.inquiries (
   status text not null default 'new' check (status in ('new','reviewing','quoted','in_progress','completed','closed','spam')),
   source text default 'website',
 
+  -- 渠道归因（数据库记录是询盘对账的权威证据）
+  page_path text,
+  landing_page text,
+  referrer text,
+  utm_source text,
+  utm_medium text,
+  utm_campaign text,
+  utm_term text,
+  utm_content text,
+  ga_client_id text,
+  ga_session_id text,
+
+  -- 幂等和第三方副作用状态（NULL 表示历史记录结果未知）
+  idempotency_key uuid,
+  analytics_event_id uuid,
+  files_status text check (files_status is null or files_status in ('not_required','pending','saved','partial','failed')),
+  files_expected_count integer,
+  files_saved_count integer,
+  admin_email_status text check (admin_email_status is null or admin_email_status in ('pending','sent','failed','skipped_unconfigured')),
+  admin_email_message_id text,
+  admin_email_sent_at timestamptz,
+  customer_email_status text check (customer_email_status is null or customer_email_status in ('pending','sent','failed','skipped_unconfigured')),
+  customer_email_message_id text,
+  customer_email_sent_at timestamptz,
+  analytics_status text check (analytics_status is null or analytics_status in ('pending','sent','failed','skipped_unconfigured')),
+  analytics_sent_at timestamptz,
+  analytics_attempt_count integer not null default 0 check (analytics_attempt_count >= 0),
+  analytics_last_attempt_at timestamptz,
+  analytics_last_error_code text,
+  analytics_retry_state text check (analytics_retry_state is null or analytics_retry_state in ('not_needed','safe','manual_review')),
+  check (
+    (files_expected_count is null or files_expected_count >= 0)
+    and (files_saved_count is null or files_saved_count >= 0)
+    and (files_expected_count is null or files_saved_count is null or files_saved_count <= files_expected_count)
+  ),
+
   -- 内部跟进字段
   assigned_to uuid references auth.users(id),
   internal_notes text,
@@ -39,6 +75,13 @@ create table if not exists public.inquiries (
 create index if not exists idx_inquiries_status on public.inquiries(status);
 create index if not exists idx_inquiries_created on public.inquiries(created_at desc);
 create index if not exists idx_inquiries_email on public.inquiries(email);
+create unique index if not exists idx_inquiries_idempotency_key_unique on public.inquiries(idempotency_key) where idempotency_key is not null;
+create unique index if not exists idx_inquiries_analytics_event_id_unique on public.inquiries(analytics_event_id) where analytics_event_id is not null;
+
+comment on column public.inquiries.analytics_status is
+  'sent means the Measurement Protocol request returned HTTP 2xx; it does not confirm GA4 report appearance or session attribution. NULL means legacy outcome unknown.';
+comment on column public.inquiries.analytics_attempt_count is
+  'For rows with NULL analytics_status, the legacy analytics outcome remains unknown regardless of this counter value.';
 
 -- ────────────────────────────────────────────────────
 --  inquiry_files — 询盘附件

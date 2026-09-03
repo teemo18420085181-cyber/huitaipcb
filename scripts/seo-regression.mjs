@@ -10,6 +10,9 @@ const hero = read('src/components/Hero.tsx');
 const homeFaq = read('src/components/HomeFaq.tsx');
 const homePage = readEnglishRoute('page.tsx');
 const inquiryForm = read('src/components/InquiryForm.tsx');
+const analytics = read('src/components/Analytics.tsx');
+const inquiryRoute = read('src/app/api/inquiry/route.ts');
+const serverAnalytics = read('src/lib/analytics/server.ts');
 const brandLogo = read('src/components/BrandLogo.tsx');
 const nav = read('src/components/Nav.tsx');
 const footer = read('src/components/Footer.tsx');
@@ -174,8 +177,14 @@ const checks = [
     layout.includes('<Analytics />') &&
       !layout.includes('<JsonLd />') &&
       homePage.includes('<JsonLd />') &&
-      inquiryForm.includes("trackEvent('contact_form_submit'"),
-    'Analytics and form tracking must remain wired while entity schema moves from the global layout to the homepage.',
+      analytics.includes('getOrCaptureAttribution(') &&
+      inquiryForm.includes("trackEvent('rfq_form_start'") &&
+      inquiryRoute.includes('processInquiry(') &&
+      serverAnalytics.includes("name: 'generate_lead'") &&
+      !['contact_form_submit', 'rfq_submit_success', 'generate_lead'].some((eventName) =>
+        inquiryForm.includes(`trackEvent('${eventName}'`),
+      ),
+    'Analytics must capture attribution, retain RFQ diagnostics, and emit the only lead-success event from the server-confirmed inquiry path.',
   ],
   [
     robots.includes("sitemap: 'https://huitaipcb.com/sitemap.xml'") &&

@@ -1,55 +1,12 @@
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import { createClient, createServiceClient } from '@/lib/supabase/server';
+import { requireAdminPage } from '@/lib/admin/require-admin-page';
 import {
   getInquiryStatusColor,
   getInquiryStatusLabel,
   INQUIRY_STATUSES,
   normalizeInquiryStatus,
 } from '@/lib/admin/inquiries';
-
-async function updateInquiry(formData: FormData) {
-  'use server';
-
-  const supabase = await createClient();
-  const id = String(formData.get('id') || '');
-  const requestedStatus = normalizeInquiryStatus(String(formData.get('status') || 'new'));
-  const internalNotes = String(formData.get('internal_notes') || '').trim() || null;
-  const now = new Date().toISOString();
-
-  const payload = {
-    status: requestedStatus,
-    internal_notes: internalNotes,
-    updated_at: now,
-  };
-
-  const { error } = await supabase.from('inquiries').update(payload).eq('id', id);
-
-  if (error && requestedStatus === 'following') {
-    await supabase
-      .from('inquiries')
-      .update({ ...payload, status: 'reviewing' })
-      .eq('id', id);
-  }
-
-  redirect(`/admin/inquiries/${id}`);
-}
-
-async function archiveInquiry(formData: FormData) {
-  'use server';
-
-  const supabase = await createClient();
-  const id = String(formData.get('id') || '');
-  await supabase
-    .from('inquiries')
-    .update({
-      status: 'closed',
-      updated_at: new Date().toISOString(),
-    })
-    .eq('id', id);
-
-  redirect('/admin/inquiries');
-}
+import { archiveInquiry, updateInquiry } from '../actions';
 
 function formatSize(bytes?: number | null) {
   if (!bytes) return '-';
@@ -69,7 +26,7 @@ function Field({ label, value }: { label: string; value?: string | null }) {
 
 export default async function InquiryDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const supabase = createServiceClient();
+  const { supabase } = await requireAdminPage();
   const { data: inquiry } = await supabase
     .from('inquiries')
     .select('*')

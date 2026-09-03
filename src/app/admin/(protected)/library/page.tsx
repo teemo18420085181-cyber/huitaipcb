@@ -1,8 +1,8 @@
-﻿import { createClient } from '@/lib/supabase/server';
 import LibraryClient from './LibraryClient';
+import { requireAdminPage } from '@/lib/admin/require-admin-page';
 
 export default async function LibraryPage() {
-  const supabase = await createClient();
+  const { supabase } = await requireAdminPage();
   const { data: files } = await supabase
     .from('library_files')
     .select('*')
