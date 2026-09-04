@@ -614,56 +614,90 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     category: 'Decision Guide',
     categoryColor: 'bg-cc-signal/10 text-cc-signal border-cc-signal/20',
     title: 'Prototype PCB Assembly vs Low-Volume PCBA Production',
-    excerpt: 'Understand how prototype validation leads into low-volume PCBA production with stable files, BOM sourcing, testing, packaging, and delivery planning.',
+    excerpt: 'A buyer decision guide for moving from prototype validation to controlled low-volume PCBA using stable revisions, BOM data, firmware, testing, and acceptance criteria.',
     image: '/factory/real-aoi-op.jpg',
-    readTime: '8 min read',
-    metaDescription: 'Compare prototype PCBA and low-volume production for sourcing, testing, repeatability, packaging, and small-batch planning.',
+    readTime: '10 min read',
+    metaDescription: 'Compare prototype PCB assembly with low-volume PCBA and use revision, BOM, firmware, testing and acceptance criteria to judge production readiness.',
+    updatedAt: '2026-09-04',
+    cta: {
+      primary: { label: 'Send Gerber & BOM for Manufacturing Review', href: '/contact#project-files' },
+      secondary: { label: 'Explore Low-Volume PCB Assembly', href: '/low-volume-pcba-assembly' },
+    },
     sections: [
       {
-        heading: 'Quick answer',
+        heading: 'Quick Answer',
         body: [
-          'Prototype PCB assembly is used to validate the design, BOM, assembly process, and test method before a project moves into low-volume PCBA production. Low-volume builds usually need more stable PCB files, a confirmed BOM, repeatable assembly notes, agreed inspection and functional testing, and packaging or delivery planning for small batches such as 50, 100, 500, or 1000 pieces.',
+          'Prototype PCB assembly is intended for design validation, engineering feedback, and first-article learning. Low-volume PCBA is better suited to a design that is sufficiently stable for repeatable small-batch production. The transition should be judged by revision control, BOM readiness, critical manufacturer part numbers (MPNs), CPL or pick-and-place data, assembly instructions, firmware, programming, the test method, and acceptance criteria.',
+          'Quantity alone does not determine whether a project is still a prototype or ready for low-volume production. A 50-piece build may already require controlled low-volume processes, while another project may still be undergoing engineering validation at the same quantity. Board complexity, BOM availability, component cost, assembly complexity, testing requirements, firmware maturity, revision stability, project maturity, and buyer requirements all affect the appropriate manufacturing stage.',
         ],
       },
       {
-        heading: 'Prototype PCB assembly',
+        heading: 'Prototype vs Low-Volume Decision Matrix',
         body: [
-          '[Prototype PCB assembly](/prototype-pcb-assembly) focuses on early validation. Quantities are usually small, sometimes starting from only a few boards, and engineers expect revisions after testing.',
-          'The prototype stage checks whether the PCB files, BOM, footprint choices, polarity notes, and test approach are practical before money is spent on larger batches. It is also where DFM/DFA questions and BOM availability issues should be found.',
+          'Use this matrix as a project-planning guide, not as a universal release standard. A project can sit between the two columns when some inputs are controlled and others still need engineering validation.',
+          '| Decision area | Prototype assembly | Low-volume PCBA production |\n| --- | --- | --- |\n| Design revision | Still being validated | Controlled and substantially stable |\n| Gerber status | May change after first-article feedback | Latest fabrication package confirmed for the batch |\n| BOM status | May still change as design and sourcing decisions are validated | Stable enough for repeat builds and purchasing |\n| Critical MPNs | Some selections may still be under review | Exact critical MPNs confirmed for the released BOM |\n| Approved alternatives | May be proposed or validated during engineering work | Approved options and their conditions are documented |\n| CPL / Pick-and-Place | Checked against the current prototype revision | Confirmed against the released Gerber, BOM, and assembly side |\n| Assembly instructions | May be refined after observing the first build | Controlled instructions define polarity, orientation, and special operations |\n| Firmware | Bring-up or validation stage | Version-controlled and stable enough for repeatable programming and testing |\n| Testing method | May still be exploratory | Defined, repeatable, and supported by the required fixture or software |\n| Acceptance criteria | May be developed from prototype results | Defined well enough for consistent pass/fail decisions |\n| Primary objective | Find design, assembly, firmware, or test issues | Produce consistent small batches using controlled inputs |\n| Expected changes after build | Revisions may be expected when evidence justifies them | Changes should follow review, approval, and controlled release |',
         ],
       },
       {
-        heading: 'From prototype PCBA to low-volume production',
+        heading: 'How Production Priorities Change at 50, 100 and 500 Pieces',
         body: [
-          'A project should move from prototype to [low-volume PCBA assembly](/low-volume-pcba-assembly) after the board function is validated, the BOM is stable, critical components are available, and the test method is clear. Typical small-batch projects may be 50, 100, 500, or 1000 pieces depending on the product and demand plan.',
-          'Low-volume production is not just a larger prototype order. It needs repeatable sourcing, SMT/DIP assembly instructions, AOI or visual inspection, functional test scope where required, packaging, and delivery details that can be repeated across batches.',
+          'The following quantities are typical scenarios and planning examples, not fixed industry thresholds. They illustrate how the effect of unclear files, uncontrolled changes, and non-repeatable testing can grow as more boards share the same production inputs.',
+          '### 50 pieces: a typical planning scenario\n\nAt 50 pieces, prototype validation may already be complete and the project may need controlled low-volume processes. BOM availability becomes more important because one missing component can affect the whole build. Programming and testing should begin to use a repeatable method, and setup costs are spread across more boards than in a very small engineering run. However, a 50-piece build may still be an engineering validation lot when the PCB, firmware, test method, or product requirements remain open.',
+          '### 100 pieces: stronger control becomes more important\n\nAt 100 pieces, revision control, purchasing discipline, customer-approved alternatives, repeatable inspection, stable programming, and consistent production documents typically deserve more attention. A mismatch between the Gerber, BOM, CPL, assembly drawing, firmware, or test instruction can affect the complete lot. One hundred pieces does not automatically mean mass production; the project can still be low-volume or engineering-led depending on its maturity and purpose.',
+          '### 500 pieces: repeat-batch planning matters\n\nAt 500 pieces, BOM continuity, batch identification where applicable, approved substitutions, test throughput, packaging requirements, change control, and repeat-order planning can have a larger operational effect. For many electronic products, 500 pieces may still be low-volume production. The appropriate controls depend on board and assembly complexity, the BOM, firmware, testing, traceability needs, packaging, and buyer requirements rather than the number alone.',
         ],
       },
       {
-        heading: 'Prototype stage vs low-volume stage',
+        heading: 'Is Your PCB Ready for Low-Volume Production?',
         body: [
-          '| Area | Prototype stage | Low-volume stage |\n| --- | --- | --- |\n| Main goal | Validate design and assembly feasibility | Build repeatable small batches after validation |\n| Quantity | Small engineering samples | Commonly 50, 100, 500, or 1000 pcs type projects |\n| BOM | May still change after testing | Should be stable, with approved alternatives if needed |\n| PCB files | May require revision after feedback | Should be verified and controlled by revision |\n| Assembly focus | Find polarity, footprint, and DFM/DFA issues | Repeatable SMT/DIP process and yield control |\n| Testing | Confirm the test method and acceptance criteria | Apply agreed AOI, visual inspection, or functional test scope |\n| Delivery | Engineering samples | Packed boards for pilot, field trial, or small-batch use |',
+          'A project is typically closer to low-volume readiness when the critical production inputs are sufficiently stable for the intended batch. Adapt this decision gate to the product, risk, validation plan, and buyer requirements.',
+          '- [ ] PCB revision is controlled\n- [ ] Latest Gerber and drill package is confirmed\n- [ ] BOM is sufficiently stable for the planned build\n- [ ] Critical MPNs and required suffixes are confirmed\n- [ ] Customer-approved alternatives and their conditions are documented\n- [ ] CPL or pick-and-place data matches the released files\n- [ ] Assembly drawing and special assembly instructions are confirmed\n- [ ] Polarity, orientation, and reference-designator questions are reviewed\n- [ ] Firmware version is controlled\n- [ ] Programming file, interface, and method are defined where required\n- [ ] Functional test method and required fixture or software are defined\n- [ ] Acceptance criteria and pass/fail decisions are sufficiently clear\n- [ ] Open prototype issues are closed or explicitly accepted',
+          'If several critical items continue to change, another prototype or engineering build may be the better next step. Passing every item does not automatically create a universal production release; the supplier and buyer should still review the requirements that apply to the actual project.',
         ],
       },
       {
-        heading: 'What should be stable before small batch PCBA?',
+        heading: 'What May Still Change During Prototype Validation?',
         body: [
-          'Before ordering a small batch, confirm the production Gerber files, drill data, BOM, pick-and-place file, assembly drawing, revision number, and any customer-approved component alternatives. A stable BOM is especially important because a last-minute part change can affect footprint, firmware behavior, testing, or cost.',
-          'The same supplier can often carry context from prototype into low-volume production. That reduces repeated file review, keeps sourcing decisions visible, and helps the test scope remain consistent from the first samples to the next batch.',
-          'Compute-intensive products also need the power, thermal, BGA, programming, and traceability controls described in the [edge AI prototype-to-low-volume checklist](/knowledge/edge-ai-device-pcba-manufacturing).',
+          'The main purpose of a prototype is to validate assumptions and discover issues, not to guarantee immediate repeat-batch consistency. Depending on what the first build reveals, a team may update:',
+          '- PCB layout or fabrication notes\n- component selection or exact MPN\n- firmware and programming inputs\n- functional test steps or expected results\n- assembly notes and polarity instructions\n- mechanical fit and enclosure clearances\n- connector position or orientation\n- power-up, current, thermal, or reset behavior\n- communication interfaces, drivers, or configuration',
+          'Not every prototype requires repeated revision. When the design still needs validation or the first-article results leave critical questions open, review the existing [Prototype PCB Assembly service](/prototype-pcb-assembly) rather than treating a larger quantity as proof of production readiness.',
         ],
       },
       {
-        heading: 'Inspection, testing, packaging, and delivery',
+        heading: 'What Should Be Controlled in Low-Volume Production?',
         body: [
-          'Prototype boards may receive focused engineering checks, while low-volume production should define a repeatable inspection and testing plan. That can include AOI, visual inspection, basic power checks, or functional testing when the customer provides the method, firmware, fixture, or acceptance criteria.',
-          'Packaging and delivery also matter more after prototype validation. Boards for industrial electronics, IoT devices, test equipment, and custom hardware should be packed and labeled so the receiving team can identify revision, quantity, and handling requirements. See our [quality and testing process](/quality) for the inspection scope that can be discussed before production.',
+          'Low-volume PCBA should use sufficiently stable, identifiable inputs so the intended small batch can be assembled, programmed, inspected, and tested consistently. Depending on the project, control:',
+          '- Gerber and drill revision\n- BOM revision and exact critical MPNs\n- CPL or pick-and-place revision\n- assembly drawing and special instructions\n- customer-approved substitutes and approval conditions\n- firmware version and programming file\n- programming interface and procedure\n- testing instruction, fixture, and software\n- acceptance criteria and permitted disposition\n- packaging, labeling, and handling requirements where relevant',
+          'This transition guide explains why controlled inputs matter; it does not replace a full supply-continuity review or substitution analysis. Use the separate [BOM Risk and Component Availability guide](/knowledge/bom-risk-alternative-component-sourcing) for continuity questions and the [Alternative Component Approval guide](/knowledge/bom-alternatives-pcba-sourcing) for technical comparison and customer authorization.',
+          'When the design and manufacturing inputs are sufficiently stable, explore the existing [Low-Volume PCB Assembly service](/low-volume-pcba-assembly) for a controlled small-batch review.',
+        ],
+      },
+      {
+        heading: 'Prototype to Low-Volume Transition Workflow',
+        body: [
+          'The transition is usually an evidence-and-control decision rather than a single quantity milestone. A practical workflow is:',
+          '1. **Prototype build:** assemble the current controlled engineering revision.\n2. **Inspect, program, and test:** use the available manufacturing checks, firmware, test method, and acceptance evidence.\n3. **Issues found?**\n   - **Yes:** update the PCB, BOM, firmware, assembly instructions, or test method as appropriate. Release a new controlled revision and prototype again when the unresolved risk justifies it.\n   - **No, or the remaining issues are acceptable:** document the accepted result and the decisions that carry into the next build.\n4. **Freeze critical production inputs:** confirm the Gerber, BOM, CPL, assembly drawing, approved alternatives, firmware, and programming files for the intended batch.\n5. **Define repeatable testing:** align the test instruction, fixture or software, expected results, and acceptance criteria.\n6. **Move to low-volume production when appropriate:** release the controlled small-batch scope and manage later changes through review and revision control.',
+          'The exact number of prototype cycles and the depth of each control may vary with board complexity, product risk, firmware maturity, testing, certification, and buyer requirements.',
+        ],
+      },
+      {
+        heading: 'Keep Cost, BOM Risk, and Testing in Their Own Decisions',
+        body: [
+          'Production stage and production cost are related but separate decisions. Setup, placement count, manual assembly, components, testing, fixtures, quantity, and packaging are explained in the dedicated [PCBA assembly cost guide](/knowledge/how-much-does-pcba-assembly-cost). This page does not use price or unit cost as the definition of prototype or low-volume readiness.',
+          'Testing is also project-specific. A low-volume release should define a repeatable method and acceptance boundary, but the applicable inspection and functional coverage depend on the board and buyer inputs. Review the existing [PCBA testing and quality-control scope](/pcba-testing-quality-control) when planning programming, AOI, X-ray, electrical checks, or functional testing.',
+        ],
+      },
+      {
+        heading: 'Choose the Next Manufacturing Path',
+        body: [
+          'Still validating the design? [Explore Prototype PCB Assembly](/prototype-pcb-assembly) for an engineering build focused on first-article feedback and open technical questions.',
+          'Ready for a controlled small-batch build? [Explore Low-Volume PCB Assembly](/low-volume-pcba-assembly) for review of the released files, repeatable assembly inputs, inspection, testing, and packaging scope.',
         ],
       },
       {
         heading: 'FAQ',
         body: [
-          '### When should a project move from prototype to low-volume production?\n\nMove after the prototype validates the electrical function, assembly feasibility, BOM availability, PCB revision, and test method. If the design or BOM is still changing, another prototype review may be safer before small-batch production.\n\n### Can the same supplier handle prototype and low-volume PCBA?\n\nYes. Using the same turnkey PCBA supplier can preserve file history, BOM decisions, approved alternatives, inspection notes, and test requirements from the prototype stage into the next batch.\n\n### What files are needed before small batch PCBA?\n\nSend production Gerber and drill files, BOM with manufacturer part numbers, pick-and-place data, assembly drawing, quantity, revision notes, and test or packaging requirements.\n\n### How can buyers reduce risk before low-volume production?\n\nValidate the prototype first, freeze the BOM where possible, approve alternatives for risky parts, confirm the test method, and agree on packaging and delivery requirements before production starts.\n\n### Why does a stable BOM matter before small batch assembly?\n\nA BOM change can affect cost, availability, footprint compatibility, firmware behavior, and testing. Stable BOM data helps sourcing, SMT preparation, inspection, and repeat production stay aligned.',
+          '### When should a project move from prototype to low-volume production?\n\nMove when the design and critical production inputs are sufficiently stable for a repeatable small batch. Review the PCB revision, Gerber, BOM, critical MPNs, CPL, assembly instructions, firmware, programming method, test method, and acceptance criteria together rather than using quantity alone.\n\n### Does 50, 100, or 500 pieces automatically define the production stage?\n\nNo. These quantities are useful planning examples, not fixed industry thresholds. A 50-piece build may already need controlled low-volume processes, while a project at the same quantity may still be validating hardware or firmware. Five hundred pieces can still be low-volume for many products.\n\n### How stable should the BOM be before low-volume PCBA?\n\nThe BOM should be sufficiently stable for purchasing and repeat assembly. Critical MPNs, required suffixes, no-substitute lines, and approved alternatives should be documented for the intended revision. Detailed supply and alternative decisions remain separate reviews.\n\n### What if firmware or functional testing is still changing?\n\nA project may remain in prototype or engineering validation while firmware behavior, programming, test steps, or acceptance criteria are still open. If the remaining changes are understood and controlled, the buyer and supplier can decide whether a limited low-volume build is appropriate.\n\n### Can the same supplier handle prototype and low-volume PCBA?\n\nYes. The same supplier can retain file history, assembly observations, BOM decisions, approved alternatives, programming inputs, inspection notes, and test requirements. The buyer should still identify the exact revision and approved scope for each build.\n\n### What files should be controlled before a small-batch release?\n\nTypically confirm the Gerber and drill package, BOM, CPL or pick-and-place data, assembly drawing, revision notes, approved alternatives, firmware and programming files, test instruction, acceptance criteria, quantity, and relevant packaging requirements.',
         ],
       },
     ],

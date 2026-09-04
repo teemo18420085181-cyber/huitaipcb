@@ -101,6 +101,7 @@ const bomAlternativesArticle = knowledgeArticle('bom-alternatives-pcba-sourcing'
 const pcbaCostArticle = knowledgeArticle('how-much-does-pcba-assembly-cost');
 const pcbAssemblyQuoteArticle = knowledgeArticle('what-determines-pcb-assembly-quote-china');
 const pcbaQuotationChecklistArticle = knowledgeArticle('pcba-quotation-checklist');
+const prototypeVsBatchArticle = knowledgeArticle('prototype-vs-batch-pcb-assembly');
 
 const checks = [
   [
@@ -587,6 +588,29 @@ const checks = [
       ) &&
       pcbaQuotationChecklistArticle.length < pcbAssemblyQuoteArticle.length,
     'The quotation checklist must be shorter than the explanatory quote guide and lead to the commercial checklist and RFQ.',
+  ],
+  [
+    compact(prototypeVsBatchArticle).includes(
+      "title: 'Prototype PCB Assembly vs Low-Volume PCBA Production'",
+    ) &&
+      prototypeVsBatchArticle.includes("category: 'Decision Guide'") &&
+      prototypeVsBatchArticle.includes('Quantity alone does not determine') &&
+      prototypeVsBatchArticle.includes("heading: 'Prototype vs Low-Volume Decision Matrix'") &&
+      prototypeVsBatchArticle.includes(
+        "heading: 'How Production Priorities Change at 50, 100 and 500 Pieces'",
+      ) &&
+      prototypeVsBatchArticle.includes("heading: 'Is Your PCB Ready for Low-Volume Production?'") &&
+      prototypeVsBatchArticle.includes("heading: 'Prototype to Low-Volume Transition Workflow'") &&
+      [
+        '/prototype-pcb-assembly',
+        '/low-volume-pcba-assembly',
+        '/knowledge/bom-risk-alternative-component-sourcing',
+        '/knowledge/bom-alternatives-pcba-sourcing',
+        '/knowledge/how-much-does-pcba-assembly-cost',
+        '/pcba-testing-quality-control',
+        '/contact#project-files',
+      ].every((href) => prototypeVsBatchArticle.includes(`](${href})`) || prototypeVsBatchArticle.includes(`href: '${href}'`)),
+    'The prototype-vs-low-volume guide must own transition decisions, reject quantity-only thresholds, and route adjacent intents to their canonical owners.',
   ],
   [
     [
