@@ -17,11 +17,12 @@ export default function FinalCTA() {
           START YOUR PCBA QUOTE
         </div>
         <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-[46px]">
-          Send the files and requirements that define your build.
+          Start Your Custom PCBA Project
         </h2>
         <p className="mx-auto mt-4 max-w-[650px] text-[15px] leading-7 text-cc-ink-mute">
-          Share your Gerber, BOM, quantity, project stage, and testing needs. Huitai will
-          review the available information and follow up on the confirmed turnkey PCBA scope.
+          Send your Gerber files, BOM, quantity, assembly requirements and testing needs. Huitai
+          will review the available information and confirm the manufacturing scope before
+          quotation.
         </p>
 
         <div className="mx-auto mt-8 grid max-w-[820px] gap-2 sm:grid-cols-2 lg:grid-cols-4">

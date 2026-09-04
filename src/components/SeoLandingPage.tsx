@@ -4,6 +4,7 @@ import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import TrackedLink from '@/components/TrackedLink';
 import type { SeoLandingPage as SeoLandingPageData } from '@/lib/content/seoPages';
+import type { SeoRichSection } from '@/lib/content/seoPages';
 import { dictionaries } from '@/lib/i18n/dictionary';
 import { absoluteUrl, type Locale } from '@/lib/i18n/routes';
 import { SITE } from '@/lib/site';
@@ -100,6 +101,124 @@ function buildFaqSchema(page: SeoLandingPageData, locale: Locale) {
   };
 }
 
+function RichSection({ section, index }: { section: SeoRichSection; index: number }) {
+  const highlighted = section.tone === 'highlight';
+  const hasSupportingContent = Boolean(section.items?.length || section.table);
+
+  return (
+    <section
+      className={
+        highlighted
+          ? 'rounded-2xl border border-cc-copper/25 bg-cc-copper/[0.05] p-7'
+          : 'border-b border-cc-line py-9 first:pt-0 last:border-b-0 last:pb-0'
+      }
+    >
+      <div className={hasSupportingContent ? 'grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:gap-9' : ''}>
+        <div>
+          <div className="font-mono-cc mb-3 text-[10px] font-semibold tracking-[0.16em] text-cc-copper-soft">
+            SECTION {String(index + 1).padStart(2, '0')}
+          </div>
+          <h2 className="font-display text-2xl font-bold leading-tight text-cc-ink">
+            {section.heading}
+          </h2>
+          {section.body && (
+            <p className="mt-3 text-sm leading-7 text-cc-ink-mute">{section.body}</p>
+          )}
+          {section.links && section.links.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+              {section.links.map((link) => (
+                <Link
+                  key={`${section.heading}-${link.href}`}
+                  href={link.href}
+                  className="text-sm font-semibold text-cc-ink underline decoration-cc-copper/45 underline-offset-4 transition-colors hover:text-cc-copper-soft"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {section.items && section.items.length > 0 && (
+          section.ordered ? (
+            <ol className="grid gap-3">
+              {section.items.map((item, itemIndex) => (
+                <li
+                  key={item}
+                  className="grid grid-cols-[36px_1fr] items-start gap-3 rounded-xl border border-cc-line bg-cc-carbon-3 p-4 text-sm leading-6 text-cc-ink-mute"
+                >
+                  <span className="font-mono-cc flex h-9 w-9 items-center justify-center rounded-lg bg-cc-copper/[0.12] text-xs font-bold text-cc-copper-soft">
+                    {String(itemIndex + 1).padStart(2, '0')}
+                  </span>
+                  <span className="pt-1.5">{item}</span>
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              {section.items.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 rounded-xl border border-cc-line bg-cc-carbon-3 px-4 py-3.5 text-sm leading-6 text-cc-ink-mute"
+                >
+                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cc-signal" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )
+        )}
+
+        {section.table && (
+          <div className="overflow-hidden rounded-xl border border-cc-line bg-cc-carbon-3">
+            <table className="hidden w-full border-collapse text-left md:table">
+              <thead className="bg-cc-copper/[0.09] text-cc-ink">
+                <tr>
+                  {section.table.columns.map((column) => (
+                    <th key={column} className="px-4 py-3 text-xs font-semibold">
+                      {column}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-cc-line">
+                {section.table.rows.map((row) => (
+                  <tr key={row.label}>
+                    <th scope="row" className="w-[38%] px-4 py-3 text-sm font-semibold text-cc-ink">
+                      {row.label}
+                    </th>
+                    <td className="px-4 py-3 text-sm leading-6 text-cc-ink-mute">{row.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <dl className="divide-y divide-cc-line md:hidden">
+              {section.table.rows.map((row) => (
+                <div key={row.label} className="grid gap-1 px-4 py-3.5">
+                  <dt className="text-xs font-semibold uppercase tracking-wide text-cc-copper-soft">
+                    {section.table?.columns[0]}
+                  </dt>
+                  <dd className="text-sm font-semibold text-cc-ink">{row.label}</dd>
+                  <dt className="mt-2 text-xs font-semibold uppercase tracking-wide text-cc-copper-soft">
+                    {section.table?.columns[1]}
+                  </dt>
+                  <dd className="text-sm leading-6 text-cc-ink-mute">{row.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        )}
+      </div>
+
+      {section.note && (
+        <p className="mt-5 border-l-2 border-cc-copper pl-4 text-sm font-medium leading-7 text-cc-ink">
+          {section.note}
+        </p>
+      )}
+    </section>
+  );
+}
+
 export default function SeoLandingPage({ page, locale = 'en' }: { page: SeoLandingPageData; locale?: Locale }) {
   const ui = dictionaries[locale].seoLanding;
   const ctaHeading = page.ctaHeading || ui.defaultCtaHeading;
@@ -152,14 +271,23 @@ export default function SeoLandingPage({ page, locale = 'en' }: { page: SeoLandi
                 >
                   {primaryCtaLabel}
                 </TrackedLink>
-                <TrackedLink
-                  href="/pcba-quote-file-checklist"
-                  eventName="quote_file_checklist_click"
-                  eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/pcba-quote-file-checklist' }}
-                  className="rounded-lg border border-cc-copper/30 bg-cc-carbon-2/40 px-6 py-3 text-center text-sm font-semibold text-cc-ink transition-all hover:border-cc-copper/60"
-                >
-                  {ui.fileChecklistLabel}
-                </TrackedLink>
+                {page.heroSecondaryLink ? (
+                  <Link
+                    href={page.heroSecondaryLink.href}
+                    className="rounded-lg border border-cc-copper/30 bg-cc-carbon-2/40 px-6 py-3 text-center text-sm font-semibold text-cc-ink transition-all hover:border-cc-copper/60"
+                  >
+                    {page.heroSecondaryLink.label}
+                  </Link>
+                ) : (
+                  <TrackedLink
+                    href="/pcba-quote-file-checklist"
+                    eventName="quote_file_checklist_click"
+                    eventParams={{ location: 'service_hero', page_slug: page.slug, destination: '/pcba-quote-file-checklist' }}
+                    className="rounded-lg border border-cc-copper/30 bg-cc-carbon-2/40 px-6 py-3 text-center text-sm font-semibold text-cc-ink transition-all hover:border-cc-copper/60"
+                  >
+                    {ui.fileChecklistLabel}
+                  </TrackedLink>
+                )}
               </div>
               <div className="mt-7 grid max-w-[640px] gap-2 sm:grid-cols-2">
                 {ui.heroReviewPoints.map((item) => (
@@ -253,12 +381,20 @@ export default function SeoLandingPage({ page, locale = 'en' }: { page: SeoLandi
                 </section>
               )}
 
-              {page.sections.map((section) => (
-                <section key={section.heading} className="rounded-2xl border border-cc-line bg-cc-carbon-2 p-7">
-                  <h2 className="font-display mb-3 text-2xl font-bold text-cc-ink">{section.heading}</h2>
-                  <p className="text-sm leading-7 text-cc-ink-mute">{section.body}</p>
-                </section>
-              ))}
+              {page.richSections ? (
+                <div className="rounded-2xl border border-cc-line bg-cc-carbon-2 px-7 py-8">
+                  {page.richSections.map((section, index) => (
+                    <RichSection key={section.heading} section={section} index={index} />
+                  ))}
+                </div>
+              ) : (
+                page.sections.map((section) => (
+                  <section key={section.heading} className="rounded-2xl border border-cc-line bg-cc-carbon-2 p-7">
+                    <h2 className="font-display mb-3 text-2xl font-bold text-cc-ink">{section.heading}</h2>
+                    <p className="text-sm leading-7 text-cc-ink-mute">{section.body}</p>
+                  </section>
+                ))
+              )}
 
               <section className="rounded-2xl border border-cc-line bg-cc-carbon-2 p-7">
                 <h2 className="font-display mb-5 text-2xl font-bold text-cc-ink">{ui.whatWeCanCoordinate}</h2>

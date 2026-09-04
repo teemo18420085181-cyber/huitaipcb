@@ -33,12 +33,17 @@ const DEFAULT_IMAGE_ALT = 'PCBA engineer reviewing BOM files and assembled circu
 const DEFAULT_CATEGORY_COLOR = 'bg-cc-copper/10 text-cc-ink border-cc-copper/30';
 
 const ARTICLE_SEO_TITLES: Record<string, string> = {
+  'bom-alternatives-pcba-sourcing': 'How to Approve Alternative Components for PCBA | Huitai PCB',
+  'bom-best-practices': 'PCBA BOM Best Practices | Quote & Production Preparation',
+  'bom-risk-alternative-component-sourcing': 'BOM Risk and Component Availability in PCBA Manufacturing',
   'edge-ai-device-pcba-manufacturing': 'Edge AI PCB Assembly: Prototype Manufacturing Checklist',
+  'how-much-does-pcba-assembly-cost': 'How Much Does PCBA Assembly Cost? | Cost Factors',
   'pcba-component-shortage-2026': '2026 PCBA Component Shortage: Lead Times, Supply & BOM Risk',
   'pcba-testing-before-shipment': 'PCBA Testing Before Shipment | Turnkey PCBA Guide',
-  'pcba-quotation-checklist': 'PCBA Quotation Checklist | Huitai PCB',
+  'pcba-quotation-checklist': 'PCBA Quotation Checklist | RFQ Readiness',
   'prototype-pcb-assembly-china-buyer-checklist': 'Prototype PCB Assembly China | Huitai PCB',
   'what-is-turnkey-pcba': 'What Is Turnkey PCBA? | PCB Assembly Guide',
+  'what-determines-pcb-assembly-quote-china': 'PCB Assembly Quote in China | Required RFQ Information',
 };
 
 const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
@@ -109,9 +114,14 @@ const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
 };
 
 const STATIC_CONTENT_OVERRIDE_SLUGS = new Set([
+  'bom-best-practices',
+  'bom-alternatives-pcba-sourcing',
   'edge-ai-device-pcba-manufacturing',
+  'how-much-does-pcba-assembly-cost',
   'pcba-component-shortage-2026',
+  'pcba-quotation-checklist',
   'what-files-required-pcba-quote',
+  'what-determines-pcb-assembly-quote-china',
   'pcb-assembly-file-preparation-guide',
   'bom-risk-alternative-component-sourcing',
   'prototype-vs-batch-pcb-assembly',

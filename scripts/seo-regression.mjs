@@ -7,8 +7,16 @@ const readEnglishRoute = (path) =>
   readOptional(`src/app/(en)/${path}`) || read(`src/app/${path}`);
 
 const hero = read('src/components/Hero.tsx');
+const homeAnswer = readOptional('src/components/HomeAnswer.tsx');
+const trustStrip = read('src/components/TrustStrip.tsx');
+const comparison = read('src/components/Comparison.tsx');
+const processGrid = read('src/components/ProcessGrid.tsx');
+const quoteFiles = readOptional('src/components/QuoteFiles.tsx');
 const homeFaq = read('src/components/HomeFaq.tsx');
 const homePage = readEnglishRoute('page.tsx');
+const pcbAssemblyRoute = readEnglishRoute('pcb-assembly-services/page.tsx');
+const prototypeRoute = readEnglishRoute('prototype-pcb-assembly/page.tsx');
+const lowVolumeRoute = readEnglishRoute('low-volume-pcba-assembly/page.tsx');
 const inquiryForm = read('src/components/InquiryForm.tsx');
 const analytics = read('src/components/Analytics.tsx');
 const inquiryRoute = read('src/app/api/inquiry/route.ts');
@@ -55,50 +63,133 @@ const between = (source, start, end) => {
   return source.slice(startIndex, endIndex);
 };
 
+const compact = (source) => source.replace(/\s+/g, ' ');
+const knowledgeArticle = (slug) => {
+  const marker = `slug: '${slug}'`;
+  const startIndex = knowledge.indexOf(marker);
+  if (startIndex === -1) return '';
+
+  const nextIndex = knowledge.indexOf("slug: '", startIndex + marker.length);
+  return knowledge.slice(startIndex, nextIndex === -1 ? knowledge.length : nextIndex);
+};
+
 const prototypePage = between(seoPages, "'prototype-pcb-assembly': {", "'turnkey-pcb-assembly': {");
+const pcbAssemblyServicesPage = between(
+  seoPages,
+  "'pcb-assembly-services': {",
+  "'china-pcb-assembly': {",
+);
 const pcbAssemblyCompanyPage = between(
   seoPages,
   "'pcb-assembly-company': {",
   "'prototype-pcb-assembly': {",
 );
 const turnkeyPage = between(seoPages, "'turnkey-pcb-assembly': {", "'pcb-fabrication-and-assembly': {");
+const lowVolumePage = between(
+  seoPages,
+  "'low-volume-pcba-assembly': {",
+  "'bom-sourcing-pcb-assembly': {",
+);
 const jlcpcbArticle = between(
   knowledge,
   "slug: 'jlcpcb-alternatives-turnkey-pcba'",
   "slug: 'china-pcb-assembly-online-quote-accuracy'",
 );
+const bomBestPracticesArticle = knowledgeArticle('bom-best-practices');
+const bomRiskArticle = knowledgeArticle('bom-risk-alternative-component-sourcing');
+const bomAlternativesArticle = knowledgeArticle('bom-alternatives-pcba-sourcing');
+const pcbaCostArticle = knowledgeArticle('how-much-does-pcba-assembly-cost');
+const pcbAssemblyQuoteArticle = knowledgeArticle('what-determines-pcb-assembly-quote-china');
+const pcbaQuotationChecklistArticle = knowledgeArticle('pcba-quotation-checklist');
 
 const checks = [
   [
-    /<h1[^>]*>\s*Turnkey PCBA Manufacturer in Shenzhen, China\s*<\/h1>/.test(hero),
-    'Homepage H1 must state the Shenzhen turnkey PCBA manufacturer positioning.',
+    /<h1[^>]*>[\s\S]*Custom PCBA Manufacturing for Prototype and Production[\s\S]*<\/h1>/.test(hero),
+    'Homepage H1 must own the approved custom PCBA manufacturing intent.',
   ],
   [
-    hero.includes(
-      'PCB fabrication, BOM sourcing, SMT and through-hole assembly, testing and',
-    ) && hero.includes('finished PCBA delivery—from prototype to production.'),
-    'Homepage hero must describe the complete prototype-to-production service range.',
+    compact(hero).includes(
+      'From PCB fabrication and BOM sourcing to SMT/DIP assembly, inspection, testing and',
+    ) && compact(hero).includes('finished PCBA delivery, Huitai PCB supports custom electronics projects from first builds to repeat production.'),
+    'Homepage hero must use the approved custom PCBA manufacturing description.',
   ],
   [
-    hero.includes('Prototype orders from 5 sets'),
+    hero.includes('Prototype builds from 5 assembled boards'),
     'Homepage hero must state the confirmed 5-set prototype starting quantity.',
   ],
   [
     hero.includes('href="/contact#quote-form"') &&
       hero.includes('Get PCBA Manufacturing Quote') &&
-      hero.includes('Need Engineering Support?') &&
       hero.includes('href="/contact#project-files"') &&
       hero.includes('Send Gerber &amp; BOM'),
-    'Homepage must lead with the manufacturing quote CTA, keep engineering support secondary, and preserve the Gerber/BOM path.',
+    'Homepage must preserve the manufacturing quote and Gerber/BOM conversion paths.',
   ],
   [
-    homeFaq.includes('Prepare Your PCBA RFQ') &&
+    compact(homeAnswer).includes('What Does Huitai PCB Provide?') &&
+      compact(homeAnswer).includes('custom PCBA manufacturer') &&
+      ['PCB fabrication', 'BOM sourcing', 'SMT', 'through-hole assembly', 'programming', 'AOI', 'X-ray', 'functional testing', 'repeat-production'].every((term) =>
+        compact(homeAnswer).includes(term),
+      ),
+    'Homepage must provide an early answer-first entity and capability definition.',
+  ],
+  [
+    trustStrip.includes('Custom PCBA Manufacturing Capabilities') &&
+      [
+        '/pcb-fabrication-and-assembly',
+        '/bom-sourcing-pcb-assembly',
+        '/pcb-assembly-services',
+        '/pcba-testing-quality-control',
+        '/turnkey-pcb-assembly',
+      ].every((href) => trustStrip.includes(`href: '${href}'`)),
+    'Homepage capabilities must act as a descriptive internal-link hub.',
+  ],
+  [
+    comparison.includes('Choose the Right PCBA Manufacturing Path') &&
+      comparison.includes('Prototype PCB Assembly') &&
+      comparison.includes('Low-Volume PCBA Assembly') &&
+      comparison.includes('Turnkey PCB Assembly') &&
+      ['/prototype-pcb-assembly', '/low-volume-pcba-assembly', '/turnkey-pcb-assembly'].every(
+        (href) => comparison.includes(`href: '${href}'`),
+      ),
+    'Homepage must offer distinct prototype, low-volume, and turnkey project paths.',
+  ],
+  [
+    homePage.indexOf('<Comparison />') < homePage.indexOf('<ProcessGrid />'),
+    'Homepage must present the project-path decision before the manufacturing workflow.',
+  ],
+  [
+    processGrid.includes('How a Custom PCBA Project Moves From Files to Production') &&
+      ['Review Gerber & BOM', 'Confirm Build Scope', 'Fabricate PCB', 'Assemble SMT & DIP', 'Inspect & Test', 'Pack & Deliver'].every(
+        (step) => processGrid.includes(step),
+      ),
+    'Homepage workflow must use the approved six-stage custom PCBA language.',
+  ],
+  [
+    factoryGrid.includes('Inside Our PCBA Manufacturing Process'),
+    'Homepage manufacturing proof must use the approved evidence-led heading.',
+  ],
+  [
+    quoteFiles.includes('What Files Do You Need for a PCBA Quote?') &&
+      ['Gerber', 'BOM + MPN', 'CPL', 'Assembly Drawing', 'Quantity', 'Testing Requirements'].every((item) =>
+        quoteFiles.includes(item),
+      ) &&
+      quoteFiles.includes('href="/pcba-quote-file-checklist"'),
+    'Homepage must provide a responsive quote-file reference with the approved six inputs.',
+  ],
+  [
+    homeFaq.includes('What does a PCBA manufacturer do?') &&
+      homeFaq.includes('What files are needed for a PCBA quote?') &&
+      homeFaq.includes('Prepare Your PCBA RFQ') &&
       homeFaq.includes('href="/contact#project-files"') &&
       ['Gerber', 'BOM', 'pick-and-place', 'assembly drawing', 'quantity'].every((term) =>
         homeFaq.toLowerCase().includes(term.toLowerCase()),
       ) &&
       !homeFaq.includes('Ask about your project'),
     'Homepage FAQ must route buyers to a manufacturing RFQ built around the required production files and quantity.',
+  ],
+  [
+    homeFaq.includes("'@type': 'FAQPage'") && homeFaq.includes("'@type': 'Question'"),
+    'Homepage visible FAQ must emit matching FAQPage structured data.',
   ],
   [
     nav.includes("import BrandLogo from '@/components/BrandLogo'") &&
@@ -148,9 +239,11 @@ const checks = [
     'Homepage production imagery must cover the reviewed one-stop PCBA manufacturing scope without repeats.',
   ],
   [
-    homePage.includes("title: 'Custom PCBA Manufacturer in China | Huitai PCB'") &&
-      homePage.includes('prototype and small-batch production'),
-    'Homepage metadata must use the approved Huitai PCB title and manufacturing description.',
+    homePage.includes("title: 'Custom PCBA Manufacturer | Prototype to Production | Huitai PCB'") &&
+      homePage.includes(
+        'Huitai PCB provides custom PCBA manufacturing for hardware teams, including PCB fabrication, BOM sourcing, SMT/DIP assembly, testing and repeat production.',
+      ),
+    'Homepage metadata must use the approved custom PCBA title and description.',
   ],
   [
     !homePage.includes('<FeedbackBoard />'),
@@ -193,8 +286,43 @@ const checks = [
     'Robots and sitemap infrastructure must preserve important public routes.',
   ],
   [
-    prototypePage.includes("seoTitle: 'Prototype PCB Assembly China | 5-Piece Builds & BOM Review'"),
-    'Prototype SEO title must lead with the 5-piece differentiator.',
+    pcbAssemblyServicesPage.includes("title: 'PCB Assembly Services for SMT and Through-Hole Production'") &&
+      pcbAssemblyServicesPage.includes("seoTitle: 'PCB Assembly Services China | SMT & DIP | Huitai PCB'") &&
+      pcbAssemblyServicesPage.includes("serviceName: 'PCB Assembly Services'") &&
+      pcbAssemblyServicesPage.includes("serviceType: 'PCB Assembly'") &&
+      pcbAssemblyServicesPage.includes('What Is PCB Assembly?') &&
+      pcbAssemblyServicesPage.includes('PCB Assembly vs Turnkey PCB Assembly'),
+    'PCB Assembly Services must own SMT/DIP assembly intent and its approved schema identity.',
+  ],
+  [
+    prototypePage.includes("title: 'Prototype PCB Assembly in China from 5 Boards'") &&
+      prototypePage.includes("seoTitle: 'Prototype PCB Assembly China | 5-Piece Builds | Huitai PCB'") &&
+      prototypePage.includes("serviceName: 'Prototype PCB Assembly'") &&
+      prototypePage.includes("serviceType: 'Prototype PCB Assembly'") &&
+      prototypePage.includes('What Happens After Prototype Testing?') &&
+      prototypePage.includes("href: '/knowledge/prototype-vs-batch-pcb-assembly'"),
+    'Prototype service must own five-board first-build validation intent and the comparison path.',
+  ],
+  [
+    lowVolumePage.includes("title: 'Low-Volume PCB Assembly for Small-Batch Production'") &&
+      lowVolumePage.includes("seoTitle: 'Low-Volume PCB Assembly China | Small-Batch PCBA | Huitai PCB'") &&
+      lowVolumePage.includes("serviceName: 'Low-Volume PCB Assembly'") &&
+      lowVolumePage.includes("serviceType: 'Low-Volume PCBA Manufacturing'") &&
+      lowVolumePage.includes('When Is a PCB Design Ready for Low-Volume Production?') &&
+      lowVolumePage.includes('BOM Continuity and Component Availability') &&
+      lowVolumePage.includes('Revision and Change Control') &&
+      !lowVolumePage.includes('For 5 to 1,000 pcs') &&
+      !lowVolumePage.includes('5, 10, 50, 100, 500, or 1,000'),
+    'Low-volume service must own validated 50–1,000-piece production intent.',
+  ],
+  [
+    pcbAssemblyRoute.includes('absoluteUrl(pathname)') &&
+      pcbAssemblyRoute.includes('getLanguageAlternates(pathname)') &&
+      prototypeRoute.includes('absoluteUrl(pathname)') &&
+      prototypeRoute.includes('getLanguageAlternates(pathname)') &&
+      lowVolumeRoute.includes('absoluteUrl(pathname)') &&
+      lowVolumeRoute.includes('getLanguageAlternates(pathname)'),
+    'All three target service pages must preserve self-canonical URLs and language alternates.',
   ],
   [
     pcbAssemblyCompanyPage.includes("heading: 'PCB Assembly Manufacturer Evaluation Checklist'") &&
@@ -383,6 +511,123 @@ const checks = [
     sitemap.includes("'/about'") && sitemap.includes("'/faq'") && sitemap.includes("'/case-study'") &&
       footer.includes("href: '/about'") && footer.includes("href: '/faq'") && footer.includes("href: '/case-study'"),
     'About, FAQ, and Case Study hubs must be discoverable through the sitemap and footer.',
+  ],
+  [
+    compact(bomBestPracticesArticle).includes(
+      "title: 'How to Prepare a BOM for PCBA Quotation and Production'",
+    ) &&
+      compact(bomBestPracticesArticle).includes(
+        "metaDescription: 'Prepare a PCBA BOM with exact MPNs, designators, quantities, packages, DNP/DNI notes, approved alternatives and customer-supplied part details.'",
+      ) &&
+      ['Manufacturer Part Number', 'Designator', 'DNP / DNI', 'Customer-supplied parts'].every((term) =>
+        bomBestPracticesArticle.includes(term),
+      ) &&
+      bomBestPracticesArticle.includes('](/knowledge/bom-risk-alternative-component-sourcing)') &&
+      bomBestPracticesArticle.includes('](/knowledge/bom-alternatives-pcba-sourcing)'),
+    'BOM Best Practices must own BOM preparation and route risk and substitution questions to their dedicated guides.',
+  ],
+  [
+    compact(bomRiskArticle).includes(
+      "title: 'BOM Risk and Component Availability in PCBA Manufacturing'",
+    ) &&
+      ['suffix', 'obsolete', 'long lead', 'MOQ', 'allocation', 'single-source', 'no-substitute', 'BOM freeze'].every(
+        (term) => compact(bomRiskArticle).toLowerCase().includes(term.toLowerCase()),
+      ) &&
+      bomRiskArticle.includes('](/knowledge/bom-alternatives-pcba-sourcing)') &&
+      bomRiskArticle.includes('](/bom-sourcing-pcb-assembly)') &&
+      bomRiskArticle.includes('](/low-volume-pcba-assembly)') &&
+      bomRiskArticle.includes('](/pcba-quote-file-checklist)') &&
+      !bomRiskArticle.includes('Protocol / interface'),
+    'BOM Risk must own supply continuity without duplicating the technical alternative-approval matrix.',
+  ],
+  [
+    compact(bomAlternativesArticle).includes(
+      "title: 'How to Approve Alternative Components for PCBA'",
+    ) &&
+      compact(bomAlternativesArticle).includes(
+        'A component should not be substituted only because the package or appearance is similar.',
+      ) &&
+      ['Manufacturer Part Number and suffix', 'Package, footprint, and pinout', 'Voltage and current ratings', 'Protocol / interface', 'Firmware dependency', 'Customer approval'].every(
+        (term) => bomAlternativesArticle.includes(term),
+      ) &&
+      bomAlternativesArticle.includes('](/knowledge/bom-risk-alternative-component-sourcing)') &&
+      bomAlternativesArticle.includes('](/bom-sourcing-pcb-assembly)'),
+    'Alternative Component Approval must own compatibility review and explicit customer authorization.',
+  ],
+  [
+    compact(pcbaCostArticle).includes("title: 'How Much Does PCBA Assembly Cost?'") &&
+      ['Setup cost', 'Stencil', 'Placement count', 'DIP and manual soldering', 'AOI and X-ray', 'Programming', 'Functional testing', 'Fixture cost', 'Quantity effect'].every(
+        (term) => pcbaCostArticle.includes(term),
+      ) &&
+      ['/prototype-pcb-assembly', '/low-volume-pcba-assembly', '/turnkey-pcb-assembly', '/pcba-quote-file-checklist'].every(
+        (href) => pcbaCostArticle.includes(`](${href})`),
+      ) &&
+      !pcbaCostArticle.includes('fixed Huitai price'),
+    'The PCBA cost guide must explain manufacturing cost drivers and route buyers to the correct production path.',
+  ],
+  [
+    compact(pcbAssemblyQuoteArticle).includes(
+      "title: 'What Determines a PCB Assembly Quote in China?'",
+    ) &&
+      ['Gerber', 'BOM', 'CPL / Pick-and-Place', 'Assembly Drawing', 'PCB specification', 'Quantity', 'Firmware / programming', 'Testing requirements', 'Customer-supplied components', 'Approved alternatives', 'Delivery destination', 'Requested lead time', 'Revision status'].every(
+        (term) => pcbAssemblyQuoteArticle.includes(term),
+      ) &&
+      ['/pcba-quote-file-checklist', '/pcb-assembly-services', '/turnkey-pcb-assembly', '/bom-sourcing-pcb-assembly', '/contact#project-files'].every(
+        (href) => pcbAssemblyQuoteArticle.includes(`](${href})`),
+      ),
+    'The PCB assembly quote guide must own accurate-RFQ inputs and route buyers to services and file submission.',
+  ],
+  [
+    compact(pcbaQuotationChecklistArticle).includes(
+      "title: 'PCBA Quotation Checklist Before Supplier Review'",
+    ) &&
+      pcbaQuotationChecklistArticle.includes('heading: \'60-Second RFQ Readiness Check\'') &&
+      ['/knowledge/what-determines-pcb-assembly-quote-china', '/pcba-quote-file-checklist', '/contact#project-files'].every(
+        (href) => pcbaQuotationChecklistArticle.includes(`](${href})`),
+      ) &&
+      pcbaQuotationChecklistArticle.length < pcbAssemblyQuoteArticle.length,
+    'The quotation checklist must be shorter than the explanatory quote guide and lead to the commercial checklist and RFQ.',
+  ],
+  [
+    [
+      "'bom-best-practices': 'PCBA BOM Best Practices | Quote & Production Preparation'",
+      "'bom-risk-alternative-component-sourcing': 'BOM Risk and Component Availability in PCBA Manufacturing'",
+      "'bom-alternatives-pcba-sourcing': 'How to Approve Alternative Components for PCBA | Huitai PCB'",
+      "'how-much-does-pcba-assembly-cost': 'How Much Does PCBA Assembly Cost? | Cost Factors'",
+      "'what-determines-pcb-assembly-quote-china': 'PCB Assembly Quote in China | Required RFQ Information'",
+      "'pcba-quotation-checklist': 'PCBA Quotation Checklist | RFQ Readiness'",
+    ].every((mapping) => articles.includes(mapping)) &&
+      [
+        "'bom-best-practices',",
+        "'bom-risk-alternative-component-sourcing',",
+        "'bom-alternatives-pcba-sourcing',",
+        "'how-much-does-pcba-assembly-cost',",
+        "'what-determines-pcb-assembly-quote-china',",
+        "'pcba-quotation-checklist',",
+      ].every((slug) => articles.includes(slug)),
+    'P0-4 metadata mappings and CMS-backed static ownership overrides must be registered.',
+  ],
+  [
+    knowledgeArticlePage.includes('alternates: { canonical: `https://huitaipcb.com/knowledge/${article.slug}` }') &&
+      knowledgeArticlePage.includes("'@type': 'Article'") &&
+      knowledgeArticlePage.includes("'@type': 'BreadcrumbList'") &&
+      knowledgeArticlePage.includes("'@type': 'FAQPage'") &&
+      knowledgeArticlePage.includes('faqItems.length > 0') &&
+      knowledgeArticlePage.includes("publisher: { '@id': SITE.organizationId }") &&
+      knowledgeArticlePage.includes("reviewedBy: { '@id': SITE.organizationId }"),
+    'Knowledge ownership pages must retain self-canonical Article, Breadcrumb, visible FAQ, and Organization-reference schema behavior.',
+  ],
+  [
+    knowledgeArticlePage.includes('<div className="overflow-hidden rounded-xl border border-cc-line">') &&
+      knowledgeArticlePage.includes('table-fixed') &&
+      knowledgeArticlePage.includes('[overflow-wrap:anywhere]'),
+    'Knowledge article tables must fit the mobile content column and wrap long MPN strings without hidden horizontal columns.',
+  ],
+  [
+    floatingWhatsApp.includes('bottom-4 right-0') &&
+      floatingWhatsApp.includes('h-12 w-12') &&
+      floatingWhatsApp.includes('sm:bottom-5 sm:right-5 sm:h-14 sm:w-14'),
+    'The floating WhatsApp control must stay outside the mobile knowledge content column while retaining its desktop size.',
   ],
 ];
 

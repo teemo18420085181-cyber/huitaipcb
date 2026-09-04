@@ -22,7 +22,7 @@ export default function FloatingWhatsApp() {
       eventName="whatsapp_click"
       eventParams={{ location: 'floating_button' }}
       aria-label="Chat with us on WhatsApp"
-      className={`floating-whatsapp group fixed bottom-5 right-5 z-[60] flex h-14 w-14 items-center justify-center rounded-full text-white shadow-lg motion-press ${
+      className={`floating-whatsapp group fixed bottom-4 right-0 z-[60] flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg motion-press sm:bottom-5 sm:right-5 sm:h-14 sm:w-14 ${
         isContactPage ? 'floating-whatsapp-contact' : ''
       }`}
       style={{ background: '#25D366', boxShadow: '0 8px 24px rgba(37,211,102,0.4)' }}

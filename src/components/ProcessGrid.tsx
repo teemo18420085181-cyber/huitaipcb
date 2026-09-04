@@ -10,13 +10,13 @@ const PROCESS = [
   },
   {
     n: '02',
-    name: 'Confirm build scope',
+    name: 'Confirm Build Scope',
     desc: 'Align PCB specifications, BOM sourcing, approved alternatives, assembly method, and inspection plan.',
     href: '/how-we-work',
   },
   {
     n: '03',
-    name: 'Fabricate the PCB',
+    name: 'Fabricate PCB',
     desc: 'Coordinate the bare board build to the confirmed material, stack-up, finish, and drawing requirements.',
     href: '/pcb-fabrication-and-assembly',
   },
@@ -28,13 +28,13 @@ const PROCESS = [
   },
   {
     n: '05',
-    name: 'Inspect & test',
+    name: 'Inspect & Test',
     desc: 'Apply the inspection and test steps agreed for the project before final release.',
     href: '/pcba-testing-quality-control',
   },
   {
     n: '06',
-    name: 'Pack & deliver',
+    name: 'Pack & Deliver',
     desc: 'Prepare the finished PCBA, project documents, anti-static packing, and shipment details.',
     href: '/contact',
   },
@@ -50,7 +50,7 @@ export default function ProcessGrid() {
               GERBER &amp; BOM TO FINISHED PCBA
             </div>
             <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-[44px]">
-              A six-stage workflow with clear review points.
+              How a Custom PCBA Project Moves From Files to Production
             </h2>
             <p className="mt-4 max-w-[680px] text-[15px] leading-7 text-cc-body">
               The quotation starts with the files and decisions that affect the real build,

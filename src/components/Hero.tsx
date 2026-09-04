@@ -3,9 +3,9 @@ import { ArrowRight, CheckCircle2, FileUp } from 'lucide-react';
 import TrackedLink from '@/components/TrackedLink';
 
 const PROJECT_SIGNALS = [
-  'Prototype orders from 5 sets',
-  'Prototype and production support',
-  'Gerber, BOM, quantity, and test review',
+  'Prototype builds from 5 assembled boards',
+  'Low-volume and repeat-production support',
+  'Gerber, BOM, CPL, quantity, and test review',
 ];
 
 export default function Hero() {
@@ -16,16 +16,17 @@ export default function Hero() {
         <div>
           <div className="font-mono-cc mb-5 inline-flex items-center gap-2 rounded-full border border-cc-line bg-white/[0.03] px-3 py-1.5 text-[10px] font-semibold tracking-[0.18em] text-cc-copper-soft sm:text-[11px]">
             <span className="h-1.5 w-1.5 rounded-full bg-cc-copper" />
-            TURNKEY PCBA / SHENZHEN, CHINA
+            CUSTOM PCBA MANUFACTURING · SHENZHEN, CHINA
           </div>
 
           <h1 className="font-display max-w-[760px] text-[42px] font-extrabold leading-[1.02] tracking-[-0.035em] text-cc-ink sm:text-5xl md:text-[62px] lg:text-[56px] xl:text-[68px]">
-            Turnkey PCBA Manufacturer in Shenzhen, China
+            Custom PCBA Manufacturing for Prototype and Production
           </h1>
 
           <p className="mt-6 max-w-[650px] text-base leading-7 text-cc-ink-mute md:text-lg md:leading-8">
-            PCB fabrication, BOM sourcing, SMT and through-hole assembly, testing and
-            finished PCBA delivery—from prototype to production.
+            From PCB fabrication and BOM sourcing to SMT/DIP assembly, inspection, testing and
+            finished PCBA delivery, Huitai PCB supports custom electronics projects from first
+            builds to repeat production.
           </p>
 
           <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
@@ -39,33 +40,13 @@ export default function Hero() {
               <ArrowRight size={16} strokeWidth={2.4} />
             </TrackedLink>
             <TrackedLink
-              href="/about#engineering-support"
-              eventName="engineering_support_click"
-              eventParams={{ location: 'home_hero', destination: '/about#engineering-support' }}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-cc-ink transition-colors hover:border-cc-copper/60 hover:bg-white/[0.06]"
-            >
-              Need Engineering Support?
-            </TrackedLink>
-          </div>
-
-          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
-            <TrackedLink
               href="/contact#project-files"
               eventName="upload_gerber_bom_click"
               eventParams={{ location: 'home_hero', destination: '/contact#project-files' }}
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-cc-copper-soft underline decoration-cc-copper/40 underline-offset-4 transition-colors hover:text-cc-ink"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-cc-ink transition-colors hover:border-cc-copper/60 hover:bg-white/[0.06]"
             >
               <FileUp size={14} strokeWidth={2.4} />
               Send Gerber &amp; BOM
-            </TrackedLink>
-            <TrackedLink
-              href="/capabilities"
-              eventName="capabilities_click"
-              eventParams={{ location: 'home_hero', destination: '/capabilities' }}
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-cc-ink-mute transition-colors hover:text-cc-ink"
-            >
-              View Capabilities
-              <ArrowRight size={14} />
             </TrackedLink>
           </div>
 

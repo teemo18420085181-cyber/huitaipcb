@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { ArrowRight, Boxes, Check, Rocket } from 'lucide-react';
+import { ArrowRight, Boxes, Check, Factory, Rocket } from 'lucide-react';
 
 const SUPPORT_PATHS = [
   {
-    eyebrow: 'PROTOTYPE SUPPORT',
-    title: 'Start from 5 sets',
+    eyebrow: 'FIRST BUILDS',
+    title: 'Prototype PCB Assembly',
     description:
-      'For design validation, first builds, and supplier qualification. Send the available files and note what still needs engineering review.',
+      'For first builds, engineering validation and design verification.',
     points: [
       'Prototype orders from 5 sets',
       'Gerber and BOM review before quotation',
@@ -16,10 +16,10 @@ const SUPPORT_PATHS = [
     icon: Rocket,
   },
   {
-    eyebrow: 'PRODUCTION SUPPORT',
-    title: 'Move into repeat builds',
+    eyebrow: 'SMALL-BATCH PRODUCTION',
+    title: 'Low-Volume PCBA Assembly',
     description:
-      'For low-volume and production projects that need the same fabrication, sourcing, assembly, and test decisions carried into the next build.',
+      'For pilot runs, small batches and repeat builds after the design is substantially confirmed.',
     points: [
       'Low-volume and production support',
       'BOM sourcing tied to the approved build',
@@ -27,6 +27,19 @@ const SUPPORT_PATHS = [
     ],
     href: '/low-volume-pcba-assembly',
     icon: Boxes,
+  },
+  {
+    eyebrow: 'COORDINATED DELIVERY',
+    title: 'Turnkey PCB Assembly',
+    description:
+      'For buyers who want PCB fabrication, sourcing, assembly and testing coordinated under one project.',
+    points: [
+      'PCB fabrication and component sourcing coordinated together',
+      'SMT, through-hole, inspection, and testing scope aligned',
+      'Finished PCBA packing and delivery preparation',
+    ],
+    href: '/turnkey-pcb-assembly',
+    icon: Factory,
   },
 ];
 
@@ -36,18 +49,18 @@ export default function Comparison() {
       <div className="mx-auto max-w-[1280px]">
         <div className="mb-10 max-w-[780px]">
           <div className="font-mono-cc mb-3 text-[11px] font-semibold tracking-[0.18em] text-cc-copper-ink">
-            PROTOTYPE TO PRODUCTION
+            PROJECT PATHS
           </div>
           <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-[44px]">
-            Use the same turnkey path as your project develops.
+            Choose the Right PCBA Manufacturing Path
           </h2>
           <p className="mt-4 max-w-[690px] text-[15px] leading-7 text-cc-body">
-            Whether you are validating a new board or preparing repeat production, the quote
-            should reflect the actual files, quantity, sourcing risks, and test requirements.
+            Match the service path to the current design maturity, target quantity, sourcing
+            scope, and level of manufacturing coordination your team needs.
           </p>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {SUPPORT_PATHS.map(({ eyebrow, title, description, points, href, icon: Icon }) => (
             <article
               key={title}
@@ -79,7 +92,7 @@ export default function Comparison() {
                 href={href}
                 className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cc-heading underline decoration-cc-copper/50 underline-offset-4 hover:text-cc-copper-ink"
               >
-                Explore this build path
+                Review {title}
                 <ArrowRight size={15} />
               </Link>
             </article>

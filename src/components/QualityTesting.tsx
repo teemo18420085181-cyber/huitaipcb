@@ -51,10 +51,10 @@ export default function QualityTesting() {
           </ul>
 
           <Link
-            href="/quality"
+            href="/pcba-testing-quality-control"
             className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-cc-heading underline decoration-cc-copper/50 underline-offset-4 hover:text-cc-copper-ink"
           >
-            Review quality and testing
+            Review PCBA testing and quality control
             <ArrowRight size={15} />
           </Link>
         </div>

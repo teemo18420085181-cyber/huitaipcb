@@ -245,6 +245,224 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     ],
   },
   {
+    slug: 'how-much-does-pcba-assembly-cost',
+    category: 'Cost & Quotation',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'How Much Does PCBA Assembly Cost?',
+    excerpt:
+      'Understand how setup work, PCB specifications, components, placement count, manual operations, inspection, testing, quantity, and delivery scope affect PCBA cost.',
+    image: '/factory/knowledge-covers/pcba-assembly-cost-cover.webp',
+    readTime: '10 min read',
+    metaDescription:
+      'Learn why PCBA assembly cost changes with PCB fabrication, BOM, stencil and setup work, placement count, DIP or manual assembly, testing and quantity.',
+    cta: {
+      primary: { label: 'Send Files for a Cost Review', href: '/contact#project-files' },
+      secondary: { label: 'Open Quote File Checklist', href: '/pcba-quote-file-checklist' },
+    },
+    sections: [
+      {
+        heading: 'Quick Answer',
+        body: [
+          'PCBA assembly cost is the combined cost of the bare PCB, components, manufacturing setup, SMT placement, through-hole or manual work, inspection, programming, testing, fixtures, packaging, and relevant delivery scope. Prototype unit cost is usually higher because setup work is spread across fewer assembled boards. A meaningful estimate therefore needs the actual Gerber, BOM, CPL, quantity, assembly, and test requirements rather than a universal per-board price.',
+          'This guide explains why a PCBA has its cost. If the immediate task is preparing supplier inputs, use the [PCBA Quote File Checklist](/pcba-quote-file-checklist).',
+        ],
+      },
+      {
+        heading: 'PCBA Cost Structure',
+        body: [
+          '| Cost group | Typical inputs | Why it changes |\n| --- | --- | --- |\n| PCB fabrication | Layer count, material, dimensions, thickness, copper, finish, routing or panel requirements | Board construction and fabrication complexity differ by design |\n| BOM and components | Exact MPNs, quantities, availability, MOQ, approved alternatives, customer-supplied parts | Component prices and purchase quantities can dominate the build |\n| Setup cost | Engineering review, stencil, machine programming, feeder preparation, line setup, first article | Much of this work is required before the first acceptable board |\n| SMT assembly | Placement count, sides, package mix, fine-pitch or bottom-terminated devices | More placements and process-sensitive packages require more preparation and inspection |\n| Through-hole and manual work | DIP insertion, selective or hand soldering, wires, connectors, touch-up, coating, mechanical operations | Manual time depends on the actual operations per board |\n| Inspection and testing | Visual inspection, AOI, X-ray, programming, electrical or functional testing | Coverage, fixtures, procedures, data, and acceptance criteria define the work |\n| Packaging and delivery | ESD packaging, labels, trays, destination, shipment method | Product handling and logistics requirements vary by project |',
+          'The groups are not fixed price percentages. Their relative weight changes with the design, component content, quantity, process, test plan, and commercial scope.',
+        ],
+      },
+      {
+        heading: 'Why Prototype Unit Cost Is Higher',
+        body: [
+          'A prototype may require the same engineering review, stencil, SMT program, feeder setup, first-article checks, and test preparation as a larger run. When those setup costs are divided across 5 or 10 boards instead of hundreds, the setup portion per board is higher.',
+          'Prototype value is not only the physical boards. The build also exposes file, BOM, footprint, assembly, firmware, and testing issues before the design moves into [Prototype PCB Assembly](/prototype-pcb-assembly) validation or a larger production release.',
+        ],
+      },
+      {
+        heading: 'Setup Cost, Stencil, and SMT Programming',
+        body: [
+          'Setup cost can include manufacturing-file review, stencil preparation, paste and reflow setup, SMT program generation, feeder loading, package verification, first-article inspection, and changeover. These tasks depend more on the unique job than on the final board quantity.',
+          'A repeat build may reduce some preparation when the same controlled files, components, stencil, program, and process remain usable. A design or BOM revision can require part of the setup to be reviewed again.',
+        ],
+      },
+      {
+        heading: 'Placement Count and Package Mix',
+        body: [
+          'SMT cost is affected by total Placement count, number of PCB sides, component packages, feeder demand, fine-pitch devices, bottom-terminated packages, polarity risk, and first-article inspection requirements. Board size alone does not describe the assembly workload.',
+          'AOI and X-ray are not interchangeable line items. AOI reviews visible placement and solder features, while X-ray may be requested for hidden joints such as BGA or bottom-terminated devices when appropriate to the design and inspection plan.',
+        ],
+      },
+      {
+        heading: 'DIP and Manual Soldering',
+        body: [
+          'DIP and manual soldering cost depends on inserted part count, lead preparation, connector or wire work, hand-solder access, selective or wave process suitability, touch-up, cleaning, coating, and mechanical operations. The quotation should identify these steps rather than assuming all assembly is automated SMT.',
+          'Assembly drawings, sample photos, workmanship notes, and connector or wire instructions help define the manual scope before production.',
+        ],
+      },
+      {
+        heading: 'Programming, Functional Testing, and Fixture Cost',
+        body: [
+          'Programming cost depends on firmware readiness, device quantity, programming interface, security or serialization needs, cycle time, and required result records. Functional testing depends on the fixture, connection method, procedure, expected outputs, pass/fail criteria, retest policy, and data requirements.',
+          'Fixture cost may be a one-time preparation item, a reusable project asset, or unnecessary when an approved manual method is sufficient. The buyer and manufacturer should define ownership, maintenance, and future reuse instead of assuming every test needs a custom fixture.',
+        ],
+      },
+      {
+        heading: 'Quantity Effect and Low-Volume Production',
+        body: [
+          'Quantity effect comes from spreading setup work across more boards, component price breaks or MOQ, panel utilization, process time, inspection sampling or coverage, packaging, and material excess. A larger quantity does not automatically reduce every line item, especially when manual work or full functional testing is required on each unit.',
+          'For validated repeatable batches, see [Low-Volume PCBA Assembly](/low-volume-pcba-assembly). For PCB fabrication, sourcing, assembly, testing, and delivery coordinated as one scope, see [Turnkey PCB Assembly](/turnkey-pcb-assembly).',
+        ],
+      },
+      {
+        heading: 'How to Reduce Cost Without Hiding Risk',
+        body: [
+          '- Release consistent Gerber, BOM, CPL, drawing, firmware, and test revisions.\n- Use exact MPNs and identify approved alternatives before purchasing.\n- Clarify DNP/DNI positions and customer-supplied parts.\n- Separate required inspection and testing from optional reporting.\n- Stabilize the design before repeat production.\n- Ask suppliers to state PCB, BOM, assembly, testing, packaging, and delivery boundaries so quotes can be compared on the same scope.',
+          'Removing required inspection, buying uncertain components, or omitting manual and test work may make a quote look lower without reducing the actual project risk.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### Why is prototype PCBA expensive per board?\n\nEngineering review, stencil, programming, line setup, first-article inspection, and test preparation are spread across a small number of boards.\n\n### Does component cost always dominate a PCBA quote?\n\nNo. It may dominate a component-heavy design, but PCB construction, setup, placement, manual work, inspection, testing, fixtures, and packaging can be significant for other projects.\n\n### Does a higher quantity always lower unit cost?\n\nIt usually spreads setup cost across more units, but manual assembly, programming, full functional testing, special packaging, and constrained components may still scale with each board.\n\n### Is AOI or X-ray included automatically?\n\nInspection scope should be confirmed for the design and quotation. AOI and X-ray address different visible or hidden solder-joint risks and are not automatic substitutes for functional testing.\n\n### How can I get a useful PCBA cost estimate?\n\nProvide the current Gerber, BOM, CPL, assembly drawing, quantity, PCB specification, programming and testing requirements, and delivery scope so the supplier can price the actual work.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'what-determines-pcb-assembly-quote-china',
+    category: 'Cost & Quotation',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'What Determines a PCB Assembly Quote in China?',
+    excerpt:
+      'The manufacturing files, component ownership, quantity, revisions, programming, testing, delivery, and timing information a PCBA supplier needs before issuing an accurate quotation.',
+    image: '/factory/knowledge-covers/pcb-assembly-quote-factors-china-cover.webp',
+    readTime: '10 min read',
+    metaDescription:
+      'Learn what a PCBA manufacturer needs for an accurate quote, including Gerber, BOM, CPL, drawings, PCB specifications, quantity, programming, testing and delivery details.',
+    cta: {
+      primary: { label: 'Send RFQ Files for Review', href: '/contact#project-files' },
+      secondary: { label: 'Open Quote File Checklist', href: '/pcba-quote-file-checklist' },
+    },
+    sections: [
+      {
+        heading: 'Quick Answer',
+        body: [
+          'A PCBA manufacturer needs controlled files and commercial requirements that define PCB fabrication, component sourcing, assembly, programming, inspection, testing, packaging, and delivery. The core inputs are Gerber, BOM, CPL or pick-and-place data, Assembly Drawing, PCB specification, Quantity, Revision status, and any Firmware / programming, Testing requirements, component-ownership, delivery, or requested-timing details.',
+          'The goal is not to make every file perfect before the first conversation. The goal is to identify what is confirmed, what is missing, and which assumptions prevent an accurate quotation. Use the [PCBA Quote File Checklist](/pcba-quote-file-checklist) for an upload-ready review.',
+        ],
+      },
+      {
+        heading: 'Information That Determines an Accurate PCBA Quote',
+        body: [
+          '| RFQ input | What it defines | Typical open question |\n| --- | --- | --- |\n| Gerber and drill data | Bare PCB layers, outline, copper, mask, silkscreen, and drill scope | Are fabrication notes and the board outline complete? |\n| BOM | MPNs, designators, quantities, fitted parts, DNP/DNI, and sourcing ownership | Are suffixes, alternatives, and no-substitute items controlled? |\n| CPL / Pick-and-Place | SMT position, side, rotation, and designator mapping | Does it match the BOM and assembly revision? |\n| Assembly Drawing | Polarity, connectors, wires, mechanical notes, and special operations | Are manual or orientation requirements visible? |\n| PCB specification | Material, thickness, copper, finish, color, stack-up, panel, impedance, and special fabrication needs | Which items are requirements rather than preferences? |\n| Quantity | Prototype, pilot, low-volume, and expected repeat demand | Is the quote for one build or an ongoing program? |\n| Revision status | Controlled Gerber, BOM, CPL, drawing, firmware, and test versions | Which files belong to the quoted release? |\n| Firmware / programming | Approved file, device, interface, serialization, security, and result needs | Who provides firmware and how is success recorded? |\n| Testing requirements | Method, fixture, connection, steps, limits, pass/fail criteria, reports, and retest | What testing is actually included in the requested scope? |\n| Delivery destination | Country or region, packaging, labels, shipment preference, and delivery term | Which logistics items belong in the quotation? |\n| Requested lead time | Required or target date and any schedule dependency | Is the timing feasible after material confirmation? |',
+          'Complete inputs allow buyers to compare quotations on the same boundary instead of comparing a bare-board price with a complete manufacturing scope.',
+        ],
+      },
+      {
+        heading: 'Component Ownership and Approval Boundaries',
+        body: [
+          'State whether the supplier purchases the complete BOM, the buyer provides all parts, or the build uses a mixed model. Customer-supplied components should include exact MPNs, expected quantities, delivery status, and handling requirements.',
+          'Approved alternatives and no-substitute parts should be visible before purchasing. Use [BOM Sourcing for PCBA](/bom-sourcing-pcb-assembly) when availability, lifecycle, MOQ, or substitution approval is part of the quotation.',
+        ],
+      },
+      {
+        heading: 'Assembly, Programming, and Testing Scope',
+        body: [
+          'A quote for [PCB Assembly Services](/pcb-assembly-services) should identify SMT, through-hole, mixed assembly, manual soldering, connector or wire work, coating, mechanical operations, inspection, programming, and testing that apply to the project.',
+          'Testing requirements should describe the approved firmware, fixture or connection method, procedure, expected results, limits, result data, and retest handling. “Test the board” is not enough to define labor, equipment, responsibility, or acceptance.',
+        ],
+      },
+      {
+        heading: 'Delivery, Lead Time, and Revision Status',
+        body: [
+          'Provide the Delivery destination and relevant packaging, label, export, shipment, or delivery-term requirements. State the Requested lead time as a target or fixed requirement and identify dependencies such as customer-supplied parts, firmware, fixtures, or approvals.',
+          'Revision status is equally important. A quotation should identify the Gerber, BOM, CPL, Assembly Drawing, firmware, and testing-instruction revisions used for review. Later changes may require updated sourcing, programming, assembly, test, cost, or schedule assumptions.',
+        ],
+      },
+      {
+        heading: 'What Happens When RFQ Information Is Incomplete?',
+        body: [
+          'A preliminary review can start with available files, but missing PCB specifications, MPNs, placement data, drawings, quantity, programming, test, or delivery information creates assumptions. The manufacturer should list those assumptions and open questions instead of presenting an incomplete scope as a firm production quote.',
+          'Use the concise [PCBA Quotation Checklist](/knowledge/pcba-quotation-checklist) before submission. If the project needs PCB fabrication, sourcing, assembly, testing, packaging, and delivery coordinated together, review [Turnkey PCB Assembly](/turnkey-pcb-assembly).',
+        ],
+      },
+      {
+        heading: 'RFQ Preparation Workflow',
+        body: [
+          '1. Select the controlled Gerber, BOM, CPL, drawing, firmware, and test revisions.\n2. Confirm PCB specification, quantity, component ownership, and approved alternatives.\n3. Define assembly, programming, inspection, and testing requirements.\n4. Add delivery destination, packaging, requested lead time, and other commercial constraints.\n5. Mark unavailable information and request a preliminary review where necessary.\n6. Resolve open assumptions before approving purchasing or production.',
+          '[Send the available files through the RFQ path](/contact#project-files) when the package is ready for manufacturing review.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### What files are required for an accurate PCBA quote?\n\nProvide Gerber and drill data, BOM, CPL or pick-and-place data, Assembly Drawing, PCB specifications, quantity, controlled revisions, and applicable firmware, programming, testing, packaging, and delivery requirements.\n\n### Can a supplier quote with incomplete files?\n\nA preliminary review may be possible, but the supplier should identify missing information and assumptions. A firm production scope normally requires the controlled manufacturing package.\n\n### Why must quantity be included?\n\nQuantity affects material purchasing, setup allocation, panel planning, production route, inspection, testing, packaging, and expected repeat-order decisions.\n\n### Should customer-supplied components be listed?\n\nYes. Identify exact MPNs, quantities, expected overage, delivery status, and handling or traceability requirements so they are not included incorrectly in supplier purchasing.\n\n### Does a quote need firmware and test information?\n\nYes when programming or functional testing is requested. The supplier needs the approved firmware, method, fixture or connection instructions, procedure, expected results, and pass/fail criteria.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'pcba-quotation-checklist',
+    category: 'Cost & Quotation',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'PCBA Quotation Checklist Before Supplier Review',
+    excerpt:
+      'A concise pre-submission checklist for confirming manufacturing files, BOM ownership, quantity, revisions, programming, testing, delivery, and open approval questions.',
+    image: '/factory/knowledge-covers/pcba-quotation-checklist-cover.webp',
+    readTime: '5 min read',
+    metaDescription:
+      'Use this concise PCBA quotation checklist to confirm files, BOM ownership, quantity, revisions, programming, testing, delivery and open approval questions before RFQ submission.',
+    cta: {
+      primary: { label: 'Submit RFQ Files', href: '/contact#project-files' },
+      secondary: { label: 'Open Detailed File Checklist', href: '/pcba-quote-file-checklist' },
+    },
+    sections: [
+      {
+        heading: 'Quick Answer',
+        body: [
+          'Before requesting a PCBA quotation, confirm which files and requirements are current, identify missing information, and make sourcing, programming, testing, delivery, and approval boundaries visible. This checklist is for a final readiness scan, not a full explanation of manufacturing cost or every RFQ field.',
+          'For the reasons each input affects a supplier response, read [What Determines a PCB Assembly Quote in China?](/knowledge/what-determines-pcb-assembly-quote-china). For an upload-ready file table, use the [PCBA Quote File Checklist](/pcba-quote-file-checklist).',
+        ],
+      },
+      {
+        heading: 'Manufacturing File Checklist',
+        body: [
+          '- [ ] Gerber and drill files are included.\n- [ ] PCB specification or fabrication notes identify material, thickness, copper, finish, color, stack-up, impedance, panel, or other applicable requirements.\n- [ ] BOM includes exact MPNs, designators, per-board quantities, packages, DNP/DNI, approved alternatives, and no-substitute notes.\n- [ ] CPL or pick-and-place data matches the BOM and board revision.\n- [ ] Assembly Drawing shows polarity, connectors, wires, mechanical notes, and manual operations.\n- [ ] Target Quantity and expected repeat-order context are stated.\n- [ ] Gerber, BOM, CPL, drawing, firmware, and test Revision status is controlled.',
+        ],
+      },
+      {
+        heading: 'Scope and Responsibility Checklist',
+        body: [
+          '- [ ] Component ownership is clear: supplier-purchased, customer-supplied, or mixed.\n- [ ] Customer-supplied parts include exact MPNs, quantities, delivery status, and handling notes.\n- [ ] Approved alternatives and no-substitute components are recorded.\n- [ ] SMT, through-hole, manual soldering, coating, wires, connectors, mechanical, or special operations are identified.\n- [ ] Firmware and programming files, interfaces, serialization, or security requirements are available when applicable.\n- [ ] Testing requirements include method, fixture or connection, steps, expected results, limits, and pass/fail criteria.\n- [ ] Packaging, labels, Delivery destination, shipment preference, and Requested lead time are stated.',
+          'Use [PCB Assembly Services](/pcb-assembly-services), [Turnkey PCB Assembly](/turnkey-pcb-assembly), or [BOM Sourcing for PCBA](/bom-sourcing-pcb-assembly) to clarify the commercial scope before submission.',
+        ],
+      },
+      {
+        heading: '60-Second RFQ Readiness Check',
+        body: [
+          '1. Can the supplier identify one controlled revision for the quoted build?\n2. Are PCB fabrication, component purchasing, assembly, programming, testing, packaging, and delivery responsibilities visible?\n3. Are missing files or open engineering questions marked instead of hidden?\n4. Are customer approvals still required for alternatives, testing, or other scope decisions?\n5. Is the requested quantity and timing clear enough for the supplier to plan the review?',
+          'If any answer is “no,” identify the open point when submitting the RFQ. A preliminary review can still start, but the quotation should show its assumptions.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### Must every RFQ item be complete before contacting a supplier?\n\nNo. Send the available information and identify what is missing. The supplier can separate preliminary assumptions from the information required for a firm production scope.\n\n### What are the minimum files for a useful PCBA review?\n\nGerber, BOM, quantity, and the available assembly or testing information can start the conversation. CPL, Assembly Drawing, PCB specifications, firmware, and test instructions improve scope accuracy.\n\n### Should approved alternatives be included in the checklist?\n\nYes. Record exact approved MPNs and no-substitute items so purchasing does not infer authorization from a generic description.\n\n### Where should the checked RFQ package be submitted?\n\nUse the project-file route to send the manufacturing files and identify any open sourcing, assembly, programming, testing, or delivery questions.',
+        ],
+      },
+      {
+        heading: 'Submit the Checked RFQ Package',
+        body: [
+          'Keep the checklist with the controlled manufacturing package so the supplier can see what is included, missing, or awaiting approval.',
+          '[Send the available RFQ files for review](/contact#project-files).',
+        ],
+      },
+    ],
+  },
+  {
     slug: 'what-files-required-pcba-quote',
     category: 'Getting Started',
     categoryColor: 'bg-cc-copper/15 text-cc-ink border-cc-copper/30',
@@ -326,24 +544,67 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     slug: 'bom-best-practices',
     category: 'Sourcing',
     categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
-    title: 'BOM best practices for fast sourcing and quoting',
-    excerpt: 'How to prepare a BOM list that helps component sourcing, alternatives review, and faster PCB assembly quotation.',
+    title: 'How to Prepare a BOM for PCBA Quotation and Production',
+    excerpt:
+      'Prepare a controlled PCBA BOM with exact manufacturer part numbers, designators, quantities, packages, DNP/DNI notes, approved alternatives, and customer-supplied part details.',
     image: '/factory/flow-02.png',
-    readTime: '6 min read',
-    metaDescription: 'Prepare a BOM list for fast PCBA sourcing and quoting with manufacturer part numbers, quantities, designators, alternates, and lifecycle notes.',
+    readTime: '8 min read',
+    metaDescription:
+      'Prepare a PCBA BOM with exact MPNs, designators, quantities, packages, DNP/DNI notes, approved alternatives and customer-supplied part details.',
     sections: [
       {
-        heading: 'BOM columns that matter',
+        heading: 'Quick Answer',
         body: [
-          'A clear BOM should include reference designators, quantity, manufacturer part number, manufacturer name, package, value, tolerance, voltage or power rating, and approved alternates if available.',
-          'Avoid generic descriptions without part numbers when possible. They slow sourcing checks and increase the risk of substitution errors.',
+          'A production-ready PCBA BOM identifies every fitted component with an exact Manufacturer Part Number, manufacturer, Designator, Quantity, Package, description, and project-specific notes. It should also mark DNP / DNI positions, Customer-supplied parts, Approved alternatives, and no-substitute items. Buyers should release one controlled BOM revision with the matching Gerber, CPL, assembly drawing, and quantity before quotation or production.',
+          'BOM preparation defines what must be purchased and assembled. Component shortage strategy belongs in the [BOM Risk guide](/knowledge/bom-risk-alternative-component-sourcing), while technical substitute review belongs in [How to Approve Alternative Components for PCBA](/knowledge/bom-alternatives-pcba-sourcing).',
         ],
       },
       {
-        heading: 'Speed up sourcing review',
+        heading: 'BOM Fields Required for PCBA Review',
         body: [
-          'Mark no-substitute parts, customer-supplied parts, and parts that can accept equivalents. This helps the sourcing team respond quickly when a component is short or obsolete.',
-          'For prototype PCB assembly, include acceptable alternatives early so the quote can move forward without repeated BOM clarification cycles.',
+          '| BOM field | What to provide | Why it matters |\n| --- | --- | --- |\n| Manufacturer Part Number | Complete MPN, including the required suffix | Identifies the exact orderable component |\n| Manufacturer | Component maker | Separates the part from similarly named devices |\n| Designator | R1, C14, U3, J2, and related references | Connects each BOM line to the PCB and assembly data |\n| Quantity | Quantity per assembled board | Supports purchasing and placement checks |\n| Package | Confirmed package or case code | Helps review BOM, footprint, and CPL consistency |\n| Description | Value, function, tolerance, rating, or other useful detail | Helps detect mismatches without replacing the MPN |\n| Approved alternatives | Customer-approved substitute MPNs, if any | Records permitted options without authorizing an unreviewed substitution |\n| DNP / DNI | Positions that must not be populated | Prevents unintended component placement |\n| Customer-supplied parts | Items provided by the buyer, including expected quantity | Separates consigned material from supplier purchasing |\n| Special notes | No-substitute, programming, traceability, matching, or handling instructions | Makes project-specific boundaries visible before quotation |',
+          'Avoid descriptions such as “10 k resistor” or “MCU” without an exact MPN when the design requires a specific part. Package, tolerance, rating, pinout, firmware behavior, or qualification requirements may differ even when two descriptions look similar.',
+        ],
+      },
+      {
+        heading: 'Use Exact MPNs and Required Suffixes',
+        body: [
+          'A suffix may identify package, temperature grade, tape-and-reel format, voltage option, memory size, firmware variant, or another orderable difference. Removing it can make the BOM ambiguous or point sourcing toward a component that is not compatible with the approved design.',
+          'Keep manufacturer names and MPNs in separate columns. Do not use distributor stock codes as the only identifier unless the corresponding manufacturer part number is also recorded.',
+        ],
+      },
+      {
+        heading: 'Control DNP, DNI, and Customer-Supplied Parts',
+        body: [
+          'Mark DNP or DNI references explicitly and keep those designators aligned with the assembly drawing and CPL. A blank quantity cell is not a reliable instruction because it may be interpreted as missing data rather than “do not populate.”',
+          'For customer-supplied components, identify the exact MPN, required quantity, expected overage, delivery status, and any handling or traceability requirement. The quotation should distinguish buyer-supplied material from components included in the [BOM Sourcing for PCBA](/bom-sourcing-pcb-assembly) scope.',
+        ],
+      },
+      {
+        heading: 'Record Alternatives Without Skipping Approval',
+        body: [
+          'A BOM may list alternatives that the customer has already evaluated. Record the approved MPN and any conditions for its use. Do not use a generic note such as “equivalent accepted” when voltage, tolerance, footprint, pinout, protocol, firmware, or project qualification could change compatibility.',
+          'If an alternative has not yet been approved, keep it outside the released BOM or mark it as pending. Use the separate [Alternative Component Approval guide](/knowledge/bom-alternatives-pcba-sourcing) to review the technical and customer-authorization steps.',
+        ],
+      },
+      {
+        heading: 'BOM Release Checklist Before Quotation or Production',
+        body: [
+          '- Confirm the BOM revision matches the current Gerber, CPL, and assembly drawing.\n- Include exact MPNs and required suffixes for all purchased parts.\n- Confirm designators and per-board quantities.\n- Mark DNP / DNI positions explicitly.\n- Identify approved alternatives and no-substitute components.\n- Identify customer-supplied parts and the expected delivery quantity.\n- Add special programming, matching, handling, or traceability notes.\n- State the target build quantity and whether repeat production is expected.',
+          'Use the [PCBA Quote File Checklist](/pcba-quote-file-checklist) to confirm the complete RFQ package. If availability, lifecycle, MOQ, or repeat-order continuity is the concern, continue to [BOM Risk and Component Availability](/knowledge/bom-risk-alternative-component-sourcing).',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### What is the most important field in a PCBA BOM?\n\nThe exact manufacturer part number, including its required suffix, is the primary purchasing identifier. Designator, quantity, package, description, and notes are still needed to connect that part to the assembled board.\n\n### Should DNP or DNI components stay in the BOM?\n\nYes. Keep the references visible and mark them clearly as DNP or DNI so the assembly team does not treat them as missing information or populate them unintentionally.\n\n### Can a BOM include approved alternatives?\n\nYes. List exact customer-approved alternative MPNs and any conditions for their use. A generic “equivalent accepted” note is not enough for parts with compatibility constraints.\n\n### How should customer-supplied parts be identified?\n\nMark them as customer-supplied and include the exact MPN, required quantity, expected overage, delivery status, and any handling or traceability instructions.\n\n### What other files should match the BOM revision?\n\nThe released BOM should match the Gerber package, CPL or pick-and-place data, assembly drawing, firmware or programming inputs, and testing instructions for the quoted build.',
+        ],
+      },
+      {
+        heading: 'Prepare the BOM for Manufacturing Review',
+        body: [
+          'After the BOM fields and revision are controlled, send them with the related manufacturing files instead of asking the supplier to infer missing assembly requirements.',
+          '[Send the controlled BOM and project files for review](/contact#project-files).',
         ],
       },
     ],
@@ -1121,69 +1382,150 @@ export const knowledgeArticles: KnowledgeArticle[] = [
     ],
   },
   {
-    slug: 'bom-risk-alternative-component-sourcing',
+    slug: 'bom-alternatives-pcba-sourcing',
     category: 'Sourcing',
     categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
-    title: 'BOM Risk and Alternative Component Sourcing for PCBA',
+    title: 'How to Approve Alternative Components for PCBA',
     excerpt:
-      'How BOM sourcing affects PCB assembly cost and lead time, including obsolete parts, long-lead components, package matching, lifecycle checks, and customer-approved alternatives.',
-    image: '/factory/bom-risk-sourcing.jpg',
-    readTime: '8 min read',
+      'A technical approval guide for comparing substitute components by exact part number, package, pinout, electrical limits, firmware dependencies, project requirements, and customer authorization.',
+    image: '/factory/knowledge-covers/bom-alternatives-pcba-sourcing-cover.webp',
+    readTime: '9 min read',
     metaDescription:
-      'Learn how BOM sourcing affects PCBA cost, lead time, alternatives, lifecycle review, and customer approval before assembly.',
+      'Review MPN, suffix, package, footprint, pinout, electrical ratings, firmware dependencies and customer approval before using a PCBA substitute component.',
+    cta: {
+      primary: { label: 'Send BOM & Project Files', href: '/contact#project-files' },
+      secondary: { label: 'Review BOM Sourcing Service', href: '/bom-sourcing-pcb-assembly' },
+    },
     sections: [
       {
-        heading: 'Quick answer',
+        heading: 'Quick Answer',
         body: [
-          'BOM sourcing affects PCB assembly cost and lead time because every component must be available, correctly packaged, footprint-compatible, and approved before SMT assembly can start. Obsolete parts, long-lead items, unclear MPNs, or unapproved alternatives can delay purchasing and change the final quote. A line-by-line BOM review before assembly reduces that risk.',
+          'An alternative component should be approved only after the proposed manufacturer part number is checked against the original part, PCB footprint, circuit requirements, firmware or interface dependencies, testing method, and any project-specific qualification. The supplier may identify a sourcing option, but the customer must approve it before purchasing or assembly.',
+          '**A component should not be substituted only because the package or appearance is similar.** Similar-looking parts can differ in pinout, electrical behavior, tolerance, ratings, protocol, firmware support, temperature range, or required certification.',
         ],
       },
       {
-        heading: 'What BOM sourcing checks before PCBA',
+        heading: 'Why a Substitute May Be Proposed',
         body: [
-          'A practical [BOM sourcing for PCB assembly](/bom-sourcing-pcb-assembly) review checks manufacturer part numbers, quantities, reference designators, package information, lifecycle status, stock availability, lead time, and whether the selected parts match the PCB footprint.',
-          'The review should happen before SMT assembly, not after the boards are fabricated. If a critical part is unavailable or the package does not match the footprint, the project may need an approved alternative, a layout change, or a revised purchasing plan.',
+          'A substitute may be considered when the original component is obsolete, not recommended for new designs, allocated, out of stock, long lead, constrained by MOQ, or unsuitable for expected repeat-order continuity. These supply conditions are explained in [BOM Risk and Component Availability](/knowledge/bom-risk-alternative-component-sourcing).',
+          'Supply pressure explains why a proposal exists; it does not prove compatibility. Technical comparison and customer authorization remain separate decisions.',
         ],
       },
       {
-        heading: 'How BOM sourcing affects cost and lead time',
+        heading: 'Alternative Component Approval Matrix',
         body: [
-          '| BOM issue | Cost impact | Lead-time impact | What to confirm |\n| --- | --- | --- | --- |\n| Obsolete or NRND part | Redesign or alternative sourcing cost | Delay while a replacement is reviewed | Lifecycle status and customer approval |\n| Long-lead component | Higher purchasing cost or early buy requirement | Can gate the whole build | Availability before quotation |\n| Missing MPN | More engineering and sourcing time | Slower quote and purchasing | Exact manufacturer part number |\n| Package mismatch | Rework, scrap, or PCB revision risk | Delay before SMT preparation | Package, footprint, and land pattern |\n| Single-source part | Less price flexibility | Schedule depends on one supply path | Approved alternatives if possible |',
-          'Authorized distributors, direct manufacturer channels, spot-market availability, and alternative parts can have different prices and risk levels. A low quote based on uncertain stock is not useful if the part disappears before purchasing. For [turnkey PCBA](/turnkey-pcb-assembly), cost and schedule should be based on parts that can actually be purchased for the project.',
+          '| Approval criterion | What to compare | Why it matters |\n| --- | --- | --- |\n| Manufacturer Part Number and suffix | Complete original and proposed orderable MPNs | A suffix can change package, grade, option, or packing format |\n| Package, footprint, and pinout | Body dimensions, land pattern, exposed pad, pin numbering, pin function | A package name alone does not prove PCB compatibility |\n| Electrical characteristics | Function, logic levels, frequency, impedance, leakage, timing, and other datasheet limits | The circuit must operate within the approved design range |\n| Voltage and current ratings | Maximum, nominal, transient, and derating requirements | An underspecified part can fail or change safety margin |\n| Tolerance and accuracy | Component tolerance, reference accuracy, drift, and matching requirements | Small differences can affect sensing, power, timing, or calibration |\n| Temperature range | Operating, storage, and process temperature limits | The part must fit the product and assembly environment |\n| Protocol / interface | I2C, SPI, UART, USB, CAN, Ethernet, RF, or other required behavior | Interface differences may affect hardware and software integration |\n| Firmware dependency | Device IDs, register maps, drivers, memory, boot behavior, and programming | A pin-compatible device may still require firmware changes |\n| Project certifications | Customer-specified regulatory, safety, automotive, medical, RF, or material requirements | A replacement must preserve requirements that apply to the project |\n| Customer approval | Recorded approval, conditions, BOM revision, and affected quantity | Purchasing and assembly need an auditable authorization boundary |',
+          'Not every project uses every criterion. The responsible engineer should identify which checks apply to the circuit, product, test method, and customer requirements.',
         ],
       },
       {
-        heading: 'Obsolete, long-lead, and unavailable parts',
+        heading: 'A Bounded Approval Workflow',
         body: [
-          'Obsolete or unavailable parts are not just purchasing problems. They can affect schematic function, firmware behavior, thermal performance, safety margins, connector fit, or enclosure compatibility. Even a passive component can matter if tolerance, voltage rating, or package size changes.',
-          'Long-lead parts should be identified early so the buyer can decide whether to wait, approve an alternative, adjust the design, or split prototype and low-volume production planning. This is especially important for [low-volume PCBA assembly](/low-volume-pcba-assembly), where setup cost and component minimums can weigh heavily on each board.',
+          '1. Confirm the exact original MPN, suffix, designator, quantity, package, and reason an alternative is needed.\n2. Identify a specific proposed MPN rather than a generic “equivalent.”\n3. Compare the applicable datasheet, footprint, pinout, electrical, firmware, interface, environmental, and project requirements.\n4. Record differences, open questions, and any PCB, BOM, firmware, assembly, or test change.\n5. Send the proposal to the customer for engineering and purchasing approval.\n6. Update the controlled BOM and related files before purchasing or production release.',
+          'For repeat production, record whether the approval applies to one batch, a defined quantity, or future BOM revisions. Do not turn an emergency purchasing decision into an undocumented permanent substitution.',
         ],
       },
       {
-        heading: 'Alternative components require customer approval',
+        heading: 'When an Alternative Should Be Rejected or Escalated',
         body: [
-          'A substitute should never be used silently. Huitai can suggest alternatives when a part is obsolete, out of stock, long-lead, or unusually expensive, but parts are purchased only after the customer confirms the approved option and any related risk.',
-          'For each proposed alternative, the practical review should compare manufacturer part number, package, footprint, electrical rating, tolerance, lifecycle status, and whether the part is functionally suitable for the application. If the part affects firmware, sensing, power, RF, or safety behavior, customer engineering approval is especially important.',
+          '- Package or pinout cannot be confirmed against the PCB footprint.\n- Electrical limits, tolerance, timing, or temperature range do not meet the design requirement.\n- Firmware, driver, device-ID, calibration, or test behavior is unknown.\n- Project certification or customer qualification cannot be preserved.\n- The proposed source, traceability, or authenticity is not acceptable for the project.\n- The customer has marked the component as no-substitute.\n- The change requires a PCB or firmware revision that has not been validated.',
+          'When technical evidence is incomplete, keep the original part, revise the supply plan, or treat the change as an engineering validation task rather than silently releasing it to production.',
         ],
       },
       {
-        heading: 'What buyers should prepare before BOM sourcing review',
+        heading: 'Prepare the Approval Record',
         body: [
-          '- Manufacturer part number and manufacturer name for each line\n- Reference designators and quantities\n- Package, value, tolerance, voltage, or power rating where relevant\n- Approved alternatives if the design already allows them\n- No-substitute markings for critical parts\n- Target quantity and expected repeat order range\n- Gerber and placement files so package and footprint can be checked together\n- Test requirements that may depend on specific components',
-          'A BOM is strongest when it is reviewed with the PCB files, not separately. Package and footprint checks require both the part list and the board data.',
+          'Record the original and proposed MPNs, reason for change, comparison evidence, affected designators, quantity or revision boundary, required validation, approver, and approval date. Then update the controlled BOM and related manufacturing instructions.',
+          'Use [BOM Best Practices](/knowledge/bom-best-practices) to record approved alternatives correctly. For sourcing review within an assembly project, continue to [BOM Sourcing for PCBA](/bom-sourcing-pcb-assembly).',
         ],
       },
       {
         heading: 'FAQ',
         body: [
-          '### Why does BOM sourcing affect PCBA lead time?\n\nPCB assembly cannot start until the required parts are available, approved, and matched to the PCB footprint. One obsolete, long-lead, or unclear BOM line can delay purchasing and SMT preparation.\n\n### What happens if a component is obsolete?\n\nThe part should be flagged before purchasing. The supplier can discuss an approved alternative, a possible design change, or a revised sourcing plan, but the final decision should come from the customer.\n\n### Can Huitai suggest alternative components?\n\nYes. Huitai can suggest alternatives during BOM sourcing review, especially for unavailable, long-lead, or high-risk parts. Alternatives are not purchased or used without customer confirmation.\n\n### Will components be replaced without customer approval?\n\nNo. Substitutions require customer approval because even similar-looking parts can differ in package, electrical rating, tolerance, lifecycle, firmware behavior, or test result.\n\n### How can buyers prepare a better BOM?\n\nUse exact manufacturer part numbers, include package and rating details, mark no-substitute parts, list approved alternatives where possible, and send Gerber or placement files so package compatibility can be checked.',
+          '### Can a component be replaced because the package is the same?\n\nNo. The package name or appearance does not confirm footprint, pinout, electrical, firmware, interface, temperature, qualification, or test compatibility.\n\n### Who approves an alternative component?\n\nThe supplier can propose and document an option, but customer approval is required before purchasing or fitting the replacement. The customer may need engineering, quality, regulatory, or purchasing review depending on the project.\n\n### Does a pin-compatible component always work?\n\nNo. Pin-compatible parts can have different voltage limits, timing, accuracy, register maps, drivers, startup behavior, thermal performance, or qualification status.\n\n### Should an approved alternative be added to the BOM?\n\nYes. Add the exact approved MPN, conditions of use, affected revision or quantity, and any validation requirement to the controlled BOM or linked approval record.\n\n### What if the replacement changes firmware or testing?\n\nTreat those changes as part of the approval. Update firmware, programming, test instructions, expected results, and the product revision before production release.',
         ],
       },
       {
-        heading: 'Send your BOM for a risk review',
+        heading: 'Submit a Specific Alternative for Review',
         body: [
-          'The best time to find a sourcing problem is before production, during engineering review and quotation.',
-          '[Send your BOM and Gerber files](/contact) for sourcing risk review before component purchasing and SMT assembly.',
+          'Provide the current BOM, original MPN, proposed alternative, datasheets, design revision, reason for the change, and any known firmware, interface, test, or project-qualification requirements.',
+          '[Send the BOM and project files for review](/contact#project-files).',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'bom-risk-alternative-component-sourcing',
+    category: 'Sourcing',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'BOM Risk and Component Availability in PCBA Manufacturing',
+    excerpt:
+      'How MPN accuracy, lifecycle status, shortages, long lead times, MOQs, single-source parts, and repeat-order continuity create risk in PCBA production.',
+    image: '/factory/bom-risk-sourcing.jpg',
+    readTime: '9 min read',
+    metaDescription:
+      'Learn how MPN accuracy, obsolete parts, shortages, long lead times, MOQs and single-source components affect PCBA sourcing and repeat production.',
+    sections: [
+      {
+        heading: 'Quick Answer',
+        body: [
+          'BOM risk is the possibility that unclear or unavailable components will change the cost, timing, compatibility, or repeatability of a PCBA build. It matters when an MPN or suffix is incomplete, a part is obsolete or long lead, supply is allocated, MOQ exceeds the build requirement, or a critical item has only one approved source. Buyers should review exact parts and continuity before purchasing, then freeze the approved BOM revision before repeat production.',
+          'This guide owns component availability and continuity risk. For the technical steps used to compare a proposed substitute, see [How to Approve Alternative Components for PCBA](/knowledge/bom-alternatives-pcba-sourcing).',
+        ],
+      },
+      {
+        heading: 'MPN Accuracy and Suffix Risk',
+        body: [
+          'Availability must be checked against the exact manufacturer part number, including the required suffix. Similar base numbers may represent a different package, temperature grade, voltage option, packing format, memory configuration, or device variant. An incomplete MPN can make an inventory result look available even though the approved component is not.',
+          'A [BOM Sourcing for PCBA](/bom-sourcing-pcb-assembly) review should also confirm quantity, package, designators, customer-supplied items, approved alternatives, and no-substitute notes before purchasing.',
+        ],
+      },
+      {
+        heading: 'Common BOM Availability Risks',
+        body: [
+          '| BOM risk | Production effect | Buyer decision |\n| --- | --- | --- |\n| Obsolete or EOL | The approved part may no longer be available for a new or repeat build | Redesign, last-time buy, or customer-approved replacement |\n| NRND or lifecycle uncertainty | Future availability may be limited even if current stock exists | Decide whether the part is suitable for the expected product life |\n| Long lead time | One component can gate the complete PCBA schedule | Buy earlier, revise the plan, or review an alternative |\n| Allocation or shortage | Distributor stock may be restricted or disappear before purchase | Confirm source and quotation validity before order release |\n| MOQ or pack quantity | Required purchase quantity may exceed the build quantity | Accept excess material, change source, or approve another plan |\n| Single-source part | Supply continuity depends on one manufacturer or approved device | Record the risk and evaluate qualified options before a shortage |\n| No-substitute component | The design cannot accept another part without project review | Protect the line from automatic substitution and plan supply early |',
+          'Stock and lead-time signals are time-sensitive. A quotation should identify assumptions that must be reconfirmed at purchase rather than treating one inventory snapshot as permanent supply.',
+        ],
+      },
+      {
+        heading: 'Repeat-Order Continuity for Low-Volume PCBA',
+        body: [
+          'A prototype may be buildable from remaining distributor stock while the same BOM is not sustainable for repeat orders. Before [Low-Volume PCBA Assembly](/low-volume-pcba-assembly), identify lifecycle-sensitive, allocation-controlled, long-lead, single-source, and no-substitute parts. Record approved sources or alternatives where the project permits them.',
+          'Supply continuity also depends on excess material, MOQ, buyer-owned inventory, storage life, and whether the next batch is expected soon enough to use remaining parts. These decisions should be visible in the sourcing plan rather than assumed after the first build.',
+        ],
+      },
+      {
+        heading: 'Freeze the BOM Before Batch Production',
+        body: [
+          'BOM freeze means the released revision, fitted parts, approved alternatives, DNP/DNI positions, customer-supplied components, and special notes are controlled for the planned batch. It does not mean the BOM can never change; it means a change is reviewed before purchasing or assembly proceeds.',
+          'When a part changes, update the BOM revision and check whether Gerber, CPL, assembly drawing, firmware, programming, inspection, or testing information must also change. Do not allow purchasing notes to become an undocumented production revision.',
+        ],
+      },
+      {
+        heading: 'Alternatives Require Customer Approval',
+        body: [
+          'A supply problem may trigger an alternative proposal, but availability alone does not make the substitute acceptable. Customer approval is required before purchasing or fitting a replacement. The separate [Alternative Component Approval guide](/knowledge/bom-alternatives-pcba-sourcing) covers the compatibility checks.',
+          'Mark critical no-substitute items clearly. If project certification, firmware, RF behavior, safety limits, calibration, or test results depend on a specific part, identify that dependency before sourcing begins.',
+        ],
+      },
+      {
+        heading: 'BOM Risk Review Checklist',
+        body: [
+          '- Confirm exact MPNs and required suffixes.\n- Check lifecycle status for critical parts.\n- Identify obsolete, NRND, long-lead, allocation-controlled, or shortage items.\n- Review MOQ, pack quantity, excess material, and customer-supplied stock.\n- Identify single-source and no-substitute components.\n- Consider availability for expected repeat orders, not only the first build.\n- Record customer-approved alternatives without using unapproved substitutes.\n- Freeze the controlled BOM revision before batch purchasing and production.',
+          'Use the [PCBA Quote File Checklist](/pcba-quote-file-checklist) to include the BOM with the rest of the manufacturing package.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### What creates BOM risk in PCBA manufacturing?\n\nTypical risks include incomplete MPNs, incorrect suffixes, obsolete or NRND parts, shortages, allocation, long lead times, MOQ, single-source components, and no-substitute items without a continuity plan.\n\n### Why should availability be checked by exact MPN and date?\n\nA base part number may have several orderable variants, and distributor inventory changes over time. Check the complete MPN, required suffix, approved source, available quantity, and quotation validity close to purchase.\n\n### What happens if one component has a long lead time?\n\nThat part may gate the entire PCBA schedule. The buyer can decide to purchase earlier, wait, revise the build plan, or technically review a substitute before release.\n\n### Why does low-volume production need BOM continuity?\n\nA validated design must remain buildable across repeat batches. Lifecycle, approved alternatives, MOQ, excess material, and expected next-order timing all affect continuity.\n\n### Can a supplier replace a component without approval?\n\nNo. A proposed replacement must be reviewed against project requirements and approved by the customer before purchasing or assembly.',
+        ],
+      },
+      {
+        heading: 'Review BOM Risk Before Purchasing',
+        body: [
+          'The best time to identify a continuity problem is before the BOM is frozen and purchasing begins.',
+          '[Send the BOM and manufacturing files for review](/contact#project-files), or review the complete [BOM Sourcing for PCBA](/bom-sourcing-pcb-assembly) scope.',
         ],
       },
     ],

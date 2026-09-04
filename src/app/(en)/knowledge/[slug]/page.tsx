@@ -295,14 +295,22 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
                           </pre>
                         ),
                         table: ({ children }) => (
-                          <div className="overflow-x-auto">
-                            <table className="w-full border-collapse text-left text-sm">{children}</table>
+                          <div className="overflow-hidden rounded-xl border border-cc-line">
+                            <table className="w-full table-fixed border-collapse text-left text-xs sm:text-sm">
+                              {children}
+                            </table>
                           </div>
                         ),
                         th: ({ children }) => (
-                          <th className="border border-cc-line bg-cc-carbon px-3 py-2 font-semibold text-cc-ink">{children}</th>
+                          <th className="break-words border border-cc-line bg-cc-carbon px-2 py-2 align-top font-semibold text-cc-ink [overflow-wrap:anywhere] sm:px-3">
+                            {children}
+                          </th>
                         ),
-                        td: ({ children }) => <td className="border border-cc-line px-3 py-2">{children}</td>,
+                        td: ({ children }) => (
+                          <td className="break-words border border-cc-line px-2 py-2 align-top [overflow-wrap:anywhere] sm:px-3">
+                            {children}
+                          </td>
+                        ),
                       }}
                     >
                       {article.content}

@@ -7,7 +7,7 @@ const IMAGES = [
     width: 1272,
     height: 494,
     tag: 'SMT ASSEMBLY',
-    title: 'SMT placement and line operation',
+    title: 'SMT placement and reflow production for assembled PCB projects.',
     span: 'lg:col-span-7 lg:row-span-2',
     sizes: '(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 57vw',
     position: 'object-center',
@@ -18,7 +18,7 @@ const IMAGES = [
     width: 1200,
     height: 1721,
     tag: 'THROUGH-HOLE ASSEMBLY',
-    title: 'Manual soldering and DIP workmanship',
+    title: 'Through-hole placement and manual soldering for mixed-assembly projects.',
     span: 'lg:col-span-5',
     sizes: '(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 41vw',
     position: 'object-[center_62%]',
@@ -29,7 +29,7 @@ const IMAGES = [
     width: 1272,
     height: 920,
     tag: 'AOI INSPECTION',
-    title: 'Operator-led inspection review',
+    title: 'Automated optical inspection used to review assembled boards after SMT processing.',
     span: 'lg:col-span-5',
     sizes: '(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 41vw',
     position: 'object-center',
@@ -78,11 +78,11 @@ export default function FactoryGrid() {
             REAL MANUFACTURING SCENES
           </div>
           <h2 className="font-display text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-[44px]">
-            Production, inspection, and finished boards—not abstract technology graphics.
+            Inside Our PCBA Manufacturing Process
           </h2>
           <p className="mt-4 max-w-[690px] text-[15px] leading-7 text-cc-body">
-            These project and production photos show the physical work behind SMT assembly,
-            component handling, inspection, and finished PCBA delivery.
+            Real production photos document the physical work behind SMT and through-hole
+            assembly, AOI and X-ray inspection, finished PCBA handling, and packing.
           </p>
         </div>
 
