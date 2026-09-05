@@ -114,6 +114,7 @@ const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
 };
 
 const STATIC_CONTENT_OVERRIDE_SLUGS = new Set([
+  'how-we-review-pcba-project-before-quotation',
   'bom-best-practices',
   'bom-alternatives-pcba-sourcing',
   'edge-ai-device-pcba-manufacturing',
@@ -293,7 +294,15 @@ export async function getSitemapArticleEntries() {
     entries.set(article.slug, article.updatedAt || article.publishedAt || null);
   }
   for (const article of cmsArticles) {
-    entries.set(article.slug, article.published_at || article.updated_at || article.created_at);
+    // Match the content source actually rendered for static ownership overrides.
+    const staticArticle = STATIC_CONTENT_OVERRIDE_SLUGS.has(article.slug)
+      ? getKnowledgeArticle(article.slug)
+      : undefined;
+    const staticLastModified = staticArticle?.updatedAt || staticArticle?.publishedAt;
+    entries.set(
+      article.slug,
+      staticLastModified || article.published_at || article.updated_at || article.created_at,
+    );
   }
 
   return Array.from(entries.entries()).map(([slug, lastModified]) => ({

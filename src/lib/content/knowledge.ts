@@ -19,6 +19,140 @@ export type KnowledgeArticle = {
 
 export const knowledgeArticles: KnowledgeArticle[] = [
   {
+    slug: 'how-we-review-pcba-project-before-quotation',
+    category: 'Knowledge Base',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'How We Review Your PCBA Project Before Quotation',
+    excerpt: 'After your files arrive, the review connects revisions, BOM and placement data, assembly requirements, programming, and testing to a scope that can be quoted.',
+    image: '/factory/knowledge-covers/pcba-project-review-before-quote-cover.webp',
+    readTime: '12 min read',
+    metaDescription: 'Learn how Huitai reviews PCBA projects before quotation, including Gerber, BOM, sourcing, assembly, testing scope, and missing information checks.',
+    publishedAt: '2026-05-21T09:12:10.97+08:00',
+    updatedAt: '2026-09-05',
+    cta: {
+      primary: { label: 'Send Gerber & BOM for Pre-Quotation Review', href: '/contact#project-files' },
+      secondary: { label: 'Explore PCB Assembly Services', href: '/pcb-assembly-services' },
+    },
+    sections: [
+      {
+        heading: 'Quick Answer',
+        body: [
+          'A PCBA pre-quotation review is the manufacturer\'s check of the production files received before pricing the intended build. It normally looks for revision mismatches, incomplete BOM data, CPL inconsistencies, component availability risks, unclear assembly requirements, special processes, and programming or testing responsibilities that could change cost or manufacturing feasibility.',
+          'The purpose is to establish a clearly defined, manufacturable scope for quotation. It does not redesign the product, prove its function, or replace detailed DFM and production engineering where those are required. Quotation readiness is not the same as authorization to purchase materials or release production.',
+          '**In this guide:** [review inputs](#what-goes-into-a-pcba-pre-quotation-review), [revision checks](#are-all-production-files-on-the-same-revision), [testing responsibility](#who-is-responsible-for-programming-and-testing), [review outcomes](#what-can-happen-after-the-review), and [buyer approval](#typical-questions-that-require-buyer-approval).',
+        ],
+      },
+      {
+        heading: 'What Goes Into a PCBA Pre-Quotation Review?',
+        body: [
+          'Once files arrive, the factory checks what each input establishes and whether it agrees with the rest of the package. This matrix explains the purpose of the review; the applicable checks depend on the assembly and sourcing scope.',
+          '| Input received | Why the factory reviews it |\n| --- | --- |\n| Gerber and drill files | Establish the fabrication geometry, holes, and manufacturing reference; identify gaps against the requested board construction. |\n| BOM | Establish exact parts, packages, fitted quantities, designators, and purchasing scope. |\n| CPL / Pick-and-Place | Check placement positions, board side, and orientation against the BOM and assembly drawing. |\n| Assembly drawing | Resolve fitted parts, polarity, orientation, mechanical details, and assembly notes. |\n| PCB specifications | Confirm layers, material, thickness, copper, finish, and any stackup or impedance requirements that affect fabrication scope. |\n| Quantity | Establish the intended build quantity for material purchasing, setup, assembly, and testing. |\n| Programming requirements | Identify the devices, tool, interface, fixture, and programming work to include. |\n| Firmware | Identify the version and programming file associated with the build and test procedure. |\n| Testing requirements | Distinguish inspection from electrical or functional verification and establish acceptance criteria. |\n| Customer-supplied components | Separate consigned material from factory purchasing and identify supply gaps. |\n| Approved alternatives | Identify permitted substitutions, approval conditions, and no-substitute lines. |\n| Delivery and packaging requirements | Identify relevant labeling, handling, final packing, and delivery assumptions. |\n| Revision information | Establish which file versions belong together for the intended build. |',
+          'For the buyer-side explanation of what to submit and why, see the [required RFQ information guide](/knowledge/what-determines-pcb-assembly-quote-china). For upload preparation, use the [commercial file checklist](/pcba-quote-file-checklist). The review below starts after those inputs have been received.',
+        ],
+      },
+      {
+        heading: 'Are All Production Files on the Same Revision?',
+        body: [
+          'The review compares the Gerber, BOM, CPL, and assembly-drawing revisions with the firmware version and test-instruction version. These files need a confirmed relationship to the intended build; their labels do not have to use an identical numbering system.',
+          '**Illustrative review example:** a package contains REV B Gerber, a REV A BOM, and an older CPL. A component moved in REV B may no longer match the placement data, or a fitted part may have changed without a matching BOM update. Before relying on the package, the factory asks the buyer to identify the released revision and confirm or correct the files that belong to it.',
+          'A quotation should not assume that files with different dates or revision labels belong to the same released build. The output of this check is a confirmed file set or an explicit revision question, rather than a guessed match based on the newest filename. Revision-control systems vary between customers.',
+        ],
+      },
+      {
+        heading: 'What Do We Check in the BOM Before Quotation?',
+        body: [
+          'The BOM review separates information that can support purchasing and assembly pricing from information that still requires a buyer decision. An exact manufacturer part number (MPN) includes the relevant suffix; a generic description or similar package name may refer to a different purchasable part.',
+          '- **Part identity:** check manufacturer, exact MPN, suffix, and package. Unclear generic descriptions prevent a dependable part selection.\n- **Fitted material:** reconcile per-board quantity, reference designators, and DNP / DNI entries, which identify parts that should not be populated. Ambiguity changes both material and assembly scope.\n- **Supply responsibility:** identify customer-supplied parts, no-substitute components, and documented approved alternatives. Pricing should not silently assume that the factory can replace or purchase a consigned line.\n- **Purchasability:** flag obsolete or unavailable items, long-lead items, and unusual minimum order quantities (MOQs). These can leave material cost, purchased quantity, or delivery assumptions unresolved.',
+          'The immediate output is a list of unresolved lines and their effect on the quotation. Detailed continuity analysis belongs in the [BOM risk guide](/knowledge/bom-risk-alternative-component-sourcing); technical comparison and customer authorization belong in the [alternative-component approval guide](/knowledge/bom-alternatives-pcba-sourcing). The [BOM best-practices guide](/knowledge/bom-best-practices) covers how to correct the source data.',
+        ],
+      },
+      {
+        heading: 'Does the BOM Match the Placement Data?',
+        body: [
+          'The factory compares the BOM, CPL or pick-and-place data, and assembly drawing to establish which components are fitted, where they are placed, and on which side. A mismatch is a question to resolve, not automatic permission to edit the design.',
+          '- A fitted designator appears in the BOM but is missing from the CPL. It may require hand placement, through-hole assembly, or corrected placement data.\n- A CPL designator is absent from the BOM, or a DNP component is still included as a fitted placement.\n- Package descriptions or per-board quantities do not agree across the files.\n- Designators are duplicated, missing, or written inconsistently, such as U12 appearing in one file and U12A in another.\n- Polarity or orientation-sensitive parts need confirmation against the drawing.\n- Assembly-drawing notes conflict with the BOM, component side, or placement information.',
+          'For example, a connector missing from SMT placement data may be an intentional manual operation. The reviewer checks the intended process before requesting a correction. Automated checks can catch structural inconsistencies, but engineering or production review may still be needed for ambiguous packages, orientation conventions, or assembly notes.',
+        ],
+      },
+      {
+        heading: 'What Assembly Details Can Change the Quote?',
+        body: [
+          'The assembly review identifies operations that change labor, setup, handling, inspection, or fixture scope. It does not apply a universal price formula.',
+          '- **Process mix:** SMT only, SMT plus through-hole / DIP, double-sided assembly, manual soldering, or hand placement.\n- **Component geometry:** fine-pitch parts, BGA / QFN packages, connectors, transformers, or large components that affect access, support, and handling.\n- **Additional operations:** post-assembly work, special handling, depaneling, or cleaning where required.\n- **Inspection and fixtures:** agreed X-ray requirements, board support, programming fixtures, and test connectors.',
+          'The result should identify which operations are included and which need clarification. BGA or QFN presence is a reason to review hidden-joint inspection needs; it does not establish the same X-ray plan for every board. The [PCB assembly service scope](/pcb-assembly-services) describes the manufacturing destination for these confirmed operations.',
+        ],
+      },
+      {
+        heading: 'Who Is Responsible for Programming and Testing?',
+        body: [
+          '**“Testing required” is not specific enough for an accurate production scope.** If the instruction is only “Please test the boards,” the review needs to establish what to test, how to test it, what tools are required, and what counts as pass or fail.',
+          '- Is firmware provided, and which device or devices need programming?\n- Which firmware version and programming file apply to the build?\n- Who supplies the programming tool, interface, licenses if applicable, and fixture?\n- Is functional testing expected, or is the requested scope limited to inspection such as AOI?\n- Who defines and approves the test method, sequence, expected results, and acceptance criteria?\n- Does the procedure require customer software, hardware, loads, cables, or test connectors?\n- Who resolves failures, approves retest instructions, or answers questions about product behavior?',
+          'AOI can inspect visible assembly features; it does not establish electrical or functional performance. The review should record the included verification, any excluded work, and who supplies each dependency. Undefined test steps or unavailable fixtures can leave the testing portion of a quote open even when assembly itself is understood.',
+          'Use the [inspection and functional-testing service overview](/pcba-testing-quality-control) to discuss the required coverage. Not sure whether your files are quote-ready? Review the [PCBA quotation checklist](/knowledge/pcba-quotation-checklist) before sending corrections.',
+        ],
+      },
+      {
+        heading: 'What Changes When the Customer Supplies Components?',
+        body: [
+          'For customer-supplied material, the factory reviews the exact supplied MPN, quantity, package condition, and presentation: reels, trays, or cut tape. A quote may rely on stated packing information initially, with actual condition confirmed when the material arrives.',
+          'Expected attrition or spare quantity should be discussed where relevant. The amount depends on the component, package, material presentation, and process; this guide does not specify a fixed extra percentage. Moisture-sensitive handling may also need confirmation where applicable.',
+          'The review should identify who supplies shortages and what happens if the delivered parts are insufficient, damaged, or different from the agreed MPN. Additional purchasing, a partial build, or a revised schedule may require a buyer decision. The [BOM sourcing service](/bom-sourcing-pcb-assembly) can cover the factory-purchased portion when the consigned and purchased lines are clearly separated.',
+        ],
+      },
+      {
+        heading: 'When Is a PCBA Project Not Ready for an Accurate Quote?',
+        body: [
+          'A project is not ready for an accurate quote when unresolved information could materially change the build scope. Typical blockers include:',
+          '- BOM lines without exact MPNs or a sufficiently defined component specification.\n- Conflicting Gerber, BOM, CPL, assembly-drawing, firmware, or test revisions.\n- Missing CPL for an assembly that needs placement data, with no agreed way to establish it.\n- An unconfirmed build quantity.\n- Unclear customer-supplied parts, quantities, or shortage responsibility.\n- Proposed substitutions without a defined approval status.\n- Unknown programming requirements or undefined testing and acceptance criteria.\n- Incomplete PCB specifications or key special-process requirements.\n- Major contradictions between files that prevent a consistent manufacturing reference.',
+          '**“Cannot quote accurately yet” does not mean “cannot manufacture the project.”** It means critical scope is still undefined. Review can begin with incomplete files; the next step is to explain the gap. Any preliminary estimate should state its assumptions and exclusions, while unresolved items remain subject to confirmation before a firm quotation.',
+        ],
+      },
+      {
+        heading: 'What Can Happen After the Review?',
+        body: [
+          '### A. Quote-Ready\n\nFiles and scope are sufficiently clear. The reviewed file revisions, material responsibilities, assembly operations, and agreed testing scope can support quotation. Separate purchasing and production approvals may still be required.',
+          '### B. Clarification Required\n\nA limited question remains, such as a drawing note or fitted-part instruction. The reviewer asks the buyer to confirm it and records how the answer affects the quote.',
+          '### C. Manufacturing / Sourcing Risk Found\n\nComponent availability, assembly ambiguity, a testing gap, or a revision inconsistency may require a buyer decision. The review explains the affected scope and options before relying on a substitution or other changed assumption.',
+          '### D. Additional Engineering Information Required\n\nThe current files cannot define the build sufficiently. The factory requests missing or corrected data and revisits the affected review steps when it arrives.',
+        ],
+      },
+      {
+        heading: 'Typical Questions That Require Buyer Approval',
+        body: [
+          'The factory can identify an inconsistency or propose an option. Decisions that change the intended build need confirmation from the buyer or their authorized engineer. The approved answer should be tied to the relevant file revision.',
+          '| Issue | Why it matters | Buyer decision needed |\n| --- | --- | --- |\n| Alternative component proposed | May affect electrical, mechanical, or firmware compatibility. | Approve or reject the substitute and any conditions. |\n| Gerber / BOM revision mismatch | The released build is unclear. | Confirm the correct revision and matching files. |\n| Testing method missing | Test labor, fixtures, and pass/fail scope are undefined. | Provide or approve the test method and criteria. |\n| Customer-supplied IC quantity unclear | Material responsibility and available build quantity are uncertain. | Confirm supplied quantity and shortage responsibility. |\n| DNP / DNI ambiguity | The wrong component may be fitted or omitted. | Confirm whether the component should be populated. |\n| CPL / BOM mismatch | Placement data does not match the component list. | Provide corrected data or confirm the intended manual operation. |',
+          'A clarification should describe the affected designator or part, the conflicting information, and the answer needed. Substitution, omission, test coverage, or file-revision decisions should not be silently inferred from a price request.',
+        ],
+      },
+      {
+        heading: 'PCBA Pre-Quotation Review Workflow',
+        body: [
+          'A typical review may follow this sequence. Some checks run in parallel, and a corrected file may send the project back through earlier steps.',
+          '1. **Customer sends files:** identify the intended project and build scope.\n2. **File completeness check:** identify inputs that are present and questions that prevent review.\n3. **Revision consistency review:** establish which versions belong together.\n4. **BOM / sourcing review:** identify purchasable lines, consigned parts, and unresolved material decisions.\n5. **BOM to CPL / assembly review:** reconcile fitted designators, packages, placement, and drawing notes.\n6. **Programming / testing review:** define responsibilities, tools, methods, and acceptance criteria.\n7. **Special-process review:** identify additional assembly, inspection, handling, or packaging scope.\n8. **Questions / buyer approval:** return the specific issues that need an answer.\n9. **Scope confirmed:** record the file set, included operations, responsibilities, assumptions, and exclusions.\n10. **Quotation:** price the confirmed scope; reconsider affected items if the inputs change.',
+          'This is a pre-quotation workflow, not the complete manufacturing schedule. For coordination of PCB fabrication, component sourcing, assembly, and agreed testing after the scope is established, see [turnkey PCB assembly](/turnkey-pcb-assembly).',
+        ],
+      },
+      {
+        heading: 'Send the Project for Manufacturing Review',
+        body: [
+          'Have Gerber, BOM and assembly files ready? [Send them for manufacturing review](/contact#project-files). Identify any unresolved points so the review can return focused questions and a clear next action.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### What does a PCBA manufacturer check before quoting?\n\nThe manufacturer checks whether received files define one consistent build: revisions, PCB specifications, exact BOM parts, fitted quantities, placement data, assembly instructions, sourcing responsibilities, special processes, programming, testing, and acceptance criteria. The result is a quote-ready scope or specific questions for the buyer. This early review does not replace detailed DFM or product validation.',
+          '### Can I get a PCBA quote with only Gerber and BOM?\n\nGerber and BOM can start a review, but they may not define placement, quantity, PCB specifications, programming, or testing sufficiently for an accurate quote. The factory identifies what is missing and whether an estimate with explicit assumptions is possible. Missing information does not automatically mean the project cannot be manufactured.',
+          '### Why does a PCBA supplier need CPL files?\n\nCPL or pick-and-place data identifies component positions, board side, and orientation for assembly. The reviewer compares it with the BOM and assembly drawing to find missing, duplicated, or conflicting designators. Manual or through-hole parts may need separate instructions instead of an SMT placement entry.',
+          '### What happens if the BOM and Gerber revisions do not match?\n\nThe factory asks the buyer to confirm which revisions belong to the intended build and to correct conflicting data where necessary. Different revision labels can be valid, but the relationship must be confirmed rather than inferred from filenames or dates.',
+          '### Can a manufacturer quote before the testing method is defined?\n\nAn estimate may be possible for a clearly stated partial scope, but the final testing price and responsibility remain open. The review needs the method, tools or fixture, software or firmware dependencies, and pass/fail criteria. An inspection-only assumption should not be presented as functional testing.',
+          '### Can I supply some of the components myself?\n\nYes, a mixed sourcing scope can be reviewed. Confirm exact supplied MPNs, quantities, packing condition, and who provides shortages. Spare quantity and moisture-sensitive handling may need discussion according to the component and assembly process; there is no fixed extra percentage in this guide.',
+          '### What happens if an alternative component is needed?\n\nThe reviewer flags the affected BOM line and requests customer approval of the proposed alternative and its conditions. Electrical, footprint, firmware, and testing implications may need technical review. An alternative is not automatically authorized because it is available or has a similar part number.',
+        ],
+      },
+    ],
+  },
+  {
     slug: 'edge-ai-device-pcba-manufacturing',
     category: 'Applications',
     categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',

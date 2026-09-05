@@ -1,4 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 const exists = (path) => existsSync(new URL(`../${path}`, import.meta.url));
@@ -664,3 +666,12 @@ if (failures.length > 0) {
 }
 
 console.log(`SEO regression checks passed (${checks.length}).`);
+
+const sitemapTests = spawnSync(process.execPath, [
+  fileURLToPath(new URL('../node_modules/vitest/vitest.mjs', import.meta.url)),
+  'run',
+  'src/lib/content/sitemap-lastmod.test.ts',
+], { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit' });
+
+if (sitemapTests.error) console.error(sitemapTests.error.message);
+if (sitemapTests.status !== 0) process.exit(sitemapTests.status ?? 1);
