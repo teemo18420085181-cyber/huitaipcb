@@ -7,6 +7,7 @@ import type { ReactNode } from 'react';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import TrackedLink from '@/components/TrackedLink';
+import KnowledgeComparisonTable from '@/components/KnowledgeComparisonTable';
 import { getKnowledgeDisplayArticle } from '@/lib/content/articles';
 import { extractFaqItemsFromMarkdown } from '@/lib/content/faq';
 import { SITE } from '@/lib/site';
@@ -294,7 +295,9 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
                             {children}
                           </pre>
                         ),
-                        table: ({ children }) => (
+                        table: ({ children }) => article.mobileTableLayout === 'stacked' ? (
+                          <KnowledgeComparisonTable>{children}</KnowledgeComparisonTable>
+                        ) : (
                           <div className="overflow-hidden rounded-xl border border-cc-line">
                             <table className="w-full table-fixed border-collapse text-left text-xs sm:text-sm">
                               {children}

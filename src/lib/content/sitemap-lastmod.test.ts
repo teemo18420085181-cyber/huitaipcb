@@ -102,8 +102,8 @@ describe('sitemap content ownership and approved lastmod dates', () => {
     const entries = await sitemap();
     const urls = entries.map((entry) => entry.url);
 
-    expect(entries).toHaveLength(58);
-    expect(new Set(urls).size).toBe(58);
+    expect(entries).toHaveLength(59);
+    expect(new Set(urls).size).toBe(59);
     expect(urls.filter((url) => url.endsWith(`/knowledge/${reviewSlug}`))).toHaveLength(1);
     expect(entries.filter((entry) => !entry.url.includes('/knowledge/'))
       .every((entry) => entry.lastModified === undefined)).toBe(true);
@@ -111,5 +111,18 @@ describe('sitemap content ownership and approved lastmod dates', () => {
     mockCmsArticles([]);
     const undated = (await getSitemapArticleEntries()).find((entry) => entry.slug === 'bom-best-practices');
     expect(undated?.lastModified).toBeNull();
+  });
+
+  it('adds GROW-03 once with its approved date without refreshing other dates', async () => {
+    const slug = 'turnkey-vs-consigned-pcb-assembly';
+    mockCmsArticles([cmsArticle(slug), cmsArticle(normalCmsSlug)]);
+    const entries = await sitemap();
+    const guide = entries.filter((entry) => entry.url.endsWith(`/knowledge/${slug}`));
+    expect(guide).toHaveLength(1);
+    expect(guide[0].lastModified).toEqual(new Date('2026-09-05T00:00:00.000Z'));
+    expect(entries.find((entry) => entry.url.endsWith(`/knowledge/${normalCmsSlug}`))?.lastModified)
+      .toEqual(new Date('2026-05-21T01:12:10.970Z'));
+    expect(entries.find((entry) => entry.url.endsWith('/knowledge/prototype-vs-batch-pcb-assembly'))?.lastModified)
+      .toEqual(new Date('2026-09-04T00:00:00.000Z'));
   });
 });

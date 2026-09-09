@@ -671,6 +671,7 @@ const sitemapTests = spawnSync(process.execPath, [
   fileURLToPath(new URL('../node_modules/vitest/vitest.mjs', import.meta.url)),
   'run',
   'src/lib/content/sitemap-lastmod.test.ts',
+  'src/lib/content/turnkey-vs-consigned.test.ts',
 ], { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit' });
 
 if (sitemapTests.error) console.error(sitemapTests.error.message);

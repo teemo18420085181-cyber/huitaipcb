@@ -26,6 +26,7 @@ export type KnowledgeDisplayArticle = {
   reviewerUrl: string;
   cta: KnowledgeArticle['cta'] | null;
   source: 'cms' | 'static';
+  mobileTableLayout?: KnowledgeArticle['mobileTableLayout'];
 };
 
 const DEFAULT_IMAGE = '/factory/flow-01.png';
@@ -33,6 +34,7 @@ const DEFAULT_IMAGE_ALT = 'PCBA engineer reviewing BOM files and assembled circu
 const DEFAULT_CATEGORY_COLOR = 'bg-cc-copper/10 text-cc-ink border-cc-copper/30';
 
 const ARTICLE_SEO_TITLES: Record<string, string> = {
+  'turnkey-vs-consigned-pcb-assembly': 'Turnkey vs Consigned PCB Assembly | Which Is Better?',
   'bom-alternatives-pcba-sourcing': 'How to Approve Alternative Components for PCBA | Huitai PCB',
   'bom-best-practices': 'PCBA BOM Best Practices | Quote & Production Preparation',
   'bom-risk-alternative-component-sourcing': 'BOM Risk and Component Availability in PCBA Manufacturing',
@@ -47,6 +49,10 @@ const ARTICLE_SEO_TITLES: Record<string, string> = {
 };
 
 const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
+  'turnkey-vs-consigned-pcb-assembly': {
+    image: '/factory/real-smt-1.jpg',
+    alt: 'SMT production line with assembly equipment and operators',
+  },
   'edge-ai-device-pcba-manufacturing': {
     image: '/images/knowledge/edge-ai-device-pcba-manufacturing/edge-ai-pcb-assembly-manufacturing.webp',
     alt: 'Edge AI PCB assembly with a camera module, embedded compute board, memory, power circuits, and high-speed connectors',
@@ -114,6 +120,7 @@ const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
 };
 
 const STATIC_CONTENT_OVERRIDE_SLUGS = new Set([
+  'turnkey-vs-consigned-pcb-assembly',
   'how-we-review-pcba-project-before-quotation',
   'bom-best-practices',
   'bom-alternatives-pcba-sourcing',
@@ -193,6 +200,7 @@ export function mapStaticArticle(article: KnowledgeArticle): KnowledgeDisplayArt
     reviewerUrl: '/about#engineering-support',
     cta: article.cta || null,
     source: 'static',
+    mobileTableLayout: article.mobileTableLayout,
   };
 }
 

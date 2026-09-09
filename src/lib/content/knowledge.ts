@@ -10,6 +10,7 @@ export type KnowledgeArticle = {
   metaDescription: string;
   publishedAt?: string;
   updatedAt?: string;
+  mobileTableLayout?: 'stacked';
   cta?: {
     primary: { label: string; href: string };
     secondary: { label: string; href: string };
@@ -18,6 +19,182 @@ export type KnowledgeArticle = {
 };
 
 export const knowledgeArticles: KnowledgeArticle[] = [
+  {
+    slug: 'turnkey-vs-consigned-pcb-assembly',
+    mobileTableLayout: 'stacked',
+    category: 'Decision Guide',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'Turnkey vs Consigned PCB Assembly: Which Model Fits Your Project?',
+    excerpt: 'Turnkey coordinates fabrication, sourcing and assembly through the manufacturer. Consigned assembly uses customer-supplied components; partial consignment splits the BOM between buyer and manufacturer. Choose by the parts you own, the sourcing control you need and the purchasing work you can manage.',
+    image: '/factory/real-smt-1.jpg',
+    imageCaption: 'SMT assembly line. The sourcing model defines who supplies the components; the agreed manufacturing scope still defines how the boards are assembled and verified.',
+    readTime: '14 min read',
+    metaDescription: 'Compare turnkey, consigned and partial-consignment PCB assembly for sourcing control, component ownership, shortages, inventory, lead-time coordination and production responsibility.',
+    publishedAt: '2026-09-05',
+    updatedAt: '2026-09-05',
+    cta: {
+      primary: { label: 'Send Gerber, BOM & Sourcing Requirements', href: '/contact#project-files' },
+      secondary: { label: 'Explore Turnkey PCB Assembly', href: '/turnkey-pcb-assembly' },
+    },
+    sections: [
+      {
+        heading: 'Quick Answer',
+        body: [
+          'Turnkey PCB assembly means the manufacturer coordinates most or all PCB fabrication, component sourcing and assembly under one project. Consigned assembly means the customer supplies some or all required components while the manufacturer performs assembly and the agreed manufacturing processes. Partial consignment, also called a hybrid model, separates selected customer-supplied parts from the remaining manufacturer-sourced BOM.',
+          'Choose by component ownership, your purchasing capability, available inventory, supply risk, required traceability, project quantity and the procurement workload you want to manage. Turnkey often reduces buyer purchasing handoffs; consignment gives the buyer more direct control over supplied-component sources; partial consignment shares that work by BOM line. None is automatically better or cheaper.',
+          '**Start with the decision:** [compare the three models](#turnkey-vs-consigned-vs-partial-consignment), [agree responsibilities](#pcb-assembly-responsibility-matrix), or [use the buyer checklist](#which-pcb-assembly-model-should-you-choose).',
+        ],
+      },
+      {
+        heading: 'What Is Turnkey PCB Assembly?',
+        body: [
+          'In a turnkey project, the manufacturer can coordinate PCB fabrication, BOM sourcing and component purchasing, SMT assembly, through-hole / DIP assembly, inspection and finished PCBA delivery. Programming and testing belong in that scope only when their requirements and responsibilities are confirmed.',
+          'One procurement coordinator does not remove buyer decisions about the released design, approved substitutes or acceptance criteria. For the underlying definition, see [what turnkey PCBA includes](/knowledge/what-is-turnkey-pcba). For a manufacturing project, explore the [turnkey assembly service](/turnkey-pcb-assembly).',
+        ],
+      },
+      {
+        heading: 'What Is Consigned PCB Assembly?',
+        body: [
+          'Consigned assembly uses components supplied by the customer. Depending on scope, the manufacturer receives bare PCBs or PCB fabrication files, the supplied components, BOM, CPL / pick-and-place data, assembly instructions and other required manufacturing information.',
+          'Consigned does not automatically mean that the manufacturer has no sourcing responsibility. Some projects consign the entire component kit; others consign only selected parts. In the comparisons below, the consigned column describes a fully customer-supplied component kit, while the partial-consignment column describes split sourcing. Bare-board supply is a separate decision to confirm in either case.',
+        ],
+      },
+      {
+        heading: 'What Is Partial-Consignment PCB Assembly?',
+        body: [
+          'Partial consignment means the customer supplies selected parts and the manufacturer purchases the remaining BOM. It may fit proprietary components, pre-programmed ICs, allocated chips, customer-owned stock, costly parts already in inventory or parts requiring a buyer-controlled sourcing channel.',
+          'For example, the buyer may supply a critical MCU, programmed IC or proprietary module while the manufacturer sources resistors, capacitors, connectors, common semiconductors and other standard BOM items. The manufacturer can then coordinate PCB fabrication, assembly, inspection and testing according to the confirmed scope.',
+          'Record who supplies each exact MPN, the quantity, shortage responsibility, approved alternatives and excess / remaining stock handling. A hybrid model is useful only when both sides can maintain that boundary; splitting a poorly controlled BOM can add coordination work instead of reducing it.',
+        ],
+      },
+      {
+        heading: 'Turnkey vs Consigned vs Partial Consignment',
+        body: [
+          'Compare the procurement work, not just the assembly price. These are typical planning differences, not fixed contract terms. In this table, consigned means the customer supplies the complete component kit.',
+          '| Decision | Turnkey | Consigned | Partial consignment |\n| --- | --- | --- | --- |\n| Component purchasing | Manufacturer coordinates | Buyer purchases kit | Split by BOM line |\n| PCB fabrication | Usually coordinated | Boards or files supplied | Confirm separately |\n| BOM sourcing work | Mainly manufacturer | Mainly buyer | Shared scope |\n| Buyer procurement work | Often fewer handoffs | Buyer manages kit | Buyer manages selected parts |\n| Component ownership | Confirm purchase terms | Buyer-owned stock | Confirm each portion |\n| Alternative approval | Buyer / design authority | Buyer / design authority | Buyer / design authority |\n| Shortage handling | Supplier flags options | Buyer replenishes kit | Assigned line owner |\n| Inventory management | Confirm supplier records | Buyer tracks supply | Reconcile both stocks |\n| Supplier coordination | One project coordinator | Buyer coordinates sources | Joint delivery planning |\n| Traceability records | Agree source records | Buyer supplies source records | Records for both portions |\n| Excess material | Agree disposition | Agree return or retention | Track by owner |\n| Lead-time coordination | Integrated procurement plan | Kit arrival is a dependency | Align both supply streams |\n| Potential project fit | Coordinated sourcing | Existing complete stock | Selected critical ICs |\n| Repeat-order complexity | Recheck procurement | Maintain complete kit | Maintain ownership split |',
+          'Component ownership here concerns inventory and purchasing arrangements, not a blanket assignment of liability. Neither the model name nor the table determines quality obligations or who pays for a particular failure.',
+        ],
+      },
+      {
+        heading: 'When Turnkey May Make More Sense',
+        body: [
+          'Turnkey may fit a buyer without a component purchasing team, a low-volume project with many standard parts, or a project where PCB fabrication and assembly should be coordinated together. It can reduce the number of purchasing handoffs and give repeat orders one point for sourcing coordination.',
+          'The buyer still needs to resolve design questions, approve relevant substitutes and define testing. Want one supplier to manage fabrication, sourcing and assembly? [Explore turnkey PCB assembly](/turnkey-pcb-assembly).',
+        ],
+      },
+      {
+        heading: 'When Consigned May Make More Sense',
+        body: [
+          'Consignment may fit when the buyer already owns the complete component kit, has negotiated purchasing arrangements, or needs direct control over component sources. Proprietary or programmed parts, secured allocated components, and project-specific traceability requirements can also justify buyer-controlled supply.',
+          'That control carries work: inventory accuracy, quantity planning, packaging checks, shipment coordination and shortage resolution. A good purchase price alone is not enough if the delivered kit is incomplete or cannot be reconciled to the released BOM. Already own critical components? [Review the assembly service scope](/pcb-assembly-services) and identify which parts you plan to supply.',
+        ],
+      },
+      {
+        heading: 'When Partial Consignment Is Useful',
+        body: [
+          'Partial consignment can fit a buyer who wants control of a critical IC or proprietary part but does not want to purchase every resistor, capacitor and connector. The customer manages the selected material, while the manufacturer manages the agreed standard BOM items.',
+          'Both material streams need to arrive in a usable form for the planned build. Mark the supplied lines clearly rather than leaving them out of the BOM: an omitted line can look like missing engineering data, not an instruction to exclude purchasing. The [BOM sourcing service](/bom-sourcing-pcb-assembly) can cover the manufacturer-purchased portion.',
+        ],
+      },
+      {
+        heading: 'How Many Customer-Supplied Components Should Be Provided?',
+        body: [
+          'Do not assume BOM quantity multiplied by board quantity is always sufficient for customer-supplied material. Agree the supplied quantity with the manufacturer before shipping, including any justified setup, handling, expected process loss or rework allowance.',
+          'The appropriate quantity may depend on the package, assembly process, component value, packaging format, reel / tray / cut tape presentation, setup and handling needs. An expensive programmed IC and a small passive component may need different planning. There is no fixed extra percentage in this guide.',
+          'For constrained parts, state exactly how many usable pieces are available. Ask whether that quantity supports the intended build and how a shortage would be handled; do not silently assume the manufacturer can replace a proprietary part or consume customer spares without agreement.',
+        ],
+      },
+      {
+        heading: 'How Should Customer-Supplied Components Be Packed?',
+        body: [
+          'Supplied components should be identifiable and packed in a production-usable way. State the exact MPN, quantity and packaging format: full reel, cut tape, tray, tube or loose parts. Keep part labels and relevant source or lot information with the material, and identify programmed ICs by the applicable version or programming status.',
+          'Packaging can affect assembly feasibility, preparation and handling. A short cut-tape strip or loose part may need a different preparation step from a reel or tray. Ask the manufacturer to review the actual presentation; no universal equipment limit or accepted tape length is implied here. Confirm ESD and moisture-sensitive handling where applicable.',
+        ],
+      },
+      {
+        heading: 'Who Owns the Component Risk?',
+        body: [
+          'In turnkey work, the supplier coordinates sourcing within the approved scope. For consigned parts, the buyer controls the component source and availability. In partial consignment, sourcing responsibility is split by BOM line. A sourcing responsibility matrix should be agreed before production.',
+          '**Sourcing, commercial, quality and manufacturing responsibility are different questions.** Who purchases a part is not necessarily who owns it at every stage, pays for a disputed loss, defines inspection acceptance or performs assembly. Agree source documentation, incoming discrepancies, handling, manufacturing scope and escalation separately rather than treating a sourcing label as a liability rule.',
+          'If specific traceability is required, state which supplier records, lot identifiers or other evidence must accompany each portion of the BOM. Do not assume a model name guarantees those records or that customer-owned stock can be traced without supporting information.',
+        ],
+      },
+      {
+        heading: 'PCB Assembly Responsibility Matrix',
+        body: [
+          'Use this as a discussion checklist, not a legal contract. Actual responsibility must be confirmed per project. Buyer below includes the authorized design or engineering decision-maker; manufacturer means the party performing or coordinating the agreed work.',
+          '| Task / Decision | Turnkey | Consigned | Partial consignment |\n| --- | --- | --- | --- |\n| PCB fabrication | Manufacturer coordinates | Agree boards or fabrication | Agree fabrication scope |\n| Component purchasing | Manufacturer | Buyer | Named BOM line owner |\n| Approved suppliers | Agree sourcing constraints | Buyer controls source | Agree by line |\n| Alternative approval | Buyer confirms | Buyer confirms | Buyer confirms |\n| Customer-supplied stock | Identify any exceptions | Buyer declares; factory reconciles | Track supplied lines |\n| Shortage resolution | Manufacturer proposes plan | Buyer supplies or agrees plan | Line owner proposes plan |\n| BOM revision | Buyer releases; factory reviews | Buyer releases; factory reviews | One controlled BOM |\n| CPL | Buyer provides; factory reviews | Buyer provides; factory reviews | Same file control |\n| Assembly | Manufacturer | Manufacturer | Manufacturer |\n| Programming | Confirm file, tool and operator | Confirm file, tool and operator | Confirm supplied IC status |\n| Testing | Agree method and criteria | Agree method and criteria | Agree method and criteria |\n| Excess material handling | Agree before order | Agree before shipment | Agree by stock owner |\n| Repeat-order sourcing | Manufacturer rechecks supply | Buyer rechecks kit | Both recheck assigned lines |',
+          'Programming and testing do not disappear when components are customer-supplied. Confirm who provides firmware, tools or fixtures, who performs the work, and who approves the acceptance criteria. A pre-programmed IC may still need board-level verification according to the agreed test scope.',
+        ],
+      },
+      {
+        heading: 'Who Approves BOM Changes and Alternatives?',
+        body: [
+          'A turnkey supplier may identify alternative candidates, but the buyer or authorized engineer still needs to confirm substitutions where approval is required. In consigned work, the buyer normally controls decisions about supplied components. In a hybrid build, the sourcing discussion starts with the owner of the affected BOM line; neither side should silently change the released part.',
+          'Record the exact approved substitute MPN and any conditions in the controlled build information. A sourcing assignment is not permission to change electrical, mechanical or firmware requirements. Use the [BOM risk guide](/knowledge/bom-risk-alternative-component-sourcing) for availability and continuity issues and the [alternative-component approval guide](/knowledge/bom-alternatives-pcba-sourcing) for the technical approval process.',
+        ],
+      },
+      {
+        heading: 'What Happens to Excess Components?',
+        body: [
+          'Excess or leftover material handling should be confirmed during quotation / order review, before production begins. Depending on agreed project terms, remaining stock may be retained for a repeat order, returned to the customer or handled through another agreed disposition. This is not a statement of a fixed Huitai storage or return policy.',
+          'Identify stock ownership, usable quantity, part and lot identification where relevant, the agreed storage period and who authorizes release or return. For partial consignment, keep customer-owned stock distinct from manufacturer-purchased excess; both may appear in the same build but have different arrangements.',
+        ],
+      },
+      {
+        heading: 'Which Model Is Easier for Repeat Orders?',
+        body: [
+          'Repeat-order ease depends on controlled inputs and inventory, not the model name. In turnkey work the supplier coordinates procurement again; in consigned work the buyer maintains the supplied kit; in partial consignment both parties maintain the BOM ownership boundary and reconcile remaining stock.',
+          'Before a repeat build, confirm the BOM revision, component availability, approved alternatives, usable inventory, firmware and test method. A previous successful assembly does not prove the next kit is complete or authorize a new substitute.',
+          'For prototypes, consigned or partial supply may fit engineering parts already owned by the buyer. For low volume, turnkey or partial sourcing may reduce repeated procurement handoffs. These are not quantity-based rules: use the [prototype-to-low-volume transition guide](/knowledge/prototype-vs-batch-pcb-assembly) to judge production readiness separately.',
+        ],
+      },
+      {
+        heading: 'Which PCB Assembly Model Should You Choose?',
+        body: [
+          'Answer these questions before choosing the procurement arrangement:',
+          '- Do you already own critical components or the complete kit?\n- Do you have a purchasing team that can maintain quantities and delivery dates?\n- Do you need control over specific sourcing channels?\n- Do you want one supplier to manage standard BOM sourcing?\n- Are key parts allocated, proprietary or pre-programmed?\n- Who should manage shortages and approve a changed supply plan?\n- Who approves substitutes and updates the released BOM?\n- Who owns leftover inventory, and where should it be kept?\n- Will this project be reordered, and who will reconcile repeat-order inventory?\n- Do you need component traceability from specific sources?',
+          '**Turnkey may fit** if you want coordinated procurement and do not need to supply selected stock. **Consigned may fit** if you own and can manage the complete kit with the required source records. **Partial consignment may fit** if you need control over selected parts while delegating standard BOM purchasing. If a shortage or ownership question is unresolved, settle that boundary before choosing a label.',
+        ],
+      },
+      {
+        heading: 'Example Scenarios: Three Different Procurement Choices',
+        body: [
+          'These are hypothetical planning examples, not Huitai customer cases. No price, delivery time or project result is implied.',
+          '### Example scenario A: 50-piece controller board\n\nThe buyer supplies an MCU already in stock, while the manufacturer purchases the remaining BOM and coordinates fabrication and assembly. This is partial consignment. Confirm the exact MCU MPN, usable quantity, packaging, programming status and shortage plan. Fifty pieces illustrates a build quantity, not a threshold that determines the sourcing model.',
+          '### Example scenario B: a prototype with a complete component kit\n\nThe buyer already owns all required components and supplies them for assembly. This is consigned assembly. Check the kit against the current BOM, confirm usable presentation and any needed spares, and separately agree who supplies the bare boards.',
+          '### Example scenario C: coordinated fabrication and procurement\n\nThe buyer sends Gerber and BOM and wants the manufacturer to coordinate PCB fabrication, component purchasing and assembly. Turnkey may fit. Gerber and BOM start the discussion; quantity, CPL, assembly instructions and applicable programming or testing requirements still need confirmation.',
+        ],
+      },
+      {
+        heading: 'Does Consignment Reduce the Total Project Cost?',
+        body: [
+          'Not automatically. The models change where purchasing effort, inventory and sourcing responsibility sit. Compare material purchasing, kit preparation, transport, handling, shortages, excess stock and repeat-order coordination alongside the quoted manufacturing scope. Existing inventory or negotiated pricing may help one buyer, while fragmented purchasing adds work for another.',
+          'There is no fixed turnkey premium or consignment saving. Use the [PCBA cost guide](/knowledge/how-much-does-pcba-assembly-cost) for cost structure rather than treating procurement ownership as a price formula.',
+        ],
+      },
+      {
+        heading: 'Agree the Sourcing Split Before Manufacturing Review',
+        body: [
+          'Not sure which sourcing model fits your project? [Send your Gerber, BOM and sourcing requirements for review](/contact#project-files). Mark supplied lines, available quantities, preferred channels and unresolved responsibility questions. That is more useful than requesting a model name without a material plan.',
+          'The [pre-quotation engineering review guide](/knowledge/how-we-review-pcba-project-before-quotation) explains how the manufacturer reviews those inputs after receipt. This comparison helps you choose the procurement arrangement; it does not replace that file and scope review.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### What is the difference between turnkey and consigned PCB assembly?\n\nTurnkey puts most fabrication, component procurement and assembly coordination with the manufacturer. Consigned assembly uses customer-supplied components with agreed manufacturing work. Partial consignment splits component sourcing by BOM line. The key difference is who manages material supply, not a guaranteed price or quality level.',
+          '### Can I supply only some components?\n\nYes, a partial-consignment scope can be reviewed: you supply selected parts and the manufacturer sources the remaining BOM. Identify each supplied MPN, usable quantity, packaging, shortage responsibility and remaining-stock arrangement. Whether the split is practical depends on the project and both supply streams.',
+          '### Can I provide the MCU while the manufacturer sources the rest?\n\nThat is a typical partial-consignment planning scenario. Confirm the exact MCU part number, quantity, packaging and programming status, then mark the other BOM lines for manufacturer purchasing. It is not automatic approval of the kit or test scope; those details still need review.',
+          '### Is consigned PCB assembly cheaper than turnkey?\n\nNot necessarily. Existing stock or negotiated component pricing can help, but kit preparation, shipment, handling, shortages and excess inventory also affect the project. Compare the same manufacturing and testing scope, including the procurement work each party manages. No fixed saving applies to every project.',
+          '### Who is responsible if customer-supplied components are short?\n\nThe buyer normally manages the availability of supplied parts, but the shortage-resolution plan should be agreed before production. Options may include buyer replenishment or separately authorized manufacturer purchasing. The sourcing model alone does not decide payment, liability or permission to change the build.',
+          '### Can the manufacturer propose alternatives for customer-supplied parts?\n\nA manufacturer may propose a candidate for review, but a proposal is not approval to substitute it. The buyer or authorized engineer should confirm the exact alternative and any technical conditions. In partial consignment, record the decision against the affected BOM line and released revision.',
+          '### What happens to leftover components?\n\nConfirm this during quotation or order review. Remaining stock may be retained for a repeat order, returned or handled according to agreed terms. Identify the stock owner, usable quantity and release or return arrangements; do not assume a standard storage policy.',
+          '### Which model is better for low-volume PCBA?\n\nTurnkey may reduce procurement handoffs; partial consignment may preserve control over critical parts while delegating standard BOM sourcing; full consignment may fit a complete buyer-owned kit. The better fit depends on purchasing capability, inventory, traceability and repeat-order planning, not board quantity alone.',
+        ],
+      },
+    ],
+  },
   {
     slug: 'how-we-review-pcba-project-before-quotation',
     category: 'Knowledge Base',
