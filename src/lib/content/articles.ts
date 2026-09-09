@@ -120,6 +120,7 @@ const ARTICLE_VISUALS: Record<string, { image: string; alt: string }> = {
 };
 
 const STATIC_CONTENT_OVERRIDE_SLUGS = new Set([
+  'how-to-choose-pcba-manufacturer-china',
   'turnkey-vs-consigned-pcb-assembly',
   'how-we-review-pcba-project-before-quotation',
   'bom-best-practices',
@@ -192,7 +193,7 @@ export function mapStaticArticle(article: KnowledgeArticle): KnowledgeDisplayArt
     category: article.category,
     categoryColor: article.categoryColor,
     content: staticArticleToMarkdown(article),
-    author: 'Huitai PCB',
+    author: article.author || 'Huitai PCB',
     authorUrl: '/about#engineering-support',
     publishedAt: article.publishedAt || null,
     updatedAt: article.updatedAt || null,

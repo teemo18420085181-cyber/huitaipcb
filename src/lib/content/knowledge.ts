@@ -10,6 +10,7 @@ export type KnowledgeArticle = {
   metaDescription: string;
   publishedAt?: string;
   updatedAt?: string;
+  author?: string;
   mobileTableLayout?: 'stacked';
   cta?: {
     primary: { label: string; href: string };
@@ -19,6 +20,174 @@ export type KnowledgeArticle = {
 };
 
 export const knowledgeArticles: KnowledgeArticle[] = [
+  {
+    slug: 'how-to-choose-pcba-manufacturer-china',
+    category: 'Knowledge Base',
+    categoryColor: 'bg-cc-copper/10 text-cc-ink border-cc-copper/30',
+    title: 'How to Choose a PCBA Manufacturer in China',
+    excerpt: 'Choose a PCBA manufacturer by comparing file review, BOM sourcing, assembly and testing scope, revision control and engineering communication—not unit price alone. Ask for project-relevant evidence and clear responsibilities before production.',
+    image: '/factory/knowledge-covers/choose-pcba-manufacturer-china-cover.webp',
+    readTime: '16 min read',
+    metaDescription: 'Learn how overseas buyers can choose and verify a PCBA manufacturer in China by comparing engineering review, BOM sourcing, assembly, testing, revision control, communication and repeat-production support.',
+    publishedAt: '2026-05-25T06:21:12.119+00:00',
+    updatedAt: '2026-09-09',
+    author: 'Huitai Engineering Team',
+    mobileTableLayout: 'stacked',
+    cta: {
+      primary: { label: 'Send Gerber & BOM for Manufacturing Review', href: '/contact#project-files' },
+      secondary: { label: 'Review Huitai Manufacturing Scope', href: '/china-pcba-manufacturer' },
+    },
+    sections: [
+      {
+        heading: 'Quick Answer',
+        body: [
+          'Choosing a PCBA manufacturer in China should not be based on unit price alone. Overseas buyers should compare how suppliers review production files, manage BOM sourcing, define assembly and testing scope, control revisions, handle component substitutions, communicate engineering questions, support prototype-to-repeat production, and document what is included in the quotation.',
+          'A suitable supplier should be able to explain manufacturing risks and responsibilities before production, rather than only provide a low headline price. Use the same project information to compare suppliers, record what remains unconfirmed, and decide which gaps matter for your build.',
+          'Start with the [supplier verification matrix](#china-pcba-supplier-verification-matrix), the [questions to ask](#questions-to-ask-a-pcba-manufacturer-before-ordering), or the [buyer scorecard](#pcba-manufacturer-buyer-scorecard). This is a selection method, not a ranking of manufacturers.',
+        ],
+      },
+      {
+        heading: 'How to Shortlist a PCBA Manufacturer in China',
+        body: [
+          'Shortlist suppliers against the actual board, sourcing model and project stage. A polished website, the lowest quotation or the fastest claimed lead time is not enough to establish fit; a modest website is not evidence of poor manufacturing either.',
+          '- **Manufacturing scope:** confirm whether the project needs fabrication, sourcing, assembly, programming and testing, and which party performs each step.\n- **Project stage:** match engineering validation, prototype, low-volume or repeat-build needs to the proposed process.\n- **File review:** look for a review of Gerber, BOM, CPL and applicable assembly/test inputs before a firm quote.\n- **Sourcing:** ask how exact MPNs, availability and proposed alternatives are reviewed.\n- **Assembly:** confirm SMT, through-hole / DIP and any special handling or assembly instructions.\n- **Inspection and testing:** separate inspection from functional testing and agree the evidence available.\n- **Communication:** look for clear questions, decision owners and written closure of open items.\n- **Repeat orders:** ask how revisions, remaining material and test instructions are checked again.',
+          'For named supplier examples, use the separate [low-volume turnkey supplier comparison](/knowledge/top-low-volume-turnkey-pcba-suppliers-china). This guide explains how to assess the evidence, not which company should rank first.',
+        ],
+      },
+      {
+        heading: 'China PCBA Supplier Verification Matrix',
+        body: [
+          'Ask comparable questions of each shortlisted supplier. Good evidence is specific to the proposed scope and can be shared in anonymized form where confidentiality applies. A warning sign below is a reason for follow-up, not proof of misconduct or an automatic rejection.',
+          '| Area | What to Ask | Good Evidence | Warning Sign |\n| --- | --- | --- | --- |\n| Engineering review | What files are reviewed before quoting? | Gerber, BOM, CPL and test-input questions | Missing essential data is worth clarifying |\n| PCB fabrication scope | Who makes and checks the bare boards? | Fabrication scope and handoff identified | Unnamed fabrication responsibility needs confirmation |\n| BOM sourcing | How are exact MPNs checked? | Availability and unresolved lines recorded | Vague sourcing scope may indicate assumptions |\n| Component alternatives | Who approves a substitute? | Exact candidate and buyer approval recorded | Unstated substitutions need clarification |\n| SMT / DIP assembly | Which assembly steps are included? | Process scope tied to the board | Unclear through-hole work needs confirmation |\n| Inspection | What inspection is included? | Defined visual / AOI steps and records | “Quality checked” alone needs detail |\n| Functional testing | What test inputs do you need? | Method, firmware and pass/fail criteria | “Full test” without a method needs clarification |\n| Revision control | How are file versions reconciled? | Released Gerber/BOM/CPL identified together | Conflicting revisions need resolution |\n| Customer-supplied components | Who checks the kit and shortages? | MPN, quantity and responsibilities recorded | Unclear supplied-stock handling needs confirmation |\n| Repeat orders | What is reviewed before a repeat? | Revision, material and test recheck | Assuming nothing changed is worth questioning |\n| Delivery scope | What packaging and freight are included? | Written packaging and shipping assumptions | Undefined delivery terms need clarification |\n| Communication | Who resolves engineering questions? | Specific questions with a decision owner | Repeated vague answers may leave risks open |',
+        ],
+      },
+      {
+        heading: 'Factory, Trading Company, or Online PCB Platform?',
+        body: [
+          'All three models can serve buyers. The label alone does not establish capability or quality, and a business may combine models. Confirm the actual manufacturing party, quality responsibility and engineering communication path for your order.',
+          '### Manufacturing factory / service-oriented PCBA supplier\n\nA direct or service-led manufacturing relationship may suit custom assembly, engineering clarification, partial consignment, testing coordination and low-volume repeat builds. Ask which operations are in-house and which are coordinated externally; do not assume every advertised process is performed at one site.',
+          '### Online PCB / PCBA platform\n\nA standardized workflow may suit prepared files, supported common components, self-service quotation and prototype-oriented projects. Check whether your BOM, assembly and testing requirements fit the available workflow. Some platforms also offer reviewed or custom services; assess the actual offer, not only the ordering interface.',
+          '### Trading / coordination company\n\nA coordination business may provide sourcing support, supplier coordination and export communication. Clarify who manufactures the boards, who handles quality questions, and how engineering decisions reach the factory. These responsibilities matter more than treating trading as automatically unsuitable.',
+          'For projects considering a change from a standardized platform, see the separate [JLCPCB alternatives guide](/knowledge/jlcpcb-alternatives-turnkey-pcba). For who supplies components rather than who coordinates the factory, see [turnkey, consigned and partial-consignment models](/knowledge/turnkey-vs-consigned-pcb-assembly).',
+        ],
+      },
+      {
+        heading: 'Check Engineering Review Before Quotation',
+        body: [
+          'A supplier should ask for Gerber files, BOM list, quantity, assembly notes and testing requirements, with CPL / pick-and-place data where relevant. If essential information is missing, a useful response identifies the assumptions or asks for clarification before treating the quote as production-ready.',
+          'An initial budget estimate is not the same as a reviewed manufacturing quotation. Ask which open questions could change the scope. For the supplier-side workflow after files arrive, read [how we review a PCBA project before quotation](/knowledge/how-we-review-pcba-project-before-quotation).',
+        ],
+      },
+      {
+        heading: 'Review BOM Sourcing Capability',
+        body: [
+          'Component sourcing can be a significant risk in turnkey PCBA. Ask how the supplier checks MPNs, shortages, lifecycle status, purchasing constraints and approved alternatives. Substitutions requiring approval should not proceed without the authorized buyer or engineer confirming the exact part.',
+          'Look for a controlled list of unresolved BOM lines, not just a claim that every component is available. If you supply critical ICs, identify the sourcing split and usable quantities. Review the [BOM sourcing service scope](/bom-sourcing-pcb-assembly) for manufacturer-purchased material; the sourcing model does not remove your approval responsibilities.',
+        ],
+      },
+      {
+        heading: 'Evaluate Quality Control and Testing',
+        body: [
+          'Ask what inspection and testing steps are available and included: visual inspection, AOI, shipment inspection and functional testing based on customer instructions. Inspection of assembly workmanship is not evidence that every intended circuit function has been tested.',
+          'Functional testing typically needs a defined procedure and pass/fail criteria, and may need firmware, programming tools or a fixture. Ask who provides each input, who performs the test and what result is recorded. Compare equivalent test coverage, not the phrase “full test.” See the [inspection and testing scope](/pcba-testing-quality-control) for a manufacturing discussion.',
+        ],
+      },
+      {
+        heading: 'Compare Communication and Delivery Planning',
+        body: [
+          'Good communication reduces ambiguity for overseas projects. Check whether the supplier explains missing information, confirms alternatives, clarifies test scope and states delivery assumptions instead of only promising a fast schedule.',
+          'Agree packaging requirements and whether shipping is included. Confirm the shipping terms, applicable taxes or duties and the point at which freight can be finalized if packing details are still unknown. Treat a schedule offered before material and testing review as something to clarify, not automatically a firm production commitment.',
+        ],
+      },
+      {
+        heading: 'Questions to Ask a PCBA Manufacturer Before Ordering',
+        body: [
+          '1. **What files do you need before quotation?** This shows whether the supplier distinguishes an estimate from a reviewed build scope and identifies missing Gerber, BOM, CPL or test inputs.\n2. **Do you review BOM MPNs and lifecycle risks?** Exact suffixes and packages can change the sourcing discussion; a generic component description may not be enough.\n3. **How are alternative components approved?** Establish who proposes, who approves and how the released BOM records the decision.\n4. **Can I supply critical components myself?** Confirm usable quantities, packaging and shortage responsibilities before shipping a kit.\n5. **Is PCB fabrication included?** Bare-board supply may be separate from assembly, even when the quote uses the term PCBA.\n6. **Does the quote include SMT and through-hole assembly?** Confirm the actual assembly steps, including manual operations where applicable.\n7. **What inspection is included?** Ask for the process and record, rather than assuming all inspection methods apply to every board.\n8. **What does functional testing require from me?** Firmware, fixtures and acceptance criteria can remain buyer inputs even when the manufacturer performs the test.\n9. **How do you control Gerber/BOM/CPL revisions?** The supplier should be able to identify the released file set and resolve a mismatch.\n10. **How are shortages or unavailable components handled?** Agree escalation and approval before an interruption forces an improvised decision.\n11. **What happens before repeat production?** Previous success does not confirm current component availability or unchanged build instructions.\n12. **What is included in delivery and packaging scope?** Compare packing, freight and applicable delivery terms on the same basis.',
+        ],
+      },
+      {
+        heading: 'How to Compare PCBA Quotations from Different Suppliers',
+        body: [
+          'Two quotations may appear to describe the same PCBA but actually cover different manufacturing scopes. Send the same revision and quantity to each supplier, then reconcile inclusions, exclusions and assumptions before comparing total or unit price.',
+          '- PCB fabrication and specification\n- Purchased components and any customer-supplied lines\n- SMT, through-hole and other agreed assembly operations\n- Stencil and setup\n- Inspection and functional testing\n- Programming and firmware responsibility\n- Fixture supply or preparation\n- Packaging\n- Shipping\n- Assumed alternative parts and approval status\n- Taxes, duties and Incoterms where applicable',
+          'Ask suppliers to mark each item as included, excluded or awaiting clarification. An unpriced test fixture is not necessarily a price advantage. Use the [PCBA quotation requirements guide](/knowledge/what-determines-pcb-assembly-quote-china) for the inputs that establish scope; this comparison is not a cost formula.',
+        ],
+      },
+      {
+        heading: 'How Can You Verify Manufacturing Capability?',
+        body: [
+          'Request evidence relevant to your assembly and test requirements: real production photos, SMT and through-hole process examples, inspection process evidence, a manufacturing workflow, or anonymized sample production documentation. Ask what the evidence shows and whether it applies to the site and scope proposed for your order.',
+          'Photos or equipment lists alone do not establish process capability. A useful cross-check is whether the supplier can discuss your Gerber, BOM and CPL details, identify manufacturing questions and explain testing responsibility. Sample records can show how revisions, first-article feedback or inspection results are handled without revealing another customer’s data.',
+          'Where available, a video call or production walkthrough can help clarify the work and handoffs. A factory visit may be appropriate for higher-value or higher-risk projects, but it is not the only credible route. Remote verification may be sufficient depending on order value, complexity and risk; unresolved critical requirements may justify additional verification before ordering.',
+        ],
+      },
+      {
+        heading: 'What Does Good Engineering Communication Look Like?',
+        body: [
+          'A useful engineering response should reduce ambiguity, not simply respond quickly. Look for specific questions that identify the file, revision, affected reference designator and decision needed.',
+          'Examples include an MPN suffix or package that differs between BOM lines, polarity or connector orientation that is unclear, a CPL mismatch, DNP / DNI positions that disagree with an assembly drawing, or a firmware version not tied to the test procedure. Customer-supplied parts need equally clear quantity and programming-status questions.',
+          'A workable question might be: “The released BOM and CPL disagree at this reference designator; which revision should govern this build?” The response should close that issue in the controlled inputs, not leave the answer buried in a chat thread. This is an illustrative communication example, not a customer case.',
+        ],
+      },
+      {
+        heading: 'Can the Supplier Support You After the Prototype?',
+        body: [
+          'Prototype success does not automatically establish repeat-production readiness. Ask how the supplier checks controlled revisions, BOM continuity, approved substitutes, repeatable testing, packaging requirements, production records and repeat-order sourcing before another build.',
+          'For engineering validation, review the [prototype assembly service](/prototype-pcb-assembly). For controlled small batches, review [low-volume assembly](/low-volume-pcba-assembly). The separate [prototype-to-low-volume guide](/knowledge/prototype-vs-batch-pcb-assembly) explains readiness gates; here, the supplier-selection question is whether those controls can be maintained across orders.',
+        ],
+      },
+      {
+        heading: 'Supplier Signals That Deserve More Clarification',
+        body: [
+          'These are signals requiring more questions, not automatic disqualifications or accusations of fraud. An early-stage estimate, incomplete brief or communication mismatch may explain a gap.',
+          '- A firm quotation without review of essential production files\n- Vague component sourcing or customer-supplied-stock responsibility\n- An unclear substitution approval policy\n- Testing described only as “full test”\n- No explanation of price inclusions or exclusions\n- An unresolved Gerber/BOM/CPL revision mismatch\n- Broad capability claims without relevant manufacturing detail\n- An aggressive delivery promise before material and test scope review',
+          'Ask for the missing evidence or written clarification. If a critical item remains unconfirmed, record it as an open condition rather than interpreting silence as acceptance.',
+        ],
+      },
+      {
+        heading: 'Practical Supplier Checklist',
+        body: [
+          'Keep this final scope check alongside the supplier discussion:',
+          '| Checkpoint | Why it matters |\n| --- | --- |\n| Gerber and BOM review | Reduces quotation assumptions |\n| Component sourcing review | Clarifies shortages and substitution risk |\n| Assembly capability | Confirms SMT / DIP scope |\n| Testing discussion | Prevents unclear acceptance criteria |\n| English communication | Makes overseas coordination easier |\n| Delivery planning | Clarifies shipment expectations |',
+        ],
+      },
+      {
+        heading: 'PCBA Manufacturer Buyer Scorecard',
+        body: [
+          'Compare two or three suppliers using the same evidence requests. For each area below, record **Strong**, **Needs Clarification** or **Not Confirmed** for each supplier, plus an evidence reference and next question. Strong means sufficiently supported for your project, not a certification or a universal supplier rating. Do not add these labels into a numerical league table.',
+          '| Area | Evidence to record | Before choosing |\n| --- | --- | --- |\n| Engineering review | File-specific questions and closure | Resolve critical missing inputs |\n| BOM sourcing | Reviewed MPNs and open lines | Confirm sourcing scope |\n| Assembly scope | Agreed SMT / DIP operations | Reconcile exclusions |\n| Testing | Procedure and pass/fail criteria | Assign firmware / fixture inputs |\n| Revision control | Released file-set record | Close version mismatches |\n| Communication | Named engineering contact and decisions | Agree the escalation path |\n| Component alternatives | Exact candidate and approval record | Identify approval authority |\n| Customer-supplied parts | Kit quantities and ownership | Assign shortages and stock handling |\n| Repeat production | Material and revision recheck | Confirm repeat-build controls |\n| Delivery scope | Packing and freight assumptions | Confirm terms and open items |',
+          'For example, a supplier might be Strong on assembly scope but Not Confirmed on functional testing because no test method has been supplied. That is a project input to resolve, not evidence that the supplier cannot test. Give critical open requirements more attention than a count of positive labels.',
+        ],
+      },
+      {
+        heading: 'When Huitai May Be a Fit',
+        body: [
+          'Huitai may be relevant for projects requiring Gerber/BOM review, prototype and low-volume assembly, component sourcing coordination, SMT plus through-hole assembly, testing discussion and repeat-build support. Suitability still depends on the actual files, components and agreed scope; not every process or test is automatically included.',
+          'If you want to review Huitai’s manufacturing scope, see our [China PCBA Manufacturer page](/china-pcba-manufacturer). For coordinated fabrication, sourcing and assembly, review the [turnkey service](/turnkey-pcb-assembly). This guide is published by Huitai; use the same verification questions when evaluating us as when evaluating another supplier.',
+        ],
+      },
+      {
+        heading: 'FAQ',
+        body: [
+          '### How do I verify a PCBA manufacturer in China?\n\nCompare project-specific file review, sourcing and test-scope answers with relevant process evidence, anonymized records or a walkthrough where available. Confirm who performs the manufacturing and who handles engineering and quality questions. A photo or a low quote alone does not verify the complete scope.',
+          '### Should I choose the lowest PCBA quote?\n\nNot automatically. First compare the same released files, quantity, component ownership, assembly, inspection, testing, programming, packaging and delivery assumptions. A lower price may reflect a different scope; ask about exclusions before deciding whether the quotations are comparable.',
+          '### What files should a manufacturer review before quoting?\n\nTypically Gerber, BOM with exact MPNs, quantity, CPL / pick-and-place data and assembly instructions, plus applicable firmware and test requirements. A budget estimate may use fewer inputs, but the supplier should identify assumptions and missing information before confirming production scope.',
+          '### How can I compare testing capability?\n\nSeparate inspection from functional testing. Ask which steps are included, what defects or functions they address, what firmware or fixtures are needed, and how pass/fail criteria and results are recorded. Compare a defined procedure rather than assuming “full test” means the same thing across suppliers.',
+          '### Can I supply my own components?\n\nConsigned or partial-consignment assembly may be suitable if the supplier accepts the proposed scope. Confirm exact MPNs, usable quantities, packaging, programming status, shortage responsibility and remaining-stock handling. Supplying a part does not by itself define the assembly or testing responsibility.',
+          '### How should alternative components be approved?\n\nThe supplier may propose a candidate, but the buyer or authorized engineer should confirm the exact alternative and relevant conditions before use where approval is required. Record that decision in the controlled BOM or build information; a sourcing discussion is not permission for an unrecorded substitution.',
+          '### Do I need to visit the factory?\n\nNot for every project. Remote verification through relevant process evidence, file-review discussions and a video walkthrough where available may be sufficient depending on order value and risk. A visit or further verification may be appropriate when critical capabilities remain unconfirmed or the project warrants deeper review.',
+          '### What should I check before repeat production?\n\nReconfirm Gerber/BOM/CPL revisions, component availability, approved substitutes, usable stock, firmware, repeatable test instructions and packaging requirements. A successful prototype or previous batch does not prove that the next build has unchanged inputs or current material availability.',
+          '### What is the difference between a factory and an online PCBA platform?\n\nA factory or service-led supplier may offer direct engineering coordination, while a platform often organizes orders through a standardized workflow. These models can overlap. Confirm who manufactures the boards and whether the offered sourcing, assembly and testing process fits your project rather than judging capability from the business label alone.',
+        ],
+      },
+      {
+        heading: 'Send Your Files for Review',
+        body: [
+          'Ready to discuss the manufacturing scope? [Send Gerber, BOM, quantity and your sourcing or testing requirements](/contact#project-files). Include the open questions from your supplier checklist so the review can clarify responsibilities before quotation.',
+        ],
+      },
+    ],
+  },
   {
     slug: 'turnkey-vs-consigned-pcb-assembly',
     mobileTableLayout: 'stacked',

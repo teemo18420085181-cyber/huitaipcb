@@ -9,7 +9,7 @@ import { getSitemapArticleEntries, type CmsArticle } from '@/lib/content/article
 import { getKnowledgeArticle, knowledgeArticles } from '@/lib/content/knowledge';
 
 const reviewSlug = 'how-we-review-pcba-project-before-quotation';
-const normalCmsSlug = 'how-to-choose-pcba-manufacturer-china';
+const normalCmsSlug = 'what-is-turnkey-pcba';
 
 function cmsArticle(slug: string, dates: Partial<CmsArticle> = {}): CmsArticle {
   return {
@@ -43,6 +43,18 @@ function mockCmsArticles(records: CmsArticle[]) {
 beforeEach(() => createServiceClient.mockReset());
 
 describe('sitemap content ownership and approved lastmod dates', () => {
+  it('uses GROW-04 static ownership over CMS dates without refreshing other URLs', async () => {
+    const slug = 'how-to-choose-pcba-manufacturer-china';
+    mockCmsArticles([cmsArticle(slug), cmsArticle(normalCmsSlug)]);
+    const entries = await sitemap();
+    expect(entries.filter(x => x.url.endsWith(`/knowledge/${slug}`))).toHaveLength(1);
+    expect(entries.find(x => x.url.endsWith(`/knowledge/${slug}`))?.lastModified)
+      .toEqual(new Date('2026-09-09T00:00:00.000Z'));
+    expect(entries.find(x => x.url.endsWith(`/knowledge/${normalCmsSlug}`))?.lastModified)
+      .toEqual(new Date('2026-05-21T01:12:10.970Z'));
+    expect(entries.find(x => x.url.endsWith(`/knowledge/${reviewSlug}`))?.lastModified)
+      .toEqual(new Date('2026-09-05T00:00:00.000Z'));
+  });
   it.each(['2026-05-21T01:12:10.970Z', '2026-10-01T00:00:00.000Z'])(
     'uses the target static update even when the hidden CMS date is %s',
     async (cmsDate) => {

@@ -672,6 +672,7 @@ const sitemapTests = spawnSync(process.execPath, [
   'run',
   'src/lib/content/sitemap-lastmod.test.ts',
   'src/lib/content/turnkey-vs-consigned.test.ts',
+  'src/lib/content/manufacturer-selection.test.ts',
 ], { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit' });
 
 if (sitemapTests.error) console.error(sitemapTests.error.message);
