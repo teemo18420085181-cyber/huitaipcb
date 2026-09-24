@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef, type ChangeEventHandler } from 'react';
 import { Upload, X, FileText, CheckCircle, Loader2 } from 'lucide-react';
 import { trackEvent } from '@/components/Analytics';
 import {
@@ -33,6 +33,11 @@ function getQuantityRange(quantity: FormDataEntryValue | null) {
 }
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || process.env.NEXT_PUBLIC_GA_ID;
+const STAGE_PRESETS = {
+  prototype: 'Prototype assembly',
+  'low-volume': 'Low-volume production',
+  repeat: 'Repeat production',
+} as const;
 
 const FORM_COPY = {
   en: {
@@ -116,6 +121,13 @@ export default function InquiryForm({ locale = 'en' }: { locale?: InquiryFormLoc
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formStartedRef = useRef(false);
   const [dragOver, setDragOver] = useState(false);
+  const [projectType, setProjectType] = useState('');
+
+  useEffect(() => {
+    const stage = new URLSearchParams(window.location.search).get('stage');
+    const preset = STAGE_PRESETS[stage as keyof typeof STAGE_PRESETS];
+    if (preset) setProjectType((current) => current || preset);
+  }, []);
 
   const handleFormFocus = () => {
     if (formStartedRef.current) return;
@@ -275,6 +287,8 @@ export default function InquiryForm({ locale = 'en' }: { locale?: InquiryFormLoc
             label={copy.projectType}
             name="project_type"
             placeholder={copy.projectTypePlaceholder}
+            value={projectType}
+            onChange={(event) => setProjectType(event.target.value)}
           />
         </div>
       </div>
@@ -438,12 +452,16 @@ function FormField({
   type = 'text',
   required = false,
   placeholder,
+  value,
+  onChange,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
   placeholder?: string;
+  value?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 }) {
   return (
     <div>
@@ -456,6 +474,8 @@ function FormField({
         name={name}
         required={required}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         className="w-full px-4 py-2.5 text-sm border border-cc-line bg-cc-carbon-3 text-cc-ink placeholder:text-cc-ink-mute/60 rounded-lg focus:outline-none focus:border-cc-copper/60 transition-colors"
       />
     </div>

@@ -6,7 +6,6 @@ export default function JsonLd() {
     '@id': SITE.organizationId,
     name: SITE.brandName,
     alternateName: SITE.shortName,
-    legalName: SITE.legalName,
     url: `${SITE.url}/`,
     logo: {
       '@type': 'ImageObject',
@@ -15,12 +14,8 @@ export default function JsonLd() {
       height: 512,
     },
     description:
-      'Huitai PCB is a China-based PCBA manufacturing supplier for PCB assembly, BOM sourcing, SMT and through-hole assembly, programming, testing, and prototype-to-production delivery.',
+      'Huitai PCB provides one-stop PCBA manufacturing in Shenzhen, with direct manufacturing review from PCB fabrication and BOM sourcing through assembly and project-defined testing.',
     email: SITE.email,
-    address: {
-      '@type': 'PostalAddress',
-      ...SITE.address,
-    },
     knowsAbout: PCBA_SERVICES,
   };
 

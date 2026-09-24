@@ -1,0 +1,70 @@
+.preview { min-height: 100vh; }
+.notice { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 24px; border-bottom: 1px solid var(--v2-line); }
+.intro { display: grid; align-items: center; gap: 48px; padding-block: 64px 80px; }
+.introText { display: grid; gap: 24px; }
+.introText h1 { max-width: 9ch; }
+.introText p { max-width: 41ch; }
+.introMeta { display: flex; align-items: center; gap: 12px; color: var(--v2-muted); }
+.introMeta::before { content: ''; width: 32px; height: 2px; background: var(--v2-green); }
+.heroFigure { position: relative; }
+.heroImage { display: block; width: 100%; height: auto; aspect-ratio: 1.24; object-fit: cover; object-position: 48% center; border-radius: 18px; }
+.imageNote { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 16px; }
+.sectionHead { display: grid; gap: 16px; margin-bottom: 40px; }
+.sectionHead p { max-width: 50ch; }
+.index { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.index span { display: inline-flex; width: 28px; height: 28px; align-items: center; justify-content: center; border: 1px solid var(--v2-line); border-radius: 50%; letter-spacing: 0; }
+.ruled { border-top: 1px solid var(--v2-line); }
+.palette { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; }
+.swatch { min-width: 0; }
+.color { height: 136px; border: 1px solid rgb(32 37 52 / 10%); border-radius: 12px; }
+.colorName { display: block; margin-top: 14px; font-size: 0.875rem; font-weight: 600; }
+.typeLayout { display: grid; gap: 40px; }
+.typeSamples { display: grid; gap: 28px; }
+.typeRow { display: grid; gap: 10px; padding-bottom: 24px; border-bottom: 1px solid var(--v2-line); }
+.specimenDisplay { font-size: clamp(2rem, 4vw, 3.5rem); }
+.componentLayout { display: grid; gap: 24px; }
+.componentSurface { display: flex; flex-direction: column; gap: 24px; padding: clamp(24px, 3vw, 40px); border-radius: 18px; background: var(--v2-subtle); }
+.componentSurfaceDark { background: var(--v2-bg); }
+.componentSurface h3 { margin-bottom: 4px; }
+.controlRow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.demoButton { min-width: 210px; }
+.demoNote { min-height: 42px; }
+.cardGrid { display: grid; gap: 16px; }
+.pathCard { display: flex; flex-direction: column; gap: 20px; }
+.pathCard h3 { max-width: 15ch; }
+.pathCard p { flex: 1; }
+.pathNumber { display: flex; justify-content: space-between; align-items: center; }
+.pathFooter { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--v2-line); padding-top: 20px; font-size: 0.875rem; font-weight: 600; }
+.materialGrid { display: grid; gap: 24px; align-items: stretch; }
+.principle { padding: clamp(28px, 5vw, 64px); border-radius: 18px; display: grid; align-content: center; gap: 24px; }
+.principle h3 { max-width: 19ch; }
+.principleMark { width: 40px; height: 4px; background: var(--v2-green); }
+.motionPanel { display: grid; align-content: center; gap: 24px; }
+.motionSample { display: flex; align-items: center; gap: 16px; padding: 24px; border: 1px solid var(--v2-line); border-radius: 12px; background: var(--v2-subtle); }
+.motionSample > svg { flex-shrink: 0; color: var(--v2-success); }
+.motionSample strong { display: block; font-size: 0.9375rem; }
+.faq { max-width: 850px; }
+.faq details { border-bottom: 1px solid var(--v2-line); }
+.faq summary { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 24px; font-size: 1.0625rem; font-weight: 600; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary svg { flex-shrink: 0; }
+.faq details[open] summary svg { transform: rotate(180deg); }
+.faq details p { padding: 0 32px 24px 0; }
+.footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-block: 32px; border-top: 1px solid var(--v2-line); }
+
+@media (min-width: 720px) {
+  .palette { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .componentLayout { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cardGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 960px) {
+  .intro { grid-template-columns: 1.06fr 1fr; gap: 80px; }
+  .typeLayout { grid-template-columns: 0.8fr 1.2fr; gap: 100px; }
+  .materialGrid { grid-template-columns: 1.15fr 1fr; }
+}
+@media (max-width: 479px) {
+  .intro { padding-block: 40px 56px; gap: 32px; }
+  .heroImage { aspect-ratio: 1.15; }
+  .color { height: 100px; }
+  .controlRow > a { width: 100%; }
+}

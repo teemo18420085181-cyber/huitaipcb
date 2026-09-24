@@ -111,7 +111,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${hankenGrotesk.variable} ${bricolageGrotesque.variable} ${jetBrainsMono.variable} scroll-smooth`}
+      data-scroll-behavior="smooth"
+      className={`${hankenGrotesk.variable} ${bricolageGrotesque.variable} ${jetBrainsMono.variable}`}
     >
     <body>
   <Analytics />

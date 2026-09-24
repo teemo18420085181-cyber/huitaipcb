@@ -43,6 +43,10 @@ const siteConfig = readOptional('src/lib/site.ts');
 const entityJsonLd = readOptional('src/components/JsonLd.tsx');
 const serviceLandingPage = read('src/components/SeoLandingPage.tsx');
 const aboutPage = readOptional('src/app/(en)/about/page.tsx') || readOptional('src/app/about/page.tsx');
+const v3Home = readOptional('src/components/v2/V3Home.tsx');
+const v3About = readOptional('src/components/v2/V3About.tsx');
+const v3Frame = readOptional('src/components/v2/WebsiteFrame.tsx');
+const v3Navigation = readOptional('src/components/v2/WebsiteNavigation.tsx');
 const faqPage = readOptional('src/app/(en)/faq/page.tsx') || readOptional('src/app/faq/page.tsx');
 const caseStudyPage =
   readOptional('src/app/(en)/case-study/page.tsx') || readOptional('src/app/case-study/page.tsx');
@@ -157,7 +161,8 @@ const checks = [
     'Homepage must offer distinct prototype, low-volume, and turnkey project paths.',
   ],
   [
-    homePage.indexOf('<Comparison />') < homePage.indexOf('<ProcessGrid />'),
+    homePage.includes('<V3Home />') &&
+      v3Home.indexOf('What stage is your project at today?') < v3Home.indexOf('Make the next step clear.'),
     'Homepage must present the project-path decision before the manufacturing workflow.',
   ],
   [
@@ -449,9 +454,11 @@ const checks = [
   [
     siteConfig.includes("brandName: 'Huitai PCB'") &&
       siteConfig.includes("shortName: 'Huitai'") &&
-      siteConfig.includes("legalName: 'Shenzhen Huitai Electronics Technology Co., Ltd.'") &&
+      siteConfig.includes("name: '深圳市会泰精密科技有限公司'") &&
+      siteConfig.includes("name: '深圳市会泰电子科技有限公司'") &&
+      !siteConfig.includes('Zhaochang Industrial Park') &&
       siteConfig.includes("organizationId: 'https://huitaipcb.com/#organization'"),
-    'Brand, legal name, and canonical organization ID must come from one site entity configuration.',
+    'Brand, separate company roles, and canonical organization ID must come from one site entity configuration.',
   ],
   [
     entityJsonLd.includes("'@type': 'Organization'") &&
@@ -466,17 +473,19 @@ const checks = [
     'Service schema must reference the single organization ID instead of redefining the company entity.',
   ],
   [
-    aboutPage.includes('About Huitai PCB') &&
-      aboutPage.includes('{SITE.legalName}') &&
-      aboutPage.includes('PCB Assembly') &&
-      aboutPage.includes('SMT Assembly') &&
-      aboutPage.includes('BOM Sourcing') &&
-      aboutPage.includes('aria-label="About Huitai PCB trust navigation"') &&
-      aboutPage.includes("href: '/how-we-work'") &&
-      aboutPage.includes("href: '/quality'") &&
-      aboutPage.includes("href: '/contact'") &&
-      !aboutPage.includes('ISO 9001') &&
-      !aboutPage.includes('founded in'),
+    aboutPage.includes('<V3About />') &&
+      v3About.includes('About Huitai PCB') &&
+      v3About.includes('PCB fabrication & assembly') &&
+      v3About.includes('BOM sourcing') &&
+      v3About.includes('Programming & testing') &&
+      v3About.includes('company.manufacturer.name') &&
+      v3About.includes('company.commercial.name') &&
+      v3Frame.includes('<WebsiteNavigation preview={preview} />') &&
+      v3Navigation.includes("'/how-we-work'") &&
+      v3Navigation.includes("'/about'") &&
+      v3Navigation.includes("'/company-verification'") &&
+      !v3About.includes('ISO 9001') &&
+      !v3About.includes('founded in'),
     'About must provide manufacturing trust navigation without unsupported certifications or founding claims.',
   ],
   [

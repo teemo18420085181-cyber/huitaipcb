@@ -6,6 +6,7 @@ import TrackedAnchor from '@/components/TrackedAnchor';
 import { dictionaries } from '@/lib/i18n/dictionary';
 import { absoluteUrl, getLanguageAlternates } from '@/lib/i18n/routes';
 import { OG_IMAGES } from '@/lib/seo/og';
+import { COMPANY_PUBLIC_PROFILE, FACILITY_GOOGLE_MAP_EMBED_URL } from '@/lib/site';
 
 const contact = dictionaries.de.contact;
 
@@ -133,12 +134,13 @@ export default function GermanContactPage() {
                     {contact.findEyebrow}
                   </div>
                   <h2 className="font-display text-xl font-bold text-cc-ink">{contact.findTitle}</h2>
-                  <p className="mt-1 max-w-[440px] text-sm leading-relaxed text-cc-ink-mute">
+                  <p className="mt-1 text-xs font-semibold text-cc-ink-mute">Aktueller Fertigungsstandort</p>
+                  <address lang="zh-CN" className="mt-1 max-w-[440px] text-sm not-italic leading-relaxed text-cc-ink-mute">
                     {contact.findBody}
-                  </p>
+                  </address>
                 </div>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=22.752083,113.798848"
+                  href={`https://www.google.com/maps/search/?api=1&query=${COMPANY_PUBLIC_PROFILE.manufacturer.facilityMapQuery}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex w-fit items-center gap-2 rounded-lg border border-cc-copper/30 bg-cc-carbon-3/40 px-4 py-2.5 text-sm font-semibold text-cc-copper-soft transition-colors hover:border-cc-copper/60"
@@ -146,13 +148,19 @@ export default function GermanContactPage() {
                   {contact.mapsLabel}
                 </a>
               </div>
-              <iframe
-                title="Huitai PCB location in Shajing, Bao'an, Shenzhen, China"
-                src="https://maps.google.com/maps?q=22.752083,113.798848&hl=de&z=17&output=embed"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="block h-[340px] w-full border-0"
-              />
+              <div className="relative bg-[#eef1ed]">
+                <iframe
+                  title="Huitai PCB location in Shajing, Bao'an, Shenzhen, China"
+                  src={FACILITY_GOOGLE_MAP_EMBED_URL}
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  className="block h-[340px] w-full border-0"
+                />
+                <div className="pointer-events-none absolute bottom-4 left-4 rounded-lg border border-cc-line bg-cc-carbon/95 px-4 py-3 text-xs text-cc-ink shadow-lg">
+                  <strong className="block text-sm">GX12 Fertigungsstandort</strong>
+                  <span className="text-cc-ink-mute">22.752083, 113.798848</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>

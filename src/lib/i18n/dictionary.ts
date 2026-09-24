@@ -1,5 +1,6 @@
 import { seoPages } from '@/lib/content/seoPages';
 import { deSeoPages } from '@/lib/content/seoPages.de';
+import { COMPANY_PUBLIC_PROFILE } from '@/lib/site';
 
 export const dictionaries = {
   en: {
@@ -158,7 +159,7 @@ export const dictionaries = {
       eyebrow: 'TECHNISCH GEPRÜFTE RFQ',
       title: 'Gerber & BOM für PCBA-Angebotsprüfung hochladen',
       intro:
-        'Senden Sie Gerber-Daten, BOM, Zeichnungen, Musterfotos oder Projekthinweise für eine technische Prüfung vor dem Angebot. Huitai prüft Turnkey-PCBA-Umfang, Bauteilbeschaffungsrisiken, Prüfbedarf und Details für Prototypen oder Kleinserien.',
+        'Senden Sie Gerber-Daten, BOM, Zeichnungen, Musterfotos oder Projekthinweise für eine technische Prüfung vor dem Angebot. Stimmen Sie den Turnkey-PCBA-Umfang, Bauteilbeschaffungsrisiken, Prüfbedarf und Details für Prototypen oder Kleinserien direkt mit unserem Fertigungsteam ab.',
       steps: ['Technische Prüfung vor dem Angebot', 'Gerber- und BOM-Prüfung', 'Rückfragen und nächster Prüfschritt per E-Mail'],
       usefulFilesTitle: 'NÜTZLICHE DATEIEN',
       usefulFiles: [
@@ -181,7 +182,7 @@ export const dictionaries = {
       wechatLabel: 'WECHAT-CODE SCANNEN',
       findEyebrow: 'STANDORT',
       findTitle: 'Shenzhen, China',
-      findBody: 'Building D, 4F, Zhaochang Industrial Park, Gonghe Industrial Road, Shajing, Bao’an District, Shenzhen, China',
+      findBody: COMPANY_PUBLIC_PROFILE.manufacturer.facilityAddress,
       mapsLabel: 'In Google Maps öffnen',
     },
   },

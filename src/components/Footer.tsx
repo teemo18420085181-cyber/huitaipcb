@@ -3,7 +3,7 @@ import BrandLogo from '@/components/BrandLogo';
 import TrackedLink from '@/components/TrackedLink';
 import TrackedAnchor from '@/components/TrackedAnchor';
 import type { Locale } from '@/lib/i18n/routes';
-import { SITE } from '@/lib/site';
+import { COMPANY_PUBLIC_PROFILE, SITE } from '@/lib/site';
 
 const SERVICES_LINKS = [
   { label: 'China PCBA Manufacturer', href: '/china-pcba-manufacturer' },
@@ -40,7 +40,10 @@ const DE_RESOURCE_LINKS = [
 const FOOTER_COPY = {
   en: {
     tagline: 'PCBA MANUFACTURING',
-    description: 'PCBA manufacturing supplier in Shenzhen, China for PCB assembly, BOM sourcing, SMT and through-hole assembly, testing, and production delivery.',
+    description: 'One-stop PCBA manufacturing in Shenzhen, China, with direct manufacturing review across sourcing, assembly and project-defined testing.',
+    manufacturingEntity: 'Manufacturing entity',
+    facility: 'Current manufacturing facility',
+    commercialEntity: 'Commercial and contracting entity',
     services: 'SERVICES',
     resources: 'RESOURCES',
     contact: 'CONTACT',
@@ -52,7 +55,10 @@ const FOOTER_COPY = {
   },
   de: {
     tagline: 'PCBA-FERTIGUNG',
-    description: 'PCBA-Fertigung in Shenzhen, China: Leiterplattenbestückung, BOM-Beschaffung, SMT-/THT-Montage, Prüfung und Produktionslieferung.',
+    description: 'PCBA-Komplettfertigung in Shenzhen mit direkter Abstimmung zu Beschaffung, Bestückung und projektbezogener Prüfung.',
+    manufacturingEntity: 'Fertigungsunternehmen',
+    facility: 'Aktueller Fertigungsstandort',
+    commercialEntity: 'Kaufmännisches Vertragsunternehmen',
     services: 'LEISTUNGEN',
     resources: 'INFORMATIONEN',
     contact: 'KONTAKT',
@@ -91,12 +97,13 @@ export default function Footer({ locale = 'en' }: { locale?: Locale }) {
               {copy.description}
             </p>
             <p className="text-xs leading-loose text-cc-ink-mute">
-              Shenzhen Huitai Electronics Technology Co., Ltd.
+              {copy.manufacturingEntity}: <span lang="zh-CN">{COMPANY_PUBLIC_PROFILE.manufacturer.name}</span>
             </p>
+            <address className="text-xs not-italic leading-loose text-cc-ink-mute">
+              {copy.facility}: <span lang="zh-CN">{COMPANY_PUBLIC_PROFILE.manufacturer.facilityAddress}</span>
+            </address>
             <p className="text-xs leading-loose text-cc-ink-mute">
-              Building D, 4F, Zhaochang Industrial Park,<br />
-              Gonghe Industrial Road, Shajing,<br />
-              Bao&apos;an District, Shenzhen, China
+              {copy.commercialEntity}: <span lang="zh-CN">{COMPANY_PUBLIC_PROFILE.commercial.name}</span>
             </p>
           </div>
 
@@ -165,7 +172,7 @@ export default function Footer({ locale = 'en' }: { locale?: Locale }) {
         </div>
 
         <div className="font-mono-cc flex flex-wrap items-center justify-between gap-2 pt-6 text-[11px] text-cc-ink-mute">
-          <span>© 2026 {SITE.legalName}</span>
+          <span>© 2026 {SITE.brandName}</span>
           <span className="flex gap-3">
             <Link href="/privacy" className="transition-colors hover:text-cc-ink">{copy.privacy}</Link>
             <span className="text-cc-copper/40">/</span>

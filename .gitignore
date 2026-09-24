@@ -40,3 +40,7 @@ next-env.d.ts
 .tmp-*/
 .tmp-*.log
 /图片
+
+# Internal user attachments must not enter Git or the public site.
+/.codex-remote-attachments/
+/.local/

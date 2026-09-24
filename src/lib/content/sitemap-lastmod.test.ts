@@ -114,8 +114,9 @@ describe('sitemap content ownership and approved lastmod dates', () => {
     const entries = await sitemap();
     const urls = entries.map((entry) => entry.url);
 
-    expect(entries).toHaveLength(59);
-    expect(new Set(urls).size).toBe(59);
+    expect(entries).toHaveLength(60);
+    expect(new Set(urls).size).toBe(60);
+    expect(urls).toContain('https://huitaipcb.com/company-verification');
     expect(urls.filter((url) => url.endsWith(`/knowledge/${reviewSlug}`))).toHaveLength(1);
     expect(entries.filter((entry) => !entry.url.includes('/knowledge/'))
       .every((entry) => entry.lastModified === undefined)).toBe(true);

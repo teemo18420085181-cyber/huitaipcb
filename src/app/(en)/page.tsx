@@ -1,16 +1,5 @@
-import Nav from '@/components/Nav';
-import Hero from '@/components/Hero';
-import HomeAnswer from '@/components/HomeAnswer';
-import TrustStrip from '@/components/TrustStrip';
-import ProcessGrid from '@/components/ProcessGrid';
-import Comparison from '@/components/Comparison';
-import FactoryGrid from '@/components/FactoryGrid';
-import QualityTesting from '@/components/QualityTesting';
-import QuoteFiles from '@/components/QuoteFiles';
-import HomeApplications from '@/components/HomeApplications';
-import HomeFaq from '@/components/HomeFaq';
-import FinalCTA from '@/components/FinalCTA';
-import Footer from '@/components/Footer';
+import V3Home, { homeFaqs } from '@/components/v2/V3Home';
+import WebsiteFrame from '@/components/v2/WebsiteFrame';
 import JsonLd from '@/components/JsonLd';
 import { OG_IMAGES } from '@/lib/seo/og';
 import { absoluteUrl, getLanguageAlternates } from '@/lib/i18n/routes';
@@ -34,24 +23,20 @@ export const metadata = {
 };
 
 export default function HomePage() {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: homeFaqs.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: { '@type': 'Answer', text: answer },
+    })),
+  };
   return (
     <>
       <JsonLd />
-      <Nav />
-      <main>
-        <Hero />
-        <HomeAnswer />
-        <TrustStrip />
-        <Comparison />
-        <ProcessGrid />
-        <FactoryGrid />
-        <QualityTesting />
-        <QuoteFiles />
-        <HomeApplications />
-        <HomeFaq />
-        <FinalCTA />
-      </main>
-      <Footer />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <WebsiteFrame preview={false}><V3Home /></WebsiteFrame>
     </>
   );
 }

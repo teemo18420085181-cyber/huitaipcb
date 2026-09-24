@@ -63,7 +63,8 @@ export default function GermanRootLayout({ children }: { children: React.ReactNo
   return (
     <html
       lang="de"
-      className={`${hankenGrotesk.variable} ${bricolageGrotesque.variable} ${jetBrainsMono.variable} scroll-smooth`}
+      data-scroll-behavior="smooth"
+      className={`${hankenGrotesk.variable} ${bricolageGrotesque.variable} ${jetBrainsMono.variable}`}
     >
       <body>
         <Analytics />
